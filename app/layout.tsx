@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Quicksand } from 'next/font/google'
-import Head from 'next/head';
+
+import Toolbar from "@/toolbar";
 import "./globals.css";
 
 const quicksand = Quicksand({
@@ -19,7 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-    
+
+      <Toolbar/>
       <body className={quicksand.className}>{children}</body>
 
     </html>
