@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Quicksand } from 'next/font/google'
+import Toolbar from "./components/toolbar";
 
-import Toolbar from "@/toolbar";
 import "./globals.css";
 
 const quicksand = Quicksand({
@@ -13,16 +12,21 @@ export const metadata: Metadata = {
   description: "à remplir",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children,}: Readonly<{ children: React.ReactNode;}>) 
+{
   return (
     <html lang="fr">
 
-      <Toolbar/>
-      <body className={quicksand.className}>{children}</body>
+      
+
+      <body className={quicksand.className}>
+       
+        <div className="container mx-auto px-4"><Toolbar /></div>
+        
+        <div className="container mx-auto px-4">{children}</div>
+        
+        
+        </body>
 
     </html>
   );
