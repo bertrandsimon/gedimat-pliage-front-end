@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Quicksand } from 'next/font/google'
 import Toolbar from "../components/toolbar";
-import Faq from "@/components/faq";
+import Nav from "@/components/nav";
 
 import "./globals.css";
 
@@ -20,12 +20,12 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
 
       
 
-      <body className={quicksand.className}>
+      <body className={`${quicksand.className} container mx-auto px-4`}>
        
-        <div className="container mx-auto px-4"><Toolbar /></div>
-       
+        <Toolbar />
+        <Nav/>
         
-        <div className="container mx-auto px-4">{children}</div>
+        {children}
         
         
         </body>
