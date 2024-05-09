@@ -1,10 +1,10 @@
 import { Fragment } from "react"
 
-export default function Toolbar() {
+export default function Faq() {
   return (
   
     <div>
-        <h1>Toolbar</h1>
+        <h1>Faq</h1>
     </div>
   
   
