@@ -1,11 +1,15 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import Swiperfirstbis from "../swiper/swiperfirstbis"
 
+
+// import "@/public/styles/index.css"
 
 export default function Presentation() {
   return (
   
+    
   <div className="grid grid-cols-2 gap-12">
 
     <div id="col1">
@@ -24,10 +28,10 @@ export default function Presentation() {
       <div className="flex items-center justify-end gap-2 pb-4">
         <Image src="/images/arrow-small.jpg" width={19} height={19} alt="" className="mt-4"/>
         <p className="text-xl">Besoin</p>
-        <p className="text-xl font-bold">d'inspirations ?</p>
+        <p className="text-xl font-bold">d&apos;inspirations ?</p>
       </div>
 
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet accusamus est iste natus, modi quos? Architecto eligendi eaque rerum est nihil ducimus accusantium vero quae, nobis accusamus dolore veritatis cum.</p>
+     <Swiperfirstbis />
 
     </div>
 
