@@ -8,3 +8,49 @@
     text-wrap: balance;
   }
 }
+
+.thin {
+  padding: 8px 16px;
+}
+
+.lgBtn {
+  text-transform: uppercase;
+  font-size: 14px;
+  display: inline-block;
+  border-radius: 8px;
+  color:white;
+  padding: 10px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition: background-color 0.3s;
+  transition: stroke 0.3s;
+}
+
+.redBgLg { background-color: #B51B1B;}
+.redBtn {
+  background-color: #B51B1B;
+}
+.redBtn:hover {
+  background-color: #AE0027;
+}
+.redBtnOutlined {
+  border: 1px solid #B51B1B;
+  color: #B51B1B;
+}
+.redBtnOutlined:hover {
+  border: 1px solid #AE0027;
+  color: #AE0027;
+  background-color: #FFF3F3;
+}
+
+.greyBtn {
+  background-color: #B8AEA7;
+}
+.greyBtn:hover {
+  background-color: #9D948E;
+}
+
+.dashed {
+  border: 1px dashed #39251E;
+  border-radius: 6px;
+}
