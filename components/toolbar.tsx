@@ -35,11 +35,11 @@ export default function Toolbar() {
 
           <Link href="/" className="transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">faq</Link>
 
-          <Link href="/#">
+          <Link href="/#" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
             <ChatBubbleBottomCenterTextIcon className="size-6" />
           </Link>
 
-          <Link href="/#">
+          <Link href="/#" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
             <UserCircleIcon className="size-6"/>
           </Link>
 
