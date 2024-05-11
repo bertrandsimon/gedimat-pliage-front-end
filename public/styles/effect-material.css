@@ -14,8 +14,8 @@
 
 :root {
   --swiper-material-scale: 1;
-  --swiper-material-slide-size: 100%;
-  --swiper-material-slide-border-radius: 32px;
+  --swiper-material-slide-size: 80%;
+  --swiper-material-slide-border-radius: 8px;
 }
 
 .swiper-material-wrapper {

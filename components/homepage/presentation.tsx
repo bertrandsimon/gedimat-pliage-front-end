@@ -2,7 +2,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import Swiperfirstbis from "../swiper/swiperfirstbis"
-
+import Swiperfirst from "../swiper/swiperfirst"
 
 // import "@/public/styles/index.css"
 
@@ -31,7 +31,9 @@ export default function Presentation() {
         <p className="text-xl font-bold">d&apos;inspirations ?</p>
       </div>
 
-     <Swiperfirstbis />
+     {/* <Swiperfirstbis /> */}
+     <Swiperfirst />
+     <Swiperfirst />
 
     </div>
 
