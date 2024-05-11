@@ -27,10 +27,10 @@ export default function MaterialSlider() {
           // autoplay: {
           //   delay: 1000, // Set the autoplay delay in milliseconds (3 seconds in this example)
           // },
-          navigation: {
-            prevEl: '.swiper-button-prev', // CSS selector for the previous button
-            nextEl: '.swiper-button-next', // CSS selector for the next button
-          },
+          // navigation: {
+          //   prevEl: '.swiper-button-prev', // CSS selector for the previous button
+          //   nextEl: '.swiper-button-next', // CSS selector for the next button
+          // },
         });
       });
     });
@@ -38,8 +38,7 @@ export default function MaterialSlider() {
 
   return (
     <div id="app">
-        <div className="swiper-button-prev">PREV</div> {/* Previous button */}
-          <div className="swiper-button-next">NEXT</div> {/* Next button */}
+
       <div className="demo-slider">
         <div className="swiper">
           <div className="swiper-wrapper max-h-36">
