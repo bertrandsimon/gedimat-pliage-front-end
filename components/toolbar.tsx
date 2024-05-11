@@ -10,7 +10,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
 export default function Toolbar() {
   return (
   
-    <div className="flex justify-between items-center bg-black w-full h-[64px] px-10">
+    <div className="flex justify-between items-center h-[64px]">
 
         <div>
           <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
@@ -31,9 +31,9 @@ export default function Toolbar() {
 
         <div className="flex justify-center items-center gap-6 text-white uppercase">
 
-          <Link href="/">présentation</Link>
+          <Link href="/" className="transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">présentation</Link>
 
-          <Link href="/">faq</Link>
+          <Link href="/" className="transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">faq</Link>
 
           <Link href="/#">
             <ChatBubbleBottomCenterTextIcon className="size-6" />
