@@ -5,6 +5,9 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 
 import "./globals.css";
+import connectDB from "./db";
+
+connectDB();
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -16,6 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children,}: Readonly<{ children: React.ReactNode;}>) 
 {
+
+
   return (
     <html lang="fr">
 
