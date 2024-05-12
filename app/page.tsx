@@ -3,7 +3,10 @@ import Banner from "@/components/homepage/banner";
 import Steps from "@/components/homepage/steps";
 import Presentation from "@/components/homepage/presentation";
 import Categories from "@/components/homepage/categories";
-import './db'
+import Partners from "@/components/homepage/partners";
+
+// import './db'
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-14">
@@ -12,6 +15,7 @@ export default function Home() {
       <Steps />
       <Presentation />
       <Categories />
+      <Partners />
 
     </main>
   );

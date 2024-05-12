@@ -10,6 +10,8 @@ import User from '../../models/User';
 //       })
 // }
 
+// GET ALL USERS
+
 export async function GET() {
    await connectDB();
    try {
