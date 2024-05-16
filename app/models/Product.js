@@ -13,4 +13,4 @@ const productSchema = new mongoose.Schema({
   active: Boolean,
 });
 
-export default mongoose.model("Product", userSchema);
+export default mongoose.model("Product", productSchema);

@@ -7,4 +7,4 @@ const categorySchema = new mongoose.Schema({
   position: Number,
 });
 
-export default mongoose.model("Category", userSchema);
+export default mongoose.model("Category", categorySchema);
