@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Quicksand } from 'next/font/google'
 import Toolbar from "../components/toolbar";
 import Nav from "@/components/nav";
+
 import Footer from "@/components/footer";
 
 import "./globals.css";
