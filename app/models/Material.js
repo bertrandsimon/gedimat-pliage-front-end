@@ -5,4 +5,4 @@ const materialSchema = new mongoose.Schema({
   active: Boolean,
 });
 
-export default mongoose.model("Material", userSchema);
+export default mongoose.model("Material", materialSchema);

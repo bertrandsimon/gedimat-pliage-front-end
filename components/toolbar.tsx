@@ -2,10 +2,19 @@ import { Fragment } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { BeakerIcon } from '@heroicons/react/24/solid'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/solid'
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 
 export default function Toolbar() {
   return (
@@ -39,9 +48,18 @@ export default function Toolbar() {
             <ChatBubbleBottomCenterTextIcon className="size-6" />
           </Link>
 
-          <Link href="/#" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
-            <UserCircleIcon className="size-6"/>
-          </Link>
+          <DropdownMenu>
+
+           <DropdownMenuTrigger><UserCircleIcon className="size-6"/></DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Mes listes</DropdownMenuItem>
+              <DropdownMenuItem>Mes infos</DropdownMenuItem>
+             
+            </DropdownMenuContent>
+
+          </DropdownMenu>
 
         </div>
 
