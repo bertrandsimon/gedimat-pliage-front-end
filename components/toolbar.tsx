@@ -52,7 +52,7 @@ export default function Toolbar() {
 
            <DropdownMenuTrigger><UserCircleIcon className="size-6"/></DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-center">Mon compte</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Mes listes</DropdownMenuItem>
               <DropdownMenuItem>Mes infos</DropdownMenuItem>

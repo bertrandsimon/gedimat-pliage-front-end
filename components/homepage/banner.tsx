@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 // import gedimat from "@/public/images/banner/gedimat.png"
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { Button } from "@/components/ui/button"
 
 export default function Banner() {
   return (
@@ -19,6 +20,7 @@ export default function Banner() {
          <p className="font-bold text-3xl">Aluminium et acier</p>
          <p className="max-w-[420px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit amet viverra. </p>
          <div className="lgBtn redBtn max-w-[124px] my-2">en savoir +</div>
+         {/* <Button variant="outline">Button</Button> */}
       
       </div>
 

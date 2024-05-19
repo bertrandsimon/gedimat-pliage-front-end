@@ -4,7 +4,7 @@ import Toolbar from "../components/toolbar";
 import Nav from "@/components/nav";
 
 import Footer from "@/components/footer";
-
+import { Navmenu } from "@/components/navmenu";
 import "./globals.css";
 import connectDB from "./db";
 
@@ -34,7 +34,8 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
             <Toolbar />
           </div>
         </div>
-        <div className="container mx-auto py-6 px-14"><Nav /></div>
+        {/* <div className="container mx-auto py-6 px-14"><Nav /></div> */}
+        <div className="container mx-auto py-6 px-14"><Navmenu /></div>
 
         <div className="container mx-auto px-4">{children}</div>
         
