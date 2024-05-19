@@ -5,7 +5,7 @@ import Link from "next/link"
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/solid'
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
-
+import { Login } from "./login"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -80,10 +80,12 @@ export default function Toolbar() {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          {/* <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle> */}
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            {/* This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers. */}
+              <Login />
+
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

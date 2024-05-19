@@ -18,12 +18,12 @@ import {
 
 export function Login() {
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
+    <Tabs defaultValue="signin" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="signin">Connection</TabsTrigger>
+        <TabsTrigger value="signup">Créer un compte</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
+      <TabsContent value="signin">
         <Card>
           <CardHeader>
             <CardTitle>Account</CardTitle>
@@ -42,11 +42,11 @@ export function Login() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save changes</Button>
+            <Button className="redBtn">Save changes</Button>
           </CardFooter>
         </Card>
       </TabsContent>
-      <TabsContent value="password">
+      <TabsContent value="signup">
         <Card>
           <CardHeader>
             <CardTitle>Password</CardTitle>
@@ -65,7 +65,7 @@ export function Login() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save password</Button>
+            <Button className="redBtn">Save password</Button>
           </CardFooter>
         </Card>
       </TabsContent>
