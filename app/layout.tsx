@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Quicksand } from 'next/font/google'
 import Toolbar from "../components/toolbar";
 import Nav from "@/components/nav";
-
+ 
 import Footer from "@/components/footer";
 import { Navmenu } from "@/components/navmenu";
 import "./globals.css";
 import connectDB from "./db";
+
 
 connectDB();
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
         </div>
         {/* <div className="container mx-auto py-6 px-14"><Nav /></div> */}
         <div className="container mx-auto py-6 px-14"><Navmenu /></div>
+       
 
         <div className="container mx-auto px-4">{children}</div>
         

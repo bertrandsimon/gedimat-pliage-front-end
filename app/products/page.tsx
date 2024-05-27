@@ -1,23 +1,17 @@
 
-// import './db'
+
 import { ProductsListing } from "@/components/products/productsListing";
+import Ariane from "@/components/ariane";
 
-export default function Products() {
+export default function ProductsPage() {
 
-  // const response = await fetch(`http://localhost:3000/api/products`, { cache: 'force-cache' })
-  // const products = await response.json()
-  //console.log (products)
-  
 
   return (
     <div className="w-full px-12 py-12">
-    
+    <Ariane />
     <ProductsListing />
 
-      <h1>Products</h1>
-      {/* { products.map((product:any) => <div key={product._id}>{product.name}</div>)
-
-      } */}
+      
     </div>
   );
 }
