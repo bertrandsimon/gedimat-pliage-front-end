@@ -68,8 +68,8 @@ const policies = [
   { name: 'Retrait sur site', icon: CurrencyDollarIcon, description: "Lorem ipsum dolor sit amet," },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classes: string[]): string {
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function SingleProduct() {
