@@ -17,9 +17,9 @@ export default function MaterialSlider() {
         const swiper = new Swiper.default('.swiper', {
           modules: [EffectMaterial.default],
           effect: 'material',
-          materialEffect: {
-            slideSplitRatio: 0.65,
-          },
+          // materialEffect: {
+          //   slideSplitRatio: 0.65,
+          // },
           grabCursor: true,
           slidesPerView: 2,
           spaceBetween: 16,
