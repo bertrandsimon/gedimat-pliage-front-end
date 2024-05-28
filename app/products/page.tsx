@@ -10,7 +10,7 @@ export default function ProductsPage() {
     <div className="w-full px-12 py-12">
     <Ariane />
     <ProductsListing />
-    <div></div>
+    <div>test</div>
 
       
     </div>
