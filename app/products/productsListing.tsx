@@ -5,7 +5,7 @@ import Link from "next/link"
 export async function ProductsListing () {
 
     // const response = await fetch(`http://localhost:3000/api/products`, { cache: 'force-cache' })
-    const response = await fetch(process.env.URL +`/api/products`, { cache: 'force-cache' })
+    const response = await fetch(process.env.URL +`/api/products`, { cache: 'no-store' })
     const products = await response.json()
 
     return (
