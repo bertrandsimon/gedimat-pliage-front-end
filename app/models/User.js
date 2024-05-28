@@ -12,4 +12,9 @@ const userSchema = new mongoose.Schema({
   kbis_file: String,
 });
 
-export default mongoose.model("User", userSchema);
+// export default mongoose.model("User", userSchema);
+
+// Fixing reload bug
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+export default User;

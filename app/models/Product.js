@@ -12,10 +12,10 @@ const productSchema = new mongoose.Schema({
   images: Array,
   categories: Array,
   active: Boolean,
-  // new_product: Boolean,
-  // price_ht: Number,
-  // tax: Number,
-  // price_ttc: Number,
+  new_product: Boolean,
+  price_ht: Number,
+  tax: Number,
+  price_ttc: Number,
 });
 
 // export default mongoose.model("Product", productSchema);

@@ -10,4 +10,8 @@ const adminSchema = new mongoose.Schema({
   level: Number,
 });
 
-export default mongoose.model("Admin", adminSchema);
+// export default mongoose.model("Admin", adminSchema);
+
+const Admin = mongoose.models.Admin || mongoose.model("Admin", adminSchema);
+
+export default Admin;

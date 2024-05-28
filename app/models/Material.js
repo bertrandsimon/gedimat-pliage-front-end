@@ -5,4 +5,9 @@ const materialSchema = new mongoose.Schema({
   active: Boolean,
 });
 
-export default mongoose.model("Material", materialSchema);
+// export default mongoose.model("Material", materialSchema);
+
+const Material =
+  mongoose.models.Material || mongoose.model("Material", materialSchema);
+
+export default Material;

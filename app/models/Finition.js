@@ -5,4 +5,9 @@ const finitionSchema = new mongoose.Schema({
   active: Boolean,
 });
 
-export default mongoose.model("Finition", finitionSchema);
+// export default mongoose.model("Finition", finitionSchema);
+
+const Finition =
+  mongoose.models.Finition || mongoose.model("Finition", finitionSchema);
+
+export default Finition;

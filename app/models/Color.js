@@ -6,4 +6,8 @@ const colorSchema = new mongoose.Schema({
   active: Boolean,
 });
 
-export default mongoose.model("Color", colorSchema);
+// export default mongoose.model("Color", colorSchema);
+
+const Color = mongoose.models.Color || mongoose.model("Color", colorSchema);
+
+export default Color;
