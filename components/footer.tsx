@@ -7,12 +7,15 @@ import emailjs from "@emailjs/browser";
 
 export default function Footer() {
   const [success, setSuccess] = useState(false);
-  const form = useRef();
-
-  const sendEmail = (e) => {
+  const form = useRef<HTMLFormElement>(null);
+  
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    //console.log(form.current.telephone.value)
+    if (!form.current) {
+      console.log('Form reference is null');
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -26,18 +29,17 @@ export default function Footer() {
           setSuccess(true);
         },
         (error) => {
-          console.log("erreur");
+          console.log("erreur", error);
         }
       );
   };
 
   const navigation = {
-   
     social: [
       {
         name: "Twitter",
         href: "#",
-        icon: (props) => (
+        icon: (props: any) => (
           <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
             <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
           </svg>
@@ -46,7 +48,7 @@ export default function Footer() {
       {
         name: "Linkedin",
         href: "#",
-        icon: (props) => (
+        icon: (props: any) => (
           <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
             <path d="M22.225 0H1.77C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.77 24h20.455C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.208 0 22.225 0zM7.412 20.834H3.56V9H7.412v11.834zM5.486 7.967c-1.273 0-2.302-1.02-2.302-2.28 0-1.265 1.029-2.28 2.302-2.28s2.302 1.02 2.302 2.28c0 1.265-1.029 2.28-2.302 2.28zm15.352 12.867h-3.852V14.16c0-1.594-.568-2.682-1.989-2.682-1.082 0-1.727.726-2.01 1.424-.104.253-.13.607-.13.96v7.972h-3.852V9h3.852v1.606c.513-.789 1.432-1.918 3.477-1.918 2.541 0 4.454 1.662 4.454 5.236v6.91z" />
           </svg>
@@ -54,7 +56,6 @@ export default function Footer() {
       },
     ],
   };
-
   return (
     <>
       <footer>
