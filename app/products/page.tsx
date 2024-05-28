@@ -1,6 +1,6 @@
 
+import { ProductsListing } from "./productsListing";
 
-import { ProductsListing } from "@/components/products/productsListing";
 import Ariane from "@/components/ariane";
 
 export default function ProductsPage() {

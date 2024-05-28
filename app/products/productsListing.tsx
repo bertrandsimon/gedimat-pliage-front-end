@@ -1,6 +1,6 @@
 
 import Image from "next/image"
-
+import Link from "next/link"
 
 export async function ProductsListing () {
 
@@ -21,14 +21,16 @@ export async function ProductsListing () {
             </div> */}
 
             { products.map((product:any) => 
+            <Link key={product._id} href='/singleProduct'>
+                
+                <div className="min-h-[220px] flex flex-col justify-start items-center rounded-md gap-4 cursor-pointer shadow-md hover:shadow-2xl transition duration-300 ease-in-out">
+      
+                <Image src={`/images/products/${product.images[0]}`} alt="" width={180} height={125} className="object-cover rounded-md"></Image>
 
-            <div key={product._id} className="min-h-[220px] flex flex-col justify-start items-center rounded-md gap-4 cursor-pointer shadow-md hover:shadow-2xl transition duration-300 ease-in-out">
+                <p className="cursor-pointer pb-4">{product.name}</p>
+                </div>
 
-                        
-            <Image src={`/images/products/${product.images[0]}`} alt="" width={180} height={125} className="object-cover rounded-md"></Image>
-
-            <p className="cursor-pointer pb-4">{product.name}</p>
-            </div>
+            </Link>
 
             )}
 
