@@ -59,7 +59,7 @@ export default function Toolbar() {
 
           <Link href="/faq" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">faq</Link>
 
-          <Link href="/#" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
+          <Link href="/contact" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
             <ChatBubbleBottomCenterTextIcon className="size-6" />
           </Link>
 
