@@ -1,6 +1,6 @@
 
 import { ProductsListing } from "./productsListing";
-
+export const dynamic = 'force-dynamic'
 import Ariane from "@/components/ariane";
 
 export default function ProductsPage() {
