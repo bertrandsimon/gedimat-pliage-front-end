@@ -53,9 +53,11 @@ export default function Toolbar() {
 
         <div className="flex justify-center items-center gap-6 text-white uppercase">
 
-          <Link href="/" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">présentation</Link>
+          <Link href="/presentation" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">présentation</Link>
 
-          <Link href="/" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">faq</Link>
+          <Link href="/inspirations" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">inspirations</Link>
+
+          <Link href="/faq" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">faq</Link>
 
           <Link href="/#" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
             <ChatBubbleBottomCenterTextIcon className="size-6" />
