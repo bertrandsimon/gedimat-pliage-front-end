@@ -5,7 +5,8 @@ export default function ContactPage (){
     return (
         <div>
             <Ariane />
-            <Contact />
+            <div className="px-12 py-12"><Contact /></div>
+            
         </div>
     )
 }

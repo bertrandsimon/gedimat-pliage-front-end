@@ -35,7 +35,9 @@ export default function Toolbar() {
     <div className="flex justify-between items-center h-[64px]">
 
         <div>
-          <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
+          <Link href="/">
+            <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
+          </Link>
         </div>
 
         <div className="relative rounded-md shadow-sm">

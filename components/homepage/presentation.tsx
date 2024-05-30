@@ -32,8 +32,9 @@ export default function Presentation() {
       </div>
 
      {/* <Swiperfirstbis /> */}
-     <Swiperfirst />
-     <Swiperfirst />
+     <Link href="/inspirations"><Swiperfirst /></Link>
+     <Link href="/inspirations"><Swiperfirst /></Link>
+    
 
     </div>
 

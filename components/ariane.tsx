@@ -9,7 +9,7 @@ import {
 
 export default function Ariane(){
     return (
-        <Breadcrumb className="px-10">
+        <Breadcrumb className="px-14">
             <BreadcrumbList>
                 <BreadcrumbItem>
                      <BreadcrumbLink href="/">Home</BreadcrumbLink>
