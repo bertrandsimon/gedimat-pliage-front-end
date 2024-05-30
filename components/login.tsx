@@ -26,46 +26,46 @@ export function Login() {
       <TabsContent value="signin">
         <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
+            <CardTitle>Mon compte</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you re done.
+              Entrez votre email et mot de passe pour vous connecter
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Email</Label>
               <Input id="name" defaultValue="Pedro Duarte" />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
+              <Label htmlFor="username">Mot de passe</Label>
+              <Input id="username" defaultValue="*******" />
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="redBtn">Save changes</Button>
+            <Button className="redBtn">Connection</Button>
           </CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="signup">
         <Card>
           <CardHeader>
-            <CardTitle>Password</CardTitle>
+            <CardTitle>Création de compte</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you ll be logged out.
+              Entrez votre email et un mot de passe pour créer votre compte
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
+              <Label htmlFor="current">Email</Label>
+              <Input id="current" type="txt" />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
+              <Label htmlFor="new">Mot de passe</Label>
               <Input id="new" type="password" />
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="redBtn">Save password</Button>
+            <Button className="redBtn">Valider inscription</Button>
           </CardFooter>
         </Card>
       </TabsContent>

@@ -68,36 +68,39 @@ export default function Toolbar() {
           <DropdownMenu>
 
            <DropdownMenuTrigger><UserCircleIcon className="size-6"/></DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel className="text-center">Mon compte</DropdownMenuLabel>
+            <DropdownMenuContent className="mt-4">
+              <DropdownMenuLabel className="text-center uppercase text-xs ">
+
+              <AlertDialog>
+            <AlertDialogTrigger asChild>
+                <Button variant="outline">Mon compte</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="max-w-lg">
+                <AlertDialogHeader>
+              
+                  <AlertDialogDescription>
+              
+                      <Login />
+
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Annuler</AlertDialogCancel>
+                  {/* <AlertDialogAction>Continuer</AlertDialogAction> */}
+                </AlertDialogFooter>
+            </AlertDialogContent>
+           </AlertDialog>
+
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Mes listes</DropdownMenuItem>
-              <DropdownMenuItem>Mes infos</DropdownMenuItem>
+              <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes listes</DropdownMenuItem>
+              <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes infos</DropdownMenuItem>
              
             </DropdownMenuContent>
 
           </DropdownMenu>
 
-          <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Show Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          {/* <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle> */}
-          <AlertDialogDescription>
-            {/* This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers. */}
-              <Login />
-
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+          
 
         </div>
 
