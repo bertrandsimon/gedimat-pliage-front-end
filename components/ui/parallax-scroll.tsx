@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
+// https://github.com/shadcn-ui/ui/issues/1870
+
 
 import {
   AlertDialog,

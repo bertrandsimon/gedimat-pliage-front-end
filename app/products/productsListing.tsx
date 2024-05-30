@@ -10,23 +10,16 @@ export async function ProductsListing () {
 
     return (
 
-        <div className="grid grid-cols-5 gap-8">
+        <div className="grid grid-cols-6 gap-10">
 
-            
-            {/* <div className="min-h-[220px] flex flex-col justify-start items-center rounded-md gap-4">
-
-             
-                    <Image src="/images/products/bande.jpg" alt="" width={180} height={125} className="object-cover rounded-md"></Image>
-
-                <p>Profil aluminium</p>
-            </div> */}
+       
 
             { products.map((product:any) => 
             <Link key={product._id} href='/singleProduct'>
                 
-                <div className="min-h-[220px] flex flex-col justify-start items-center rounded-md gap-4 cursor-pointer shadow-md hover:shadow-2xl transition duration-300 ease-in-out">
+                <div className="min-h-[220px] flex flex-col justify-start items-center rounded-md gap-4 cursor-pointer transition duration-300 ease-in-out">
       
-                <Image src={`/images/products/${product.images[0]}`} alt="" width={180} height={125} className="object-cover rounded-md"></Image>
+                <Image src={`/images/products/${product.images[0]}`} alt="" width={180} height={125} className="object-cover rounded"></Image>
 
                 <p className="cursor-pointer pb-4">{product.name}</p>
                 </div>
@@ -36,9 +29,6 @@ export async function ProductsListing () {
             )}
 
 
-            {/* { products.map((product:any) => <div key={product._id}>{product.name}</div>
-
-            )} */}
         </div>
 
     )
