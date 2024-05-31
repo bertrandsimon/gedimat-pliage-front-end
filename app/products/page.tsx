@@ -9,11 +9,15 @@ import CategoryHeader from "@/components/products/categoryHeader";
 
 export default function ProductsPage() {
 
-
+  const ariane = {
+    sub1 : "Couverture et étanchéité",
+    sub2 : "Couvertines",
+    sub3 : "",
+}
   return (
     <div>
 
-    <Ariane />
+    <Ariane ariane={ariane}/>
 
     <div className="px-12 pt-12">
       <CategoryHeader 

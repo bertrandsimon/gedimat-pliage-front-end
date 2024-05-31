@@ -13,27 +13,42 @@ export default function Categories() {
       <div><ArrowRightIcon className="size-4 " /></div>
   </div>
 
-  <div className="columns-4 gap-10
+  <div className="columns-5 gap-10
   ">
 
-    <div className="flex flex-col justify-center items-center gap-4">
-      <Image src="/images/categories/cat1.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl hover:saturate-200 cursor-pointer"/>
-      <p className="uppercase cursor-pointer text-sm">couvertines</p>
+    <div className="flex flex-col justify-center items-center gap-4 ">
+      <div className="overflow-hidden rounded">
+      <Image src="/images/categories/cate-1.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl cursor-pointer hover:scale-125 transition-transform duration-300 ease-in-out"/>
+      </div>
+      <p className="uppercase cursor-pointer text-sm">couverture et étanchéité</p>
     </div>
    
     <div className="flex flex-col justify-center items-center gap-4">
-      <Image src="/images/categories/cat2.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl hover:saturate-200 cursor-pointer"/>
-      <p className="uppercase cursor-pointer text-sm">couvertines</p>
+    <div className="overflow-hidden rounded">
+      <Image src="/images/categories/cate-2.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl cursor-pointer hover:scale-125 transition-transform duration-300 ease-in-out"/>
+      </div>
+      <p className="uppercase cursor-pointer text-sm">façade et bardage</p>
     </div>
 
     <div className="flex flex-col justify-center items-center gap-4">
-      <Image src="/images/categories/cat3.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl hover:saturate-200 cursor-pointer"/>
-      <p className="uppercase cursor-pointer text-sm">couvertines</p>
+    <div className="overflow-hidden rounded">
+      <Image src="/images/categories/cate-3.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl cursor-pointer hover:scale-125 transition-transform duration-300 ease-in-out"/>
+      </div>
+      <p className="uppercase cursor-pointer text-sm">aménagement intérieur</p>
     </div>
 
     <div className="flex flex-col justify-center items-center gap-4">
-      <Image src="/images/categories/cat4.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl hover:saturate-200 cursor-pointer"/>
-      <p className="uppercase cursor-pointer text-sm">couvertines</p>
+    <div className="overflow-hidden rounded">
+      <Image src="/images/categories/cate-4.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl cursor-pointer hover:scale-125 transition-transform duration-300 ease-in-out"/>
+      </div>
+      <p className="uppercase cursor-pointer text-sm">aménagement extérieur</p>
+    </div>
+
+    <div className="flex flex-col justify-center items-center gap-4">
+    <div className="overflow-hidden rounded">
+      <Image src="/images/categories/cate-5.jpg" alt="" width={279} height={174} className="rounded w-full hover:drop-shadow-xl cursor-pointer hover:scale-125 transition-transform duration-300 ease-in-out"/>
+      </div>
+      <p className="uppercase cursor-pointer text-sm">aménagement extérieur</p>
     </div>
 
   </div>

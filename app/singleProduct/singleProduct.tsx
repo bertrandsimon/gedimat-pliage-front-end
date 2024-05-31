@@ -16,9 +16,12 @@ import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
+import { Separator } from "@/components/ui/separator"
+
 
 const product = {
-  name: 'Basic Tee',
+  name: 'Couvertine à coller',
   price: '35',
   href: '#',
   images: [
@@ -83,19 +86,20 @@ export default function SingleProduct() {
         <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
            
-              <div className="flex justify-between mt-8 lg:col-span-8">
+              <div className="flex justify-between lg:col-span-8">
                 <h1 className="text-xl font-medium text-gray-900">{product.name}</h1>
                 <p className="text-xl font-medium text-gray-900">{product.price} Euros HT</p>
               </div>
            
-            
+              
 
          
             <div className="mt-8 lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               
 
               <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-                {product.images.map((image) => (
+                <Image src="/images/products/couvertine1.jpg" width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
+                {/* {product.images.map((image) => (
                   <img
                     key={image.id}
                     src={image.imageSrc}
@@ -105,11 +109,12 @@ export default function SingleProduct() {
                       'rounded-lg'
                     )}
                   />
-                ))}
+                ))} */}
               </div>
             </div>
 
             <div className="mt-8 lg:col-span-8">
+            <Separator className='mb-5'/>
               <form>
                 {/* Color picker */}
                 <div>

@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import Swiperfirstbis from "../swiper/swiperfirstbis"
 import Swiperfirst from "../swiper/swiperfirst"
+import MaterialSlider from "../swiper/swipersecond"
 
 // import "@/public/styles/index.css"
 
@@ -33,7 +34,7 @@ export default function Presentation() {
 
      {/* <Swiperfirstbis /> */}
      <Link href="/inspirations"><Swiperfirst /></Link>
-     <Link href="/inspirations"><Swiperfirst /></Link>
+     <Link href="/inspirations"><MaterialSlider /></Link>
     
 
     </div>
