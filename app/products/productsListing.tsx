@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+
 
 export async function ProductsListing () {
 
@@ -18,13 +18,13 @@ export async function ProductsListing () {
             { products.map((product:any) => 
             <div key={product._id} >
                 
-                <div className="min-h-[220px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 borde-black p-4 hover:shadow-lg">
+                <div className="min-h-[300px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 borde-black p-4 hover:shadow-lg">
                     <div className="overflow-hidden">
-                    <Image src={`/images/products/${product.images[0]}`} alt="" width={180} height={125} className="object-cover rounded hover:scale-125 transition-transform duration-300 ease-in-out"></Image>
+                    <Image src={`/images/products/${product.main_image}`} alt="" width={180} height={125} className="object-cover rounded hover:scale-125 transition-transform duration-300 ease-in-out"></Image>
                     </div>
-                    <p className="cursor-pointer pb-2 text-sm">{product.name}</p>
+                    <p className="cursor-pointer pb-2 text-sm text-center">{product.name}</p>
                     <Link href='/singleProduct'><div className="thinBtn greyBtn"><span className="text-xs">voir</span></div></Link>
-                    {/* <Button asChild><Link href='/singleProduct'>+</Link></Button> */}
+                  
                 
 
                 </div>
