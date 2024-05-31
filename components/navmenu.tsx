@@ -105,7 +105,7 @@ export function Navmenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/products" legacyBehavior passHref>
             <NavigationMenuLink className={`${navigationMenuTriggerStyle()} uppercase`} >
               Aménagement intérieur
             </NavigationMenuLink>
@@ -113,7 +113,7 @@ export function Navmenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/products" legacyBehavior passHref>
             <NavigationMenuLink className={`${navigationMenuTriggerStyle()} uppercase`}>
               Aménagement extérieur
             </NavigationMenuLink>
@@ -121,7 +121,7 @@ export function Navmenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/products" legacyBehavior passHref>
             <NavigationMenuLink className={`${navigationMenuTriggerStyle()} uppercase`}>
               Quincaillerie et outillage
             </NavigationMenuLink>
