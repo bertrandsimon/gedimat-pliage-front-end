@@ -1,4 +1,5 @@
 import Image from "next/image"
+import CategoryMenuBar from "./categoryMenuBar"
 
 export default function CategoryHeader(props:any){
     return (
@@ -12,7 +13,12 @@ export default function CategoryHeader(props:any){
             </div>
 
             </div>
-            <div className="col-span-2"><Image src={props.image} alt="" width={600} height={150} className="h-[160px] w-full object-cover object-center-top rounded-lg"/></div>
+
+            <div className="col-span-2 flex flex-col gap-4">
+                <Image src={props.image} alt="" width={600} height={150} className="h-[160px] w-full object-cover object-center-top rounded-lg"/>
+                <CategoryMenuBar />
+            </div>
+
         </div>
     )
 }

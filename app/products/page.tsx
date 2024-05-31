@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 import Ariane from "@/components/ariane";
 import Steps from "@/components/homepage/steps";
 import CategoryHeader from "@/components/products/categoryHeader";
-import CategoryMenuBar from "@/components/products/categoryMenuBar";
+
 
 export default function ProductsPage() {
 
@@ -15,14 +15,14 @@ export default function ProductsPage() {
 
     <Ariane />
 
-    <div className="px-12 py-12">
+    <div className="px-12 pt-12">
       <CategoryHeader 
         title="Couverture et étanchéité" 
         subtitle="Couvertines" 
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit amet viverra."
         image="/images/inspirations/inspirations/7.jpg"
         />
-        <CategoryMenuBar />
+        
       </div>
 
       

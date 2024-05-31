@@ -21,31 +21,31 @@ export default function CategoryMenuBar() {
     <Menubar>
       
     <MenubarMenu>
-        <MenubarTrigger>Tous</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Tous</MenubarTrigger>
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Couvertines</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Couvertines</MenubarTrigger>
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Solins</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Solins</MenubarTrigger>
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Faitières</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Faitières</MenubarTrigger>
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Rives</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Rives</MenubarTrigger>
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Noues</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Noues</MenubarTrigger>
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarTrigger>Accessoires</MenubarTrigger>
+        <MenubarTrigger className="cursor-pointer">Accessoires</MenubarTrigger>
       </MenubarMenu>
 
     </Menubar>
