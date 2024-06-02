@@ -5,6 +5,8 @@ import Product from '../../models/Product';
 
 // GET ALL PRODUCTS
 
+
+
 export async function GET() {
    await connectDB();
    try {
