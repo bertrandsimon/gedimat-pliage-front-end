@@ -1,17 +1,4 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/typography'),
-    ],
-  }
-  ```
-*/
+'use client'
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
@@ -75,7 +62,7 @@ function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function SingleProduct() {
+export default function SingleProduct({item}:any) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.materials[2])
 
@@ -87,8 +74,8 @@ export default function SingleProduct() {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
            
               <div className="flex justify-between lg:col-span-8">
-                <h1 className="text-xl font-medium text-gray-900">{product.name}</h1>
-                <p className="text-xl font-medium text-gray-900">{product.price} Euros HT</p>
+                <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
+                <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
               </div>
            
               
