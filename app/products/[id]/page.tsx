@@ -4,7 +4,7 @@ import SingleProduct from '@/app/singleProduct/singleProduct'
 
 export const dynamic = 'force-dynamic'
 
-export async function fetchSingleProduct( {params}:any ) {
+export default function Page( {params}:any ) {
    
  
   // const response = await fetch(`${process.env.URL}/api/products/${params.id}`, { cache: 'no-store' })
@@ -13,15 +13,15 @@ export async function fetchSingleProduct( {params}:any ) {
 
     return (
         
-      params.id
+      <div></div>
 
     )
 }
 
-export default function productPage (){
-  return (
-    <div>
-      <h1>test</h1>
-    </div>
-  )
-}
+// export default function productPage (){
+//   return (
+//     <div>
+//       <h1>test</h1>
+//     </div>
+//   )
+// }
