@@ -19,4 +19,3 @@ export async function productPage( {params}:any ) {
     )
 }
 
-export default productPage;
