@@ -3,7 +3,8 @@ import Image from 'next/image'
 import SingleProduct from '@/app/singleProduct/singleProduct'
 
 export const dynamic = 'force-dynamic'
-export async function productPage( {params}:any ) {
+
+export async function fetchSingleProduct( {params}:any ) {
    
  
   // const response = await fetch(`${process.env.URL}/api/products/${params.id}`, { cache: 'no-store' })
@@ -12,9 +13,15 @@ export async function productPage( {params}:any ) {
 
     return (
         
+      params.id
+
+    )
+}
+
+export default function productPage (){
+  return (
     <div>
-      {/* <SingleProduct item={item}/> */}
       <h1>test</h1>
     </div>
-    )
+  )
 }
