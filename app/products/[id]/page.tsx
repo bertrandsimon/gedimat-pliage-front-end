@@ -14,6 +14,7 @@ export async function productPage( {params}:any ) {
         
     <div>
       <SingleProduct item={item}/>
+      <h1>test</h1>
     </div>
     )
 }
