@@ -74,8 +74,8 @@ export default function SingleProduct({item}:any) {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
            
               <div className="flex justify-between lg:col-span-8">
-                <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
-                <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
+                <h1 className="text-xl font-medium text-gray-900">{product.name}</h1>
+                <p className="text-xl font-medium text-gray-900">{product.price} Euros HT</p>
               </div>
            
               
