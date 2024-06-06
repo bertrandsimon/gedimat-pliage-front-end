@@ -5,7 +5,7 @@ import { Radio, RadioGroup } from '@headlessui/react'
 import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { Separator } from "@/components/ui/separator"
-import {ProductInterface} from '@/app/interfaces/product'
+//import {ProductInterface} from '@/app/interfaces/product'
 
 const product = {
   name: 'Couvertine à coller',
