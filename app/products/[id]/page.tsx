@@ -4,7 +4,19 @@ import SingleProduct from '@/app/singleProduct/singleProduct'
 
 export const dynamic = 'force-dynamic'
 
-export default function Page( {params}:any ) {
+export async function fetchSingleProduct( {params}:any ) {
+   
+ 
+  const response = await fetch(`${process.env.URL}/api/products/${params.id}`, { cache: 'no-store' })
+
+  const item = await response.json()
+
+   
+    
+}
+
+
+export default function Page() {
    
  
   // const response = await fetch(`${process.env.URL}/api/products/${params.id}`, { cache: 'no-store' })
