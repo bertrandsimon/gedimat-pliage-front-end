@@ -5,7 +5,7 @@ import { Radio, RadioGroup } from '@headlessui/react'
 import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { Separator } from "@/components/ui/separator"
-
+import {ProductInterface} from '@/app/interfaces/product'
 
 const product = {
   name: 'Couvertine à coller',
@@ -58,6 +58,7 @@ const policies = [
   { name: 'Retrait sur site', icon: CurrencyDollarIcon, description: "Lorem ipsum dolor sit amet," },
 ]
 
+
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
@@ -65,6 +66,10 @@ function classNames(...classes: string[]): string {
 export default function SingleProduct({item}:any) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.materials[2])
+  //const [productOk, setProductOk] = useState(item)
+  //console.log (item)
+  
+  //setProductOk(item)
 
   return (
     <div className="bg-white">
@@ -74,8 +79,8 @@ export default function SingleProduct({item}:any) {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
            
               <div className="flex justify-between lg:col-span-8">
-                <h1 className="text-xl font-medium text-gray-900">{product.name}</h1>
-                <p className="text-xl font-medium text-gray-900">{product.price} Euros HT</p>
+                <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
+                <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
               </div>
            
               
@@ -85,7 +90,7 @@ export default function SingleProduct({item}:any) {
               
 
               <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-                <Image src="/images/products/couvertine1.jpg" width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
+                <Image src={`/images/products/${item.main_image}`}  width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
                 {/* {product.images.map((image) => (
                   <img
                     key={image.id}
@@ -237,7 +242,7 @@ export default function SingleProduct({item}:any) {
 
                 <div
                   className="prose prose-sm mt-4 text-gray-500"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{ __html: item.description }}
                 />
               </div>
 
@@ -246,8 +251,8 @@ export default function SingleProduct({item}:any) {
 
                 <div className="prose prose-sm mt-4 text-gray-500">
                   <ul role="list">
-                    <li>Poids : 125 Gr</li>
-                    <li>Epaisseur : 12 mm</li>
+                    <li>Poids : {item.weight} gr</li>
+                    <li>Epaisseur : {item.thickness} mm</li>
                  
                     {/* {product.details.map((item) => (
                       <li key={item}>{item}</li>

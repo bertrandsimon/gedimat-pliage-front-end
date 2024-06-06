@@ -25,10 +25,10 @@ export default async function Page({params}:any) {
    const response = await fetch(`${process.env.URL}/api/products/${params.id}`, { cache: 'no-store' })
 
    const item = await response.json()
-
+  
     return (
         
-      <div></div>
+      <div><SingleProduct item={item}/></div>
 
     )
 }
