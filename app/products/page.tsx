@@ -1,4 +1,6 @@
 
+'use client'
+import { useSearchParams } from 'next/navigation'
 import { ProductsListing } from "./productsListing";
 export const dynamic = 'force-dynamic'
 
@@ -9,11 +11,21 @@ import CategoryHeader from "@/components/products/categoryHeader";
 
 export default function ProductsPage() {
 
+  const searchParams = useSearchParams()
+  
+//   URL -> `/dashboard?search=my-project`
+// http://localhost:3000/products?search=solins
+
+  const search = searchParams.get('search')
+  console.log(search)
+
+
   const ariane = {
     sub1 : "Couverture et étanchéité",
     sub2 : "Couvertines",
     sub3 : "",
 }
+
   return (
     <div>
 
@@ -32,7 +44,7 @@ export default function ProductsPage() {
       
     
     
-    <div className="px-12 py-12"><ProductsListing /></div>
+    <div className="px-12 py-12"><ProductsListing search={search}/></div>
     <div className="px-12 py-12"><Steps /></div>
 
     </div>

@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductInterface {
   name: String,
   colors?: Array<string>,
   material_finitions?: Array<string>,

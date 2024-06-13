@@ -1,11 +1,16 @@
-
+'use client'
 import Link from "next/link"
 import Image from "next/image"
 // import gedimat from "@/public/images/banner/gedimat.png"
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { Button } from "@/components/ui/button"
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function Banner() {
+
+  const animationURL = "https://lottie.host/41da3a58-1dbc-4c61-825a-c99cae128776/GiXbQZVXO1.json";
+
+
   return (
   
    <div className="w-full grid grid-cols-2 bg-[#F2EDEA] rounded-md h-[600px] gap-10">
@@ -32,7 +37,17 @@ export default function Banner() {
           </div>
 
           <div className="rounded-md flex flex-col justify-center items-center text-center gap-4 dashed p-4">
-            <Image src="/images/banner/delivery.png" height={58} width={71} alt=""/>
+            {/* <Image src="/images/banner/delivery.png" height={58} width={71} alt=""/> */}
+            
+            <div w-24 h-24 overflow-hidden>
+            <DotLottieReact
+              src={animationURL}
+              loop
+              autoplay
+              autoResizeCanvas={false}
+             className="w-96 h-48 object-contain"
+              />
+            </div>
             <span className="text-sm">Toute l’expérience du groupe <br />Gedimat à votre service</span>
           </div>
 

@@ -3,13 +3,17 @@ import Image from "next/image"
 import Link from "next/link"
 
 
-export async function ProductsListing () {
+export async function ProductsListing ({ search }:any) {
 
     // const response = await fetch(`http://localhost:3000/api/products`, { cache: 'force-cache' })
      //const response = await fetch(process.env.URL +`/api/products`, { cache: 'no-store' })
      
-    const response = await fetch(process.env.URL +`/api/products`)
+    const response = await fetch(process.env.URL +`/api/products`, { cache: 'force-cache' })
     const products = await response.json()
+    
+    const filteredProducts = products.filter( (product:any) => product.sub_category === search )
+    console.log(search)
+    //console.log (filteredProducts)
 
     return (
 
@@ -17,7 +21,7 @@ export async function ProductsListing () {
 
        
 
-            { products.map((product:any) => 
+            { filteredProducts.map((product:any) => 
             <div key={product._id} >
                 
                 <div className="min-h-[300px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 borde-black p-4 hover:shadow-lg">

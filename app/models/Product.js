@@ -3,21 +3,22 @@ import mongoose from "mongoose";
 const productSchema = new mongoose.Schema({
   name: String,
   colors: Array,
-  material_finitions: Array,
   materials: Array,
-  // thickness_choice: Array,
-  width: Number,
+  material_finitions: [String],
+  material_thickness: [Number],
+  length: Number,
   weight: Number,
   description: String,
   main_image: String,
-  images: Array,
+  images: [String],
   category: String,
-  sub_categories: String,
+  sub_category: String,
   active: Boolean,
   new_product: Boolean,
   price_ht: Number,
   tax: Number,
-  price_ttc: Number,
+  custom_measures: Boolean,
+  measures: [String],
 });
 
 // export default mongoose.model("Product", productSchema);
