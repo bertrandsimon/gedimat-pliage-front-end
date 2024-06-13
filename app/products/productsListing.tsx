@@ -1,19 +1,17 @@
+import { useEffect, useState } from "react";
+
 export const dynamic = 'force-dynamic'
 import Image from "next/image"
 import Link from "next/link"
 
 
-export async function ProductsListing ({ search }:any) {
+export async function ProductsListing ({ subcategory }:any) {
 
-    // const response = await fetch(`http://localhost:3000/api/products`, { cache: 'force-cache' })
-     //const response = await fetch(process.env.URL +`/api/products`, { cache: 'no-store' })
-     
+  
     const response = await fetch(process.env.URL +`/api/products`, { cache: 'force-cache' })
     const products = await response.json()
     
-    const filteredProducts = products.filter( (product:any) => product.sub_category === search )
-    console.log(search)
-    //console.log (filteredProducts)
+    const filteredProducts = products.filter( (product:any) => product.sub_category === subcategory )
 
     return (
 

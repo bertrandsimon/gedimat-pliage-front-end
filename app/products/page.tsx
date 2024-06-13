@@ -12,12 +12,15 @@ import CategoryHeader from "@/components/products/categoryHeader";
 export default function ProductsPage() {
 
   const searchParams = useSearchParams()
-  
-//   URL -> `/dashboard?search=my-project`
-// http://localhost:3000/products?search=solins
 
-  const search = searchParams.get('search')
-  console.log(search)
+//   URL -> `/dashboard?search=my-project`
+
+  // http://localhost:3000/products?category=solins
+  const category = searchParams.get('category')
+
+  // http://localhost:3000/products?subcategory=solins
+  const subcategory = searchParams.get('subcategory')
+  //console.log(search)
 
 
   const ariane = {
@@ -44,7 +47,7 @@ export default function ProductsPage() {
       
     
     
-    <div className="px-12 py-12"><ProductsListing search={search}/></div>
+    <div className="px-12 py-12"><ProductsListing category={category} subcategory={subcategory}/></div>
     <div className="px-12 py-12"><Steps /></div>
 
     </div>

@@ -17,27 +17,27 @@ import {
 
 const menu1items = [
   { title : "Couvertines",
-    href : "/products",
+    href : "/products?subcategory=couvertines",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   { title : "Rives",
-    href : "/products",
+    href : "/products?subcategory=rives",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   { title : "Solins",
-    href : "/products",
+    href : "/products?subcategory=solins",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   { title : "Noues",
-    href : "/products",
+    href : "/products?subcategory=noues",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   { title : "Faitières",
-    href : "/products",
+    href : "/products?subcategory=faitieres",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   { title : "Accessoires",
-    href : "/products",
+    href : "/products?subcategory=accessoires",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
 
@@ -47,19 +47,19 @@ const menu1items = [
 const menu2items = [
   {
     title: "Angles",
-    href: "/",
+    href: "/products?subcategory=angles",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   {
     title: "Cornières",
-    href: "/",
+    href: "/products?subcategory=cornieres",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   {
     title: "Profilés d'ossature",
-    href: "/",
+    href: "/products?subcategory=profiles",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
