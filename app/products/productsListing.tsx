@@ -9,11 +9,14 @@ export const dynamic = 'force-dynamic';
 export function ProductsListing({ category, subcategory }: any) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  //console.log(`${process.env.URL}/api/products`)
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('http://localhost:3000/api/products', { cache: 'force-cache' });
+        //const response = await fetch(process.env.URL +`/api/products`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, { cache: 'no-store' });
+        //const response = await fetch(process.env.URL +`/api/products`, { cache: 'no-store' })
+         //const response = await fetch('http://localhost:3000/api/products', { cache: 'force-cache' });
         const data = await response.json();
         setProducts(data);
         

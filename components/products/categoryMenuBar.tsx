@@ -30,7 +30,7 @@ export default function CategoryMenuBar() {
     return (
         <div>
 
-          {menus}
+          {/* {menus} */}
     
     <Menubar>
       
