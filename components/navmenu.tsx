@@ -72,7 +72,10 @@ export function Navmenu() {
     <NavigationMenu>
       <NavigationMenuList className="flex justify-between items-center gap-6 bg-red w-full">
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="uppercase">Couverture et étanchéité</NavigationMenuTrigger>
+          <Link href="/products?category=couverture_etancheite">
+            <NavigationMenuTrigger className="uppercase">Couverture et étanchéité</NavigationMenuTrigger>
+          </Link>
+          
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {menu1items.map((menu1item) => (
@@ -89,7 +92,10 @@ export function Navmenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="uppercase">Façade et bardage</NavigationMenuTrigger>
+          <Link href="/products?category=facade_bardage">
+             <NavigationMenuTrigger className="uppercase">Façade et bardage</NavigationMenuTrigger>
+          </Link>
+          
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {menu2items.map((menu2item) => (

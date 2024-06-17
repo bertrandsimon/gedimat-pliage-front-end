@@ -37,9 +37,9 @@ export default function Banner() {
           </div>
 
           <div className="rounded-md flex flex-col justify-center items-center text-center gap-4 dashed p-4">
-            {/* <Image src="/images/banner/delivery.png" height={58} width={71} alt=""/> */}
+            <Image src="/images/banner/delivery.png" height={58} width={71} alt=""/>
             
-            <div w-24 h-24 overflow-hidden>
+            {/* <div w-24 h-24 overflow-hidden>
             <DotLottieReact
               src={animationURL}
               loop
@@ -47,7 +47,7 @@ export default function Banner() {
               autoResizeCanvas={false}
              className="w-96 h-48 object-contain"
               />
-            </div>
+            </div> */}
             <span className="text-sm">Toute l’expérience du groupe <br />Gedimat à votre service</span>
           </div>
 
