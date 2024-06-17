@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export function ProductsListing({ category, subcategory }: any) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  //console.log(`${process.env.URL}/api/products`)
+
   useEffect(() => {
     async function fetchData() {
       try {
