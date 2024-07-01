@@ -1,11 +1,15 @@
 import Image from "next/image"
 import CategoryMenuBar from "./categoryMenuBar"
 
+
 export default function CategoryHeader(props:any){
 
     function capitalizeFirstLetter(string:string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
+    
+   
+    
 
     return (
         <div className="grid grid-cols-3 gap-10">
@@ -21,8 +25,11 @@ export default function CategoryHeader(props:any){
             </div>
 
             <div className="col-span-2 flex flex-col gap-4">
+
                 <Image src={props.image} alt="" width={600} height={150} className="h-[160px] w-full object-cover object-center-top rounded-lg"/>
-                <CategoryMenuBar />
+               
+                <CategoryMenuBar selectSubCategory={props.selectSubCategory}/>
+
             </div>
 
         </div>

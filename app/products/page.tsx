@@ -34,7 +34,7 @@ export default function ProductsPage() {
 
     <Ariane ariane={ariane}/>
 
-    <div className="px-12 pt-12">
+    {/* <div className="px-12 pt-12">
       <CategoryHeader 
         title="Couverture et étanchéité" 
         subtitle={subcategory} 
@@ -42,7 +42,7 @@ export default function ProductsPage() {
         image="/images/inspirations/inspirations/7.jpg"
         />
         
-      </div>
+      </div> */}
 
       
     

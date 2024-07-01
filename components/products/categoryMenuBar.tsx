@@ -14,27 +14,42 @@ import {
     MenubarTrigger,
   } from "@/components/ui/menubar"
 
-export default function CategoryMenuBar() {
+export default function CategoryMenuBar(props:any) {
+
+  const handleClick = (selectedSubCategory:any) => {
+    props.selectSubCategory(selectedSubCategory)
+  }
 
   const items = [
     { item_name : "Tous", item_link : "solins" },
-    { item_name : "Couvertines", item_link : "solins" },
-    { item_name : "Solins", item_link : "solins" },
-    { item_name : "Faitières", item_link : "solins" },
-    { item_name : "Rives", item_link : "solins" },
-    { item_name : "Noues", item_link : "solins" },
-    { item_name : "Accessoires", item_link : "solins" }
+    { item_name : "couvertines", item_link : "solins" },
+    { item_name : "solins", item_link : "solins" },
+    { item_name : "faitieres", item_link : "solins" },
+    { item_name : "rives", item_link : "solins" },
+    { item_name : "noues", item_link : "solins" },
+    { item_name : "accessoires", item_link : "solins" }
   ]
 
-  const menus = items.map(item => ( <p key={item.item_link + item.item_name}>{item.item_name}</p>))
+  const menus = items.map(item => ( 
+
+    <MenubarMenu key={item.item_link + item.item_name}>
+      <MenubarTrigger onClick={() => handleClick(item.item_name)} className="cursor-pointer">
+        {item.item_name}
+      </MenubarTrigger>
+    </MenubarMenu>
+
+    ))
+
     return (
         <div>
 
-          {/* {menus} */}
+      
     
     <Menubar>
+
+    {menus}
       
-    <MenubarMenu>
+    {/* <MenubarMenu>
         <MenubarTrigger className="cursor-pointer">Tous</MenubarTrigger>
       </MenubarMenu>
 
@@ -60,7 +75,7 @@ export default function CategoryMenuBar() {
 
       <MenubarMenu>
         <MenubarTrigger className="cursor-pointer">Accessoires</MenubarTrigger>
-      </MenubarMenu>
+      </MenubarMenu> */}
 
     </Menubar>
         </div>
