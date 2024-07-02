@@ -21,19 +21,19 @@ export default function CategoryMenuBar(props:any) {
   }
 
   const items = [
-    { item_name : "Tous", item_link : "solins" },
-    { item_name : "couvertines", item_link : "solins" },
-    { item_name : "solins", item_link : "solins" },
-    { item_name : "faitieres", item_link : "solins" },
-    { item_name : "rives", item_link : "solins" },
-    { item_name : "noues", item_link : "solins" },
-    { item_name : "accessoires", item_link : "solins" }
+    { item_name : "Tous", item_link : "tous" },
+    { item_name : "Couvertines", item_link : "couvertines" },
+    { item_name : "Solins", item_link : "solins" },
+    { item_name : "Faitieres", item_link : "faitieres" },
+    { item_name : "Rives", item_link : "rives" },
+    { item_name : "Noues", item_link : "noues" },
+    { item_name : "Accessoires", item_link : "accessoires" }
   ]
 
   const menus = items.map(item => ( 
 
     <MenubarMenu key={item.item_link + item.item_name}>
-      <MenubarTrigger onClick={() => handleClick(item.item_name)} className="cursor-pointer">
+      <MenubarTrigger onClick={() => handleClick(item.item_link)} className="cursor-pointer">
         {item.item_name}
       </MenubarTrigger>
     </MenubarMenu>
