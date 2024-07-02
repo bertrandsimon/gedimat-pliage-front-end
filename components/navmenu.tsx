@@ -15,56 +15,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-const menu1items = [
-  { title : "Couvertines",
-    href : "/products?category=couverture_etancheite&subcategory=couvertines",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  { title : "Rives",
-    href : "/products?subcategory=rives",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  { title : "Solins",
-    href : "/products?subcategory=solins",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  { title : "Noues",
-    href : "/products?subcategory=noues",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  { title : "Faitières",
-    href : "/products?subcategory=faitieres",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  { title : "Accessoires",
-    href : "/products?subcategory=accessoires",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-
-]
-
-
-const menu2items = [
-  {
-    title: "Angles",
-    href: "/products?subcategory=angles",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  {
-    title: "Cornières",
-    href: "/products?subcategory=cornieres",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  {
-    title: "Profilés d'ossature",
-    href: "/products?subcategory=profiles",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  },
-  
-]
+import { menu1items, menu2items } from "@/app/datas/menuItems"
 
 export function Navmenu() {
   return (

@@ -34,19 +34,6 @@ export default function ProductsPage() {
 
     <Ariane ariane={ariane}/>
 
-    {/* <div className="px-12 pt-12">
-      <CategoryHeader 
-        title="Couverture et étanchéité" 
-        subtitle={subcategory} 
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit amet viverra."
-        image="/images/inspirations/inspirations/7.jpg"
-        />
-        
-      </div> */}
-
-      
-    
-    
     <div className="px-12 py-12"><ProductsListing category={category} subcategory={subcategory}/></div>
     <div className="px-12 py-12"><Steps /></div>
 

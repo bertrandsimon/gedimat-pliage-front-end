@@ -67,7 +67,7 @@ export function ProductsListing({ category, subcategory }: any) {
     <>
       <div className="py-12">
         <CategoryHeader 
-          title="Couverture et étanchéité" 
+          title={category} 
           subtitle={subcategory} 
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit amet viverra."
           image="/images/inspirations/inspirations/7.jpg"
