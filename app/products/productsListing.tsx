@@ -10,6 +10,9 @@ export function ProductsListing({ category, subcategory }: any) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
 
+
+  // Filtres categories
+
   const selectSubCategory = (selectedSubCategory:any) => {
     if (selectedSubCategory) {
       setSelectedSubCategory(selectedSubCategory);
@@ -23,8 +26,11 @@ export function ProductsListing({ category, subcategory }: any) {
         const data = await response.json();
         setProducts(data);
 
+        // Initial filtering based on category and subcategory
         let filtered = data;
-        if (category) {
+        if (category && subcategory) {
+          filtered = data.filter((product: any) => product.category === category && product.sub_category === subcategory);
+        } else if (category) {
           filtered = data.filter((product: any) => product.category === category);
         } else if (subcategory) {
           filtered = data.filter((product: any) => product.sub_category === subcategory);
@@ -41,14 +47,21 @@ export function ProductsListing({ category, subcategory }: any) {
   // Filter products by selectedSubCategory
   useEffect(() => {
     if (selectedSubCategory) {
-      console.log ('selectedSubCategory in USE EFFECT : ', selectedSubCategory)
       const filtered = products.filter((product: any) => product.sub_category === selectedSubCategory);
       setFilteredProducts(filtered);
     } else {
-      // Reset to original products if selectedSubCategory is empty
-      setFilteredProducts(products);
+      // Reset to filtered products based on initial category and subcategory filter
+      let filtered = products;
+      if (category && subcategory) {
+        filtered = products.filter((product: any) => product.category === category && product.sub_category === subcategory);
+      } else if (category) {
+        filtered = products.filter((product: any) => product.category === category);
+      } else if (subcategory) {
+        filtered = products.filter((product: any) => product.sub_category === subcategory);
+      }
+      setFilteredProducts(filtered);
     }
-  }, [selectedSubCategory, products]);
+  }, [selectedSubCategory, category, subcategory, products]);
 
   return (
     <>

@@ -17,7 +17,7 @@ import {
 
 const menu1items = [
   { title : "Couvertines",
-    href : "/products?subcategory=couvertines",
+    href : "/products?category=couverture_etancheite&subcategory=couvertines",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
   { title : "Rives",
