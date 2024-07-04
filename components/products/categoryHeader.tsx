@@ -42,8 +42,7 @@ export default function CategoryHeader(props:any){
 
             <div  id="line1" className="flex flex-col gap-2 items-start">
                 <p className="font-bold">{categoryDescription.category_title}</p>
-                <p className="font-bold text-3xl redAlu">{capitalizeFirstLetter(props.subtitle)}</p>
-                {/* <p className="font-bold text-3xl redAlu">{props.subtitle}</p> */}
+                { props.subtitle && (<p className="font-bold text-3xl redAlu">{capitalizeFirstLetter(props.subtitle)}</p>) }
                 <p className="max-w-[420px]">{props.description}</p>
             </div>
 

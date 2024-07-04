@@ -65,6 +65,7 @@ export function ProductsListing({ category, subcategory }: any) {
 
   return (
     <>
+
       <div className="py-12">
         <CategoryHeader 
           title={category} 
@@ -100,6 +101,7 @@ export function ProductsListing({ category, subcategory }: any) {
           </div>
         ))}
       </div>
+      
     </>
   );
 }

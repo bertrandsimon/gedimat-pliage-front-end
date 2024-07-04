@@ -64,13 +64,12 @@ function classNames(...classes: string[]): string {
 }
 
 export default function SingleProduct({item}:any) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
-  const [selectedSize, setSelectedSize] = useState(product.materials[2])
-  //const [productOk, setProductOk] = useState(item)
-  //console.log (item)
-  
-  //setProductOk(item)
+  const [selectedColor, setSelectedColor] = useState(item.colors[0])
+  const [selectedMaterial, setSelectedMaterial] = useState(item.materials[0])
+  const [selectedThickness, setSelectedThickness] = useState(item.material_thickness[0])
 
+  console.log('item : ', item)
+  
   return (
     <div className="bg-white">
       <div className="pb-16 pt-6 sm:pb-24">
@@ -107,7 +106,9 @@ export default function SingleProduct({item}:any) {
 
             <div className="mt-8 lg:col-span-8">
             <Separator className='mb-5'/>
+
               <form>
+
                 {/* Color picker */}
                 <div>
                   <h2 className="text-sm font-medium text-gray-900">Coloris</h2>
@@ -118,27 +119,27 @@ export default function SingleProduct({item}:any) {
                       onChange={setSelectedColor}
                       className="flex items-center space-x-3"
                     >
-                      {product.colors.map((color) => (
+                      {item.colors.map((color:any) => (
                         <Radio
-                          key={color.name}
-                          value={color}
-                          aria-label={color.name}
+                          key={color.color_name}
+                          value={color.color_name}
+                          aria-label={color.color_name}
                           className={({ focus, checked }) =>
                             classNames(
-                              color.selectedColor,
-                              focus && checked ? 'ring ring-offset-1' : '',
+                              focus && checked ? 'ring-offset-1' : '',
                               !focus && checked ? 'ring-2' : '',
                               'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
                             )
                           }
+                      
                         >
+                          {/* colors display */}
                           <span
-                            aria-hidden="true"
-                            className={classNames(
-                              color.bgColor,
-                              'h-8 w-8 rounded-full border border-black border-opacity-10'
-                            )}
+                            className="h-8 w-8 rounded-full border border-black border-opacity-10"
+                            style={{ backgroundColor: color.color_code }}
                           />
+                        
+
                         </Radio>
                       ))}
                     </RadioGroup>
@@ -154,27 +155,27 @@ export default function SingleProduct({item}:any) {
 
                   <fieldset className="mt-2">
                     <RadioGroup
-                      value={selectedSize}
-                      onChange={setSelectedSize}
+                      value={selectedMaterial}
+                      onChange={setSelectedMaterial}
                       className="grid grid-cols-3 gap-3 sm:grid-cols-6"
                     >
-                      {product.materials.map((material) => (
+                      {item.materials.map((material:any, index:any) => (
                         <Radio
-                          key={material.name}
+                          key={index}
                           value={material}
                           className={({ focus, checked }) =>
                             classNames(
-                              material.inStock ? 'cursor-pointer focus:outline-none' : 'cursor-not-allowed opacity-25',
-                              focus ? 'ring-2 ring-indigo-500 ring-offset-2' : '',
+                              'cursor-pointer focus:outline-none'
+                              ,
                               checked
                                 ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
                                 : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
                               'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1'
                             )
                           }
-                          disabled={!material.inStock}
+                          
                         >
-                          {material.name}
+                          {material}
                         </Radio>
                       ))}
                     </RadioGroup>
@@ -189,14 +190,14 @@ export default function SingleProduct({item}:any) {
                 {/* FINITIONS picker */}
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-gray-900">Matière</h2>
+                    <h2 className="text-sm font-medium text-gray-900">Finition</h2>
                   
                   </div>
 
                   <fieldset className="mt-2">
                     <RadioGroup
-                      value={selectedSize}
-                      onChange={setSelectedSize}
+                      value={selectedMaterial}
+                      onChange={setSelectedMaterial}
                       className="grid grid-cols-3 gap-3 sm:grid-cols-6"
                     >
                       {product.finitions.map((finition) => (
@@ -220,11 +221,42 @@ export default function SingleProduct({item}:any) {
                     </RadioGroup>
                   </fieldset>
 
+                </div>
 
 
-               
+                {/* EPAISSEURS picker */}
+                <div className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-sm font-medium text-gray-900">Epaisseur</h2>
+                  
+                  </div>
 
-
+                  <fieldset className="mt-2">
+                    <RadioGroup
+                      value={selectedThickness}
+                      onChange={setSelectedThickness}
+                      className="grid grid-cols-3 gap-3 sm:grid-cols-6"
+                    >
+                      {item.material_thickness.map((thickness:any, index:any) => (
+                        <Radio
+                          key={index}
+                          value={thickness}
+                          className={({ focus, checked }) =>
+                            classNames(
+                              focus ? 'ring-2 ring-indigo-500 ring-offset-2' : '',
+                              checked
+                                ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
+                                : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
+                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium sm:flex-1 cursor-pointer'
+                            )
+                          }
+                         
+                        >
+                          {thickness} mm
+                        </Radio>
+                      ))}
+                    </RadioGroup>
+                  </fieldset>
 
                 </div>
 
@@ -251,8 +283,9 @@ export default function SingleProduct({item}:any) {
 
                 <div className="prose prose-sm mt-4 text-gray-500">
                   <ul role="list">
+                    <li>Longueur : {item.length} mm</li>
                     <li>Poids : {item.weight} gr</li>
-                    <li>Epaisseur : {item.thickness} mm</li>
+                    <li>Epaisseur : {selectedThickness} mm</li>
                  
                     {/* {product.details.map((item) => (
                       <li key={item}>{item}</li>
