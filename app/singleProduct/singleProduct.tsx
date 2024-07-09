@@ -7,52 +7,7 @@ import Image from 'next/image'
 import { Separator } from "@/components/ui/separator"
 //import {ProductInterface} from '@/app/interfaces/product'
 
-const product = {
-  name: 'Couvertine à coller',
-  price: '35',
-  href: '#',
-  images: [
-    {
-      id: 1,
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-featured-product-shot.jpg',
-      imageAlt: "Back of women's Basic Tee in black.",
-      primary: true,
-    },
-    {
-      id: 2,
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-01.jpg',
-      imageAlt: "Side profile of women's Basic Tee in black.",
-      primary: false,
-    },
-    {
-      id: 3,
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-product-shot-02.jpg',
-      imageAlt: "Front of women's Basic Tee in black.",
-      primary: false,
-    },
-  ],
-  colors: [
-    { name: 'Black', bgColor: 'bg-gray-900', selectedColor: 'ring-gray-900' },
-    { name: 'Heather Grey', bgColor: 'bg-gray-400', selectedColor: 'ring-gray-400' },
-  ],
-  materials: [
-    { name: 'Acier', inStock: true },
-    { name: 'Alu', inStock: true },
-    { name: 'Autre', inStock: true },
-  ],
-  finitions : [
-    'Prégalvanisé', 'Satiné'
-  ],
 
-  description: `
-    <p>Pour se monter efficacement, la coulisse pour sous-face doit s'ajuster à une sous-face existante.
-
-    Pour cela, merci de saisir les paramètres de votre sous-face. 
-    
-    Les cotes de la coulisse seront calculées pour être parfaitement ajustées à celles de votre sous-face.</p>
-  `,
-
-}
 const policies = [
   { name: 'Livraison', icon: GlobeAmericasIcon, description: 'Lorem ipsum dolor sit amet,' },
   { name: 'Retrait sur site', icon: CurrencyDollarIcon, description: "Lorem ipsum dolor sit amet," },
@@ -66,9 +21,43 @@ function classNames(...classes: string[]): string {
 export default function SingleProduct({item}:any) {
   const [selectedColor, setSelectedColor] = useState(item.colors[0])
   const [selectedMaterial, setSelectedMaterial] = useState(item.materials[0])
+  const [selectedFinition, setSelectedFinition] = useState(item.material_finitions[0])
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness[0])
 
-  console.log('item : ', item)
+  const initialMeasures = item.measures.reduce((acc:any, measure:any) => {
+    acc[measure] = '';
+    return acc;
+  }, {});
+
+  const [measures, setMeasures] = useState(initialMeasures);
+
+  //console.log(measures)
+
+  // Handler function to update the state dynamically
+  const handleMeasureChange = (e:any) => {
+    const { name, value } = e.target;
+    setMeasures((prevMeasures:any) => ({
+      ...prevMeasures,
+      [name]: value,
+    }));
+  };
+
+   // Map over measures to create the input fields
+   const customMeasures = item.measures.map((measure:any, index:any) => (
+    <div key={index} className="flex items-center gap-4">
+      <label htmlFor={measure}>{measure}:</label>
+      <input
+        onChange={handleMeasureChange}
+        value={measures[measure]}
+        type="number"
+        name={measure}
+        id={measure}
+        className="block w-24 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+      />
+    </div>
+  ));
+
+
   
   return (
     <div className="bg-white">
@@ -181,10 +170,6 @@ export default function SingleProduct({item}:any) {
                     </RadioGroup>
                   </fieldset>
 
-               
-
-
-
                 </div>
 
                 {/* FINITIONS picker */}
@@ -196,13 +181,13 @@ export default function SingleProduct({item}:any) {
 
                   <fieldset className="mt-2">
                     <RadioGroup
-                      value={selectedMaterial}
+                      value={selectedFinition}
                       onChange={setSelectedMaterial}
                       className="grid grid-cols-3 gap-3 sm:grid-cols-6"
                     >
-                      {product.finitions.map((finition) => (
+                      {item.material_finitions.map((finition:any, index:any) => (
                         <Radio
-                          key={finition}
+                          key={index}
                           value={finition}
                           className={({ focus, checked }) =>
                             classNames(
@@ -257,6 +242,13 @@ export default function SingleProduct({item}:any) {
                       ))}
                     </RadioGroup>
                   </fieldset>
+
+                </div>
+                
+                {/* MEASURES */}
+                <div className='mt-8 grid grid-cols-3 gap-2'>
+
+                    {customMeasures}
 
                 </div>
 
