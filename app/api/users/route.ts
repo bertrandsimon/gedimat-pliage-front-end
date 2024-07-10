@@ -23,3 +23,16 @@ export async function GET() {
    }
 
 }
+
+// POST SIGNIN
+
+export async function POST(request: Request){
+   const credentials = await request.json();
+   
+   const userCredentials = {
+      email : credentials.email,
+      password : credentials.password
+   }
+   return NextResponse.json(userCredentials)
+
+}

@@ -8,8 +8,9 @@ const userSchema = new mongoose.Schema({
   password: String,
   avatar: String,
   is_pro: Boolean,
-  pro_number: Number,
+  proNumber: String,
   kbis_file: String,
+  token: String,
 });
 
 // export default mongoose.model("User", userSchema);

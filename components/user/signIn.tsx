@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button"
+'use client';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -6,44 +8,68 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
+export default function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  const handleSubmit = () => {
+    fetch('http://localhost:3000/api/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.result === false) {
+          console.log('User does not exist');
+        } else {
+          console.log('User signed in successfully');
+        }
+      })
+      .catch((error) => {
+        console.error('Error during signin:', error);
+      });
+  };
 
-export default function SignIn (){
-
-
-    return (
-        <Card>
-        <CardHeader>
-          <CardTitle>Mon compte</CardTitle>
-          <CardDescription>
-            Entrez votre email et mot de passe pour vous connecter
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-2">
-          <div className="space-y-1">
-            <Label htmlFor="name">Email</Label>
-            <Input id="name" defaultValue="Pedro Duarte" />
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="username">Mot de passe</Label>
-            <Input id="username" defaultValue="*******" />
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className="redBtn">Connection</Button>
-        </CardFooter>
-      </Card>
-    )
-
-    
+  return (
+    <Card>
+    <CardHeader>
+      <CardTitle>Mon compte</CardTitle>
+      <CardDescription>
+        Entrez votre email et mot de passe pour vous connecter
+      </CardDescription>
+    </CardHeader>
+    <CardContent className="space-y-2">
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          id="email"
+          defaultValue="email@email.com"
+        />
+      </div>
+      <div>
+        <Label htmlFor="password">Mot de passe</Label>
+        <Input
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          id="password"
+          defaultValue="*******"
+        />
+      </div>
+    </CardContent>
+    <CardFooter>
+      <Button onClick={handleSubmit} className="redBtn">
+        Connection
+      </Button>
+    </CardFooter>
+  </Card>
+  
+  );
 }
