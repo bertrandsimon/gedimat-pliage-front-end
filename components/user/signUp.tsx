@@ -17,7 +17,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-
+import SignUpSuccess from "./signUpSuccess"
 
 
 export default function SignUp (){
@@ -32,6 +32,7 @@ export default function SignUp (){
   const [avatar, setAvatar] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [success, setSuccess] = useState(false)
 
   const handleSubmit = () => {
     fetch('http://localhost:3000/api/users/signup', {
@@ -42,8 +43,10 @@ export default function SignUp (){
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.result === false) {
+        if (data.result === true) {
           console.log('User inserted');
+          setSuccess(true)
+          console.log(success)
         } else {
           console.log('User insertion failed');
         }
@@ -52,20 +55,25 @@ export default function SignUp (){
         console.error('Error during signUp:', error);
       });
   };
-  console.log(proNumber)
+  
   
     return (
       
       <Card>
-
-        <CardHeader>
+        {!success && <CardHeader>
           <CardTitle>Création de compte</CardTitle>
           <CardDescription>
             Entrez votre email et un mot de passe pour créer votre compte
+            
           </CardDescription>
         </CardHeader>
+        }
         
+       
         <CardContent className="space-y-2">
+          {success && <div><SignUpSuccess/></div>}
+          {!success &&
+            <form>
             <Label htmlFor="name">Nom</Label>
             <Input onChange={(e) => setName(e.target.value)} value={name} id="name" type="txt"/>
 
@@ -81,19 +89,18 @@ export default function SignUp (){
             <Label htmlFor="password">Mot de passe</Label>
             <Input onChange={(e) => setPassword(e.target.value)} value={password} id="password" type="password"/>
 
-            {/* <Label htmlFor="avatar">Votre avatar</Label>
-            <Input onChange={(e) => setAvatar(e.target.value)} value={avatar} id="avatar" type="txt"/>
-          */}
+         
             <Label htmlFor="proNumber">Votre numéro Pro</Label>
             <Input onChange={(e) => setProNumber(e.target.value)} value={proNumber} id="proNumber" type="txt"/>
-         
-        
+            </form>
+            }
          
         </CardContent>
 
         <CardFooter>
-          <Button onClick={handleSubmit} className="redBtn">Valider inscription</Button>
+        {!success && <Button onClick={handleSubmit} className="redBtn">Valider inscription</Button>}
         </CardFooter>
+        
 
       </Card>
      
