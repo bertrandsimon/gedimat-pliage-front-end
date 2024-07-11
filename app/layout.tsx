@@ -1,3 +1,4 @@
+import ClientProvider from "./clientProvider";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react"
@@ -13,6 +14,8 @@ import connectDB from "./db";
 
 connectDB();
 
+
+
 const quicksand = Quicksand({
   subsets: ['latin'],
 })
@@ -26,6 +29,7 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
 
 
   return (
+    <ClientProvider>
     <html lang="fr">
 
       
@@ -52,5 +56,7 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
         </body>
 
     </html>
+    </ClientProvider>
+    
   );
 }

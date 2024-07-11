@@ -1,3 +1,8 @@
+'use client'
+import { useDispatch, useSelector } from 'react-redux';
+import { addFriendToStore } from "@/app/reducers/friends"
+
+
 import { Fragment } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -30,6 +35,16 @@ import {
 import { Button } from "@/components/ui/button"
 
 export default function Toolbar() {
+  const dispatch = useDispatch();
+
+  const addFriend = (newFriend:any) => {
+    dispatch(addFriendToStore(newFriend));
+  };
+
+  
+
+ const friends = useSelector((state:any) => state.friends.value)
+
   return (
   
     <div className="flex justify-between items-center h-[64px]">
@@ -38,6 +53,8 @@ export default function Toolbar() {
           <Link href="/">
             <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
           </Link>
+          <button onClick={() => addFriend('Sheldon')}>ADD SHELDON</button>
+          <div>from STORE <h1>Friends : {friends.join(' - ')}</h1></div>
         </div>
 
         <div className="relative rounded-md shadow-sm">
