@@ -1,5 +1,9 @@
-'use client';
-import { useState } from 'react';
+'use client'
+import { useState, useEffect } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux';
+import { loggedStatus } from "@/app/reducers/user"
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -15,9 +19,18 @@ import SignInSuccess from './signInSuccess';
 
 
 export default function SignIn() {
+
+  const dispatch = useDispatch();
+  //const  userConnected = useSelector((state:any) =>state.userConnected.value)
+  const userConnected = useSelector((state: any) => state.user.userConnected); 
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    console.log('userConnected state changed:', userConnected);
+  }, [userConnected]);
 
   const handleSubmit = () => {
     fetch('http://localhost:3000/api/signin', {
@@ -32,7 +45,8 @@ export default function SignIn() {
           console.log('User does not exist');
         } else {
           setSuccess(true)
-          console.log('User signed in successfully');
+          dispatch(loggedStatus(true));
+          
         }
       })
       .catch((error) => {

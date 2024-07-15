@@ -1,7 +1,7 @@
 'use client'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFriendToStore } from "@/app/reducers/friends"
-
+import { loggedStatus } from "@/app/reducers/user"
 
 import { Fragment } from "react"
 import Image from "next/image"
@@ -41,9 +41,16 @@ export default function Toolbar() {
     dispatch(addFriendToStore(newFriend));
   };
 
+  const handleDisconnect = () => { 
+    dispatch(loggedStatus(false));
+    (console.log('disconnect'))
+  }
+
   
 
  const friends = useSelector((state:any) => state.friends.value)
+ const  userConnected = useSelector((state:any) =>state.user.value)
+//console.log('userConnected :', userConnected)
 
   return (
   
@@ -112,7 +119,7 @@ export default function Toolbar() {
               <DropdownMenuSeparator />
               <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes listes</DropdownMenuItem>
               <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes infos</DropdownMenuItem>
-             
+              <DropdownMenuItem onClick={handleDisconnect} className="flex justify-center text-xs uppercase cursor-pointer">Déconnection</DropdownMenuItem>
             </DropdownMenuContent>
 
           </DropdownMenu>

@@ -1,5 +1,8 @@
 'use client'
 import { useState } from "react"
+import { useDispatch, useSelector } from 'react-redux';
+import { userConnected } from "@/app/reducers/user"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -22,6 +25,7 @@ import SignUpSuccess from "./signUpSuccess"
 
 export default function SignUp (){
   
+  const dispatch = useDispatch()
 
   
 
@@ -42,11 +46,11 @@ export default function SignUp (){
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.result === true) {
-          console.log('User inserted');
+          
           setSuccess(true)
-          console.log(success)
+          
         } else {
           console.log('User insertion failed');
         }
