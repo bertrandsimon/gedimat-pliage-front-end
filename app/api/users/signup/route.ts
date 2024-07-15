@@ -1,28 +1,29 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/db';
 import User from '@/app/models/User'; // Ensure this path is correct
+import bcrypt from 'bcrypt'; 
 
 export async function POST(request: Request) {
   try {
     const bodyText = await request.text();
     const { proNumber, avatar, name, surname, email, password, } = JSON.parse(bodyText);
     
-    console.log(
-        "name :", name,
-        "surname :", surname,
-        "email :", email,
-        "password :", password,
-        "proNumber :", proNumber)
+    // console.log(
+    //     "name :", name,
+    //     "surname :", surname,
+    //     "email :", email,
+    //     "password :", password,
+    //     "proNumber :", proNumber)
   
 
     await connectDB();
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
         proNumber,
         name,
         surname,
         email,
-        password,
+        password: hashedPassword,
     })
 
     console.log("newUser", newUser)
