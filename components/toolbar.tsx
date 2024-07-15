@@ -49,8 +49,10 @@ export default function Toolbar() {
   
 
  const friends = useSelector((state:any) => state.friends.value)
- const  userConnected = useSelector((state:any) =>state.user.value)
-//console.log('userConnected :', userConnected)
+
+ const userConnected = useSelector((state: any) => state.user.userConnected)
+ const surname = useSelector((state: any) => state.user.surname)
+ const name = useSelector((state: any) => state.user.name)
 
   return (
   
@@ -60,8 +62,7 @@ export default function Toolbar() {
           <Link href="/">
             <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
           </Link>
-          <button onClick={() => addFriend('Sheldon')}>ADD SHELDON</button>
-          <div>from STORE <h1>Friends : {friends.join(' - ')}</h1></div>
+      
         </div>
 
         <div className="relative rounded-md shadow-sm">
@@ -93,38 +94,51 @@ export default function Toolbar() {
 
            <DropdownMenuTrigger><UserCircleIcon className="size-6"/></DropdownMenuTrigger>
             <DropdownMenuContent className="mt-4">
-              <DropdownMenuLabel className="text-center uppercase text-xs ">
 
-              <AlertDialog>
-            <AlertDialogTrigger asChild>
-                <Button variant="outline">Mon compte</Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent className="max-w-lg">
-                <AlertDialogHeader>
+              {!userConnected &&
+                 <DropdownMenuLabel className="text-center uppercase text-xs ">
+
+                 <AlertDialog>
+               <AlertDialogTrigger asChild>
+                   <Button variant="outline">Mon compte</Button>
+                 </AlertDialogTrigger>
+                 <AlertDialogContent className="max-w-lg">
+                   <AlertDialogHeader>
+                 
+                     <AlertDialogDescription>
+                 
+                         <Login />
+   
+                     </AlertDialogDescription>
+                   </AlertDialogHeader>
+                   <AlertDialogFooter>
+                     <AlertDialogCancel>Annuler</AlertDialogCancel>
+                     {/* <AlertDialogAction>Continuer</AlertDialogAction> */}
+                   </AlertDialogFooter>
+               </AlertDialogContent>
+              </AlertDialog>
+   
+                 </DropdownMenuLabel>
+              }
+             
+
               
-                  <AlertDialogDescription>
               
-                      <Login />
-
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Annuler</AlertDialogCancel>
-                  {/* <AlertDialogAction>Continuer</AlertDialogAction> */}
-                </AlertDialogFooter>
-            </AlertDialogContent>
-           </AlertDialog>
-
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
+              {userConnected && 
+              <div>
+                <DropdownMenuSeparator />
               <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes listes</DropdownMenuItem>
               <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes infos</DropdownMenuItem>
               <DropdownMenuItem onClick={handleDisconnect} className="flex justify-center text-xs uppercase cursor-pointer">Déconnection</DropdownMenuItem>
+              </div>
+              }
+            
             </DropdownMenuContent>
+
 
           </DropdownMenu>
 
-          
+          <span className='text-xs capitalize'>{name} {surname}</span>
 
         </div>
 
