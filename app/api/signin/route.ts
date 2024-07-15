@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     const bodyText = await request.text();
     const { email, password } = JSON.parse(bodyText);
-    console.log(email, password)
+    //console.log(email, password)
     if (!email || !password) {
       return NextResponse.json({ result: false, error: 'Something is missing' });
     }
@@ -15,12 +15,12 @@ export async function POST(request: Request) {
 
     const user = await User.findOne({ email });
     if (!user) {
-        console.log('NO USER FOUND:');
+        //console.log('NO USER FOUND:');
       return NextResponse.json({ result: false, error: "User doesn't exist" });
     }
 
     // Skipping password comparison
-    console.log('User found:', user);
+    //console.log('User found:', user);
     return NextResponse.json({
       result: true,
       name: user.name,
