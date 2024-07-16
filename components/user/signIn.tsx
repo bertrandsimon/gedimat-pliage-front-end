@@ -27,12 +27,35 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState("")
+
+  const validateEmail = (email:any) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   useEffect(() => {
     console.log('userConnected state changed:', userConnected);
   }, [userConnected]);
 
   const handleSubmit = () => {
+
+    setError("")
+
+    if (!validateEmail(email)) {
+      setError('Le format de l\'email est invalide.');
+      setEmail("")
+      setPassword("")
+      return;
+    }
+
+    if (password.length < 5) {
+      setError('Le mot de passe doit comporter au moins 5 caractères.');
+      setEmail("")
+      setPassword("")
+      return;
+    }
+
     fetch('http://localhost:3000/api/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -42,7 +65,11 @@ export default function SignIn() {
       .then((data) => {
         
         if (data.result === false) {
-          console.log('User does not exist');
+
+          setError(data.error)
+          setEmail("")
+          setPassword("")
+
         } else {
           setSuccess(true)
           dispatch(loggedStatus(true));
@@ -70,7 +97,7 @@ export default function SignIn() {
 
 {!success &&
     <CardContent className="space-y-2">
-
+      {error && <p className="text-red-500">{error}</p>}
       <form>
 
         <div>

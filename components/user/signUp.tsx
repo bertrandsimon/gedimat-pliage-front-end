@@ -50,11 +50,21 @@ export default function SignUp (){
 
     if (!validateEmail(email)) {
       setError('Le format de l\'email est invalide.');
+      setName("")
+      setSurname("")
+      setProNumber("")
+      setEmail("")
+      setPassword("")
       return;
     }
 
     if (password.length < 5) {
       setError('Le mot de passe doit comporter au moins 5 caractères.');
+      setName("")
+      setSurname("")
+      setProNumber("")
+      setEmail("")
+      setPassword("")
       return;
     }
 

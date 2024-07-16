@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/db';
 import User from '@/app/models/User'; // Ensure this path is correct
+import bcrypt from 'bcrypt'; 
+
 
 export async function POST(request: Request) {
   try {
@@ -15,12 +17,15 @@ export async function POST(request: Request) {
 
     const user = await User.findOne({ email });
     if (!user) {
-        //console.log('NO USER FOUND:');
-      return NextResponse.json({ result: false, error: "User doesn't exist" });
+       
+      return NextResponse.json({ result: false, error: "Email non enregistré" });
     }
 
-    // Skipping password comparison
-    //console.log('User found:', user);
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return NextResponse.json({ result: false, error: 'Mot de passe incorrect' });
+    }
+    
     return NextResponse.json({
       result: true,
       name: user.name,
