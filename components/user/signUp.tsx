@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -27,18 +27,37 @@ export default function SignUp (){
   
   const dispatch = useDispatch()
 
-  
 
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
   const [isPro, setIsPro] = useState(false);
-  const [proNumber, setProNumber] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [proNumber, setProNumber] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState("")
+
+
+  const validateEmail = (email:any) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   const handleSubmit = () => {
+
+    setError("")
+
+    if (!validateEmail(email)) {
+      setError('Le format de l\'email est invalide.');
+      return;
+    }
+
+    if (password.length < 5) {
+      setError('Le mot de passe doit comporter au moins 5 caractères.');
+      return;
+    }
+
     fetch('http://localhost:3000/api/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -52,7 +71,8 @@ export default function SignUp (){
           setSuccess(true)
           
         } else {
-          console.log('User insertion failed');
+          setError(data.error)
+          
         }
       })
       .catch((error) => {
@@ -76,13 +96,11 @@ export default function SignUp (){
        
         <CardContent className="space-y-2">
           {success && <div><SignUpSuccess/></div>}
+          {error && <p className="text-red-500">{error}</p>} 
           {!success &&
-            <form>
+            <form className="flex flex-col gap-2">
             <Label htmlFor="name">Nom</Label>
             <Input onChange={(e) => setName(e.target.value)} value={name} id="name" type="txt"/>
-
-            <Label htmlFor="avatar">Avatar</Label>
-            <Input onChange={(e) => setAvatar(e.target.value)} value={avatar} id="avatar" type="txt"/>
 
             <Label htmlFor="surname">Prénom</Label>
             <Input onChange={(e) => setSurname(e.target.value)} value={surname} id="surname" type="txt"/>

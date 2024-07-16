@@ -7,16 +7,21 @@ export async function POST(request: Request) {
   try {
     const bodyText = await request.text();
     const { proNumber, avatar, name, surname, email, password, } = JSON.parse(bodyText);
-    
-    // console.log(
-    //     "name :", name,
-    //     "surname :", surname,
-    //     "email :", email,
-    //     "password :", password,
-    //     "proNumber :", proNumber)
+ 
+    await connectDB();
+  
+      // Check if the email already exists in the database
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return new Response(JSON.stringify({ error: 'Cet email est déja enregistré' }), {
+          status: 400,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      }
   
 
-    await connectDB();
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
         proNumber,
@@ -25,8 +30,6 @@ export async function POST(request: Request) {
         email,
         password: hashedPassword,
     })
-
-    console.log("newUser", newUser)
 
     await newUser.save()
 
