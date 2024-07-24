@@ -22,6 +22,7 @@ export async function POST(request: Request) {
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
+    
     if (!passwordMatch) {
       return NextResponse.json({ result: false, error: 'Mot de passe incorrect' });
     }
