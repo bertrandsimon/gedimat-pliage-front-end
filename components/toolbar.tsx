@@ -7,8 +7,9 @@ import { Fragment } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { UserCircleIcon } from '@heroicons/react/24/solid'
-import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon } from '@heroicons/react/24/outline'
+import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline'
+import {ShoppingCartIcon} from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
 import { Login } from "./login"
 import {
@@ -137,6 +138,10 @@ export default function Toolbar() {
 
 
           </DropdownMenu>
+
+          <Link href="/contact" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
+            <ShoppingCartIcon className="size-6" />
+          </Link>
 
           <span className='text-xs capitalize'>{name} {surname}</span>
 

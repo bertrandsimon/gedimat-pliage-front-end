@@ -40,9 +40,20 @@ export default function SingleProduct({item}:any) {
   const dispatch = useDispatch()
 
   const handleAddToList = () => {
-    const newProduct = {id: 1, name: 'Item 1', price: 100}
+    const newProduct = {
+      id: item._id, 
+      name: item.name, 
+      color: selectedColor,
+      material : selectedMaterial,
+      material_thickness : selectedThickness,
+      material_finition : selectedFinition,
+      width: item.width,
+      main_image: item.main_image,
+      price_ht: item.price_ht,
+      tax: item.tax
+    }
     dispatch(addToCart(newProduct));
-    console.log("Product added to cart in component:", newProduct);
+    //console.log("Product added to cart in component:", newProduct);
   }
 
   // Handler function to update the state dynamically
