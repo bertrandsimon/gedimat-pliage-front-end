@@ -35,7 +35,7 @@ export default function SignIn() {
   };
 
   useEffect(() => {
-    console.log('userConnected state changed:', userConnected);
+    //console.log('userConnected state changed:', userConnected);
   }, [userConnected]);
 
   const handleSubmit = () => {

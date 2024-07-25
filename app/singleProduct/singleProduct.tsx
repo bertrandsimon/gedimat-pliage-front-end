@@ -1,5 +1,8 @@
 'use client'
 import { useState } from 'react'
+import { UseDispatch, useDispatch } from 'react-redux'
+import { addToCart, removeFromCart } from "@/app/reducers/cart"
+
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
@@ -31,7 +34,16 @@ export default function SingleProduct({item}:any) {
 
   const [measures, setMeasures] = useState(initialMeasures);
 
-  //console.log(measures)
+ 
+  // REDUX
+
+  const dispatch = useDispatch()
+
+  const handleAddToList = () => {
+    const newProduct = {id: 1, name: 'Item 1', price: 100}
+    dispatch(addToCart(newProduct));
+    console.log("Product added to cart in component:", newProduct);
+  }
 
   // Handler function to update the state dynamically
   const handleMeasureChange = (e:any) => {
@@ -253,7 +265,7 @@ export default function SingleProduct({item}:any) {
                 </div>
 
                 <button
-                  type="submit"
+                onClick={handleAddToList}
                   className="uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#B51B1B] px-8 py-3 text-base font-medium text-white hover:bg-[#AE0027] focus:outline-none focus:ring-2 focus:ring-[#AE0027] focus:ring-offset-2"
                 >
                   Ajouter à la liste
