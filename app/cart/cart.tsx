@@ -170,10 +170,12 @@ export default function Cart() {
             </TableHeader>
 
             <TableRow>
+                
                 <TableCell>{totalPriceHT.toFixed(2)} €</TableCell>
                 <TableCell>20 %</TableCell>
                 <TableCell>{totalPriceTTC.toFixed(2)} €</TableCell>
             </TableRow>
+            test version
         </Table>
 
           </CardContent>
