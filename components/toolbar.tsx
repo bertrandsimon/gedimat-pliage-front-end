@@ -139,7 +139,7 @@ export default function Toolbar() {
 
           </DropdownMenu>
 
-          <Link href="/contact" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
+          <Link href="/cart" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
             <ShoppingCartIcon className="size-6" />
           </Link>
 

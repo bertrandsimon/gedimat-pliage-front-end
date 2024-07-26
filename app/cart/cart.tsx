@@ -3,8 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { useSelector } from "react-redux"
-import { loggedStatus, loggedName, loggedSurname, loggedToken } from "@/app/reducers/user"
+import { useDispatch, useSelector } from "react-redux"
+import { removeFromCart } from "@/app/reducers/cart"
 
 
 import {
@@ -45,12 +45,17 @@ import {
 
 export default function Cart() {
 
-    
+    const dispatch = useDispatch()
+
     const cartItems = useSelector((state: any) => state.cart.cart);
-    console.log ("cartItems :", cartItems)
     
-    const listOfItems = cartItems.map( (item:any) => (
-        <TableRow key={item._id}>
+    const handleClickRemove = (id: any) => {
+       dispatch(removeFromCart({ id: id }))
+        console.log(id)
+      }
+    
+    const listOfItems = cartItems.map( (item:any, index:number) => (
+        <TableRow key={index}>
         <TableCell className="hidden sm:table-cell">
           <Image
             alt="Product image"
@@ -87,7 +92,7 @@ export default function Cart() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>Supprimer</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleClickRemove(item.id)} className="cursor-pointer">Supprimer</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </TableCell>
