@@ -5,11 +5,9 @@ import Link from "next/link"
 
 import { useDispatch, useSelector } from "react-redux"
 import { removeFromCart } from "@/app/reducers/cart"
-
+import Steps from "@/components/homepage/steps"
 
 import {
-
-    Divide,
   MoreHorizontal,
 
 } from "lucide-react"
@@ -48,7 +46,9 @@ export default function Cart() {
     const dispatch = useDispatch()
 
     const cartItems = useSelector((state: any) => state.cart.cart);
-    
+    const totalPriceHT = cartItems.reduce((total: number, item: any) => total + item.price_ht, 0)
+    const totalPriceTTC = totalPriceHT * 1.2
+
     const handleClickRemove = (id: any) => {
        dispatch(removeFromCart({ id: id }))
         console.log(id)
@@ -102,7 +102,7 @@ export default function Cart() {
     
     
     return (
-        
+        <>
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>
             <CardTitle>Votre panier</CardTitle>
@@ -143,6 +143,54 @@ export default function Cart() {
           </CardContent>
        
         </Card>
+
+        <Steps/>
+
+
+        <Card className="my-8">
+        <CardHeader>
+            <CardTitle>Votre total</CardTitle>
+            <CardDescription>
+              Montant de votre commande
+            
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent>
+        
+          <Table>
+
+            <TableHeader>
+            <TableRow>
+             
+                <TableHead>Prix HT</TableHead>
+                <TableHead>TVA</TableHead>
+                <TableHead>Prix TTC</TableHead>
+            </TableRow>
+            </TableHeader>
+
+            <TableRow>
+                <TableCell>{totalPriceHT.toFixed(2)} €</TableCell>
+                <TableCell>20 %</TableCell>
+                <TableCell>{totalPriceTTC.toFixed(2)} €</TableCell>
+            </TableRow>
+        </Table>
+
+          </CardContent>
+        </Card>
+
+        <div>
+        <button
+                
+                  className="uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#B51B1B] px-8 py-3 text-base font-medium text-white hover:bg-[#AE0027] focus:outline-none focus:ring-2 focus:ring-[#AE0027] focus:ring-offset-2"
+                >
+                  Valider la commande
+                </button>
+        </div>
+        
+       
+
+        </>
       
     )
 
