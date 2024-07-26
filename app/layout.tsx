@@ -44,9 +44,9 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
         {/* <div className="container mx-auto py-6 px-14"><Nav /></div> */}
         <div className="container mx-auto py-6 px-14"><Navmenu /></div>
        
-        {/* <Suspense> */}
+        <Suspense>
           <div className="container mx-auto px-4">{children}</div>
-        {/* </Suspense> */}
+        </Suspense>
         
         <div className="bg-black">
           <div className="container mx-auto px-14">
