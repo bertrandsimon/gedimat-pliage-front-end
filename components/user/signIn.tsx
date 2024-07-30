@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { loggedStatus, loggedName, loggedSurname, loggedToken } from "@/app/reducers/user"
+import { loggedStatus, userId, loggedName, loggedSurname, loggedToken } from "@/app/reducers/user"
 
 import { Button } from '@/components/ui/button';
 import {
@@ -73,9 +73,10 @@ export default function SignIn() {
         } else {
           setSuccess(true)
           dispatch(loggedStatus(true));
-          console.log(data)
           dispatch(loggedName(data.name))
           dispatch(loggedSurname(data.surname))
+          dispatch(userId(data.userId))
+          //console.log(data.userId)
           
         }
       })

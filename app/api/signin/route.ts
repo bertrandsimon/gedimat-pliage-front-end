@@ -31,6 +31,7 @@ export async function POST(request: Request) {
       result: true,
       name: user.name,
       surname: user.surname,
+      userId : user._id
        
     });
 

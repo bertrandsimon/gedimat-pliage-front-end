@@ -45,13 +45,49 @@ export default function Cart() {
 
     const dispatch = useDispatch()
 
+
     const cartItems = useSelector((state: any) => state.cart.cart);
+    const customer_id = useSelector((state: any) => state.user.userId)
     const totalPriceHT = cartItems.reduce((total: number, item: any) => total + item.price_ht, 0)
     const totalPriceTTC = totalPriceHT * 1.2
+    const orderDataTotalHT = totalPriceHT.toFixed(2)
+    const orderDataTotalTTC = totalPriceTTC.toFixed(2)
+
+    const orderDatas = {
+        created_at : new Date(),
+        customer_id : customer_id,
+        products : cartItems,
+        orderDataTotalHT : orderDataTotalHT,
+        orderDataTotalTTC: orderDataTotalTTC
+    }
 
     const handleClickRemove = (id: any) => {
        dispatch(removeFromCart({ id: id }))
-        console.log(id)
+      }
+
+      const handleValidateOrder = (orderDatas:any) => {
+        console.log("orderDatas on handleclick:", orderDatas)
+        fetch('http://localhost:3000/api/orders/createOrder', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ orderDatas  }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              
+              if (data.result === true) {
+                
+               console.log("data ok")
+                
+              } else {
+                console.log("pas de datas")
+                
+              }
+            })
+            .catch((error) => {
+              console.error('Error during order creation:', error);
+            });
+
       }
     
     const listOfItems = cartItems.map( (item:any, index:number) => (
@@ -171,9 +207,9 @@ export default function Cart() {
 
             <TableRow>
                 
-                <TableCell>{totalPriceHT.toFixed(2)} €</TableCell>
+                <TableCell>{orderDataTotalHT} €</TableCell>
                 <TableCell>20 %</TableCell>
-                <TableCell>{totalPriceTTC.toFixed(2)} €</TableCell>
+                <TableCell>{orderDataTotalTTC} €</TableCell>
             </TableRow>
             test version
         </Table>
@@ -183,7 +219,7 @@ export default function Cart() {
 
         <div>
         <button
-                
+                 onClick={() => handleValidateOrder(orderDatas)}
                   className="uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#B51B1B] px-8 py-3 text-base font-medium text-white hover:bg-[#AE0027] focus:outline-none focus:ring-2 focus:ring-[#AE0027] focus:ring-offset-2"
                 >
                   Valider la commande
