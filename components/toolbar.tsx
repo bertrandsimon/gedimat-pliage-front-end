@@ -1,7 +1,9 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFriendToStore } from "@/app/reducers/friends"
-import { loggedStatus } from "@/app/reducers/user"
+import { loggedStatus, loggedName, loggedSurname, userId } from "@/app/reducers/user"
+import { cartItemCount } from "@/app/reducers/cart"
 
 import { Fragment } from "react"
 import Image from "next/image"
@@ -36,20 +38,24 @@ import {
 import { Button } from "@/components/ui/button"
 
 export default function Toolbar() {
-  const dispatch = useDispatch();
 
-  const addFriend = (newFriend:any) => {
-    dispatch(addFriendToStore(newFriend));
-  };
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleDisconnect = () => { 
-    dispatch(loggedStatus(false));
-    (console.log('disconnect'))
+    dispatch(loggedStatus(false))
+    dispatch(loggedName(""))
+    dispatch(loggedSurname(""))
+    dispatch(userId(""))
+    router.push('/');
   }
 
   
 
  const friends = useSelector((state:any) => state.friends.value)
+ const cartCount = useSelector(cartItemCount)
+
+ console.log(cartCount)
 
  const userConnected = useSelector((state: any) => state.user.userConnected)
  const surname = useSelector((state: any) => state.user.surname)
@@ -139,11 +145,19 @@ export default function Toolbar() {
 
           </DropdownMenu>
 
-          <Link href="/cart" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
-            <ShoppingCartIcon className="size-6" />
-          </Link>
+          {userConnected &&
+           <div className="relative py-2">
+              <div className="t-2 absolute left-5">
+              <p className="flex h-1 w-1 items-center justify-center rounded-full bg-[#B51B1B] p-2 text-xs text-white">{cartCount}</p>
+              </div>
+              <Link href="/cart" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
+                <ShoppingCartIcon className="size-6" />
+              </Link>
+          </div>
+          }
 
-          <span className='text-xs capitalize'>{name} {surname}</span>
+          {userConnected && <span className='text-xs capitalize'>{name} {surname}</span>}
+          
 
         </div>
 

@@ -3,9 +3,11 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { removeFromCart } from "@/app/reducers/cart"
+import { removeFromCart, clearCart, cartItemCount } from "@/app/reducers/cart"
 import Steps from "@/components/homepage/steps"
+import OrderConfirmation from "./orderConfirmation"
 
 import {
   MoreHorizontal,
@@ -43,6 +45,8 @@ import {
 
 export default function Cart() {
 
+    const [orderSuccess, setOrderSuccess] = useState(false)
+
     const dispatch = useDispatch()
 
 
@@ -76,11 +80,12 @@ export default function Cart() {
             .then((data) => {
               
               if (data.result === true) {
-                
-               console.log("data ok")
+                setOrderSuccess(true)
+                dispatch(clearCart())
+            
                 
               } else {
-                console.log("pas de datas")
+              
                 
               }
             })
@@ -139,17 +144,24 @@ export default function Cart() {
     
     return (
         <>
+        
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>
-            <CardTitle>Votre panier</CardTitle>
+            { !orderSuccess && <CardTitle>Votre panier</CardTitle> }
+            { !orderSuccess && 
             <CardDescription>
               Voir votre liste de produits et passer commande
             
             </CardDescription>
+            }
+           
+            {orderSuccess && <OrderConfirmation/>}
           </CardHeader>
+
+        { !orderSuccess &&
           <CardContent>
             <Table>
-
+            
               <TableHeader>
                 <TableRow>
                   <TableHead className="hidden w-[100px] sm:table-cell">
@@ -171,60 +183,65 @@ export default function Cart() {
 
               <TableBody>
                
+            
+
               {listOfItems}
 
 
               </TableBody>
             </Table>
           </CardContent>
-       
+        }
         </Card>
 
         <Steps/>
 
-
-        <Card className="my-8">
-        <CardHeader>
-            <CardTitle>Votre total</CardTitle>
-            <CardDescription>
-              Montant de votre commande
-            
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-        
-          <Table>
-
-            <TableHeader>
-            <TableRow>
-             
-                <TableHead>Prix HT</TableHead>
-                <TableHead>TVA</TableHead>
-                <TableHead>Prix TTC</TableHead>
-            </TableRow>
-            </TableHeader>
-
-            <TableRow>
+        { !orderSuccess &&
+            <Card className="my-8">
+            <CardHeader>
+                <CardTitle>Votre total</CardTitle>
+                <CardDescription>
+                Montant de votre commande
                 
-                <TableCell>{orderDataTotalHT} €</TableCell>
-                <TableCell>20 %</TableCell>
-                <TableCell>{orderDataTotalTTC} €</TableCell>
-            </TableRow>
-            test version
-        </Table>
+                </CardDescription>
+            </CardHeader>
 
-          </CardContent>
-        </Card>
+            <CardContent>
+            
+            <Table>
 
-        <div>
-        <button
-                 onClick={() => handleValidateOrder(orderDatas)}
-                  className="uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#B51B1B] px-8 py-3 text-base font-medium text-white hover:bg-[#AE0027] focus:outline-none focus:ring-2 focus:ring-[#AE0027] focus:ring-offset-2"
-                >
-                  Valider la commande
-                </button>
-        </div>
+                <TableHeader>
+                <TableRow>
+                
+                    <TableHead>Prix HT</TableHead>
+                    <TableHead>TVA</TableHead>
+                    <TableHead>Prix TTC</TableHead>
+                </TableRow>
+                </TableHeader>
+
+                <TableRow>
+                    
+                    <TableCell>{orderDataTotalHT} €</TableCell>
+                    <TableCell>20 %</TableCell>
+                    <TableCell>{orderDataTotalTTC} €</TableCell>
+                </TableRow>
+            
+            </Table>
+
+            </CardContent>
+            </Card>
+        }
+
+        { !orderSuccess &&           
+            <div>
+            <button
+                    onClick={() => handleValidateOrder(orderDatas)}
+                    className="uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#B51B1B] px-8 py-3 text-base font-medium text-white hover:bg-[#AE0027] focus:outline-none focus:ring-2 focus:ring-[#AE0027] focus:ring-offset-2"
+                    >
+                    Valider la commande
+            </button>
+            </div>
+        }
         
        
 

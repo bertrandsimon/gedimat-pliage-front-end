@@ -1,3 +1,5 @@
+'use client'
+import { useSelector } from "react-redux"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -67,6 +69,35 @@ import {
 } from "@/components/ui/tooltip"
 
 export default function Lists() {
+
+  // Function to fetch orders by user ID
+const fetchOrdersByUser = (customer_id:any) => {
+  fetch(`http://localhost:3000/api/orders/ordersByUser?customer_id=${customer_id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.result === true) {
+        console.log('Orders:', data.orders);
+      } else {
+        console.log('Failed to fetch orders:', data.error);
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching orders:', error);
+    });
+};
+
+// Assuming you have access to the Redux state
+const customer_id = useSelector((state:any) => state.user.userId);
+
+
+// Call the function
+fetchOrdersByUser(customer_id);
+
 
     return (
 
