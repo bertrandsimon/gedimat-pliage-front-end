@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import Image from "next/image"
 import Link from "next/link"
@@ -70,68 +71,49 @@ import {
 
 export default function Lists() {
 
-  // Function to fetch orders by user ID
-const fetchOrdersByUser = (customer_id:any) => {
-  fetch(`http://localhost:3000/api/orders/ordersByUser?customer_id=${customer_id}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.result === true) {
-        console.log('Orders:', data.orders);
-      } else {
-        console.log('Failed to fetch orders:', data.error);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const customer_id = useSelector((state:any) => state.user.userId);
+
+  useEffect(() => {
+    const fetchOrdersByUser = async (customer_id:string) => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/orders/ordersByUser?customer_id=${customer_id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+        if (data.result === true) {
+          setOrders(data.orders);
+        } else {
+          console.error('Failed to fetch orders:', data.error);
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error);
       }
-    })
-    .catch((error) => {
-      console.error('Error fetching orders:', error);
-    });
-};
+    };
 
-// Assuming you have access to the Redux state
-const customer_id = useSelector((state:any) => state.user.userId);
+    if (customer_id) {
+      fetchOrdersByUser(customer_id);
+    }
+  }, [customer_id]);
 
+console.log("orders from client :", orders)
 
-// Call the function
-fetchOrdersByUser(customer_id);
+interface Order {
+  _id: string;
+  created_at: any,
+  products: any,
+  customer_id : string,
+  total_amount_HT: number,
+  total_amount_TTC: number
+  
+}
 
-
-    return (
-
-        <TabsContent value="all">
-        <Card x-chunk="dashboard-06-chunk-0">
-          <CardHeader>
-            <CardTitle>Vos listes</CardTitle>
-            <CardDescription>
-              Voir vos listes de produits et passer commande
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="hidden w-[100px] sm:table-cell">
-                    <span className="sr-only">Image</span>
-                  </TableHead>
-                  <TableHead>Nom</TableHead>
-                  <TableHead>Etat</TableHead>
-                  <TableHead>Prix</TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Nb de produits
-                  </TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Date
-                  </TableHead>
-                  <TableHead>
-                    <span className="sr-only">Actions</span>
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
+const orderList = orders.map( (order, index) => ( 
+    <TableRow key={index}>
                   <TableCell className="hidden sm:table-cell">
                     <Image
                       alt="Product image"
@@ -142,17 +124,17 @@ fetchOrdersByUser(customer_id);
                     />
                   </TableCell>
                   <TableCell className="font-medium">
-                    Laser Lemonade Machine
+                    {order._id}
                   </TableCell>
                   <TableCell>
                     <Badge variant="outline">En cours</Badge>
                   </TableCell>
-                  <TableCell>$499.99</TableCell>
+                  <TableCell>{order.total_amount_TTC} € TTC</TableCell>
                   <TableCell className="hidden md:table-cell">
-                    25
+                    {order.products.length}
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
-                    2023-07-12 10:42 AM
+                  {order.created_at}
                   </TableCell>
                   <TableCell>
                     <DropdownMenu>
@@ -173,223 +155,48 @@ fetchOrdersByUser(customer_id);
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>
-                </TableRow>
+    </TableRow>
+ ))
+
+    return (
+
+        <TabsContent value="all">
+        <Card x-chunk="dashboard-06-chunk-0">
+          <CardHeader>
+            <CardTitle>Vos listes</CardTitle>
+            <CardDescription>
+              Voir vos listes de produits et passer commande
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
                 <TableRow>
-                  <TableCell className="hidden sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="images/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-                    Hypernova Headphones
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">En commande</Badge>
-                  </TableCell>
-                  <TableCell>$129.99</TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    100
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    2023-10-18 03:21 PM
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
+                  <TableHead className="hidden w-[100px] sm:table-cell">
+                    <span className="sr-only">Image</span>
+                  </TableHead>
+                  <TableHead>Nom</TableHead>
+                  <TableHead>Etat</TableHead>
+                  <TableHead>Prix TTC</TableHead>
+                  <TableHead className="hidden md:table-cell">
+                    Nb de produits
+                  </TableHead>
+                  <TableHead className="hidden md:table-cell">
+                    Date
+                  </TableHead>
+                  <TableHead>
+                    <span className="sr-only">Actions</span>
+                  </TableHead>
                 </TableRow>
-                <TableRow>
-                  <TableCell className="hidden sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="images/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-                    AeroGlow Desk Lamp
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">En commande</Badge>
-                  </TableCell>
-                  <TableCell>$39.99</TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    50
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    2023-11-29 08:15 AM
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="hidden sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="images/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-                    TechTonic Energy Drink
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="secondary">En cours</Badge>
-                  </TableCell>
-                  <TableCell>$2.99</TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    0
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    2023-12-25 11:59 PM
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="hidden sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="images/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-                    Gamer Gear Pro Controller
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">En commande</Badge>
-                  </TableCell>
-                  <TableCell>$59.99</TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    75
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    2024-01-01 12:00 AM
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="hidden sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="images/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-                    Luminous VR Headset
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">En commande</Badge>
-                  </TableCell>
-                  <TableCell>$199.99</TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    30
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    2024-02-14 02:14 PM
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
+              </TableHeader>
+
+              <TableBody>
+               
+                {orderList}
+               
               </TableBody>
+
+
             </Table>
           </CardContent>
           {/* <CardFooter>
@@ -399,7 +206,7 @@ fetchOrdersByUser(customer_id);
             </div>
           </CardFooter> */}
         </Card>
-      </TabsContent>
+        </TabsContent>
 
     )
 }
