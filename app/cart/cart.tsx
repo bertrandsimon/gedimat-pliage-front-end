@@ -71,7 +71,7 @@ export default function Cart() {
 
       const handleValidateOrder = (orderDatas:any) => {
         console.log("orderDatas on handleclick:", orderDatas)
-        fetch('http://localhost:3000/api/orders/createOrder', {
+        fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders/createOrder`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ orderDatas  }),

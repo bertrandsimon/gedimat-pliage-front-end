@@ -76,10 +76,12 @@ export default function Lists() {
   const [orders, setOrders] = useState<Order[]>([])
   const customer_id = useSelector((state:any) => state.user.userId)
 
+ 
+
   useEffect(() => {
     const fetchOrdersByUser = async (customer_id:string) => {
       try {
-        const response = await fetch(`http://localhost:3000/api/orders/ordersByUser?customer_id=${customer_id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders/ordersByUser?customer_id=${customer_id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
