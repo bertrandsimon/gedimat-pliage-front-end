@@ -10,7 +10,6 @@ export const dynamic = 'force-dynamic'
 
 export default async function Page({params}:any) {
    
-   //const response = await fetch(`${process.env.URL}/api/products/${params.id}`, { cache: 'no-store' })
    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`)
  
    const item = await response.json()

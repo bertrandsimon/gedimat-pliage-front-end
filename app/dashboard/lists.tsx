@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
+import { Order } from "../interfaces/order"
+
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -71,8 +73,8 @@ import {
 
 export default function Lists() {
 
-  const [orders, setOrders] = useState<Order[]>([]);
-  const customer_id = useSelector((state:any) => state.user.userId);
+  const [orders, setOrders] = useState<Order[]>([])
+  const customer_id = useSelector((state:any) => state.user.userId)
 
   useEffect(() => {
     const fetchOrdersByUser = async (customer_id:string) => {
@@ -102,16 +104,6 @@ export default function Lists() {
 
 console.log("orders from client :", orders)
 
-interface Order {
-  _id: string;
-  created_at: any,
-  products: any,
-  customer_id : string,
-  total_amount_HT: number,
-  total_amount_TTC: number
-  
-}
-
 const orderList = orders.map( (order, index) => ( 
     <TableRow key={index}>
                   <TableCell className="hidden sm:table-cell">
@@ -124,7 +116,11 @@ const orderList = orders.map( (order, index) => (
                     />
                   </TableCell>
                   <TableCell className="font-medium">
-                    {order._id}
+
+                    <Link href={`/dashboard/singleList/${order._id}`}>
+                       {order._id}
+                    </Link>
+
                   </TableCell>
                   <TableCell>
                     <Badge variant="outline">En cours</Badge>
