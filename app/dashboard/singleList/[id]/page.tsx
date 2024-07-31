@@ -40,7 +40,7 @@ export default async function Page({params}:any) {
    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders/${params.id}`)
  
    const singleOrder = await response.json()
-  console.log(singleOrder)
+  //console.log(singleOrder)
    
   const listOfItems = singleOrder.products.map( (item:any, index:number) => (
     <TableRow key={index}>

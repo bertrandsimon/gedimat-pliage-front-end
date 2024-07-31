@@ -77,9 +77,6 @@ export default function Toolbar() {
             <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
           </div>
           <input
-            type="email"
-            name="email"
-            id="email"
             className="w-[300px] h-[30px] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Recherche"
           />

@@ -1,4 +1,6 @@
 'use client'
+
+export const dynamic = 'force-dynamic';
 import { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,7 +23,7 @@ import SignInSuccess from './signInSuccess';
 export default function SignIn() {
 
   const dispatch = useDispatch();
-  //const  userConnected = useSelector((state:any) =>state.userConnected.value)
+ 
   const userConnected = useSelector((state: any) => state.user.userConnected); 
 
   const [email, setEmail] = useState('');
@@ -35,7 +37,7 @@ export default function SignIn() {
   };
 
   useEffect(() => {
-    //console.log('userConnected state changed:', userConnected);
+   
   }, [userConnected]);
 
   const handleSubmit = () => {
@@ -55,8 +57,8 @@ export default function SignIn() {
       setPassword("")
       return;
     }
-
-    fetch('http://localhost:3000/api/signin', {
+   
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),

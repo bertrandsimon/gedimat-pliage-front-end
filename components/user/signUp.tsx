@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic';
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -68,7 +69,7 @@ export default function SignUp (){
       return;
     }
 
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/signup`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ proNumber, name, surname, email, avatar, password  }),
