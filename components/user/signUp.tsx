@@ -68,7 +68,7 @@ export default function SignUp (){
       return;
     }
 
-    fetch('http://localhost:3000/api/users/signup', {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ proNumber, name, surname, email, avatar, password  }),
