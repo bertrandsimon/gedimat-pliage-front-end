@@ -1,7 +1,6 @@
 
 import Image from 'next/image'
-//import SingleList from '../singleList';
-import SingleProduct from '@/app/singleProduct/singleProduct'
+
 export const dynamic = 'force-dynamic'
 
 import {
