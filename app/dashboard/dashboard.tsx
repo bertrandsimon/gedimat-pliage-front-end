@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 
 import Lists from "./lists"
-import SingleList from "./singleList"
 import UserAccount from "./userAccount"
 import Analytics from "./analytics"
 
@@ -280,7 +279,7 @@ export function Dashboard() {
           {/* Component loader */}
 
           {page === "lists" && <Lists />}
-          {page === "singleList" && <SingleList />}
+          {/* {page === "singleList" && <SingleList />} */}
           {page === "userAccount" && <UserAccount />}
           {page === "analytics" && <Analytics />}
 
