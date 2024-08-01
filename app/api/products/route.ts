@@ -5,6 +5,8 @@ import Product from '../../models/Product';
 
 // GET ALL PRODUCTS
 
+// http://localhost:3000/api/products
+// https://pliage-aluminium.vercel.app/api/products
 
 
 export async function GET() {

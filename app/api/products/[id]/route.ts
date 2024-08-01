@@ -3,7 +3,9 @@ import connectDB from "@/app/db";
 import Product from "@/app/models/Product";
 import { ObjectId } from "mongodb";
 
-// GET PRODUCT BY ID : ie > http://localhost:3000/api/products/6659b61a31cbb00c6bf9d3a1
+// GET PRODUCT BY ID  http://localhost:3000/api/products/666adf15c9493b71dbea1e46
+
+// https://pliage-aluminium.vercel.app/api/products/666adf15c9493b71dbea1e46
 
 export async function GET(request:any, {params}:any) {
    await connectDB();

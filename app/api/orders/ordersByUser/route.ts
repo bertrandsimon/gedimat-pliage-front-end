@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/app/db';
 import Order from '@/app/models/Order';
 
+// http://localhost:3000/api/orders/ordersByUser?customer_id=66a1fd40412ecec228ca63dd
+
+// https://pliage-aluminium.vercel.app/api/orders/ordersByUser?customer_id=66a1fd40412ecec228ca63dd
+
 export async function GET(request:any) {
   await connectDB();
 

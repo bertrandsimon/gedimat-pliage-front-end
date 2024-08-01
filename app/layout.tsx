@@ -10,7 +10,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { Navmenu } from "@/components/navmenu";
 import "./globals.css";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 
@@ -30,7 +30,7 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
     <ClientProvider>
     <html lang="fr">
 
-      
+    <SpeedInsights/>
 
       <body className={`${quicksand.className} max-w-screen mx-auto`}>
        
