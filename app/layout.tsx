@@ -30,7 +30,7 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
     <ClientProvider>
     <html lang="fr">
 
-    <SpeedInsights/>
+    
 
       <body className={`${quicksand.className} max-w-screen mx-auto`}>
        
@@ -44,7 +44,10 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
         <div className="container mx-auto py-6 px-14"><Navmenu /></div>
        
         <Suspense>
-          <div className="container mx-auto px-4">{children}</div>
+          <div className="container mx-auto px-4">
+            {children}
+            <SpeedInsights/>
+            </div>
         </Suspense>
         
         <div className="bg-black">
