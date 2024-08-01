@@ -1,4 +1,5 @@
 
+'use client'
 import Ariane from "@/components/ariane"
 import { Dashboard } from "./dashboard"
 

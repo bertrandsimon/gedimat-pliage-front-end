@@ -84,6 +84,7 @@ export function Dashboard() {
   }
     
   return (
+  <>
     <TooltipProvider>
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
 
@@ -290,5 +291,6 @@ export function Dashboard() {
       </div>
     </div>
    </TooltipProvider>
+   </>
   )
 }

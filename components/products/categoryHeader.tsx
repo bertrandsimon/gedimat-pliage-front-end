@@ -49,9 +49,13 @@ export default function CategoryHeader(props:any){
             </div>
 
             <div className="col-span-2 flex flex-col gap-4">
-
+                { categoryDescription.category_image &&
                 <Image src={categoryDescription.category_image} alt="" width={600} height={150} className="h-[160px] w-full object-cover object-center-top rounded-lg"/>
-               
+                }
+
+                { !categoryDescription.category_image &&
+                <Image src="/images/categories/cate-2.jpg" alt="" width={600} height={150} className="h-[160px] w-full object-cover object-center-top rounded-lg"/>
+                }
                 <CategoryMenuBar selectSubCategory={props.selectSubCategory}/>
 
             </div>

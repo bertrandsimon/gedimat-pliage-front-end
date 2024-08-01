@@ -1,3 +1,4 @@
+
 import ClientProvider from "./clientProvider";
 import { Suspense } from "react";
 import type { Metadata } from "next";
@@ -9,10 +10,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { Navmenu } from "@/components/navmenu";
 import "./globals.css";
-import connectDB from "./db";
 
-
-connectDB();
 
 
 
@@ -36,12 +34,13 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
 
       <body className={`${quicksand.className} max-w-screen mx-auto`}>
        
-        <div className="bg-black">
-          <div className="container mx-auto px-14">
+        
+   
             <Toolbar />
-          </div>
-        </div>
-        {/* <div className="container mx-auto py-6 px-14"><Nav /></div> */}
+          
+       
+     
+        
         <div className="container mx-auto py-6 px-14"><Navmenu /></div>
        
         <Suspense>
