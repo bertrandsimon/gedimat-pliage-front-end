@@ -6,7 +6,7 @@ import Lists from "./lists"
 import UserAccount from "./userAccount"
 import Analytics from "./analytics"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import {
   File,
@@ -77,6 +77,13 @@ import {
 export function Dashboard() {
 
   const [page, setPage] = useState("lists")
+  const [isListsLoaded, setIsListsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (page === "lists") {
+      setIsListsLoaded(true);
+    }
+  }, [page]);
 
   const handleClick = (page:string) => (event:any) => {
     event.preventDefault();
@@ -115,7 +122,7 @@ export function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                onClick = {handleClick("lists")}
+                onClick={handleClick("lists")}
                 className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <ShoppingCart className="h-5 w-5" />
@@ -130,7 +137,7 @@ export function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                onClick = {handleClick("singleList")}
+                onClick={handleClick("singleList")}
                 className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Package className="h-5 w-5" />
@@ -145,7 +152,7 @@ export function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                onClick = {handleClick("userAccount")}
+                onClick={handleClick("userAccount")}
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Users2 className="h-5 w-5" />
@@ -159,7 +166,7 @@ export function Dashboard() {
 
             <TooltipTrigger asChild>
               <Link
-                onClick = {handleClick("analytics")}
+                onClick={handleClick("analytics")}
                 href="#"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
@@ -278,8 +285,7 @@ export function Dashboard() {
             </div>
           
           {/* Component loader */}
-
-          {page === "lists" && <Lists />}
+          {isListsLoaded && page === "lists" && <Lists />}
           {/* {page === "singleList" && <SingleList />} */}
           {page === "userAccount" && <UserAccount />}
           {page === "analytics" && <Analytics />}
