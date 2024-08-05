@@ -1,11 +1,13 @@
-'use client'
-export const dynamic = 'force-dynamic';
-import { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
-import { Order } from "../interfaces/order"
+'use client';
 
-import Image from "next/image"
-import Link from "next/link"
+export const dynamic = 'force-dynamic';
+
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Order } from '../interfaces/order';
+
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   File,
   Home,
@@ -20,9 +22,9 @@ import {
   Settings,
   ShoppingCart,
   Users2,
-} from "lucide-react"
+} from 'lucide-react';
 
-import { Badge } from "@/components/ui/badge"
+import { Badge } from '@/components/ui/badge';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -30,8 +32,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
+} from '@/components/ui/breadcrumb';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -39,7 +41,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -48,9 +50,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
   Table,
   TableBody,
@@ -58,36 +60,41 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from '@/components/ui/table';
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs"
+} from '@/components/ui/tabs';
 import {
   TooltipProvider,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from '@/components/ui/tooltip';
 
 export default function Lists() {
-
-  const [orders, setOrders] = useState<Order[]>([])
-  const customer_id = useSelector((state:any) => state.user.userId)
-
- 
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [loading, setLoading] = useState(true);
+  const customer_id = useSelector((state: any) => state.user.userId);
 
   useEffect(() => {
-    const fetchOrdersByUser = async (customer_id:string) => {
+    const fetchOrdersByUser = async (customer_id: string) => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders/ordersByUser?customer_id=${customer_id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/api/orders/ordersByUser?customer_id=${customer_id}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const data = await response.json();
         if (data.result === true) {
@@ -97,6 +104,8 @@ export default function Lists() {
         }
       } catch (error) {
         console.error('Error fetching orders:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -105,69 +114,55 @@ export default function Lists() {
     }
   }, [customer_id]);
 
-console.log("orders from client :", orders)
-
-const orderList = orders.map( (order, index) => ( 
+  const orderList = orders.map((order, index) => (
     <TableRow key={index}>
-                  <TableCell className="hidden sm:table-cell">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="images/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium">
-
-                    <Link href={`/dashboard/singleList/${order._id}`}>
-                       {order._id}
-                    </Link>
-
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">En cours</Badge>
-                  </TableCell>
-                  <TableCell>{order.total_amount_TTC} € TTC</TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    {order.products.length}
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                  {order.created_at}
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          aria-haspopup="true"
-                          size="icon"
-                          variant="ghost"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Modifier</DropdownMenuItem>
-                        <DropdownMenuItem>Supprimer</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
+      <TableCell className="hidden sm:table-cell">
+        <Image
+          alt="Product image"
+          className="aspect-square rounded-md object-cover"
+          height="64"
+          src="images/placeholder.svg"
+          width="64"
+        />
+      </TableCell>
+      <TableCell className="font-medium">
+        <Link href={`/dashboard/singleList/${order._id}`}>{order._id}</Link>
+      </TableCell>
+      <TableCell>
+        <Badge variant="outline">En cours</Badge>
+      </TableCell>
+      <TableCell>{order.total_amount_TTC} € TTC</TableCell>
+      <TableCell className="hidden md:table-cell">{order.products.length}</TableCell>
+      <TableCell className="hidden md:table-cell">{order.created_at}</TableCell>
+      <TableCell>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button aria-haspopup="true" size="icon" variant="ghost">
+              <MoreHorizontal className="h-4 w-4" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem>Modifier</DropdownMenuItem>
+            <DropdownMenuItem>Supprimer</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </TableCell>
     </TableRow>
- ))
+  ));
 
-    return (
-
-        <TabsContent value="all">
-        <Card x-chunk="dashboard-06-chunk-0">
-          <CardHeader>
-            <CardTitle>Vos listes</CardTitle>
-            <CardDescription>
-              Voir vos listes de produits et passer commande
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+  return (
+    <TabsContent value="all">
+      <Card>
+        <CardHeader>
+          <CardTitle>Vos listes</CardTitle>
+          <CardDescription>Voir vos listes de produits et passer commande</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
             <Table>
               <TableHeader>
                 <TableRow>
@@ -177,35 +172,18 @@ const orderList = orders.map( (order, index) => (
                   <TableHead>Nom</TableHead>
                   <TableHead>Etat</TableHead>
                   <TableHead>Prix TTC</TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Nb de produits
-                  </TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Date
-                  </TableHead>
+                  <TableHead className="hidden md:table-cell">Nb de produits</TableHead>
+                  <TableHead className="hidden md:table-cell">Date</TableHead>
                   <TableHead>
                     <span className="sr-only">Actions</span>
                   </TableHead>
                 </TableRow>
               </TableHeader>
-
-              <TableBody>
-               
-                {orderList}
-               
-              </TableBody>
-
-
+              <TableBody>{orderList}</TableBody>
             </Table>
-          </CardContent>
-          {/* <CardFooter>
-            <div className="text-xs text-muted-foreground">
-              Showing <strong>1-10</strong> of <strong>32</strong>{" "}
-              products
-            </div>
-          </CardFooter> */}
-        </Card>
-        </TabsContent>
-
-    )
+          )}
+        </CardContent>
+      </Card>
+    </TabsContent>
+  );
 }
