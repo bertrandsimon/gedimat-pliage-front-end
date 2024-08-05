@@ -34,9 +34,10 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
 
       <body className={`${quicksand.className} max-w-screen mx-auto`}>
        
-        
-   
-            <Toolbar />
+      
+      <div className="w-full bg-black">
+        <div className="container"><Toolbar /></div>
+      </div> 
           
        
      

@@ -57,14 +57,15 @@ export default function Toolbar() {
   const userConnected = useSelector((state: any) => state.user.userConnected)
   const surname = useSelector((state: any) => state.user.surname)
   const name = useSelector((state: any) => state.user.name)
+  const customer_id = useSelector((state: any) => state.user.userId);
 
   if (!isMounted) {
     return null;
   }
 
   return (
-    <div className="container mx-auto px-14 bg-black">
-      <div className="flex justify-between items-center h-[64px] bg-black">
+    
+      <div className="flex justify-between items-center h-[64px]">
         <div>
           <Link href="/">
             <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
@@ -114,7 +115,9 @@ export default function Toolbar() {
               <DropdownMenuSeparator />
               {userConnected &&
                 <div>
-                  <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes listes</DropdownMenuItem>
+                  <Link href={`/dashboard/${customer_id}`}>
+                    <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes listes</DropdownMenuItem>
+                  </Link>
                   <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes infos</DropdownMenuItem>
                   <DropdownMenuItem onClick={handleDisconnect} className="flex justify-center text-xs uppercase cursor-pointer">Déconnection</DropdownMenuItem>
                 </div>
@@ -136,6 +139,6 @@ export default function Toolbar() {
           {userConnected && <span className='text-xs capitalize'>{name} {surname}</span>}
         </div>
       </div>
-    </div>
+    
   );
 }

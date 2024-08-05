@@ -79,7 +79,7 @@ export default async function Page({params}:any) {
  
    const orders = await response.json()
 
-   console.log("orders in Lists", orders)
+   //console.log("orders in Lists", orders)
 
 
     return (
