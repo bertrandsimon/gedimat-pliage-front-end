@@ -7,6 +7,7 @@ import UserAccount from "./userAccount"
 import Analytics from "./analytics"
 
 import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 
 import {
   File,
@@ -74,10 +75,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function Dashboard() {
-
+export function Dashboard( orders:any ) {
+  const customer_id = useSelector((state: any) => state.user.userId);
   const [page, setPage] = useState("lists")
   const [isListsLoaded, setIsListsLoaded] = useState(false);
+
+  console.log( "orders in client component as props :", orders.orders)
 
   useEffect(() => {
     if (page === "lists") {
@@ -121,8 +124,8 @@ export function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="#"
-                onClick={handleClick("lists")}
+                href={`dashboard/lists/${customer_id}`}
+               
                 className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <ShoppingCart className="h-5 w-5" />
@@ -285,7 +288,7 @@ export function Dashboard() {
             </div>
           
           {/* Component loader */}
-          {isListsLoaded && page === "lists" && <Lists />}
+          {isListsLoaded && page === "lists" && <Lists orders={orders.orders} />}
           {/* {page === "singleList" && <SingleList />} */}
           {page === "userAccount" && <UserAccount />}
           {page === "analytics" && <Analytics />}
