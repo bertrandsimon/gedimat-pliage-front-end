@@ -42,34 +42,34 @@ export default async function Page({params}:any) {
    const orders = await response.json()
 
    console.log("orders in Lists", orders)
-//   const listOfItems = singleOrder.products.map( (item:any, index:number) => (
-//     <TableRow key={index}>
-//     <TableCell className="hidden sm:table-cell">
-//       <Image
-//         alt="Product image"
-//         className="aspect-square rounded-md object-cover"
-//         height="64"
-//         src={`/images/products/${item.main_image}`}
-//         width="64"
-//       />
-//     </TableCell>
-//     <TableCell className="font-medium">
-//       {item.name}
-//     </TableCell>
+  const listOfOrders:any = orders.map( (order:any, index:number) => (
+    <TableRow key={index}>
+    <TableCell className="hidden sm:table-cell">
+      {/* <Image
+        alt="Product image"
+        className="aspect-square rounded-md object-cover"
+        height="64"
+        src={`/images/products/${item.main_image}`}
+        width="64"
+      /> */}
+    </TableCell>
+    <TableCell className="font-medium">
+      {order.total_amount_HT}
+    </TableCell>
   
-//     <TableCell>{item.price_ht} €</TableCell>
-//     <TableCell>{(item.price_ht * 1.2).toFixed(2)} €</TableCell>
+    {/* <TableCell>{item.price_ht} €</TableCell>
+    <TableCell>{(item.price_ht * 1.2).toFixed(2)} €</TableCell> */}
 
  
  
-//   </TableRow>
+  </TableRow>
 
-// ))
+))
 
     return (
     <>
       <div>
-        Orders
+        {listOfOrders}
       </div>
       </>
     )
