@@ -78,12 +78,12 @@ export default function Lists() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const customer_id = useSelector((state: any) => state.user.userId);
-
+  // ${process.env.NEXT_PUBLIC_URL}/api/orders/ordersByUser?customer_id=${customer_id}
   useEffect(() => {
     const fetchOrdersByUser = async (customer_id: string) => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL}/api/orders/ordersByUser?customer_id=${customer_id}`,
+          `${process.env.NEXT_PUBLIC_URL}/api/orders/ordersByUser?customer_id=66a1fd40412ecec228ca63dd`,
           {
             method: 'GET',
             headers: {
