@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { UseDispatch, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from "@/app/reducers/cart"
 
 import { StarIcon } from '@heroicons/react/20/solid'
@@ -53,7 +53,7 @@ export default function SingleProduct({item}:any) {
       tax: item.tax
     }
     dispatch(addToCart(newProduct));
-    //console.log("Product added to cart in component:", newProduct);
+   
   }
 
   // Handler function to update the state dynamically
@@ -205,7 +205,7 @@ export default function SingleProduct({item}:any) {
                   <fieldset className="mt-2">
                     <RadioGroup
                       value={selectedFinition}
-                      onChange={setSelectedMaterial}
+                      onChange={setSelectedFinition}
                       className="grid grid-cols-3 gap-3 sm:grid-cols-6"
                     >
                       {item.material_finitions.map((finition:any, index:any) => (

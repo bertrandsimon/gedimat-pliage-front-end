@@ -12,7 +12,12 @@ import { Navmenu } from "@/components/navmenu";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-
+// GLTF
+import dynamic from 'next/dynamic';
+// Dynamically import the SimpleGltfModel to avoid SSR issues
+const SimpleGltfModel = dynamic(() => import("@/components/gltf/SimpleGltfModel"), {
+  ssr: false,
+})
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -43,6 +48,10 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
      
         
         <div className="container mx-auto py-6 px-14"><Navmenu /></div>
+       
+        {/* <div style={{ height: '100vh', width: '100vw' }}>
+          <SimpleGltfModel />
+        </div> */}
        
         <Suspense>
           <div className="container mx-auto px-4">

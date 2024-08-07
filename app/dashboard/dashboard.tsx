@@ -80,7 +80,7 @@ export function Dashboard( orders:any ) {
   const [page, setPage] = useState("lists")
   const [isListsLoaded, setIsListsLoaded] = useState(false);
 
-  console.log( "orders in client component as props :", orders.orders)
+  //console.log( "orders in client component as props :", orders.orders)
 
   useEffect(() => {
     if (page === "lists") {
