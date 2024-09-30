@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
   material_thickness: [Number],
   length: Number,
   weight: Number,
+  width: Number,
   description: String,
   main_image: String,
   images: [String],

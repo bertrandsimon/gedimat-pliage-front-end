@@ -27,12 +27,18 @@ export default function SingleProduct({item}:any) {
   const [selectedFinition, setSelectedFinition] = useState(item.material_finitions[0])
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness[0])
 
-  const initialMeasures = item.measures.reduce((acc:any, measure:any) => {
-    acc[measure] = '';
-    return acc;
-  }, {});
-
+  
+  let initialMeasures = ["no value"];
+  if (item.custom_measures){
+    const initialMeasures = item.measures.reduce((acc:any, measure:any) => {
+      acc[measure] = '';
+      return acc;
+    }, {});
+  
+    
+  }
   const [measures, setMeasures] = useState(initialMeasures);
+    
 
  
   // REDUX
@@ -271,7 +277,7 @@ export default function SingleProduct({item}:any) {
                 {/* MEASURES */}
                 <div className='mt-8 grid grid-cols-3 gap-2'>
 
-                    {customMeasures}
+                    {item.custom_measures && customMeasures}
 
                 </div>
 
