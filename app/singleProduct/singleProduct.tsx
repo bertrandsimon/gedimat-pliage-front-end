@@ -22,10 +22,10 @@ function classNames(...classes: string[]): string {
 }
 
 export default function SingleProduct({item}:any) {
-  const [selectedColor, setSelectedColor] = useState(item.colors[0])
-  const [selectedMaterial, setSelectedMaterial] = useState(item.materials[0])
-  const [selectedFinition, setSelectedFinition] = useState(item.material_finitions[0])
-  const [selectedThickness, setSelectedThickness] = useState(item.material_thickness[0])
+  const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
+  const [selectedMaterial, setSelectedMaterial] = useState(item.materials?.[0] || null);
+  const [selectedFinition, setSelectedFinition] = useState(item.material_finitions?.[0] || null);
+  const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
 
   
   let initialMeasures = ["no value"];

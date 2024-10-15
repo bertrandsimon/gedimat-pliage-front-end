@@ -14,6 +14,8 @@ export default async function Page({params}:any) {
    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`)
  
    const item = await response.json()
+
+   console.log("single product :", item)
   
     return (
         
