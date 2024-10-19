@@ -109,9 +109,9 @@ export default function Cart() {
         <TableCell className="font-medium">
           {item.name}
         </TableCell>
-      
-        <TableCell>{item.price_ht} €</TableCell>
-        <TableCell>{(item.price_ht * 1.2).toFixed(2)} €</TableCell>
+        <TableCell>{item.quantity} </TableCell>
+        <TableCell>{item.quantity * item.price_ht} €</TableCell>
+        <TableCell>{(item.quantity * item.price_ht * 1.2).toFixed(2)} €</TableCell>
 
         {/* <TableCell className="hidden md:table-cell">
           25
@@ -168,6 +168,7 @@ export default function Cart() {
                     <span className="sr-only">Image</span>
                   </TableHead>
                   <TableHead>Nom</TableHead>
+                  <TableHead>Qté</TableHead>
                   <TableHead>Prix HT</TableHead>
                   <TableHead>Prix TTC</TableHead>
                   {/* <TableHead className="hidden md:table-cell">
