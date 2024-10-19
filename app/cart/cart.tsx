@@ -52,7 +52,7 @@ export default function Cart() {
 
     const cartItems = useSelector((state: any) => state.cart.cart);
     const customer_id = useSelector((state: any) => state.user.userId)
-    const totalPriceHT = cartItems.reduce((total: number, item: any) => total + item.price_ht, 0)
+    const totalPriceHT = cartItems.reduce((total: number, item: any) => total + (item.price_ht*item.quantity), 0)
     const totalPriceTTC = totalPriceHT * 1.2
     const orderDataTotalHT = totalPriceHT.toFixed(2)
     const orderDataTotalTTC = totalPriceTTC.toFixed(2)
@@ -209,7 +209,7 @@ export default function Cart() {
 
             <CardContent>
             
-            <Table>
+            <Table >
 
                 <TableHeader>
                 <TableRow>
@@ -222,9 +222,9 @@ export default function Cart() {
 
                 <TableRow>
                     
-                    <TableCell>{orderDataTotalHT} €</TableCell>
+                    <TableCell className="font-bold">{orderDataTotalHT} €</TableCell>
                     <TableCell>20 %</TableCell>
-                    <TableCell>{orderDataTotalTTC} €</TableCell>
+                    <TableCell className="font-bold">{orderDataTotalTTC} €</TableCell>
                 </TableRow>
             
             </Table>

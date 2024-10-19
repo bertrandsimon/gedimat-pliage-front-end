@@ -12,6 +12,8 @@ import { Navmenu } from "@/components/navmenu";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+import { Toaster } from "@/components/ui/toaster";
+
 // GLTF
 import dynamic from 'next/dynamic';
 // Dynamically import the SimpleGltfModel to avoid SSR issues
@@ -65,6 +67,7 @@ export default function RootLayout({ children,}: Readonly<{ children: React.Reac
             <Footer />
           </div>
         </div>
+        <Toaster />
         </body>
 
     </html>

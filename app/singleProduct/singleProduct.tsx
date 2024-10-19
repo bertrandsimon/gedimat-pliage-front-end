@@ -9,7 +9,8 @@ import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outli
 import Image from 'next/image'
 import { Separator } from "@/components/ui/separator"
 //import {ProductInterface} from '@/app/interfaces/product'
-
+import { useToast } from '@/hooks/use-toast'
+import { Button } from '@/components/button'
 
 const policies = [
   { name: 'Livraison', icon: GlobeAmericasIcon, description: 'Lorem ipsum dolor sit amet,' },
@@ -22,6 +23,10 @@ function classNames(...classes: string[]): string {
 }
 
 export default function SingleProduct({item}:any) {
+
+  const { toast } = useToast()
+
+  
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(item.materials?.[0] || null);
   const [selectedFinition, setSelectedFinition] = useState(item.material_finitions?.[0] || null);
@@ -103,8 +108,17 @@ export default function SingleProduct({item}:any) {
                 <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
               </div>
            
-              
-
+              <Button
+      onClick={() => {
+        toast({
+          title: "Scheduled: Catch up",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+        })
+      }}
+    >
+      Show Toast
+    </Button>
+       
          
             <div className="mt-8 lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               

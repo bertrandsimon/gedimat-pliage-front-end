@@ -67,40 +67,40 @@ export default function Footer() {
                   <div>
                     <h3 className="font-light text-white uppercase">
                       <Link
-                        href="/#"
+                        href="/presentation"
                         className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
                       >
-                        Menu1
+                        présentation
                       </Link>
                     </h3>
                   </div>
                   <div className="mt-10 md:mt-0">
                     <h3 className="font-light text-white uppercase">
                       <Link
-                        href="/#"
+                        href="/inspirations"
                         className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
                       >
-                        Menu2
+                        Inspirations
                       </Link>
                     </h3>
                   </div>
                   <div>
                     <h3 className="font-light text-white uppercase">
                       <Link
-                        href="/#"
+                        href="/faq"
                         className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
                       >
-                       Menu3
+                       faq
                       </Link>
                     </h3>
                   </div>
                   <div className="mt-10 md:mt-0">
                     <h3 className="font-light text-white uppercase">
                       <Link
-                        href="/#"
+                        href="/contact"
                         className="rounded-md transition duration-300 ease-in-out hover:bg-[#B51B1B] h-[30px] px-2 inline-flex items-center  uppercase  hover:rounded-md mt-3"
                       >
-                        Menu4
+                       contact
                       </Link>
                     </h3>
                   </div>
