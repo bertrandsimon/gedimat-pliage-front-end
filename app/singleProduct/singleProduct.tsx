@@ -66,9 +66,12 @@ export default function SingleProduct({item}:any) {
       tax: item.tax,
       quantity : quantity,
     }
-    dispatch(addToCart(newProduct));
-   
+    dispatch(addToCart(newProduct))
+  
+  
   }
+
+
 
   // Handler function to update the state dynamically
   const handleMeasureChange = (e:any) => {
@@ -107,12 +110,14 @@ export default function SingleProduct({item}:any) {
                 <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
                 <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
               </div>
+
+              
            
-              <Button
+    <Button
       onClick={() => {
         toast({
-          title: "Scheduled: Catch up",
-          description: "Friday, February 10, 2023 at 5:57 PM",
+          title: "Produit ajouté",
+          description: "Vous avez ajouté un produit à votre liste",
         })
       }}
     >
@@ -313,7 +318,7 @@ export default function SingleProduct({item}:any) {
                 </div>
 
                 <button
-                onClick={handleAddToList}
+               onClick={handleAddToList}
                 disabled={quantity === 0}  // Disable button when quantity is 0
                 className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
                   ${quantity === 0 ? 'bg-[#cfcfcf] cursor-not-allowed' : 'bg-[#B51B1B] hover:bg-[#AE0027] focus:ring-[#AE0027]'}`}  // Conditional classNames
