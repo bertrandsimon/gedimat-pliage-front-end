@@ -15,7 +15,7 @@ export default async function Page({params}:any) {
  
    const item = await response.json()
 
-   console.log("single product :", item)
+   //console.log("single product :", item)
   
     return (
         

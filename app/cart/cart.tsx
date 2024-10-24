@@ -52,7 +52,7 @@ export default function Cart() {
 
     const cartItems = useSelector((state: any) => state.cart.cart);
     const customer_id = useSelector((state: any) => state.user.userId)
-    const totalPriceHT = cartItems.reduce((total: number, item: any) => total + item.price_ht, 0)
+    const totalPriceHT = cartItems.reduce((total: number, item: any) => total + (item.price_ht*item.quantity), 0)
     const totalPriceTTC = totalPriceHT * 1.2
     const orderDataTotalHT = totalPriceHT.toFixed(2)
     const orderDataTotalTTC = totalPriceTTC.toFixed(2)
@@ -109,9 +109,9 @@ export default function Cart() {
         <TableCell className="font-medium">
           {item.name}
         </TableCell>
-      
-        <TableCell>{item.price_ht} €</TableCell>
-        <TableCell>{(item.price_ht * 1.2).toFixed(2)} €</TableCell>
+        <TableCell>{item.quantity} </TableCell>
+        <TableCell>{item.quantity * item.price_ht} €</TableCell>
+        <TableCell>{(item.quantity * item.price_ht * 1.2).toFixed(2)} €</TableCell>
 
         {/* <TableCell className="hidden md:table-cell">
           25
@@ -168,6 +168,7 @@ export default function Cart() {
                     <span className="sr-only">Image</span>
                   </TableHead>
                   <TableHead>Nom</TableHead>
+                  <TableHead>Qté</TableHead>
                   <TableHead>Prix HT</TableHead>
                   <TableHead>Prix TTC</TableHead>
                   {/* <TableHead className="hidden md:table-cell">
@@ -208,7 +209,7 @@ export default function Cart() {
 
             <CardContent>
             
-            <Table>
+            <Table >
 
                 <TableHeader>
                 <TableRow>
@@ -221,9 +222,9 @@ export default function Cart() {
 
                 <TableRow>
                     
-                    <TableCell>{orderDataTotalHT} €</TableCell>
+                    <TableCell className="font-bold">{orderDataTotalHT} €</TableCell>
                     <TableCell>20 %</TableCell>
-                    <TableCell>{orderDataTotalTTC} €</TableCell>
+                    <TableCell className="font-bold">{orderDataTotalTTC} €</TableCell>
                 </TableRow>
             
             </Table>

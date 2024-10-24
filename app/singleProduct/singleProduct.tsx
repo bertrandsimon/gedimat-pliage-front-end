@@ -9,7 +9,8 @@ import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outli
 import Image from 'next/image'
 import { Separator } from "@/components/ui/separator"
 //import {ProductInterface} from '@/app/interfaces/product'
-
+import { useToast } from '@/hooks/use-toast'
+import { Button } from '@/components/button'
 
 const policies = [
   { name: 'Livraison', icon: GlobeAmericasIcon, description: 'Lorem ipsum dolor sit amet,' },
@@ -22,10 +23,16 @@ function classNames(...classes: string[]): string {
 }
 
 export default function SingleProduct({item}:any) {
+
+  const { toast } = useToast()
+
+  
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(item.materials?.[0] || null);
   const [selectedFinition, setSelectedFinition] = useState(item.material_finitions?.[0] || null);
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
+  const [quantity, setQuantity] = useState(0)
+
 
   
   let initialMeasures = ["no value"];
@@ -56,11 +63,15 @@ export default function SingleProduct({item}:any) {
       width: item.width,
       main_image: item.main_image,
       price_ht: item.price_ht,
-      tax: item.tax
+      tax: item.tax,
+      quantity : quantity,
     }
-    dispatch(addToCart(newProduct));
-   
+    dispatch(addToCart(newProduct))
+  
+  
   }
+
+
 
   // Handler function to update the state dynamically
   const handleMeasureChange = (e:any) => {
@@ -99,9 +110,20 @@ export default function SingleProduct({item}:any) {
                 <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
                 <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
               </div>
-           
-              
 
+              
+           
+    <Button
+      onClick={() => {
+        toast({
+          title: "Produit ajouté",
+          description: "Vous avez ajouté un produit à votre liste",
+        })
+      }}
+    >
+      Show Toast
+    </Button>
+       
          
             <div className="mt-8 lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               
@@ -281,12 +303,29 @@ export default function SingleProduct({item}:any) {
 
                 </div>
 
+                {/* QUANTITY */}
+
+                <div className='mt-8 flex items-center gap-4'>
+                    <p>Quantité :</p>
+                    <input 
+                  type="number" 
+                  value={quantity === 0 ? "" : quantity}  // Show empty string if quantity is 0
+                  onChange={(e) => setQuantity(e.target.value === "" ? 0 : Number(e.target.value))} 
+                  min="0" 
+                  step="1" 
+                  className="block w-12 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
+                />
+                </div>
+
                 <button
-                onClick={handleAddToList}
-                  className="uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#B51B1B] px-8 py-3 text-base font-medium text-white hover:bg-[#AE0027] focus:outline-none focus:ring-2 focus:ring-[#AE0027] focus:ring-offset-2"
+               onClick={handleAddToList}
+                disabled={quantity === 0}  // Disable button when quantity is 0
+                className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
+                  ${quantity === 0 ? 'bg-[#cfcfcf] cursor-not-allowed' : 'bg-[#B51B1B] hover:bg-[#AE0027] focus:ring-[#AE0027]'}`}  // Conditional classNames
                 >
-                  Ajouter à la liste
+                  Ajouter {quantity >0 && quantity} PRODUIT(S) à votre liste
                 </button>
+
               </form>
 
               {/* Product details */}
