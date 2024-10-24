@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const priceCalculationSchema = new mongoose.Schema({
+  product_name: String,
   color_price: Number,
   material_price: Number,
   material_finition_price: Number,
