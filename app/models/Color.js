@@ -4,6 +4,8 @@ const colorSchema = new mongoose.Schema({
   name: String,
   color_hexa: String,
   active: Boolean,
+  provider: String,
+  price: Number,
 });
 
 // export default mongoose.model("Color", colorSchema);
