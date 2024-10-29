@@ -22,13 +22,16 @@ function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function SingleProduct({item}:any) {
+export default function SingleProduct({item, materials}: { item: any; materials: any[] }) {
 
   const { toast } = useToast()
 
+  //console.log(materials)
   
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
-  const [selectedMaterial, setSelectedMaterial] = useState(item.materials?.[0] || null);
+  const [selectedMaterial, setSelectedMaterial] = useState(materials?.[0] || null);
+  const [variations, setVariations] = useState(selectedMaterial?.variations || []);
+  const [selectedVariation, setSelectedVariation] = useState(materials?.[0]?.variations?.[0]?.name || null);
   const [selectedFinition, setSelectedFinition] = useState(item.material_finitions?.[0] || null);
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
   const [quantity, setQuantity] = useState(0)
@@ -46,8 +49,18 @@ export default function SingleProduct({item}:any) {
   }
   const [measures, setMeasures] = useState(initialMeasures);
     
+  const handleMaterialChoice = (material:any) => {
+    //setSelectedMaterial(material);
+    setSelectedMaterial(material)
+    setVariations(material.variations)
+    //console.log("Material Variations:", material.variations);
+    console.log(variations)
+    //console.log(variations[1].color_hexa)
+    //setSelectedVariation(material.variations?.name || null); // Reset variation to first one
+  };
 
- 
+//console.log(selectedMaterial)
+//console.log('variations :',variations.name) 
   // REDUX
 
   const dispatch = useDispatch()
@@ -58,8 +71,8 @@ export default function SingleProduct({item}:any) {
       name: item.name, 
       color: selectedColor,
       material : selectedMaterial,
-      material_thickness : selectedThickness,
-      material_finition : selectedFinition,
+      material_thickness : "",
+      material_finition : "",
       width: item.width,
       main_image: item.main_image,
       price_ht: item.price_ht,
@@ -149,9 +162,86 @@ export default function SingleProduct({item}:any) {
 
               <form>
 
-                {/* Color picker */}
-                <div>
-                  <h2 className="text-sm font-medium text-gray-900">Coloris</h2>
+               
+
+                {/* MATERIALS picker */}
+                <div className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-sm font-medium text-gray-900">1 / Choisir une matière</h2>
+                    
+                  </div>
+                  <hr className='my-4'/>
+                  <fieldset className="mt-2">
+                    <RadioGroup
+                      value={selectedMaterial}
+                      //onChange={setSelectedMaterial}
+                      onChange={handleMaterialChoice}
+                      className="grid grid-cols-3 gap-3 sm:grid-cols-6"
+                    >
+                      {materials.map((material:any, index:any) => (
+                        <Radio
+                          key={index}
+                         
+                          value={material}
+                          className={({ focus, checked }) =>
+                            classNames(
+                              'cursor-pointer focus:outline-none'
+                              ,
+                              checked
+                                ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
+                                : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
+                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1'
+                            )
+                          }
+                          
+                        >
+                          {material.name}
+                        </Radio>
+                      ))}
+                    </RadioGroup>
+                  </fieldset>
+
+                </div>
+                
+              {/* VARIATIONS picker */}
+              <div className='mt-8'>
+                  <h2 className="text-sm font-medium text-gray-900">2 / Choisir une variation</h2>
+                    <hr className='my-4'/>
+                  <fieldset className="mt-2">
+                    <RadioGroup
+                      value={selectedVariation}
+                      onChange={setSelectedVariation}
+                      className="flex items-center space-x-3"
+                    >
+                      {variations.map((variation:any) => (
+                        <Radio
+                          key={variation.name}
+                          value={variation.name}
+                         
+                          className={({ focus, checked }) =>
+                            classNames(
+                              focus && checked ? 'ring-offset-1' : '',
+                              !focus && checked ? 'ring-2' : '',
+                              'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                            )
+                          }
+                      
+                        >
+                          {/* colors display */}
+                          <span
+                            className="h-8 w-8 rounded-full border border-black border-opacity-10"
+                            style={{ backgroundColor: variation.color_hexa }}
+                          />
+                        
+
+                        </Radio>
+                      ))}
+                    </RadioGroup>
+                  </fieldset>
+                </div>
+                 {/* Color picker */}
+                 <div className='mt-8'>
+                  <h2 className="text-sm font-medium text-gray-900">Variations</h2>
 
                   <fieldset aria-label="Choose a color" className="mt-2">
                     <RadioGroup
@@ -186,45 +276,8 @@ export default function SingleProduct({item}:any) {
                   </fieldset>
                 </div>
 
-                {/* MATERIALS picker */}
-                <div className="mt-8">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-gray-900">Matière</h2>
-                  
-                  </div>
-
-                  <fieldset className="mt-2">
-                    <RadioGroup
-                      value={selectedMaterial}
-                      onChange={setSelectedMaterial}
-                      className="grid grid-cols-3 gap-3 sm:grid-cols-6"
-                    >
-                      {item.materials.map((material:any, index:any) => (
-                        <Radio
-                          key={index}
-                          value={material}
-                          className={({ focus, checked }) =>
-                            classNames(
-                              'cursor-pointer focus:outline-none'
-                              ,
-                              checked
-                                ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
-                                : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
-                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1'
-                            )
-                          }
-                          
-                        >
-                          {material}
-                        </Radio>
-                      ))}
-                    </RadioGroup>
-                  </fieldset>
-
-                </div>
-
                 {/* FINITIONS picker */}
-                <div className="mt-8">
+                {/* <div className="mt-8">
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm font-medium text-gray-900">Finition</h2>
                   
@@ -257,11 +310,11 @@ export default function SingleProduct({item}:any) {
                     </RadioGroup>
                   </fieldset>
 
-                </div>
+                </div> */}
 
 
                 {/* EPAISSEURS picker */}
-                <div className="mt-8">
+                {/* <div className="mt-8">
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm font-medium text-gray-900">Epaisseur</h2>
                   
@@ -294,7 +347,7 @@ export default function SingleProduct({item}:any) {
                     </RadioGroup>
                   </fieldset>
 
-                </div>
+                </div> */}
                 
                 {/* MEASURES */}
                 <div className='mt-8 grid grid-cols-3 gap-2'>

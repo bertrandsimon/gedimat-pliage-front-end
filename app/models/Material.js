@@ -1,13 +1,10 @@
 import mongoose from "mongoose";
-import Color from "./Color";
+import Variation from "./Variation";
 
 const materialSchema = new mongoose.Schema({
   name: String,
   active: Boolean,
-  colors: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: Color,
-  },
+  variations: [Variation.schema], // Use an array of Variation subdocuments
 });
 
 // colors: [color1._id, color2._id], // Array of ObjectIds
