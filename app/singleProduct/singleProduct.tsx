@@ -185,12 +185,12 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                           value={material}
                           className={({ focus, checked }) =>
                             classNames(
-                              'cursor-pointer focus:outline-none'
+                              'cursor-pointer focus:outline-none text-center'
                               ,
                               checked
                                 ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
                                 : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
-                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1'
+                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium sm:flex-1'
                             )
                           }
                           
@@ -211,143 +211,48 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                     <RadioGroup
                       value={selectedVariation}
                       onChange={setSelectedVariation}
-                      className="flex items-center space-x-3"
+                      className="grid grid-cols-4 gap-4"
+                      // className="flex items-center space-x-3"
                     >
                       {variations.map((variation:any) => (
-                        <Radio
-                          key={variation.name}
-                          value={variation.name}
-                         
-                          className={({ focus, checked }) =>
-                            classNames(
-                              focus && checked ? 'ring-offset-1' : '',
-                              !focus && checked ? 'ring-2' : '',
-                              'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
-                            )
-                          }
-                      
-                        >
-                          {/* colors display */}
-                          <span
-                            className="h-8 w-8 rounded-full border border-black border-opacity-10"
-                            style={{ backgroundColor: variation.color_hexa }}
-                          />
+                        <div key={variation.name} className='flex flex-col items-center gap-4 rounded-md border p-4 border-gray-200'>
+                          <Radio
+                            
+                            value={variation.name}
+                          
+                            className={({ focus, checked }) =>
+                              classNames(
+                                focus && checked ? 'ring-offset-1' : '',
+                                !focus && checked ? 'ring-2' : '',
+                                'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                              )
+                            }
                         
+                          >
+                            {/* VARIATIONS display */}
+                            <span
+                              className="h-8 w-8 rounded-full border border-black border-opacity-10"
+                              style={{ backgroundColor: variation.color_hexa }}
+                            />
+                            
+                          
 
-                        </Radio>
+                          </Radio>
+                          <div className='text-sm flex flex-col gap-1 text-center'>
+                            <p>{variation.name}</p>
+                            <hr className='my-2'/>
+                            <p><span>{variation.thickness}</span><span> mm</span></p>
+                            <hr className='my-2'/>
+                            <p>{variation.provider}</p>
+                            
+                          </div>
+                        </div>
                       ))}
                     </RadioGroup>
                   </fieldset>
                 </div>
-                 {/* Color picker */}
-                 <div className='mt-8'>
-                  <h2 className="text-sm font-medium text-gray-900">Variations</h2>
+              
 
-                  <fieldset aria-label="Choose a color" className="mt-2">
-                    <RadioGroup
-                      value={selectedColor}
-                      onChange={setSelectedColor}
-                      className="flex items-center space-x-3"
-                    >
-                      {item.colors.map((color:any) => (
-                        <Radio
-                          key={color.color_name}
-                          value={color.color_name}
-                          aria-label={color.color_name}
-                          className={({ focus, checked }) =>
-                            classNames(
-                              focus && checked ? 'ring-offset-1' : '',
-                              !focus && checked ? 'ring-2' : '',
-                              'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
-                            )
-                          }
-                      
-                        >
-                          {/* colors display */}
-                          <span
-                            className="h-8 w-8 rounded-full border border-black border-opacity-10"
-                            style={{ backgroundColor: color.color_code }}
-                          />
-                        
-
-                        </Radio>
-                      ))}
-                    </RadioGroup>
-                  </fieldset>
-                </div>
-
-                {/* FINITIONS picker */}
-                {/* <div className="mt-8">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-gray-900">Finition</h2>
-                  
-                  </div>
-
-                  <fieldset className="mt-2">
-                    <RadioGroup
-                      value={selectedFinition}
-                      onChange={setSelectedFinition}
-                      className="grid grid-cols-3 gap-3 sm:grid-cols-6"
-                    >
-                      {item.material_finitions.map((finition:any, index:any) => (
-                        <Radio
-                          key={index}
-                          value={finition}
-                          className={({ focus, checked }) =>
-                            classNames(
-                              focus ? 'ring-2 ring-indigo-500 ring-offset-2' : '',
-                              checked
-                                ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
-                                : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
-                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer'
-                            )
-                          }
-                         
-                        >
-                          {finition}
-                        </Radio>
-                      ))}
-                    </RadioGroup>
-                  </fieldset>
-
-                </div> */}
-
-
-                {/* EPAISSEURS picker */}
-                {/* <div className="mt-8">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-gray-900">Epaisseur</h2>
-                  
-                  </div>
-
-                  <fieldset className="mt-2">
-                    <RadioGroup
-                      value={selectedThickness}
-                      onChange={setSelectedThickness}
-                      className="grid grid-cols-3 gap-3 sm:grid-cols-6"
-                    >
-                      {item.material_thickness.map((thickness:any, index:any) => (
-                        <Radio
-                          key={index}
-                          value={thickness}
-                          className={({ focus, checked }) =>
-                            classNames(
-                              focus ? 'ring-2 ring-indigo-500 ring-offset-2' : '',
-                              checked
-                                ? 'border-transparent bg-[#B8AEA7] text-white hover:bg-[#B8AEA7]'
-                                : 'border-gray-200 bg-white text-gray-900 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]',
-                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium sm:flex-1 cursor-pointer'
-                            )
-                          }
-                         
-                        >
-                          {thickness} mm
-                        </Radio>
-                      ))}
-                    </RadioGroup>
-                  </fieldset>
-
-                </div> */}
                 
                 {/* MEASURES */}
                 <div className='mt-8 grid grid-cols-3 gap-2'>
