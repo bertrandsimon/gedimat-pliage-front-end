@@ -26,7 +26,7 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
   const { toast } = useToast()
 
-  //console.log(materials)
+console.log(item)
   
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(materials?.[0] || null);
@@ -36,7 +36,26 @@ export default function SingleProduct({item, materials}: { item: any; materials:
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
   const [quantity, setQuantity] = useState(0)
 
+  // custom measures
 
+  console.log("item.price_calculation.measures.A", item.price_calculation.measures.A)
+  // Function to determine the initial value
+  const getInitialValue = (key:any) => {
+    // Check if the key exists in the object
+    if (item.price_calculation.measures.hasOwnProperty(key)) {
+      return null; // Set to null if key exists
+    }
+    return undefined; // Set to undefined if key does not exist
+  };
+
+  const [A, setA] = useState(getInitialValue('A')); // null if exist vs undefined if not/
+  const [B, setB] = useState(getInitialValue('B'));
+  const [C, setC] = useState(getInitialValue('C'));
+  const [D, setD] = useState(getInitialValue('D'));
+  const [E, setE] = useState(getInitialValue('E'));
+  const [F, setF] = useState(getInitialValue('F'));
+
+  console.log ("A, B, C", A, B, C)
   
   let initialMeasures = ["no value"];
   if (item.custom_measures){
@@ -50,17 +69,12 @@ export default function SingleProduct({item, materials}: { item: any; materials:
   const [measures, setMeasures] = useState(initialMeasures);
     
   const handleMaterialChoice = (material:any) => {
-    //setSelectedMaterial(material);
+
     setSelectedMaterial(material)
     setVariations(material.variations)
-    //console.log("Material Variations:", material.variations);
-    console.log(variations)
-    //console.log(variations[1].color_hexa)
-    //setSelectedVariation(material.variations?.name || null); // Reset variation to first one
   };
 
-//console.log(selectedMaterial)
-//console.log('variations :',variations.name) 
+
   // REDUX
 
   const dispatch = useDispatch()
@@ -255,9 +269,64 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
                 
                 {/* MEASURES */}
-                <div className='mt-8 grid grid-cols-3 gap-2'>
+                <div className='mt-8'>
+                <h2 className="text-sm font-medium text-gray-900">3 / Entrez les mesures</h2>
+                <hr className='my-4'/>
+                </div>
 
-                    {item.custom_measures && customMeasures}
+               
+
+  
+                <div className='mt-8 grid grid-cols-4 gap-2'>
+               
+
+                {item.price_calculation.measures.hasOwnProperty('A') && (
+
+                  <div className="flex justify-start items-center gap-2">
+                    <label htmlFor="A">A en mm :</label>
+                    <input
+                      onChange={handleMeasureChange}
+                      value={item.price_calculation.measures.A}
+                      type="number"
+                      name={item.price_calculation.measures.A}
+                      id={item.price_calculation.measures.A}
+                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    />
+                  </div>
+
+                )}
+
+                {item.price_calculation.measures.hasOwnProperty('B') && (
+                  
+                  <div className="flex justify-start items-center gap-2">
+                    <label htmlFor="B">B en mm :</label>
+                    <input
+                      onChange={handleMeasureChange}
+                      value={item.price_calculation.measures.B}
+                      type="number"
+                      name={item.price_calculation.measures.B}
+                      id={item.price_calculation.measures.B}
+                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    />
+                  </div>
+
+                )}
+
+                {item.price_calculation.measures.hasOwnProperty('C') && (
+                  
+                  <div className="flex justify-start items-center gap-2">
+                    <label htmlFor="B">C en mm :</label>
+                    <input
+                      onChange={handleMeasureChange}
+                      value={item.price_calculation.measures.C}
+                      type="number"
+                      name={item.price_calculation.measures.C}
+                      id={item.price_calculation.measures.C}
+                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    />
+                  </div>
+
+                )}
 
                 </div>
 
