@@ -26,7 +26,7 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
   const { toast } = useToast()
 
-console.log(item)
+
   
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(materials?.[0] || null);
@@ -36,9 +36,8 @@ console.log(item)
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
   const [quantity, setQuantity] = useState(0)
 
-  // custom measures
+  // MEASURES
 
-  console.log("item.price_calculation.measures.A", item.price_calculation.measures.A)
   // Function to determine the initial value
   const getInitialValue = (key:any) => {
     // Check if the key exists in the object
@@ -55,18 +54,42 @@ console.log(item)
   const [E, setE] = useState(getInitialValue('E'));
   const [F, setF] = useState(getInitialValue('F'));
 
-  console.log ("A, B, C", A, B, C)
-  
-  let initialMeasures = ["no value"];
-  if (item.custom_measures){
-    const initialMeasures = item.measures.reduce((acc:any, measure:any) => {
-      acc[measure] = '';
-      return acc;
-    }, {});
-  
-    
-  }
-  const [measures, setMeasures] = useState(initialMeasures);
+  // const handleMeasure = (event:any, name:string) => {
+  //   console.log(event.target.value)
+  //   setA(event.target.value)
+  // }
+ 
+  const handleMeasure = (event: any) => {
+    const { name, value } = event.target;
+
+   
+
+    // Update the corresponding state based on the input name
+    switch (name) {
+      case 'A':
+        setA(value);
+        break;
+      case 'B':
+        setB(value);
+        break;
+      case 'C':
+        setC(value);
+        break;
+      case 'D':
+        setD(value);
+        break;
+      case 'E':
+        setE(value);
+        break;
+      case 'F':
+        setF(value);
+        break;
+      default:
+        break;
+    }
+
+    console.log(`Updated ${name}:`, value);
+  };
     
   const handleMaterialChoice = (material:any) => {
 
@@ -100,29 +123,8 @@ console.log(item)
 
 
 
-  // Handler function to update the state dynamically
-  const handleMeasureChange = (e:any) => {
-    const { name, value } = e.target;
-    setMeasures((prevMeasures:any) => ({
-      ...prevMeasures,
-      [name]: value,
-    }));
-  };
 
-   // Map over measures to create the input fields
-   const customMeasures = item.measures.map((measure:any, index:any) => (
-    <div key={index} className="flex items-center gap-4">
-      <label htmlFor={measure}>{measure}:</label>
-      <input
-        onChange={handleMeasureChange}
-        value={measures[measure]}
-        type="number"
-        name={measure}
-        id={measure}
-        className="block w-24 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-      />
-    </div>
-  ));
+
 
 
   
@@ -285,12 +287,13 @@ console.log(item)
                   <div className="flex justify-start items-center gap-2">
                     <label htmlFor="A">A en mm :</label>
                     <input
-                      onChange={handleMeasureChange}
+                       onChange={handleMeasure}
                       value={item.price_calculation.measures.A}
                       type="number"
-                      name={item.price_calculation.measures.A}
-                      id={item.price_calculation.measures.A}
-                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                      name="A"
+                      id="A"
+                      min={item.price_calculation.min_measures.A}
+                      className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     />
                   </div>
 
@@ -301,11 +304,11 @@ console.log(item)
                   <div className="flex justify-start items-center gap-2">
                     <label htmlFor="B">B en mm :</label>
                     <input
-                      onChange={handleMeasureChange}
+                      onChange={handleMeasure}
                       value={item.price_calculation.measures.B}
                       type="number"
-                      name={item.price_calculation.measures.B}
-                      id={item.price_calculation.measures.B}
+                      name="B"
+                      id="B"
                       className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -317,11 +320,11 @@ console.log(item)
                   <div className="flex justify-start items-center gap-2">
                     <label htmlFor="B">C en mm :</label>
                     <input
-                      onChange={handleMeasureChange}
+                      onChange={handleMeasure}
                       value={item.price_calculation.measures.C}
                       type="number"
-                      name={item.price_calculation.measures.C}
-                      id={item.price_calculation.measures.C}
+                      name="C"
+                      id="C"
                       className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     />
                   </div>
