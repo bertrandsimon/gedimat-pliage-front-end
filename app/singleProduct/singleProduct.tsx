@@ -46,19 +46,20 @@ export default function SingleProduct({item, materials}: { item: any; materials:
     }
     return undefined; // Set to undefined if key does not exist
   };
+  const minA = item.price_calculation.min_measures.A
+  const [A, setA] = useState(minA)
+  const minB = item.price_calculation.min_measures.B
+  const [B, setB] = useState(minB)
+  const minC = item.price_calculation.min_measures.C
+  const [C, setC] = useState(minC || 0)
+  const minD = item.price_calculation.min_measures.D
+  const [D, setD] = useState(minD)
+  const minE = item.price_calculation.min_measures.E
+  const [E, setE] = useState(minE)
+  const minF = item.price_calculation.min_measures.F
+  const [F, setF] = useState(minF)
 
-  const [A, setA] = useState(getInitialValue('A')); // null if exist vs undefined if not/
-  const [B, setB] = useState(getInitialValue('B'));
-  const [C, setC] = useState(getInitialValue('C'));
-  const [D, setD] = useState(getInitialValue('D'));
-  const [E, setE] = useState(getInitialValue('E'));
-  const [F, setF] = useState(getInitialValue('F'));
-
-  // const handleMeasure = (event:any, name:string) => {
-  //   console.log(event.target.value)
-  //   setA(event.target.value)
-  // }
- 
+console.log("B", B)
   const handleMeasure = (event: any) => {
     const { name, value } = event.target;
 
@@ -183,7 +184,7 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                 {/* MATERIALS picker */}
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-gray-900">1 / Choisir une matière</h2>
+                    <h2 className="font-medium text-lg text-gray-900">1 / Choisir une matière</h2>
                     
                   </div>
                   <hr className='my-4'/>
@@ -221,7 +222,7 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                 
               {/* VARIATIONS picker */}
               <div className='mt-8'>
-                  <h2 className="text-sm font-medium text-gray-900">2 / Choisir une variation</h2>
+                  <h2 className="text-lg font-medium text-gray-900">2 / Choisir une variation</h2>
                     <hr className='my-4'/>
                   <fieldset className="mt-2">
                     <RadioGroup
@@ -272,79 +273,134 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                 
                 {/* MEASURES */}
                 <div className='mt-8'>
-                <h2 className="text-sm font-medium text-gray-900">3 / Entrez les mesures</h2>
+                <h2 className="text-lg font-medium text-gray-900">3 / Entrez les mesures</h2>
                 <hr className='my-4'/>
                 </div>
 
                
 
   
-                <div className='mt-8 grid grid-cols-4 gap-2'>
-               
+                <div className='mt-8 grid grid-cols-2 gap-12'>
+                    
+                    {/* col1 */}
+                    <div> 
+                    <Image src="/images/products/measures/measure.jpg"  width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
+                    </div>
+                    {/* col1 */}
+                    
+                    {/* col2 */} 
+                    <div className='flex flex-col justify-start gap-4'>
+                     {/* input A */}
+                      {item.price_calculation.measures.hasOwnProperty('A') && (
+                      
+                          <div className="flex justify-start items-center gap-2">
+                            <label htmlFor="A" className='text-sm'>Mesure A :</label>
+                            <input
+                              onChange={handleMeasure}
+                              value={A}
+                              type="number"
+                              name="A"
+                              id="A"
+                              min={minA}
+                              className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                            />
+                            <span className='text-sm'>mm</span>
+                            {A < minA && (
+                              <p className="text-red-500 text-sm">Minimum {minA} mm</p>
+                            )}
+                          
+                          </div>
+                        
+                      )}{/* input A */}
+                      
+                    {/* input B */}
+                    {item.price_calculation.measures.hasOwnProperty('A') && (
+                      
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="B" className='text-sm'>Mesure B :</label>
+                        <input
+                          onChange={handleMeasure}
+                          value={B}
+                          type="number"
+                          name="B"
+                          id="B"
+                          min={minB}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className='text-sm'>mm</span>
+                        {B < minB && (
+                          <p className="text-red-500 text-sm">Minimum {minB} mm</p>
+                        )}
+                      
+                      </div>
+                    
+                    )}{/* input B */}
 
-                {item.price_calculation.measures.hasOwnProperty('A') && (
+                     {/* input C */}
+                     {item.price_calculation.measures.hasOwnProperty('C') && (
+                      
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="C" className='text-sm'>Mesure C :</label>
+                        <input
+                          onChange={handleMeasure}
+                          value={C}
+                          type="number"
+                          name="C"
+                          id="C"
+                          min={minC}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className='text-sm'>mm</span>
+                        {C < minC && (
+                          <p className="text-red-500 text-sm">Minimum {minC} mm</p>
+                        )}
+                      
+                      </div>
+                    
+                    )}{/* input C */}
+                    
+                    </div>
 
-                  <div className="flex justify-start items-center gap-2">
-                    <label htmlFor="A">A en mm :</label>
-                    <input
-                       onChange={handleMeasure}
-                      value={item.price_calculation.measures.A}
-                      type="number"
-                      name="A"
-                      id="A"
-                      min={item.price_calculation.min_measures.A}
-                      className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                    />
-                  </div>
-
-                )}
-
-                {item.price_calculation.measures.hasOwnProperty('B') && (
-                  
-                  <div className="flex justify-start items-center gap-2">
-                    <label htmlFor="B">B en mm :</label>
-                    <input
-                      onChange={handleMeasure}
-                      value={item.price_calculation.measures.B}
-                      type="number"
-                      name="B"
-                      id="B"
-                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                    />
-                  </div>
-
-                )}
-
-                {item.price_calculation.measures.hasOwnProperty('C') && (
-                  
-                  <div className="flex justify-start items-center gap-2">
-                    <label htmlFor="B">C en mm :</label>
-                    <input
-                      onChange={handleMeasure}
-                      value={item.price_calculation.measures.C}
-                      type="number"
-                      name="C"
-                      id="C"
-                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                    />
-                  </div>
-
-                )}
+                    
+                    {/* col2 */}
+                    
+                    
 
                 </div>
 
                 {/* QUANTITY */}
+                <div className='mt-8'>
+                  <h2 className="text-lg font-medium text-gray-900">4 / Entrez les quantités</h2>
+                  <hr className='my-4'/>
+                </div>
+                
+                <div className='grid grid-cols-2'>
+                  <div className='mt-8 flex items-center gap-4'>
+                      <p>Nombre de produits :</p>
+                      <input 
+                    type="number" 
+                    value={quantity === 0 ? "" : quantity}  // Show empty string if quantity is 0
+                    onChange={(e) => setQuantity(e.target.value === "" ? 0 : Number(e.target.value))} 
+                    min="0" 
+                    step="1" 
+                    className="block w-12 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
+                  />
+                  </div>
 
-                <div className='mt-8 flex items-center gap-4'>
-                    <p>Quantité :</p>
-                    <input 
-                  type="number" 
-                  value={quantity === 0 ? "" : quantity}  // Show empty string if quantity is 0
-                  onChange={(e) => setQuantity(e.target.value === "" ? 0 : Number(e.target.value))} 
-                  min="0" 
-                  step="1" 
-                  className="block w-12 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
-                />
+                  <div className='flex justify-center items-center pt-8 gap-8'>
+                    <p>TARIF :</p>
+                    <span className='font-semibold text-xl'>89.12 Euros</span>
+                    
+                  </div>
+                  
+                </div>
+             
+
+                {/* PRICE */}
+
+                <div className='mt-8'>
+                  <h2 className="text-lg font-medium text-gray-900">Tarif</h2>
+                  <hr className='my-4'/>
                 </div>
 
                 <button
