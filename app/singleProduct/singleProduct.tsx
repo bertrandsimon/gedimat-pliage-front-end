@@ -46,6 +46,9 @@ export default function SingleProduct({item, materials}: { item: any; materials:
     }
     return undefined; // Set to undefined if key does not exist
   };
+
+  const [width, setWidth] = useState(0)
+  
   const minA = item.price_calculation.min_measures.A
   const [A, setA] = useState(minA)
   const minB = item.price_calculation.min_measures.B
@@ -59,11 +62,11 @@ export default function SingleProduct({item, materials}: { item: any; materials:
   const minF = item.price_calculation.min_measures.F
   const [F, setF] = useState(minF)
 
-console.log("B", B)
+
+
+
   const handleMeasure = (event: any) => {
     const { name, value } = event.target;
-
-   
 
     // Update the corresponding state based on the input name
     switch (name) {
@@ -89,7 +92,7 @@ console.log("B", B)
         break;
     }
 
-    console.log(`Updated ${name}:`, value);
+    
   };
     
   const handleMaterialChoice = (material:any) => {
@@ -97,6 +100,8 @@ console.log("B", B)
     setSelectedMaterial(material)
     setVariations(material.variations)
   };
+
+  // PRICE
 
 
   // REDUX
@@ -375,16 +380,33 @@ console.log("B", B)
                 </div>
                 
                 <div className='grid grid-cols-2'>
-                  <div className='mt-8 flex items-center gap-4'>
-                      <p>Nombre de produits :</p>
-                      <input 
-                    type="number" 
-                    value={quantity === 0 ? "" : quantity}  // Show empty string if quantity is 0
-                    onChange={(e) => setQuantity(e.target.value === "" ? 0 : Number(e.target.value))} 
-                    min="0" 
-                    step="1" 
-                    className="block w-12 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
-                  />
+                  <div className='flex flex-col'>
+
+                    <div className='mt-8 flex items-center gap-4'>
+                        <p>Longueur de la pièce :</p>
+                        <input 
+                      type="number" 
+                      value={width}  // Show empty string if quantity is 0
+                      onChange={(e) => setWidth(e.target.value === "" ? 0 : Number(e.target.value))} 
+                      min="0" 
+                      step="1" 
+                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
+                    />
+                    </div>
+
+                    <div className='mt-8 flex items-center gap-4'>
+                        <p>Nombre de produits  :</p>
+                        <input 
+                      type="number" 
+                      value={quantity === 0 ? "" : quantity}  // Show empty string if quantity is 0
+                      onChange={(e) => setQuantity(e.target.value === "" ? 0 : Number(e.target.value))} 
+                      min="0" 
+                      step="1" 
+                      className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
+                    />
+                    </div>
+
+
                   </div>
 
                   <div className='flex justify-center items-center pt-8 gap-8'>
