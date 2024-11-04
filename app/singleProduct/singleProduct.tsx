@@ -1,5 +1,6 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
+import { evaluate } from 'mathjs';
 import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from "@/app/reducers/cart"
 
@@ -38,7 +39,7 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
   // MEASURES
 
-  // Function to determine the initial value
+  
   const getInitialValue = (key:any) => {
     // Check if the key exists in the object
     if (item.price_calculation.measures.hasOwnProperty(key)) {
@@ -94,14 +95,68 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
     
   };
+
+  // PRICE CALCULATION
+ 
+  // 1/ surface calculation
+  const surfaceCalculation = item.price_calculation.surface_calculation
+  
+  const calculateSurface = () => {
+    // Replace variables directly in the formula string
+    let formula = surfaceCalculation
+      .replace(/A/g, A)
+      .replace(/B/g, B)
+      .replace(/C/g, C)
+      .replace(/D/g, D)
+      .replace(/E/g, E)
+      .replace(/F/g, F);
+
+    // Evaluate the formula using math.js
+    try {
+      const result = evaluate(formula);
+      console.log("Calculated Surface:", result); // Log the result
+      return result;
+    } catch (error) {
+      console.error("Error evaluating surface formula:", error);
+      return null;
+    }
+  };
+
+
+  // Prix de revient
+  const calculatePrn = () => {
+    return calculateSurface() * item.price_ht
     
+   } 
+
+   // Prix
+   const calculatePrice = () => {
+    return calculatePrn() * 1.111 *1.111 * (width/1000)
+   }
+
+     // Memoize the calculations
+  const surface = useMemo(calculateSurface, [A, B, C, D, E, F]);
+  const prn = useMemo(() => surface * item.price_ht, [surface, item.price_ht]);
+  const price = useMemo(() => prn * 1.111 * 1.111 * (width / 1000), [prn, width]);
+
+
+// Log calculations when measures change
+useEffect(() => {
+  console.log("Surface:", surface);
+  console.log("PRN:", prn);
+  console.log("Price:", price);
+}, [surface, prn, price]);
+// 2/ PRN calculation
+
+ // PRICE
+
   const handleMaterialChoice = (material:any) => {
 
     setSelectedMaterial(material)
     setVariations(material.variations)
   };
 
-  // PRICE
+ 
 
 
   // REDUX
@@ -382,7 +437,7 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                 <div className='grid grid-cols-2'>
                   <div className='flex flex-col'>
 
-                    <div className='mt-8 flex items-center gap-4'>
+                    <div className='mt-8 flex items-center gap-2'>
                         <p>Longueur de la pièce :</p>
                         <input 
                       type="number" 
@@ -392,9 +447,10 @@ export default function SingleProduct({item, materials}: { item: any; materials:
                       step="1" 
                       className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
                     />
+                    <span>mm</span>
                     </div>
 
-                    <div className='mt-8 flex items-center gap-4'>
+                    <div className='mt-8 flex items-center gap-2'>
                         <p>Nombre de produits  :</p>
                         <input 
                       type="number" 
