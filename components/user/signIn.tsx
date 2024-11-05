@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 import { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { loggedStatus, userId, loggedName, loggedSurname, loggedToken } from "@/app/reducers/user"
+import { loggedStatus, userId, loggedName, loggedSurname, loggedToken, isPro } from "@/app/reducers/user"
 
 import { Button } from '@/components/ui/button';
 import {
@@ -77,8 +77,10 @@ export default function SignIn() {
           dispatch(loggedStatus(true));
           dispatch(loggedName(data.name))
           dispatch(loggedSurname(data.surname))
+          dispatch(isPro(data.isPro))
           dispatch(userId(data.userId))
-          //console.log(data.userId)
+          console.log(data)
+          console.log('OK !')
           
         }
       })

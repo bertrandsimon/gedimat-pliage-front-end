@@ -1,8 +1,10 @@
 'use client'
 import { useState, useEffect, useMemo } from 'react'
+import { useSelector } from 'react-redux';
 import { evaluate } from 'mathjs';
 import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from "@/app/reducers/cart"
+import { loggedStatus, userId, loggedName, loggedSurname, loggedToken, isPro } from "@/app/reducers/user"
 
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
@@ -26,9 +28,10 @@ function classNames(...classes: string[]): string {
 export default function SingleProduct({item, materials}: { item: any; materials: any[] }) {
 
   const { toast } = useToast()
-
-
   
+  const isPro = useSelector((state:any) => state.user.is_pro); 
+  
+  console.log("isPro : ", isPro)
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(materials?.[0] || null);
   const [variations, setVariations] = useState(selectedMaterial?.variations || []);
@@ -132,13 +135,13 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
 
      // Memoize the calculations
-  console.log("selectedVariation", selectedVariation)
+  //console.log("selectedVariation", selectedVariation)
 
   const surface = useMemo(calculateSurface, [A, B, C, D, E, F, surfaceCalculation]);
   // * selectedVariation.price
   
   const prn = useMemo(() => (selectedVariation.price * 1.111 *1.111) * (width / 1000) * (surface/1000) , [surface, selectedVariation, width]);
-  
+
   // mdo = ( (fixedTimeCost) + (quantity * manipTimeCost) ) * mdoCost
   const mdo = useMemo(() => ((10 + (quantity * 5 )) * 2), [quantity])
 

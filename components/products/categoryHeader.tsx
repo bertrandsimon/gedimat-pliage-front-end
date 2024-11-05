@@ -25,7 +25,7 @@ export default function CategoryHeader(props:any){
           });
     
    
-    console.log("props.title : ",props.title)
+    
     
     useEffect(() => {
         const description = categoryDescriptions.find(item => item.category === props.title);
@@ -34,7 +34,7 @@ export default function CategoryHeader(props:any){
         }
       }, [props.title]);
 
-      console.log('categoryDescription', categoryDescription)
+      
 
     return (
         <div className="grid grid-cols-3 gap-10">
