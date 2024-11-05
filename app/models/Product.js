@@ -13,6 +13,7 @@ const productSchema = new mongoose.Schema({
   description: String,
   main_image: String,
   images: [String],
+  schema_img: String,
   category: String,
   sub_category: String,
   active: Boolean,

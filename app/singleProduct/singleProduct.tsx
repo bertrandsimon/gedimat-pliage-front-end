@@ -32,10 +32,11 @@ export default function SingleProduct({item, materials}: { item: any; materials:
   const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(materials?.[0] || null);
   const [variations, setVariations] = useState(selectedMaterial?.variations || []);
-  const [selectedVariation, setSelectedVariation] = useState(materials?.[0]?.variations?.[0]?.name || null);
-  const [selectedFinition, setSelectedFinition] = useState(item.material_finitions?.[0] || null);
+  const [selectedVariation, setSelectedVariation] = useState(materials?.[0]?.variations?.[0] || null);
   const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
+
+  
 
   // MEASURES
 
@@ -125,25 +126,30 @@ export default function SingleProduct({item, materials}: { item: any; materials:
 
   // Prix de revient
   const calculatePrn = () => {
-    return calculateSurface() * item.price_ht
+    return calculateSurface() * selectedVariation.price
     
    } 
 
-   // Prix
-   const calculatePrice = () => {
-    return calculatePrn() * 1.111 *1.111 * (width/1000)
-   }
 
      // Memoize the calculations
-  const surface = useMemo(calculateSurface, [A, B, C, D, E, F]);
-  const prn = useMemo(() => surface * item.price_ht, [surface, item.price_ht]);
-  const price = useMemo(() => prn * 1.111 * 1.111 * (width / 1000), [prn, width]);
+  console.log("selectedVariation", selectedVariation)
 
+  const surface = useMemo(calculateSurface, [A, B, C, D, E, F, surfaceCalculation]);
+  // * selectedVariation.price
+  
+  const prn = useMemo(() => (selectedVariation.price * 1.111 *1.111) * (width / 1000) * (surface/1000) , [surface, selectedVariation, width]);
+  
+  // mdo = ( (fixedTimeCost) + (quantity * manipTimeCost) ) * mdoCost
+  const mdo = useMemo(() => ((10 + (quantity * 5 )) * 2), [quantity])
+
+  const price = useMemo(() => (prn + mdo) * 1.45, [prn, width, quantity]);
+  
 
 // Log calculations when measures change
 useEffect(() => {
   console.log("Surface:", surface);
   console.log("PRN:", prn);
+  console.log("MDO:", mdo);
   console.log("Price:", price);
 }, [surface, prn, price]);
 // 2/ PRN calculation
@@ -198,12 +204,12 @@ useEffect(() => {
            
               <div className="flex justify-between lg:col-span-8">
                 <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
-                <p className="text-xl font-medium text-gray-900">{item.price_ht} Euros HT</p>
+                {/* <p className="text-xl font-medium text-gray-900">{price} Euros HT</p> */}
               </div>
 
               
            
-    <Button
+    {/* <Button
       onClick={() => {
         toast({
           title: "Produit ajouté",
@@ -212,7 +218,7 @@ useEffect(() => {
       }}
     >
       Show Toast
-    </Button>
+    </Button> */}
        
          
             <div className="mt-8 lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
@@ -243,8 +249,9 @@ useEffect(() => {
 
                 {/* MATERIALS picker */}
                 <div className="mt-8">
-                  <div className="flex items-center justify-between">
-                    <h2 className="font-medium text-lg text-gray-900">1 / Choisir une matière</h2>
+                  <div className="flex items-center justify-start gap-4">
+                    <Image width={30} height={30} src="/images/1.png" alt=""></Image>
+                    <h2 className="font-medium text-lg text-gray-900">Choisir une matière</h2>
                     
                   </div>
                   <hr className='my-4'/>
@@ -282,7 +289,12 @@ useEffect(() => {
                 
               {/* VARIATIONS picker */}
               <div className='mt-8'>
-                  <h2 className="text-lg font-medium text-gray-900">2 / Choisir une variation</h2>
+              <div className="flex items-center justify-start gap-4">
+                    <Image width={30} height={30} src="/images/2.png" alt=""></Image>
+                    <h2 className="font-medium text-lg text-gray-900">Choisir une variation</h2>
+                    
+              </div>
+                
                     <hr className='my-4'/>
                   <fieldset className="mt-2">
                     <RadioGroup
@@ -295,7 +307,7 @@ useEffect(() => {
                         <div key={variation.name} className='flex flex-col items-center gap-4 rounded-md border p-4 border-gray-200'>
                           <Radio
                             
-                            value={variation.name}
+                            value={variation}
                           
                             className={({ focus, checked }) =>
                               classNames(
@@ -333,7 +345,12 @@ useEffect(() => {
                 
                 {/* MEASURES */}
                 <div className='mt-8'>
-                <h2 className="text-lg font-medium text-gray-900">3 / Entrez les mesures</h2>
+                <div className="flex items-center justify-start gap-4">
+                    <Image width={30} height={30} src="/images/3.png" alt=""></Image>
+                    <h2 className="font-medium text-lg text-gray-900">Entrez les mesures</h2>
+                    
+                </div>
+               
                 <hr className='my-4'/>
                 </div>
 
@@ -344,7 +361,7 @@ useEffect(() => {
                     
                     {/* col1 */}
                     <div> 
-                    <Image src="/images/products/measures/measure.jpg"  width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
+                    <Image src="/images/products/schemas/schema.jpg"  width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
                     </div>
                     {/* col1 */}
                     
@@ -430,7 +447,12 @@ useEffect(() => {
 
                 {/* QUANTITY */}
                 <div className='mt-8'>
-                  <h2 className="text-lg font-medium text-gray-900">4 / Entrez les quantités</h2>
+                <div className="flex items-center justify-start gap-4">
+                    <Image width={30} height={30} src="/images/4.png" alt=""></Image>
+                    <h2 className="font-medium text-lg text-gray-900">Entrez les quantités</h2>
+                    
+              </div>
+                  
                   <hr className='my-4'/>
                 </div>
                 
@@ -467,7 +489,7 @@ useEffect(() => {
 
                   <div className='flex justify-center items-center pt-8 gap-8'>
                     <p>TARIF :</p>
-                    <span className='font-semibold text-xl'>89.12 Euros</span>
+                    <span className='font-semibold text-xl redAlu'>{price.toFixed(2)}  </span><span className='text-xs'>€ TTC</span>
                     
                   </div>
                   
