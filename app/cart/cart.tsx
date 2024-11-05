@@ -51,6 +51,9 @@ export default function Cart() {
 
 
     const cartItems = useSelector((state: any) => state.cart.cart);
+
+    console.log("cartItems : ", cartItems)
+
     const customer_id = useSelector((state: any) => state.user.userId)
     const totalPriceHT = cartItems.reduce((total: number, item: any) => total + (item.price_ht*item.quantity), 0)
     const totalPriceTTC = totalPriceHT * 1.2
@@ -96,7 +99,7 @@ export default function Cart() {
       }
     
     const listOfItems = cartItems.map( (item:any, index:number) => (
-        <TableRow key={index}>
+        <TableRow key={index} >
         <TableCell className="hidden sm:table-cell">
           <Image
             alt="Product image"
@@ -106,11 +109,30 @@ export default function Cart() {
             width="64"
           />
         </TableCell>
-        <TableCell className="font-medium">
-          {item.name}
+        <TableCell>
+          <div className="flex flex-col gap-2">
+          <p className="font-semibold uppercase">{item.name}</p>
+          <ul className="list-disc pl-3 text-sm">
+            <li>{item.material.name}</li>
+            <li>{item.variation.name}</li>
+          </ul>
+         
+          </div>
+          
         </TableCell>
+        <TableCell>
+          <ul className="flex flex-col gap-1 list-disc text-sm">
+            {item.measures.A !== 0 && <li>A : {item.measures.A} mm</li>}
+            {item.measures.B !== 0 && <li>B : {item.measures.B} mm</li>}
+            {item.measures.C !== 0 && <li>C : {item.measures.C} mm</li>}
+            {item.measures.D !== 0 && <li>D : {item.measures.D} mm</li>}
+            {item.measures.E !== 0 && <li>E : {item.measures.E} mm</li>}
+            {item.measures.F !== 0 && <li>F : {item.measures.F} mm</li>}
+            {item.width !== 0 && <li>Longueur : {item.width} mm</li>}
+          </ul> 
+          </TableCell>
         <TableCell>{item.quantity} </TableCell>
-        <TableCell>{item.quantity * item.price_ht} €</TableCell>
+        <TableCell>{item.quantity * item.price_ht.toFixed(2)} €</TableCell>
         <TableCell>{(item.quantity * item.price_ht * 1.2).toFixed(2)} €</TableCell>
 
         {/* <TableCell className="hidden md:table-cell">
@@ -168,6 +190,7 @@ export default function Cart() {
                     <span className="sr-only">Image</span>
                   </TableHead>
                   <TableHead>Nom</TableHead>
+                  <TableHead>Mesures</TableHead>
                   <TableHead>Qté</TableHead>
                   <TableHead>Prix HT</TableHead>
                   <TableHead>Prix TTC</TableHead>

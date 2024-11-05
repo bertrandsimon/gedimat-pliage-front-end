@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from "@/app/reducers/cart"
 import { loggedStatus, userId, loggedName, loggedSurname, loggedToken, isPro } from "@/app/reducers/user"
 
-import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
@@ -31,12 +30,10 @@ export default function SingleProduct({item, materials}: { item: any; materials:
   
   const isPro = useSelector((state:any) => state.user.is_pro); 
   
-  console.log("isPro : ", isPro)
-  const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
+  //const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(materials?.[0] || null);
   const [variations, setVariations] = useState(selectedMaterial?.variations || []);
   const [selectedVariation, setSelectedVariation] = useState(materials?.[0]?.variations?.[0] || null);
-  const [selectedThickness, setSelectedThickness] = useState(item.material_thickness?.[0] || null);
   const [quantity, setQuantity] = useState(1)
 
   
@@ -44,13 +41,13 @@ export default function SingleProduct({item, materials}: { item: any; materials:
   // MEASURES
 
   
-  const getInitialValue = (key:any) => {
-    // Check if the key exists in the object
-    if (item.price_calculation.measures.hasOwnProperty(key)) {
-      return null; // Set to null if key exists
-    }
-    return undefined; // Set to undefined if key does not exist
-  };
+  // const getInitialValue = (key:any) => {
+  //   // Check if the key exists in the object
+  //   if (item.price_calculation.measures.hasOwnProperty(key)) {
+  //     return null; // Set to null if key exists
+  //   }
+  //   return undefined; // Set to undefined if key does not exist
+  // };
 
   const [width, setWidth] = useState(0)
   
@@ -133,31 +130,38 @@ export default function SingleProduct({item, materials}: { item: any; materials:
     
    } 
 
-
-     // Memoize the calculations
+     // PRICE CALCULATION
   //console.log("selectedVariation", selectedVariation)
 
   const surface = useMemo(calculateSurface, [A, B, C, D, E, F, surfaceCalculation]);
-  // * selectedVariation.price
   
   const prn = useMemo(() => (selectedVariation.price * 1.111 *1.111) * (width / 1000) * (surface/1000) , [surface, selectedVariation, width]);
 
   // mdo = ( (fixedTimeCost) + (quantity * manipTimeCost) ) * mdoCost
   const mdo = useMemo(() => ((10 + (quantity * 5 )) * 2), [quantity])
 
-  const price = useMemo(() => (prn + mdo) * 1.45, [prn, width, quantity]);
+  const price_ht = useMemo(() => {
+  if(isPro) {
+    return (prn + mdo) * 1.45
+  }
+  else {
+    return (prn + mdo) * 1.81
+  } 
+  
+  }, [prn, width, quantity]);
   
 
-// Log calculations when measures change
+
 useEffect(() => {
   console.log("Surface:", surface);
   console.log("PRN:", prn);
   console.log("MDO:", mdo);
-  console.log("Price:", price);
-}, [surface, prn, price]);
-// 2/ PRN calculation
+  console.log("Price:", price_ht);
+}, [surface, prn, price_ht]);
 
- // PRICE
+
+
+ 
 
   const handleMaterialChoice = (material:any) => {
 
@@ -165,10 +169,6 @@ useEffect(() => {
     setVariations(material.variations)
   };
 
- 
-
-
-  // REDUX
 
   const dispatch = useDispatch()
 
@@ -176,25 +176,26 @@ useEffect(() => {
     const newProduct = {
       id: item._id, 
       name: item.name, 
-      color: selectedColor,
       material : selectedMaterial,
-      material_thickness : "",
-      material_finition : "",
-      width: item.width,
+      variation: selectedVariation,
+      width: width,
       main_image: item.main_image,
-      price_ht: item.price_ht,
+      price_ht: price_ht,
       tax: item.tax,
       quantity : quantity,
+      measures : {
+        A: A ? A : 0,
+        B: B ? B : 0,
+        C: C ? C : 0,
+        D: D ? D : 0,
+        E: E ? E : 0,
+        F: F ? F : 0,
+      }
     }
     dispatch(addToCart(newProduct))
   
   
   }
-
-
-
-
-
 
 
   
@@ -206,7 +207,7 @@ useEffect(() => {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
            
               <div className="flex justify-between lg:col-span-8">
-                <h1 className="text-xl font-medium text-gray-900">{item.name}</h1>
+                <h1 className="text-md font-medium redAlu uppercase">{item.name}</h1>
                 {/* <p className="text-xl font-medium text-gray-900">{price} Euros HT</p> */}
               </div>
 
@@ -221,14 +222,24 @@ useEffect(() => {
       }}
     >
       Show Toast
-    </Button> */}
-       
+    </Button>
+        */}
          
             <div className="mt-8 lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
+              <div className="flex flex-col gap-12 mr-8">
+
                 <Image src={`/images/products/${item.main_image}`}  width={400} height={400} alt='' className='lg:col-span-2 lg:row-span-2 border border-1 rounded-md'></Image>
+                <div className="">
+                <h2 className="text-sm font-medium text-gray-900">Description</h2>
+                <hr className='mt-6'/>
+                <div
+                  className="prose prose-sm mt-4 text-gray-500 text-sm text-justify"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              </div>
+             
                 {/* {product.images.map((image) => (
                   <img
                     key={image.id}
@@ -307,16 +318,16 @@ useEffect(() => {
                       // className="flex items-center space-x-3"
                     >
                       {variations.map((variation:any) => (
-                        <div key={variation.name} className='flex flex-col items-center gap-4 rounded-md border p-4 border-gray-200'>
+                        <div key={variation.name} className='cursor-pointer flex flex-col items-center gap-4 rounded-md border p-4 border-gray-200 hover:bg-[#F2EDEA] hover:border-[#F2EDEA]'>
                           <Radio
                             
                             value={variation}
                           
                             className={({ focus, checked }) =>
                               classNames(
-                                focus && checked ? 'ring-offset-1' : '',
-                                !focus && checked ? 'ring-2' : '',
-                                'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                                focus && checked ? 'ring-offset-1 ' : '',
+                                !focus && checked ? 'ring-2 ' : '',
+                                'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none '
                               )
                             }
                         
@@ -330,7 +341,7 @@ useEffect(() => {
                           
 
                           </Radio>
-                          <div className='text-sm flex flex-col gap-1 text-center'>
+                          <div className='text-sm flex flex-col gap-1 text-center '>
                             <p>{variation.name}</p>
                             <hr className='my-2'/>
                             <p><span>{variation.thickness}</span><span> mm</span></p>
@@ -490,21 +501,16 @@ useEffect(() => {
 
                   </div>
 
-                  <div className='flex justify-center items-center pt-8 gap-8'>
+                  <div className='flex justify-center items-center gap-4 rounded-md border border-[#B8AEA7] my-8 mx-20'>
                     <p>TARIF :</p>
-                    <span className='font-semibold text-xl redAlu'>{price.toFixed(2)}  </span><span className='text-xs'>€ TTC</span>
+                    <span className='font-semibold text-xl redAlu'>{price_ht.toFixed(2)} €</span><span className='text-xs'>HT</span>
                     
                   </div>
                   
                 </div>
              
 
-                {/* PRICE */}
-
-                <div className='mt-8'>
-                  <h2 className="text-lg font-medium text-gray-900">Tarif</h2>
-                  <hr className='my-4'/>
-                </div>
+              
 
                 <button
                onClick={handleAddToList}
@@ -518,30 +524,9 @@ useEffect(() => {
               </form>
 
               {/* Product details */}
-              <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Description</h2>
+          
 
-                <div
-                  className="prose prose-sm mt-4 text-gray-500"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
-              </div>
-
-              <div className="mt-8 border-t border-gray-200 pt-8">
-                <h2 className="text-sm font-medium text-gray-900">Détails</h2>
-
-                <div className="prose prose-sm mt-4 text-gray-500">
-                  <ul role="list">
-                    <li>Longueur : {item.length} mm</li>
-                    <li>Poids : {item.weight} gr</li>
-                    <li>Epaisseur : {selectedThickness} mm</li>
-                 
-                    {/* {product.details.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))} */}
-                  </ul>
-                </div>
-              </div>
+        
 
               {/* Policies */}
               <section aria-labelledby="policies-heading" className="mt-10">

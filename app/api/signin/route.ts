@@ -3,6 +3,7 @@ import connectDB from '@/app/db';
 import User from '@/app/models/User'; // Ensure this path is correct
 import bcrypt from 'bcrypt'; 
 
+//http://localhost:3000/api/signin
 
 export async function POST(request: Request) {
   try {

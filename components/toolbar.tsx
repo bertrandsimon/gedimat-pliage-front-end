@@ -1,8 +1,8 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
-import { addFriendToStore } from "@/app/reducers/friends"
-import { loggedStatus, loggedName, loggedSurname, userId } from "@/app/reducers/user"
+
+import { loggedStatus, loggedName, loggedSurname, userId, isPro } from "@/app/reducers/user"
 import { cartItemCount } from "@/app/reducers/cart"
 
 import { useState, useEffect } from "react"
@@ -49,15 +49,17 @@ export default function Toolbar() {
     dispatch(loggedName(""))
     dispatch(loggedSurname(""))
     dispatch(userId(""))
+    dispatch(isPro(false))
     router.push('/');
   }
 
-  const friends = useSelector((state: any) => state.friends.value)
+  
   const cartCount = useSelector(cartItemCount)
   const userConnected = useSelector((state: any) => state.user.userConnected)
   const surname = useSelector((state: any) => state.user.surname)
   const name = useSelector((state: any) => state.user.name)
   const customer_id = useSelector((state: any) => state.user.userId);
+  const isPro = useSelector((state:any) => state.user.is_pro);
 
   if (!isMounted) {
     return null;
@@ -133,10 +135,15 @@ export default function Toolbar() {
               <Link href="/cart" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
                 <ShoppingCartIcon className="size-6" />
               </Link>
+              
+              
             </div>
           }
-
-          {userConnected && <span className='text-xs capitalize'>{name} {surname}</span>}
+          <div>|</div>
+          {userConnected && <span className='text-xs capitalize cursor-pointer'>{name} {surname}</span>
+          
+          }
+          {userConnected && isPro &&<div className='rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer'>pro</div>}
         </div>
       </div>
     
