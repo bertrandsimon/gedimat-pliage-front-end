@@ -2,8 +2,19 @@
 
 const nextConfig = {
   images: {
-    domains: ["images.unsplash.com", "tailwindui.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**', // Matches any path
+      },
+      {
+        protocol: 'https',
+        hostname: 'tailwindui.com',
+        pathname: '/**', // Matches any path
+      },
+    ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
