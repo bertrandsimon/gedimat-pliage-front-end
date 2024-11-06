@@ -1,13 +1,13 @@
 'use client'
 // components/SimpleGltfModel.tsx
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import React, { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, useGLTF } from '@react-three/drei'
 
 const Model: React.FC = () => {
-  const { scene } = useGLTF('/gltf/test.gltf') as any;
-  return <primitive object={scene} />;
-};
+  const { scene } = useGLTF('/gltf/test.gltf') as any
+  return <primitive object={scene} />
+}
 
 const SimpleGltfModel: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const SimpleGltfModel: React.FC = () => {
       </Suspense>
       <OrbitControls />
     </Canvas>
-  );
-};
+  )
+}
 
-export default SimpleGltfModel;
+export default SimpleGltfModel

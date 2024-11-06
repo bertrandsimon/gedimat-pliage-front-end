@@ -78,7 +78,7 @@ export default function SingleProduct({
 
   const [width, setWidth] = useState(1200)
   const minWidth = useMemo(() => {
-    return 1200
+    return 1000
   }, [])
   const minA = item.price_calculation.min_measures.A || 0
   const [A, setA] = useState(minA || 0)
@@ -264,6 +264,14 @@ export default function SingleProduct({
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
                 </div>
+
+                <Image
+                  className="cursor-pointer"
+                  alt="expertise pliage"
+                  width={343}
+                  height={153}
+                  src="/images/expertise.jpg"
+                ></Image>
 
                 {/* {product.images.map((image) => (
                   <img
