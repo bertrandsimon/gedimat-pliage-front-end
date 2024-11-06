@@ -6,6 +6,7 @@ import { evaluate } from 'mathjs'
 import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '@/app/reducers/cart'
 import { nanoid } from 'nanoid'
+
 import {
   loggedStatus,
   userId,
@@ -78,7 +79,7 @@ export default function SingleProduct({
 
   const [width, setWidth] = useState(1200)
   const minWidth = useMemo(() => {
-    return 1000
+    return 1200
   }, [])
   const minA = item.price_calculation.min_measures.A || 0
   const [A, setA] = useState(minA || 0)
@@ -245,8 +246,8 @@ export default function SingleProduct({
     </Button>
         */}
 
-            <div className="mt-8 lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
-              <div className="flex flex-col gap-12 mr-8">
+            <div className="lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
+              <div className="flex flex-col gap-6 mr-8">
                 <Image
                   src={`/images/products/${item.main_image}`}
                   width={400}
@@ -255,12 +256,10 @@ export default function SingleProduct({
                   className="lg:col-span-2 lg:row-span-2 border border-1 rounded-md"
                 ></Image>
                 <div className="">
-                  <h2 className="text-sm font-medium text-gray-900">
-                    Description
-                  </h2>
+                  <h2 className="text-sm font-medium">Description</h2>
                   <hr className="mt-6" />
                   <div
-                    className="prose prose-sm mt-4 text-gray-500 text-sm text-justify"
+                    className="prose prose-sm mt-4 text-sm text-justify"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
                 </div>
@@ -272,6 +271,30 @@ export default function SingleProduct({
                   height={153}
                   src="/images/expertise.jpg"
                 ></Image>
+
+                <section className="">
+                  <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    {policies.map((policy) => (
+                      <div
+                        key={policy.name}
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
+                      >
+                        <dt>
+                          <policy.icon
+                            className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          <span className="mt-4 text-sm font-medium text-gray-900">
+                            {policy.name}
+                          </span>
+                        </dt>
+                        <dd className="mt-1 text-sm text-gray-500">
+                          {policy.description}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </section>
 
                 {/* {product.images.map((image) => (
                   <img
@@ -596,31 +619,6 @@ export default function SingleProduct({
               </form>
 
               {/* Product details */}
-
-              {/* Policies */}
-              <section aria-labelledby="policies-heading" className="mt-10">
-                <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                  {policies.map((policy) => (
-                    <div
-                      key={policy.name}
-                      className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
-                    >
-                      <dt>
-                        <policy.icon
-                          className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
-                          aria-hidden="true"
-                        />
-                        <span className="mt-4 text-sm font-medium text-gray-900">
-                          {policy.name}
-                        </span>
-                      </dt>
-                      <dd className="mt-1 text-sm text-gray-500">
-                        {policy.description}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </section>
             </div>
           </div>
         </div>
