@@ -52,12 +52,12 @@ export default function RootLayout({
           <SimpleGltfModel />
         </div> */}
 
-          {/* <Suspense> */}
-          <div className="container mx-auto px-4">
-            {children}
-            <SpeedInsights />
-          </div>
-          {/* </Suspense> */}
+          <Suspense>
+            <div className="container mx-auto px-4">
+              {children}
+              <SpeedInsights />
+            </div>
+          </Suspense>
 
           <div className="bg-black">
             <div className="container mx-auto px-14">
