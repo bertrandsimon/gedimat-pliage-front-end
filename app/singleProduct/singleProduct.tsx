@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
 import { evaluate } from 'mathjs'
 import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '@/app/reducers/cart'
@@ -50,7 +51,7 @@ export default function SingleProduct({
   materials: any[]
 }) {
   const { toast } = useToast()
-
+  const router = useRouter()
   const isPro = useSelector((state: any) => state.user.is_pro)
 
   //const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
@@ -75,20 +76,22 @@ export default function SingleProduct({
   //   return undefined; // Set to undefined if key does not exist
   // };
 
-  const [width, setWidth] = useState(1000)
-
-  const minA = item.price_calculation.min_measures.A
-  const [A, setA] = useState(minA)
-  const minB = item.price_calculation.min_measures.B
-  const [B, setB] = useState(minB)
-  const minC = item.price_calculation.min_measures.C
+  const [width, setWidth] = useState(1200)
+  const minWidth = useMemo(() => {
+    return 1200
+  }, [])
+  const minA = item.price_calculation.min_measures.A || 0
+  const [A, setA] = useState(minA || 0)
+  const minB = item.price_calculation.min_measures.B || 0
+  const [B, setB] = useState(minB || 0)
+  const minC = item.price_calculation.min_measures.C || 0
   const [C, setC] = useState(minC || 0)
-  const minD = item.price_calculation.min_measures.D
-  const [D, setD] = useState(minD)
-  const minE = item.price_calculation.min_measures.E
-  const [E, setE] = useState(minE)
-  const minF = item.price_calculation.min_measures.F
-  const [F, setF] = useState(minF)
+  const minD = item.price_calculation.min_measures.D || 0
+  const [D, setD] = useState(minD || 0)
+  const minE = item.price_calculation.min_measures.E || 0
+  const [E, setE] = useState(minE || 0)
+  const minF = item.price_calculation.min_measures.F || 0
+  const [F, setF] = useState(minF || 0)
 
   const handleMeasure = (event: any) => {
     const { name, value } = event.target
@@ -123,6 +126,8 @@ export default function SingleProduct({
   // 1/ surface calculation
   const surfaceCalculation = item.price_calculation.surface_calculation
 
+  // Surface Calculation using useMemo
+
   const calculateSurface = () => {
     // Replace variables directly in the formula string
     let formula = surfaceCalculation
@@ -143,14 +148,6 @@ export default function SingleProduct({
     }
   }
 
-  // Prix de revient
-  // const calculatePrn = () => {
-  //   return calculateSurface() * selectedVariation.price
-  // }
-
-  // PRICE CALCULATION
-  //console.log("selectedVariation", selectedVariation)
-
   const surface = useMemo(calculateSurface, [
     A,
     B,
@@ -158,8 +155,11 @@ export default function SingleProduct({
     D,
     E,
     F,
+    width,
     surfaceCalculation,
   ])
+  // PRICE CALCULATION
+  //console.log("selectedVariation", selectedVariation)
 
   const prn = useMemo(
     () =>
@@ -182,12 +182,12 @@ export default function SingleProduct({
     }
   }, [prn, width, quantity])
 
-  // useEffect(() => {
-  //   console.log('Surface:', surface)
-  //   console.log('PRN:', prn)
-  //   console.log('MDO:', mdo)
-  //   console.log('Price:', price_ht)
-  // }, [surface, prn, price_ht])
+  useEffect(() => {
+    console.log('Surface:', surface)
+    console.log('PRN:', prn)
+    console.log('MDO:', mdo)
+    console.log('Price:', price_ht)
+  }, [surface, prn, price_ht])
 
   const handleMaterialChoice = (material: any) => {
     setSelectedMaterial(material)
@@ -218,6 +218,7 @@ export default function SingleProduct({
       },
     }
     dispatch(addToCart(newProduct))
+    router.push('/cart')
   }
 
   return (
@@ -524,7 +525,7 @@ export default function SingleProduct({
                 <div className="grid grid-cols-2">
                   <div className="flex flex-col">
                     <div className="mt-8 flex items-center gap-2">
-                      <p>Longueur de la pièce :</p>
+                      <p>Longueur:</p>
                       <input
                         type="number"
                         value={width} // Show empty string if quantity is 0
@@ -538,6 +539,11 @@ export default function SingleProduct({
                         className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
                       />
                       <span>mm</span>
+                      {width < minWidth && (
+                        <p className="text-red-500 text-sm">
+                          Minimum {minWidth} mm
+                        </p>
+                      )}
                     </div>
 
                     <div className="mt-8 flex items-center gap-2">
@@ -567,6 +573,7 @@ export default function SingleProduct({
                 </div>
 
                 <button
+                  type="button"
                   onClick={handleAddToList}
                   disabled={quantity === 0} // Disable button when quantity is 0
                   className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
