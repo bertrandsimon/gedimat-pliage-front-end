@@ -7,15 +7,6 @@ import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '@/app/reducers/cart'
 import { nanoid } from 'nanoid'
 
-import {
-  loggedStatus,
-  userId,
-  loggedName,
-  loggedSurname,
-  loggedToken,
-  isPro,
-} from '@/app/reducers/user'
-
 import { Radio, RadioGroup } from '@headlessui/react'
 import {
   CurrencyDollarIcon,
@@ -23,9 +14,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
-//import {ProductInterface} from '@/app/interfaces/product'
 import { useToast } from '@/hooks/use-toast'
-import { Button } from '@/components/button'
 
 const policies = [
   {
@@ -55,7 +44,6 @@ export default function SingleProduct({
   const router = useRouter()
   const isPro = useSelector((state: any) => state.user.is_pro)
 
-  //const [selectedColor, setSelectedColor] = useState(item.colors?.[0] || null);
   const [selectedMaterial, setSelectedMaterial] = useState(
     materials?.[0] || null
   )
@@ -69,17 +57,9 @@ export default function SingleProduct({
 
   // MEASURES
 
-  // const getInitialValue = (key:any) => {
-  //   // Check if the key exists in the object
-  //   if (item.price_calculation.measures.hasOwnProperty(key)) {
-  //     return null; // Set to null if key exists
-  //   }
-  //   return undefined; // Set to undefined if key does not exist
-  // };
-
-  const [width, setWidth] = useState(1200)
+  const [width, setWidth] = useState(120)
   const minWidth = useMemo(() => {
-    return 1200
+    return 120
   }, [])
   const minA = item.price_calculation.min_measures.A || 0
   const [A, setA] = useState(minA || 0)
@@ -124,10 +104,7 @@ export default function SingleProduct({
 
   // PRICE CALCULATION
 
-  // 1/ surface calculation
   const surfaceCalculation = item.price_calculation.surface_calculation
-
-  // Surface Calculation using useMemo
 
   const calculateSurface = () => {
     // Replace variables directly in the formula string
@@ -159,8 +136,8 @@ export default function SingleProduct({
     width,
     surfaceCalculation,
   ])
-  // PRICE CALCULATION
-  //console.log("selectedVariation", selectedVariation)
+
+  console.log('selectedVariation', selectedVariation)
 
   const prn = useMemo(
     () =>
@@ -188,7 +165,8 @@ export default function SingleProduct({
     console.log('PRN:', prn)
     console.log('MDO:', mdo)
     console.log('Price:', price_ht)
-  }, [surface, prn, price_ht])
+    console.log('selectedVariation.price :', selectedVariation.price)
+  }, [surface, prn, price_ht, selectedVariation.price])
 
   const handleMaterialChoice = (material: any) => {
     setSelectedMaterial(material)
