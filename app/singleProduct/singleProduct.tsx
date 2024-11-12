@@ -6,6 +6,7 @@ import { evaluate } from 'mathjs'
 import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '@/app/reducers/cart'
 import { nanoid } from 'nanoid'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 import { Radio, RadioGroup } from '@headlessui/react'
 import {
@@ -209,6 +210,7 @@ export default function SingleProduct({
               <h1 className="text-md font-medium redAlu uppercase">
                 {item.name}
               </h1>
+
               {/* <p className="text-xl font-medium text-gray-900">{price} Euros HT</p> */}
             </div>
 
@@ -262,6 +264,7 @@ export default function SingleProduct({
                             className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
                             aria-hidden="true"
                           />
+
                           <span className="mt-4 text-sm font-medium text-gray-900">
                             {policy.name}
                           </span>

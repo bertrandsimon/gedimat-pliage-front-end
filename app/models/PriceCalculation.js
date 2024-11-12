@@ -1,19 +1,21 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const priceCalculationSchema = new mongoose.Schema({
   product_name: String,
   measures: Object,
   max_measures: Object,
   min_measures: Object,
+  max_width: Number,
+  custom_angles: Boolean,
+  min_angles: Object,
+  min_angles: Object,
   quantity_discount: Number,
-  material_thickness_price: Number,
-  preparation_time_price: Number,
-  variable_time_price: Number,
   surface_calculation: String,
-});
+  prefered_materials: Array,
+})
 
 const PriceCalculation =
   mongoose.models.PriceCalculation ||
-  mongoose.model("PriceCalculation", priceCalculationSchema);
+  mongoose.model('PriceCalculation', priceCalculationSchema)
 
-export default PriceCalculation;
+export default PriceCalculation
