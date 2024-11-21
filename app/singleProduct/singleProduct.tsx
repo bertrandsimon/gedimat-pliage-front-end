@@ -16,7 +16,7 @@ import {
 import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
 import { useToast } from '@/hooks/use-toast'
-
+import { Button } from '@/components/ui/button'
 const policies = [
   {
     name: 'Livraison',
@@ -241,17 +241,16 @@ export default function SingleProduct({
               {/* <p className="text-xl font-medium text-gray-900">{price} Euros HT</p> */}
             </div>
 
-            {/* <Button
-      onClick={() => {
-        toast({
-          title: "Produit ajouté",
-          description: "Vous avez ajouté un produit à votre liste",
-        })
-      }}
-    >
-      Show Toast
-    </Button>
-        */}
+            <Button
+              onClick={() => {
+                toast({
+                  title: 'Produit ajouté',
+                  description: 'Vous avez ajouté un produit à votre liste',
+                })
+              }}
+            >
+              Show Toast
+            </Button>
 
             <div className="lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               <div className="flex flex-col gap-6 mr-8">
@@ -467,7 +466,7 @@ export default function SingleProduct({
                   {/* col1 */}
                   <div>
                     <Image
-                      src="/images/products/schemas/couvertine-a-coller2.jpg"
+                      src="/images/products/schemas/couvertine-a-coller-1.jpg"
                       width={400}
                       height={400}
                       alt=""
@@ -601,6 +600,7 @@ export default function SingleProduct({
                     <div className="mt-8 flex items-center gap-2">
                       <p>Nombre de produits :</p>
                       <button
+                        type="button"
                         onClick={handleDecrement}
                         className="bg-gray-200 p-2 rounded-md text-gray-800 hover:bg-gray-300"
                       >
@@ -615,6 +615,7 @@ export default function SingleProduct({
                         className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
                       />
                       <button
+                        type="button"
                         onClick={handleIncrement}
                         className="bg-gray-200 p-2 rounded-md text-gray-800 hover:bg-gray-300"
                       >
