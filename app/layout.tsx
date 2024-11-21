@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { Quicksand } from 'next/font/google'
 import Toolbar from '../components/toolbar'
-import Nav from '@/components/nav'
 
 import Footer from '@/components/footer'
 import { Navmenu } from '@/components/navmenu'

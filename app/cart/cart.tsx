@@ -1,6 +1,5 @@
 'use client'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,8 +8,6 @@ import Steps from '@/components/homepage/steps'
 import OrderConfirmation from './orderConfirmation'
 
 import { MoreHorizontal } from 'lucide-react'
-
-import { Badge } from '@/components/ui/badge'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -44,16 +41,17 @@ export default function Cart() {
 
   const cartItems = useSelector((state: any) => state.cart.cart)
 
-  //console.log('cartItems : ', cartItems)
+  console.log('cartItems : ', cartItems)
 
   const customer_id = useSelector((state: any) => state.user.userId)
   const totalPriceHT = cartItems.reduce(
-    (total: number, item: any) => total + item.price_ht * item.quantity,
+    (total: number, item: any) =>
+      total + item.price_ht_single_unit * item.quantity,
     0
   )
   const totalPriceTTC = totalPriceHT * 1.2
-  const orderDataTotalHT = totalPriceHT.toFixed(2)
-  const orderDataTotalTTC = totalPriceTTC.toFixed(2)
+  const orderDataTotalHT = Number(totalPriceHT.toFixed(2))
+  const orderDataTotalTTC = Number(totalPriceTTC.toFixed(2))
 
   const orderDatas = {
     created_at: new Date(),
@@ -119,10 +117,15 @@ export default function Cart() {
           {item.width !== 0 && <li>Longueur : {item.width} mm</li>}
         </ul>
       </TableCell>
+      <TableCell className="text-left redAlu font-bold">
+        {item.price_ht_single_unit} €
+      </TableCell>
       <TableCell>{item.quantity} </TableCell>
-      <TableCell>{item.quantity * item.price_ht.toFixed(2)} €</TableCell>
       <TableCell>
-        {(item.quantity * item.price_ht * 1.2).toFixed(2)} €
+        {(item.quantity * item.price_ht_single_unit).toFixed(2)} €
+      </TableCell>
+      <TableCell className="font-bold">
+        {Number((item.quantity * item.price_ht_single_unit * 1.2).toFixed(2))} €
       </TableCell>
 
       {/* <TableCell className="hidden md:table-cell">
@@ -172,11 +175,12 @@ export default function Cart() {
                   <TableHead className="hidden w-[100px] sm:table-cell">
                     <span className="sr-only">Image</span>
                   </TableHead>
-                  <TableHead>Nom</TableHead>
-                  <TableHead>Mesures</TableHead>
-                  <TableHead>Qté</TableHead>
-                  <TableHead>Prix HT</TableHead>
-                  <TableHead>Prix TTC</TableHead>
+                  <TableHead className="text-left">Nom</TableHead>
+                  <TableHead className="text-left">Mesures</TableHead>
+                  <TableHead className="text-left">Prix unitaire</TableHead>
+                  <TableHead className="text-left">Qté</TableHead>
+                  <TableHead className="text-left">Prix HT</TableHead>
+                  <TableHead className="text-left">Prix TTC</TableHead>
                   {/* <TableHead className="hidden md:table-cell">
                     Qté
                   </TableHead> */}

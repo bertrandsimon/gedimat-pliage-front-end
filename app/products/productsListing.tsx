@@ -1,75 +1,98 @@
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import CategoryHeader from "@/components/products/categoryHeader";
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import CategoryHeader from '@/components/products/categoryHeader'
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 export function ProductsListing({ category, subcategory }: any) {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedSubCategory, setSelectedSubCategory] = useState("");
-
+  const [products, setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const [selectedSubCategory, setSelectedSubCategory] = useState('')
 
   // Filtres categories
 
-  const selectSubCategory = (selectedSubCategory:any) => {
+  const selectSubCategory = (selectedSubCategory: any) => {
     if (selectedSubCategory) {
-      setSelectedSubCategory(selectedSubCategory);
+      setSelectedSubCategory(selectedSubCategory)
     }
-  };
+  }
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, { cache: 'force-cache' });
-        const data = await response.json();
-        setProducts(data);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/api/products`,
+          { cache: 'force-cache' }
+        )
+        // const response = await fetch(
+        //   `${process.env.NEXT_PUBLIC_URL}/api/products`,
+        //   { cache: 'no-store' }
+        // )
+        const data = await response.json()
+        setProducts(data)
 
         // Initial filtering based on category and subcategory
-        let filtered = data;
+        let filtered = data
         if (category && subcategory) {
-          filtered = data.filter((product: any) => product.category === category && product.sub_category === subcategory);
+          filtered = data.filter(
+            (product: any) =>
+              product.category === category &&
+              product.sub_category === subcategory
+          )
         } else if (category) {
-          filtered = data.filter((product: any) => product.category === category);
+          filtered = data.filter(
+            (product: any) => product.category === category
+          )
         } else if (subcategory) {
-          filtered = data.filter((product: any) => product.sub_category === subcategory);
+          filtered = data.filter(
+            (product: any) => product.sub_category === subcategory
+          )
         }
 
-        setFilteredProducts(filtered);
+        setFilteredProducts(filtered)
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error)
       }
     }
-    fetchData();
-  }, [category, subcategory]);
+    fetchData()
+  }, [category, subcategory])
 
   // Filter products by selectedSubCategory
   useEffect(() => {
     if (selectedSubCategory) {
-      const filtered = products.filter((product: any) => product.sub_category === selectedSubCategory);
-      setFilteredProducts(filtered);
+      const filtered = products.filter(
+        (product: any) => product.sub_category === selectedSubCategory
+      )
+      setFilteredProducts(filtered)
     } else {
       // Reset to filtered products based on initial category and subcategory filter
-      let filtered = products;
+      let filtered = products
       if (category && subcategory) {
-        filtered = products.filter((product: any) => product.category === category && product.sub_category === subcategory);
+        filtered = products.filter(
+          (product: any) =>
+            product.category === category &&
+            product.sub_category === subcategory
+        )
       } else if (category) {
-        filtered = products.filter((product: any) => product.category === category);
+        filtered = products.filter(
+          (product: any) => product.category === category
+        )
       } else if (subcategory) {
-        filtered = products.filter((product: any) => product.sub_category === subcategory);
+        filtered = products.filter(
+          (product: any) => product.sub_category === subcategory
+        )
       }
-      setFilteredProducts(filtered);
+      setFilteredProducts(filtered)
     }
-  }, [selectedSubCategory, category, subcategory, products]);
+  }, [selectedSubCategory, category, subcategory, products])
 
   return (
     <>
-
       <div className="py-12">
-        <CategoryHeader 
-          title={category} 
-          subtitle={subcategory} 
+        <CategoryHeader
+          title={category}
+          subtitle={subcategory}
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit amet viverra."
           image="/images/inspirations/inspirations/7.jpg"
           selectSubCategory={selectSubCategory}
@@ -91,7 +114,9 @@ export function ProductsListing({ category, subcategory }: any) {
                   />
                 </Link>
               </div>
-              <p className="cursor-pointer pb-2 text-sm text-center">{product.name}</p>
+              <p className="cursor-pointer pb-2 text-sm text-center">
+                {product.name}
+              </p>
               <Link href={`/products/${product._id}`}>
                 <div className="thinBtn greyBtn">
                   <span className="text-xs">voir</span>
@@ -101,7 +126,6 @@ export function ProductsListing({ category, subcategory }: any) {
           </div>
         ))}
       </div>
-      
     </>
-  );
+  )
 }

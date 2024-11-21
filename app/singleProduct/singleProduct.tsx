@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '@/app/reducers/cart'
 import { nanoid } from 'nanoid'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
-
+import SimpleGltfModel from '@/components/gltf/SimpleGltfModel'
 import { Radio, RadioGroup } from '@headlessui/react'
 import {
   CurrencyDollarIcon,
@@ -55,6 +55,20 @@ export default function SingleProduct({
     materials?.[0]?.variations?.[0] || null
   )
   const [quantity, setQuantity] = useState(1)
+
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity + 1))
+  }
+
+  const handleDecrement = () => {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))
+  }
+
+  const handleChange = (e: any) => {
+    const newValue =
+      e.target.value === '' ? 1 : Math.max(1, Number(e.target.value))
+    setQuantity(newValue)
+  }
 
   // MEASURES
 
@@ -134,11 +148,8 @@ export default function SingleProduct({
     D,
     E,
     F,
-    width,
     surfaceCalculation,
   ])
-
-  console.log('selectedVariation', selectedVariation)
 
   const prn = useMemo(
     () =>
@@ -149,25 +160,41 @@ export default function SingleProduct({
       (surface / 1000),
     [surface, selectedVariation, width]
   )
+  // (fixedTimeCost)+(quantity * manipTimeCost)
+  // prettier-ignore
+  const preparationTimeCost = useMemo(() => 10 + (quantity * 5), [quantity])
 
   // mdo = ( (fixedTimeCost) + (quantity * manipTimeCost) ) * mdoCost
-  const mdo = useMemo(() => (10 + quantity * 5) * 2, [quantity])
+  // prettier-ignore
+  const mdo = useMemo(() => 10 + ((quantity * 5) * 2), [quantity])
 
-  const price_ht = useMemo(() => {
+  const price_ht_single_unit = useMemo(() => {
     if (isPro) {
-      return (prn + mdo) * 1.45
+      return ((prn + mdo) * 1.45) / quantity
     } else {
-      return (prn + mdo) * 1.81
+      return ((prn + mdo) * 1.81) / quantity
     }
-  }, [prn, width, quantity])
+  }, [prn, mdo, isPro, quantity])
+
+  const price_ht_total = useMemo(() => {
+    return price_ht_single_unit * quantity
+  }, [price_ht_single_unit, quantity])
 
   useEffect(() => {
     console.log('Surface:', surface)
     console.log('PRN:', prn)
     console.log('MDO:', mdo)
-    console.log('Price:', price_ht)
+    console.log('preparationTimeCost:', preparationTimeCost)
+    console.log('price_ht_single_unit:', price_ht_single_unit)
     console.log('selectedVariation.price :', selectedVariation.price)
-  }, [surface, prn, price_ht, selectedVariation.price])
+  }, [
+    surface,
+    prn,
+    price_ht_single_unit,
+    preparationTimeCost,
+    selectedVariation.price,
+    mdo,
+  ])
 
   const handleMaterialChoice = (material: any) => {
     setSelectedMaterial(material)
@@ -185,7 +212,7 @@ export default function SingleProduct({
       variation: selectedVariation,
       width: width,
       main_image: item.main_image,
-      price_ht: price_ht,
+      price_ht_single_unit: Number(price_ht_single_unit.toFixed(2)),
       tax: item.tax,
       quantity: quantity,
       measures: {
@@ -202,7 +229,7 @@ export default function SingleProduct({
   }
 
   return (
-    <div className="bg-white">
+    <div>
       <div className="pb-16 pt-6 sm:pb-24">
         <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
@@ -235,13 +262,26 @@ export default function SingleProduct({
                   alt=""
                   className="lg:col-span-2 lg:row-span-2 border border-1 rounded-md"
                 ></Image>
-                <div className="">
+                <div>
                   <h2 className="text-sm font-medium">Description</h2>
                   <hr className="mt-6" />
                   <div
                     className="prose prose-sm mt-4 text-sm text-justify"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium">Matériaux recommandés</h2>
+                  <hr className="mt-6" />
+                  <ul className="mt-4 list-disc pl-4 text-sm">
+                    <li>test</li>
+                    <li>test</li>
+                    <li>test</li>
+                  </ul>
+                </div>
+                <div className="border border-1 p-1 rounded-md h-80 w-84 cursor-pointer">
+                  <SimpleGltfModel />
                 </div>
 
                 <Image
@@ -427,7 +467,7 @@ export default function SingleProduct({
                   {/* col1 */}
                   <div>
                     <Image
-                      src="/images/products/schemas/schema.jpg"
+                      src="/images/products/schemas/couvertine-a-coller2.jpg"
                       width={400}
                       height={400}
                       alt=""
@@ -534,7 +574,7 @@ export default function SingleProduct({
                   <hr className="my-4" />
                 </div>
 
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-2 ">
                   <div className="flex flex-col">
                     <div className="mt-8 flex items-center gap-2">
                       <p>Longueur:</p>
@@ -560,27 +600,44 @@ export default function SingleProduct({
 
                     <div className="mt-8 flex items-center gap-2">
                       <p>Nombre de produits :</p>
+                      <button
+                        onClick={handleDecrement}
+                        className="bg-gray-200 p-2 rounded-md text-gray-800 hover:bg-gray-300"
+                      >
+                        -
+                      </button>
                       <input
                         type="number"
-                        value={quantity === 0 ? '' : quantity} // Show empty string if quantity is 0
-                        onChange={(e) =>
-                          setQuantity(
-                            e.target.value === '' ? 0 : Number(e.target.value)
-                          )
-                        }
-                        min="0"
+                        value={quantity === 1 ? 1 : quantity} // Show empty string if quantity is 0
+                        onChange={handleChange}
+                        min="1"
                         step="1"
                         className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
                       />
+                      <button
+                        onClick={handleIncrement}
+                        className="bg-gray-200 p-2 rounded-md text-gray-800 hover:bg-gray-300"
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
 
-                  <div className="flex justify-center items-center gap-4 rounded-md border border-[#B8AEA7] my-8 mx-20">
-                    <p>TARIF :</p>
-                    <span className="font-semibold text-xl redAlu">
-                      {price_ht.toFixed(2)} €
-                    </span>
-                    <span className="text-xs">HT</span>
+                  <div className="flex flex-col  justify-center items-end rounded-md border border-[#B8AEA7] my-4  gap-2">
+                    <div className="flex justify-center items-center gap-4 mr-4">
+                      <p>TARIF UNITAIRE :</p>
+                      <span className="font-semibold text-xl redAlu">
+                        {price_ht_single_unit.toFixed(2)} €
+                      </span>
+                      <span className="text-xs">HT</span>
+                    </div>
+
+                    <div className="flex justify-center items-center gap-4 mr-4">
+                      <p className="text-sm">Prix total HT :</p>
+                      <span className="font-semibold text-sm">
+                        {Number(price_ht_total.toFixed(2))} €
+                      </span>
+                    </div>
                   </div>
                 </div>
 
