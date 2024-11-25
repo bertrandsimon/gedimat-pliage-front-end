@@ -510,7 +510,7 @@ export default function SingleProduct({
                   {/* col1 */}
                   <div>
                     <Image
-                      src="/images/products/schemas/couvertine-a-coller-1.jpg"
+                      src="/images/products/schemas/couvertine-a-coller.jpg"
                       width={400}
                       height={400}
                       alt=""
