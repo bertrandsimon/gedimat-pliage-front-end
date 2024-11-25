@@ -88,6 +88,31 @@ export default function SingleProduct({
   const [E, setE] = useState(minE || 0)
   const minF = item.price_calculation.min_measures.F || 0
   const [F, setF] = useState(minF || 0)
+  console.log(item)
+
+  if (item.price_calculation.custom_angles) {
+  }
+  const [minAngle1, setMinAngle1] = useState<number | 0>(0)
+  const [maxAngle1, setMaxAngle1] = useState<number | 0>(0)
+  const [minAngle2, setMinAngle2] = useState<number | 0>(0)
+  const [maxAngle2, setMaxAngle2] = useState<number | 0>(0)
+  const [minAngle3, setMinAngle3] = useState<number | 0>(0)
+  const [maxAngle3, setMaxAngle3] = useState<number | 0>(0)
+  const [minAngle4, setMinAngle4] = useState<number | 0>(0)
+  const [maxAngle4, setMaxAngle4] = useState<number | 0>(0)
+
+  useEffect(() => {
+    if (item.price_calculation.custom_angles) {
+      setMinAngle1(item.price_calculation.custom_angles.min_angle1 || 0)
+      setMaxAngle1(item.price_calculation.custom_angles.max_angle1 || 0)
+      setMinAngle2(item.price_calculation.custom_angles.min_angle2 || 0)
+      setMaxAngle2(item.price_calculation.custom_angles.max_angle2 || 0)
+      setMinAngle3(item.price_calculation.custom_angles.min_angle3 || 0)
+      setMaxAngle3(item.price_calculation.custom_angles.max_angle3 || 0)
+      setMinAngle4(item.price_calculation.custom_angles.min_angle4 || 0)
+      setMaxAngle4(item.price_calculation.custom_angles.max_angle4 || 0)
+    }
+  }, [item])
 
   const handleMeasure = (event: any) => {
     const { name, value } = event.target
@@ -223,7 +248,23 @@ export default function SingleProduct({
         E: E ? E : 0,
         F: F ? F : 0,
       },
+      angles: {},
     }
+
+    // Conditionally add angles to the new product object if `custom_angles` exists
+    if (item.price_calculation.custom_angles) {
+      newProduct.angles = {
+        minAngle1: item.price_calculation.custom_angles.min_angle1 || 0,
+        maxAngle1: item.price_calculation.custom_angles.max_angle1 || 0,
+        minAngle2: item.price_calculation.custom_angles.min_angle2 || 0,
+        maxAngle2: item.price_calculation.custom_angles.max_angle2 || 0,
+        minAngle3: item.price_calculation.custom_angles.min_angle3 || 0,
+        maxAngle3: item.price_calculation.custom_angles.max_angle3 || 0,
+        minAngle4: item.price_calculation.custom_angles.min_angle4 || 0,
+        maxAngle4: item.price_calculation.custom_angles.max_angle4 || 0,
+      }
+    }
+
     dispatch(addToCart(newProduct))
     router.push('/cart')
   }
@@ -241,7 +282,7 @@ export default function SingleProduct({
               {/* <p className="text-xl font-medium text-gray-900">{price} Euros HT</p> */}
             </div>
 
-            <Button
+            {/* <Button
               onClick={() => {
                 toast({
                   title: 'Produit ajouté',
@@ -250,7 +291,7 @@ export default function SingleProduct({
               }}
             >
               Show Toast
-            </Button>
+            </Button> */}
 
             <div className="lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               <div className="flex flex-col gap-6 mr-8">
@@ -273,10 +314,13 @@ export default function SingleProduct({
                 <div>
                   <h2 className="text-sm font-medium">Matériaux recommandés</h2>
                   <hr className="mt-6" />
+
                   <ul className="mt-4 list-disc pl-4 text-sm">
-                    <li>test</li>
-                    <li>test</li>
-                    <li>test</li>
+                    {item.price_calculation.prefered_materials.map(
+                      (prefered_material: any) => (
+                        <li key={prefered_material}>{prefered_material}</li>
+                      )
+                    )}
                   </ul>
                 </div>
                 <div className="border border-1 p-1 rounded-md h-80 w-84 cursor-pointer">
@@ -551,6 +595,10 @@ export default function SingleProduct({
                       </div>
                     )}
                     {/* input C */}
+
+                    {/* Angle 1 */}
+
+                    {/* Angle 2 */}
                   </div>
 
                   {/* col2 */}
@@ -602,7 +650,7 @@ export default function SingleProduct({
                       <button
                         type="button"
                         onClick={handleDecrement}
-                        className="bg-gray-200 p-2 rounded-md text-gray-800 hover:bg-gray-300"
+                        className="bg-gray-200 p-2 py-1 px-2 rounded-md text-gray-800 hover:bg-gray-300"
                       >
                         -
                       </button>
@@ -617,7 +665,7 @@ export default function SingleProduct({
                       <button
                         type="button"
                         onClick={handleIncrement}
-                        className="bg-gray-200 p-2 rounded-md text-gray-800 hover:bg-gray-300"
+                        className="bg-gray-200 p-2 py-1 px-2 rounded-md text-gray-800 hover:bg-gray-300"
                       >
                         +
                       </button>

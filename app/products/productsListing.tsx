@@ -21,14 +21,14 @@ export function ProductsListing({ category, subcategory }: any) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL}/api/products`,
-          { cache: 'force-cache' }
-        )
         // const response = await fetch(
         //   `${process.env.NEXT_PUBLIC_URL}/api/products`,
-        //   { cache: 'no-store' }
+        //   { cache: 'force-cache' }
         // )
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/api/products`,
+          { cache: 'no-store' }
+        )
         const data = await response.json()
         setProducts(data)
 
