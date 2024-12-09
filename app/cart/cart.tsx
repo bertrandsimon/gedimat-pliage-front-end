@@ -107,13 +107,25 @@ export default function Cart() {
         </div>
       </TableCell>
       <TableCell>
-        <ul className="flex flex-col gap-1 list-disc text-sm">
+        <ul className="flex flex-col gap-1 list-disc text-xs">
           {item.measures.A !== 0 && <li>A : {item.measures.A} mm</li>}
           {item.measures.B !== 0 && <li>B : {item.measures.B} mm</li>}
           {item.measures.C !== 0 && <li>C : {item.measures.C} mm</li>}
           {item.measures.D !== 0 && <li>D : {item.measures.D} mm</li>}
           {item.measures.E !== 0 && <li>E : {item.measures.E} mm</li>}
           {item.measures.F !== 0 && <li>F : {item.measures.F} mm</li>}
+          {item.measures.angle1 !== 0 && (
+            <li>Angle 1 : {item.angles.angle1} °</li>
+          )}
+          {item.measures.angle2 !== 0 && (
+            <li>Angle 2 : {item.angles.angle2} °</li>
+          )}
+          {item.measures.angle3 !== 0 && (
+            <li>Angle 3 : {item.angles.angle3} °</li>
+          )}
+          {item.measures.angle4 !== 0 && (
+            <li>Angle 4 : {item.angles.angle4} °</li>
+          )}
           {item.width !== 0 && <li>Longueur : {item.width} mm</li>}
         </ul>
       </TableCell>

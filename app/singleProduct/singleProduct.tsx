@@ -92,6 +92,10 @@ export default function SingleProduct({
 
   if (item.price_calculation.custom_angles) {
   }
+  const [angle1, setAngle1] = useState<number | 0>(0)
+  const [angle2, setAngle2] = useState<number | 0>(0)
+  const [angle3, setAngle3] = useState<number | 0>(0)
+  const [angle4, setAngle4] = useState<number | 0>(0)
   const [minAngle1, setMinAngle1] = useState<number | 0>(0)
   const [maxAngle1, setMaxAngle1] = useState<number | 0>(0)
   const [minAngle2, setMinAngle2] = useState<number | 0>(0)
@@ -103,16 +107,20 @@ export default function SingleProduct({
 
   useEffect(() => {
     if (item.price_calculation.custom_angles) {
-      setMinAngle1(item.price_calculation.custom_angles.min_angle1 || 0)
-      setMaxAngle1(item.price_calculation.custom_angles.max_angle1 || 0)
-      setMinAngle2(item.price_calculation.custom_angles.min_angle2 || 0)
-      setMaxAngle2(item.price_calculation.custom_angles.max_angle2 || 0)
-      setMinAngle3(item.price_calculation.custom_angles.min_angle3 || 0)
-      setMaxAngle3(item.price_calculation.custom_angles.max_angle3 || 0)
-      setMinAngle4(item.price_calculation.custom_angles.min_angle4 || 0)
-      setMaxAngle4(item.price_calculation.custom_angles.max_angle4 || 0)
+      setAngle1(item.price_calculation.min_angles['1'] || 0)
+      setAngle2(item.price_calculation.min_angles['2'] || 0)
+      setAngle3(item.price_calculation.min_angles['3'] || 0)
+      setAngle4(item.price_calculation.min_angles['4'] || 0)
+      setMinAngle1(item.price_calculation.min_angles['1'] || 0)
+      setMaxAngle1(item.price_calculation.max_angles['1'] || 0)
+      setMinAngle2(item.price_calculation.min_angles['2'] || 0)
+      setMaxAngle2(item.price_calculation.max_angles['2'] || 0)
+      setMinAngle3(item.price_calculation.min_angles['3'] || 0)
+      setMaxAngle3(item.price_calculation.max_angles['3'] || 0)
+      setMinAngle4(item.price_calculation.min_angles['4'] || 0)
+      setMaxAngle4(item.price_calculation.max_angles['4'] || 0)
     }
-  }, [item])
+  }, [item, minAngle1, maxAngle1])
 
   const handleMeasure = (event: any) => {
     const { name, value } = event.target
@@ -136,6 +144,18 @@ export default function SingleProduct({
         break
       case 'F':
         setF(value)
+        break
+      case '1':
+        setAngle1(value)
+        break
+      case '2':
+        setAngle2(value)
+        break
+      case '3':
+        setAngle3(value)
+        break
+      case '4':
+        setAngle4(value)
         break
       default:
         break
@@ -248,21 +268,12 @@ export default function SingleProduct({
         E: E ? E : 0,
         F: F ? F : 0,
       },
-      angles: {},
-    }
-
-    // Conditionally add angles to the new product object if `custom_angles` exists
-    if (item.price_calculation.custom_angles) {
-      newProduct.angles = {
-        minAngle1: item.price_calculation.custom_angles.min_angle1 || 0,
-        maxAngle1: item.price_calculation.custom_angles.max_angle1 || 0,
-        minAngle2: item.price_calculation.custom_angles.min_angle2 || 0,
-        maxAngle2: item.price_calculation.custom_angles.max_angle2 || 0,
-        minAngle3: item.price_calculation.custom_angles.min_angle3 || 0,
-        maxAngle3: item.price_calculation.custom_angles.max_angle3 || 0,
-        minAngle4: item.price_calculation.custom_angles.min_angle4 || 0,
-        maxAngle4: item.price_calculation.custom_angles.max_angle4 || 0,
-      }
+      angles: {
+        angle1: angle1 ? angle1 : 0,
+        angle2: angle2 ? angle2 : 0,
+        angle3: angle3 ? angle3 : 0,
+        angle4: angle4 ? angle4 : 0,
+      },
     }
 
     dispatch(addToCart(newProduct))
@@ -597,8 +608,126 @@ export default function SingleProduct({
                     {/* input C */}
 
                     {/* Angle 1 */}
+                    {item.price_calculation.min_angles.hasOwnProperty('1') && (
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="1" className="text-sm">
+                          Angle 1 :
+                        </label>
+                        <input
+                          onChange={handleMeasure}
+                          value={angle1}
+                          type="number"
+                          name="1"
+                          id="1"
+                          min={minAngle1}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className="text-sm">degrés</span>
+                        {angle1 < minAngle1 && (
+                          <p className="text-red-500 text-sm">
+                            Minimum {minAngle1} degrés
+                          </p>
+                        )}
 
+                        {angle1 > maxAngle1 && (
+                          <p className="text-red-500 text-sm">
+                            Maximum {maxAngle1} degrés
+                          </p>
+                        )}
+                      </div>
+                    )}
                     {/* Angle 2 */}
+
+                    {item.price_calculation.min_angles.hasOwnProperty('2') && (
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="2" className="text-sm">
+                          Angle 2 :
+                        </label>
+                        <input
+                          onChange={handleMeasure}
+                          value={angle2}
+                          type="number"
+                          name="2"
+                          id="2"
+                          min={minAngle2}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className="text-sm">degrés</span>
+                        {angle2 < minAngle2 && (
+                          <p className="text-red-500 text-sm">
+                            Minimum {minAngle1} degrés
+                          </p>
+                        )}
+
+                        {angle2 > maxAngle2 && (
+                          <p className="text-red-500 text-sm">
+                            Maximum {maxAngle2} degrés
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Angle 3 */}
+
+                    {item.price_calculation.min_angles.hasOwnProperty('3') && (
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="3" className="text-sm">
+                          Angle 3 :
+                        </label>
+                        <input
+                          onChange={handleMeasure}
+                          value={angle3}
+                          type="number"
+                          name="3"
+                          id="3"
+                          min={minAngle3}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className="text-sm">degrés</span>
+                        {angle3 < minAngle3 && (
+                          <p className="text-red-500 text-sm">
+                            Minimum {minAngle1} degrés
+                          </p>
+                        )}
+
+                        {angle3 > maxAngle3 && (
+                          <p className="text-red-500 text-sm">
+                            Maximum {maxAngle3} degrés
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Angle 4 */}
+
+                    {item.price_calculation.min_angles.hasOwnProperty('4') && (
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="4" className="text-sm">
+                          Angle 3 :
+                        </label>
+                        <input
+                          onChange={handleMeasure}
+                          value={angle4}
+                          type="number"
+                          name="4"
+                          id="4"
+                          min={minAngle4}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className="text-sm">degrés</span>
+                        {angle4 < minAngle4 && (
+                          <p className="text-red-500 text-sm">
+                            Minimum {minAngle1} degrés
+                          </p>
+                        )}
+
+                        {angle4 > maxAngle4 && (
+                          <p className="text-red-500 text-sm">
+                            Maximum {maxAngle4} degrés
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* col2 */}
