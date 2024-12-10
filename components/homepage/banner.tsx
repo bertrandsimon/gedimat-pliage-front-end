@@ -22,7 +22,9 @@ export default function Banner() {
               quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit
               amet viverra.{' '}
             </p>
-            <div className="lgBtn redBtn max-w-[124px] my-2">en savoir +</div>
+            <div className="lgBtn redBtn max-w-[124px] my-2">
+              <Link href="/presentation">en savoir +</Link>
+            </div>
             {/* <Button variant="outline">Button</Button> */}
           </div>
 

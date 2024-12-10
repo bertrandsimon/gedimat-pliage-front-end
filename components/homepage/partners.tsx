@@ -1,7 +1,7 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 import partner1 from '@/public/images/partners/partner1.jpg'
 import partner2 from '@/public/images/partners/partner2.jpg'
@@ -12,7 +12,6 @@ import partner5 from '@/public/images/partners/partner5.jpg'
 export default function Partners() {
   return (
     <>
-
       {/* <Swiper
         style={{ height: "120px" }}
         modules={[Navigation, Pagination, Autoplay]}
@@ -188,13 +187,22 @@ export default function Partners() {
       </Swiper> */}
 
       <div className="w-full flex gap-2 justify-around items-center px-20 pb-20">
-          <div className="grayscale hover:grayscale-0 cursor-pointer"><Image src={partner1} alt="" className="w-auto"/></div>
-          <div className="grayscale hover:grayscale-0 cursor-pointer"><Image src={partner2} alt="" className="w-auto"/></div>
-          <div className="grayscale hover:grayscale-0 cursor-pointer"><Image src={partner3} alt="" className="w-auto"/></div>
-          <div className="grayscale hover:grayscale-0 cursor-pointer"><Image src={partner4} alt="" className="w-auto"/></div>
-          <div className="grayscale hover:grayscale-0 cursor-pointer"><Image src={partner5} alt="" className="w-auto"/></div>
+        <div className="grayscale hover:grayscale-0 cursor-pointer">
+          <Image src={partner1} alt="" width={85} height={94} />
+        </div>
+        <div className="grayscale hover:grayscale-0 cursor-pointer">
+          <Image src={partner2} alt="" width={190} height={55} />
+        </div>
+        <div className="grayscale hover:grayscale-0 cursor-pointer">
+          <Image src={partner3} alt="" width={173} height={40} />
+        </div>
+        <div className="grayscale hover:grayscale-0 cursor-pointer -mt-4">
+          <Image src={partner4} alt="" width={176} height={41} />
+        </div>
+        <div className="grayscale hover:grayscale-0 cursor-pointer">
+          <Image src={partner5} alt="" width={205} height={32} />
+        </div>
       </div>
-      
     </>
-  );
+  )
 }
