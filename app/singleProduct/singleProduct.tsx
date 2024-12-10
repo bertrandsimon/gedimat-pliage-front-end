@@ -608,126 +608,130 @@ export default function SingleProduct({
                     {/* input C */}
 
                     {/* Angle 1 */}
-                    {item.price_calculation.min_angles.hasOwnProperty('1') && (
-                      <div className="flex justify-start items-center gap-2">
-                        <label htmlFor="1" className="text-sm">
-                          Angle 1 :
-                        </label>
-                        <input
-                          onChange={handleMeasure}
-                          value={angle1}
-                          type="number"
-                          name="1"
-                          id="1"
-                          min={minAngle1}
-                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                        />
-                        <span className="text-sm">degrés</span>
-                        {angle1 < minAngle1 && (
-                          <p className="text-red-500 text-sm">
-                            Minimum {minAngle1} degrés
-                          </p>
-                        )}
+                    {item.price_calculation.custom_angles &&
+                      item.price_calculation.min_angles.hasOwnProperty('1') && (
+                        <div className="flex justify-start items-center gap-2">
+                          <label htmlFor="1" className="text-sm">
+                            Angle 1 :
+                          </label>
+                          <input
+                            onChange={handleMeasure}
+                            value={angle1}
+                            type="number"
+                            name="1"
+                            id="1"
+                            min={minAngle1}
+                            className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                          />
+                          <span className="text-sm">degrés</span>
+                          {angle1 < minAngle1 && (
+                            <p className="text-red-500 text-sm">
+                              Minimum {minAngle1} degrés
+                            </p>
+                          )}
 
-                        {angle1 > maxAngle1 && (
-                          <p className="text-red-500 text-sm">
-                            Maximum {maxAngle1} degrés
-                          </p>
-                        )}
-                      </div>
-                    )}
+                          {angle1 > maxAngle1 && (
+                            <p className="text-red-500 text-sm">
+                              Maximum {maxAngle1} degrés
+                            </p>
+                          )}
+                        </div>
+                      )}
                     {/* Angle 2 */}
 
-                    {item.price_calculation.min_angles.hasOwnProperty('2') && (
-                      <div className="flex justify-start items-center gap-2">
-                        <label htmlFor="2" className="text-sm">
-                          Angle 2 :
-                        </label>
-                        <input
-                          onChange={handleMeasure}
-                          value={angle2}
-                          type="number"
-                          name="2"
-                          id="2"
-                          min={minAngle2}
-                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                        />
-                        <span className="text-sm">degrés</span>
-                        {angle2 < minAngle2 && (
-                          <p className="text-red-500 text-sm">
-                            Minimum {minAngle1} degrés
-                          </p>
-                        )}
+                    {item.price_calculation.custom_angles &&
+                      item.price_calculation.min_angles.hasOwnProperty('2') && (
+                        <div className="flex justify-start items-center gap-2">
+                          <label htmlFor="2" className="text-sm">
+                            Angle 2 :
+                          </label>
+                          <input
+                            onChange={handleMeasure}
+                            value={angle2}
+                            type="number"
+                            name="2"
+                            id="2"
+                            min={minAngle2}
+                            className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                          />
+                          <span className="text-sm">degrés</span>
+                          {angle2 < minAngle2 && (
+                            <p className="text-red-500 text-sm">
+                              Minimum {minAngle1} degrés
+                            </p>
+                          )}
 
-                        {angle2 > maxAngle2 && (
-                          <p className="text-red-500 text-sm">
-                            Maximum {maxAngle2} degrés
-                          </p>
-                        )}
-                      </div>
-                    )}
+                          {angle2 > maxAngle2 && (
+                            <p className="text-red-500 text-sm">
+                              Maximum {maxAngle2} degrés
+                            </p>
+                          )}
+                        </div>
+                      )}
 
                     {/* Angle 3 */}
 
-                    {item.price_calculation.min_angles.hasOwnProperty('3') && (
-                      <div className="flex justify-start items-center gap-2">
-                        <label htmlFor="3" className="text-sm">
-                          Angle 3 :
-                        </label>
-                        <input
-                          onChange={handleMeasure}
-                          value={angle3}
-                          type="number"
-                          name="3"
-                          id="3"
-                          min={minAngle3}
-                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                        />
-                        <span className="text-sm">degrés</span>
-                        {angle3 < minAngle3 && (
-                          <p className="text-red-500 text-sm">
-                            Minimum {minAngle1} degrés
-                          </p>
-                        )}
+                    {item.price_calculation.custom_angles &&
+                      item.price_calculation.min_angles.hasOwnProperty('3') && (
+                        <div className="flex justify-start items-center gap-2">
+                          <label htmlFor="3" className="text-sm">
+                            Angle 3 :
+                          </label>
+                          <input
+                            onChange={handleMeasure}
+                            value={angle3}
+                            type="number"
+                            name="3"
+                            id="3"
+                            min={minAngle3}
+                            className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                          />
+                          <span className="text-sm">degrés</span>
+                          {angle3 < minAngle3 && (
+                            <p className="text-red-500 text-sm">
+                              Minimum {minAngle1} degrés
+                            </p>
+                          )}
 
-                        {angle3 > maxAngle3 && (
-                          <p className="text-red-500 text-sm">
-                            Maximum {maxAngle3} degrés
-                          </p>
-                        )}
-                      </div>
-                    )}
+                          {angle3 > maxAngle3 && (
+                            <p className="text-red-500 text-sm">
+                              Maximum {maxAngle3} degrés
+                            </p>
+                          )}
+                        </div>
+                      )}
 
                     {/* Angle 4 */}
 
-                    {item.price_calculation.min_angles.hasOwnProperty('4') && (
-                      <div className="flex justify-start items-center gap-2">
-                        <label htmlFor="4" className="text-sm">
-                          Angle 3 :
-                        </label>
-                        <input
-                          onChange={handleMeasure}
-                          value={angle4}
-                          type="number"
-                          name="4"
-                          id="4"
-                          min={minAngle4}
-                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                        />
-                        <span className="text-sm">degrés</span>
-                        {angle4 < minAngle4 && (
-                          <p className="text-red-500 text-sm">
-                            Minimum {minAngle1} degrés
-                          </p>
-                        )}
+                    {item.price_calculation.custom_angles &&
+                      item.price_calculation.min_angles.hasOwnProperty('4') && (
+                        <div className="flex justify-start items-center gap-2">
+                          <label htmlFor="4" className="text-sm">
+                            Angle 3 :
+                          </label>
+                          <input
+                            onChange={handleMeasure}
+                            value={angle4}
+                            type="number"
+                            name="4"
+                            id="4"
+                            min={minAngle4}
+                            className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                          />
+                          <span className="text-sm">degrés</span>
+                          {angle4 < minAngle4 && (
+                            <p className="text-red-500 text-sm">
+                              Minimum {minAngle1} degrés
+                            </p>
+                          )}
 
-                        {angle4 > maxAngle4 && (
-                          <p className="text-red-500 text-sm">
-                            Maximum {maxAngle4} degrés
-                          </p>
-                        )}
-                      </div>
-                    )}
+                          {angle4 > maxAngle4 && (
+                            <p className="text-red-500 text-sm">
+                              Maximum {maxAngle4} degrés
+                            </p>
+                          )}
+                        </div>
+                      )}
                   </div>
 
                   {/* col2 */}

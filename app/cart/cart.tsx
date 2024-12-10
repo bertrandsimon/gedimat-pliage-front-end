@@ -114,16 +114,16 @@ export default function Cart() {
           {item.measures.D !== 0 && <li>D : {item.measures.D} mm</li>}
           {item.measures.E !== 0 && <li>E : {item.measures.E} mm</li>}
           {item.measures.F !== 0 && <li>F : {item.measures.F} mm</li>}
-          {item.measures.angle1 !== 0 && (
+          {item.angles.angle1 !== 0 && (
             <li>Angle 1 : {item.angles.angle1} °</li>
           )}
-          {item.measures.angle2 !== 0 && (
+          {item.angles.angle2 !== 0 && (
             <li>Angle 2 : {item.angles.angle2} °</li>
           )}
-          {item.measures.angle3 !== 0 && (
+          {item.angles.angle3 !== 0 && (
             <li>Angle 3 : {item.angles.angle3} °</li>
           )}
-          {item.measures.angle4 !== 0 && (
+          {item.angles.angle4 !== 0 && (
             <li>Angle 4 : {item.angles.angle4} °</li>
           )}
           {item.width !== 0 && <li>Longueur : {item.width} mm</li>}
@@ -193,9 +193,6 @@ export default function Cart() {
                   <TableHead className="text-left">Qté</TableHead>
                   <TableHead className="text-left">Prix HT</TableHead>
                   <TableHead className="text-left">Prix TTC</TableHead>
-                  {/* <TableHead className="hidden md:table-cell">
-                    Qté
-                  </TableHead> */}
 
                   <TableHead>
                     <span className="sr-only">Actions</span>
