@@ -2,6 +2,7 @@
 
 export const dynamic = 'force-dynamic'
 import { useState, useEffect } from 'react'
+import { useToast } from '@/hooks/use-toast'
 
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -28,7 +29,7 @@ import SignInSuccess from './signInSuccess'
 
 export default function SignIn() {
   const dispatch = useDispatch()
-
+  const { toast } = useToast()
   const userConnected = useSelector((state: any) => state.user.userConnected)
 
   const [email, setEmail] = useState('')
@@ -78,8 +79,10 @@ export default function SignIn() {
           dispatch(loggedSurname(data.surname))
           dispatch(isPro(data.isPro))
           dispatch(userId(data.userId))
-          console.log(data)
-          console.log('OK !')
+          toast({
+            title: `Bonjour ${data.surname}`,
+            description: 'Vous êtes bien connecté à votre compte',
+          })
         }
       })
       .catch((error) => {
@@ -118,6 +121,7 @@ export default function SignIn() {
                 value={password}
                 id="password"
                 defaultValue="*******"
+                type="password"
               />
             </div>
           </form>

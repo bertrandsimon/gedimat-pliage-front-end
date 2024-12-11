@@ -1,17 +1,28 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
+import { useToast } from '@/hooks/use-toast'
 
-import { loggedStatus, loggedName, loggedSurname, userId, isPro } from "@/app/reducers/user"
-import { cartItemCount } from "@/app/reducers/cart"
+import {
+  loggedStatus,
+  loggedName,
+  loggedSurname,
+  userId,
+  isPro,
+} from '@/app/reducers/user'
+import { cartItemCount } from '@/app/reducers/cart'
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { UserCircleIcon, ChatBubbleBottomCenterTextIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
-import { Login } from "./login"
+import {
+  UserCircleIcon,
+  ChatBubbleBottomCenterTextIcon,
+  ShoppingCartIcon,
+} from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
+import { Login } from './login'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +30,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from '@/components/ui/dropdown-menu'
 
 import {
   AlertDialog,
@@ -31,121 +42,170 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
+} from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 
 export default function Toolbar() {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false)
 
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const { toast } = useToast()
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
-  const handleDisconnect = () => { 
+  const handleDisconnect = () => {
     dispatch(loggedStatus(false))
-    dispatch(loggedName(""))
-    dispatch(loggedSurname(""))
-    dispatch(userId(""))
+    dispatch(loggedName(''))
+    dispatch(loggedSurname(''))
+    dispatch(userId(''))
     dispatch(isPro(false))
-    router.push('/');
+    router.push('/')
+    toast({
+      title: 'Déconnecté',
+      description: 'Vous êtes bien deconnecté du site',
+    })
   }
 
-  
   const cartCount = useSelector(cartItemCount)
   const userConnected = useSelector((state: any) => state.user.userConnected)
   const surname = useSelector((state: any) => state.user.surname)
   const name = useSelector((state: any) => state.user.name)
-  const customer_id = useSelector((state: any) => state.user.userId);
-  const isPro = useSelector((state:any) => state.user.is_pro);
+  const customer_id = useSelector((state: any) => state.user.userId)
+  const isProUser = useSelector((state: any) => state.user.is_pro)
 
   if (!isMounted) {
-    return null;
+    return null
   }
 
   return (
-    
-      <div className="flex justify-between items-center h-[64px]">
-        <div>
-          <Link href="/">
-            <Image src="/images/logo.png" alt="" width={174} height={63} className="mt-7"/>
-          </Link>
-        </div>
+    <div className="flex justify-between items-center h-[64px]">
+      <div>
+        <Link href="/">
+          <Image
+            src="/images/logo.png"
+            alt=""
+            width={174}
+            height={63}
+            className="mt-7"
+          />
+        </Link>
+      </div>
 
-        <div className="relative rounded-md shadow-sm">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-          </div>
-          <input
-            className="w-[300px] h-[30px] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-            placeholder="Recherche"
+      <div className="relative rounded-md shadow-sm">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <MagnifyingGlassIcon
+            className="h-5 w-5 text-gray-400"
+            aria-hidden="true"
           />
         </div>
-
-        <div className="flex justify-center items-center gap-6 text-white uppercase">
-          <Link href="" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">présentation</Link>
-          <Link href="/inspirations" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">inspirations</Link>
-          <Link href="/faq" className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2">faq</Link>
-          <Link href="/contact" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
-            <ChatBubbleBottomCenterTextIcon className="size-6" />
-          </Link>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger><UserCircleIcon className="size-6"/></DropdownMenuTrigger>
-            <DropdownMenuContent className="mt-4">
-              {!userConnected &&
-                <DropdownMenuLabel className="text-center uppercase text-xs">
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button variant="outline">Mon compte</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent className="max-w-lg">
-                      <AlertDialogHeader>
-                        <AlertDialogDescription>
-                          <Login />
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Annuler</AlertDialogCancel>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                </DropdownMenuLabel>
-              }
-              <DropdownMenuSeparator />
-              {userConnected &&
-                <div>
-                  <Link href={`/dashboard/${customer_id}`}>
-                    <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes listes</DropdownMenuItem>
-                  </Link>
-                  <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">Mes infos</DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleDisconnect} className="flex justify-center text-xs uppercase cursor-pointer">Déconnection</DropdownMenuItem>
-                </div>
-              }
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {userConnected &&
-            <div className="relative py-2">
-              <div className="t-2 absolute left-5">
-                <p className="flex h-1 w-1 items-center justify-center rounded-full bg-[#B51B1B] p-2 text-xs text-white">{cartCount}</p>
-              </div>
-              <Link href="/cart" className="hover:text-[#B51B1B] transition duration-300 ease-in-out">
-                <ShoppingCartIcon className="size-6" />
-              </Link>
-              
-              
-            </div>
-          }
-          <div>|</div>
-          {userConnected && <span className='text-xs capitalize cursor-pointer'>{name} {surname}</span>
-          
-          }
-          {userConnected && isPro &&<div className='rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer'>pro</div>}
-        </div>
+        <input
+          className="w-[300px] h-[30px] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          placeholder="Recherche"
+        />
       </div>
-    
-  );
+
+      <div className="flex justify-center items-center gap-6 text-white uppercase">
+        <Link
+          href=""
+          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2"
+        >
+          présentation
+        </Link>
+        <Link
+          href="/inspirations"
+          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2"
+        >
+          inspirations
+        </Link>
+        <Link
+          href="/faq"
+          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2"
+        >
+          faq
+        </Link>
+        <Link
+          href="/contact"
+          className="hover:text-[#B51B1B] transition duration-300 ease-in-out"
+        >
+          <ChatBubbleBottomCenterTextIcon className="size-6" />
+        </Link>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <UserCircleIcon className="size-6" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="mt-4">
+            {!userConnected && (
+              <DropdownMenuLabel className="text-center uppercase text-xs">
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="outline">Mon compte</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className="max-w-lg">
+                    <AlertDialogHeader>
+                      <AlertDialogDescription>
+                        <Login />
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Annuler</AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </DropdownMenuLabel>
+            )}
+            <DropdownMenuSeparator />
+            {userConnected && (
+              <div>
+                <Link href={`/dashboard/${customer_id}`}>
+                  <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
+                    Mes listes
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
+                  Mes infos
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={handleDisconnect}
+                  className="flex justify-center text-xs uppercase cursor-pointer"
+                >
+                  Déconnection
+                </DropdownMenuItem>
+              </div>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {userConnected && (
+          <div className="relative py-2">
+            <div className="t-2 absolute left-5">
+              <p className="flex h-1 w-1 items-center justify-center rounded-full bg-[#B51B1B] p-2 text-xs text-white">
+                {cartCount}
+              </p>
+            </div>
+            <Link
+              href="/cart"
+              className="hover:text-[#B51B1B] transition duration-300 ease-in-out"
+            >
+              <ShoppingCartIcon className="size-6" />
+            </Link>
+          </div>
+        )}
+        <div>|</div>
+        {userConnected && (
+          <span className="text-xs capitalize cursor-pointer">
+            {name} {surname}
+          </span>
+        )}
+        {userConnected && isProUser && (
+          <div className="rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer">
+            pro
+          </div>
+        )}
+      </div>
+    </div>
+  )
 }

@@ -278,6 +278,10 @@ export default function SingleProduct({
 
     dispatch(addToCart(newProduct))
     router.push('/cart')
+    toast({
+      title: `${quantity} produit(s)`,
+      description: 'ajouté(s) à votre panier',
+    })
   }
 
   return (
