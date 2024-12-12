@@ -1,40 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   userConnected: false,
-  name: "",
-  surname: "",
-  token: "",
-  userId: "",
+  name: '',
+  surname: '',
+  token: '',
+  userId: '',
   is_pro: false,
-};
+}
 
 export const user = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     loggedStatus: (state, action) => {
-      state.userConnected = action.payload;
+      state.userConnected = action.payload
       //console.log("userConnected:", state.userConnected);
     },
     userId: (state, action) => {
-      state.userId = action.payload;
+      state.userId = action.payload
       //console.log("userConnected:", state.userConnected);
     },
     loggedName: (state, action) => {
-      state.name = action.payload;
+      state.name = action.payload
     },
     loggedSurname: (state, action) => {
-      state.surname = action.payload;
+      state.surname = action.payload
     },
     loggedToken: (state, action) => {
-      state.token = action.payload;
+      state.token = action.payload
     },
     isPro: (state, action) => {
-      state.is_pro = action.payload;
+      state.is_pro = action.payload
     },
   },
-});
+})
 
 export const {
   loggedStatus,
@@ -43,5 +43,5 @@ export const {
   loggedSurname,
   loggedToken,
   isPro,
-} = user.actions;
-export default user.reducer;
+} = user.actions
+export default user.reducer

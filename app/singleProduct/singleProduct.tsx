@@ -17,6 +17,16 @@ import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
 import { useToast } from '@/hooks/use-toast'
 import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+
 const policies = [
   {
     name: 'Livraison',
@@ -293,20 +303,7 @@ export default function SingleProduct({
               <h1 className="text-md font-medium redAlu uppercase">
                 {item.name}
               </h1>
-
-              {/* <p className="text-xl font-medium text-gray-900">{price} Euros HT</p> */}
             </div>
-
-            {/* <Button
-              onClick={() => {
-                toast({
-                  title: 'Produit ajouté',
-                  description: 'Vous avez ajouté un produit à votre liste',
-                })
-              }}
-            >
-              Show Toast
-            </Button> */}
 
             <div className="lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
               <div className="flex flex-col gap-6 mr-8">
@@ -410,7 +407,6 @@ export default function SingleProduct({
                   <fieldset className="mt-2">
                     <RadioGroup
                       value={selectedMaterial}
-                      //onChange={setSelectedMaterial}
                       onChange={handleMaterialChoice}
                       className="grid grid-cols-3 gap-3 sm:grid-cols-6"
                     >
@@ -455,7 +451,6 @@ export default function SingleProduct({
                       value={selectedVariation}
                       onChange={setSelectedVariation}
                       className="grid grid-cols-4 gap-4"
-                      // className="flex items-center space-x-3"
                     >
                       {variations.map((variation: any) => (
                         <div
@@ -466,7 +461,7 @@ export default function SingleProduct({
                                 ? 'bg-[#B8AEA7] text-white'
                                 : 'hover:bg-[#F2EDEA] hover:border-[#F2EDEA]'
                             }`}
-                          onClick={() => setSelectedVariation(variation)} // Set selected variation on div click
+                          onClick={() => setSelectedVariation(variation)}
                         >
                           <Radio
                             value={variation}
@@ -524,14 +519,28 @@ export default function SingleProduct({
                 <div className="mt-8 grid grid-cols-2 gap-12">
                   {/* col1 */}
                   <div>
-                    <Image
-                      src="/images/products/schemas/couvertine-a-coller.jpg"
-                      width={400}
-                      height={400}
-                      alt=""
-                      className="lg:col-span-2 lg:row-span-2 border border-1 rounded-md"
-                    ></Image>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Image
+                          src="/images/products/schemas/couvertine-a-coller.jpg"
+                          width={400}
+                          height={400}
+                          alt=""
+                          className="lg:col-span-2 lg:row-span-2 border border-1 rounded-md cursor-pointer"
+                        ></Image>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[600px]">
+                        <Image
+                          src="/images/products/schemas/couvertine-a-coller.jpg"
+                          width={600}
+                          height={600}
+                          alt=""
+                          className="lg:col-span-2 lg:row-span-2 border border-1 rounded-md cursor-pointer"
+                        ></Image>
+                      </DialogContent>
+                    </Dialog>
                   </div>
+
                   {/* col1 */}
 
                   {/* col2 */}

@@ -1,10 +1,11 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import Link from "next/link"
-
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import * as React from 'react'
+import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { selectedSubCategory } from '@/app/reducers/cart'
+import { cn } from '@/lib/utils'
+import { Icons } from '@/components/icons'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,88 +14,116 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from '@/components/ui/navigation-menu'
 
-import { menu1items, menu2items } from "@/app/datas/menuItems"
+import { menu1items, menu2items } from '@/app/datas/menuItems'
 
 export function Navmenu() {
+  const dispatch = useDispatch()
+
+  const handleClickMenu1 = (selectedSubCategoryLink: any) => {
+    dispatch(selectedSubCategory(selectedSubCategoryLink))
+  }
+  const handleClickMenu2 = (selectedSubCategoryLink: any) => {
+    dispatch(selectedSubCategory(selectedSubCategoryLink))
+  }
+  const handleClickMenu3 = (selectedSubCategoryLink: any) => {
+    dispatch(selectedSubCategory(selectedSubCategoryLink))
+  }
+  const handleClickMenu4 = (selectedSubCategoryLink: any) => {
+    dispatch(selectedSubCategory(selectedSubCategoryLink))
+  }
+  const handleClickMenu5 = (selectedSubCategoryLink: any) => {
+    dispatch(selectedSubCategory(selectedSubCategoryLink))
+  }
+
   return (
     <div>
-    <NavigationMenu>
-      <NavigationMenuList className="flex justify-between items-center gap-6 bg-red w-full">
-        <NavigationMenuItem>
-          <Link href="/products?category=couverture_etancheite">
-            <NavigationMenuTrigger className="uppercase">Couverture et étanchéité</NavigationMenuTrigger>
-          </Link>
-          
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {menu1items.map((menu1item) => (
-                <ListItem
-                  key={menu1item.title}
-                  title={menu1item.title}
-                  href={menu1item.href}
-                >
-                  {menu1item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+      <NavigationMenu>
+        <NavigationMenuList className="flex justify-between items-center gap-6 bg-red w-full">
+          <NavigationMenuItem>
+            <Link href="/products?category=couverture_etancheite">
+              <NavigationMenuTrigger className="uppercase">
+                Couverture et étanchéité
+              </NavigationMenuTrigger>
+            </Link>
 
-        <NavigationMenuItem>
-          <Link href="/products?category=facade_bardage">
-             <NavigationMenuTrigger className="uppercase">Façade et bardage</NavigationMenuTrigger>
-          </Link>
-          
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {menu2items.map((menu2item) => (
-                <ListItem
-                  key={menu2item.title}
-                  title={menu2item.title}
-                  href={menu2item.href}
-                >
-                  {menu2item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/products" legacyBehavior passHref>
-            <NavigationMenuLink className={`${navigationMenuTriggerStyle()} uppercase`} >
-              Aménagement intérieur
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {menu1items.map((menu1item) => (
+                  <ListItem
+                    onClick={() => handleClickMenu1(menu1item.title)}
+                    key={menu1item.title}
+                    title={menu1item.title}
+                    href={menu1item.href}
+                  >
+                    {menu1item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <Link href="/products" legacyBehavior passHref>
-            <NavigationMenuLink className={`${navigationMenuTriggerStyle()} uppercase`}>
-              Aménagement extérieur
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/products?category=facade_bardage">
+              <NavigationMenuTrigger className="uppercase">
+                Façade et bardage
+              </NavigationMenuTrigger>
+            </Link>
 
-        <NavigationMenuItem>
-          <Link href="/products" legacyBehavior passHref>
-            <NavigationMenuLink className={`${navigationMenuTriggerStyle()} uppercase`}>
-              Quincaillerie et outillage
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {menu2items.map((menu2item) => (
+                  <ListItem
+                    onClick={() => handleClickMenu1(menu2item.title)}
+                    key={menu2item.title}
+                    title={menu2item.title}
+                    href={menu2item.href}
+                  >
+                    {menu2item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/products" legacyBehavior passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} uppercase`}
+              >
+                Aménagement intérieur
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
 
+          <NavigationMenuItem>
+            <Link href="/products" legacyBehavior passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} uppercase`}
+              >
+                Aménagement extérieur
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
 
-      </NavigationMenuList>
-    </NavigationMenu>
+          <NavigationMenuItem>
+            <Link href="/products" legacyBehavior passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} uppercase`}
+              >
+                Quincaillerie et outillage
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </div>
   )
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  React.ElementRef<'a'>,
+  React.ComponentPropsWithoutRef<'a'>
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
@@ -102,7 +131,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
             className
           )}
           {...props}
@@ -116,4 +145,4 @@ const ListItem = React.forwardRef<
     </li>
   )
 })
-ListItem.displayName = "ListItem"
+ListItem.displayName = 'ListItem'
