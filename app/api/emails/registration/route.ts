@@ -1,11 +1,11 @@
-import { EmailTemplate } from '../../../components/emails/email-template'
+import { EmailTemplate } from '../../../../components/emails/email-template'
 import { Resend } from 'resend'
 import * as React from 'react'
 
 const resend = new Resend('re_Z4KUSWdr_8Y74g6HeBKa4dFmVnRPDJ29b')
 // const resend = new Resend(process.env.RESEND_API_KEY)
 
-// http://localhost:3000/api/send   (POST)
+// http://localhost:3000/api/emails/example  (POST)
 
 export async function POST() {
   try {
