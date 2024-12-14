@@ -4,7 +4,7 @@ import * as React from 'react'
 
 const resend = new Resend('re_Z4KUSWdr_8Y74g6HeBKa4dFmVnRPDJ29b')
 // const resend = new Resend(process.env.RESEND_API_KEY)
-
+// test
 // http://localhost:3000/api/emails/example  (POST)
 
 export async function POST() {
