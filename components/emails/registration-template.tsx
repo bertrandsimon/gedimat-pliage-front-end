@@ -27,26 +27,25 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   firstName,
 }) => (
   <div>
-    <h1>Welcome, {firstName}!</h1>
-
     <Html>
       <Head />
-      <Preview>
-        Get your order summary, estimated delivery date and more
-      </Preview>
+      <Preview>Bienvenue sur le site Pliage Aluminium (Gedimat)</Preview>
       <Body style={main}>
         <Container style={container}>
+          <Hr style={global.hr} />
           <Section style={message}>
             <Img
-              src={`${baseUrl}/images/logo.png`}
-              width="356"
-              height="142"
-              alt="Pliage Aluminium"
+              src={`${baseUrl}/images/emails/logo.jpg`}
+              width="192"
+              height="102"
+              alt="Logo"
               style={{ margin: 'auto' }}
             />
-            <Heading style={global.heading}>Bienvenue</Heading>
+            <Heading style={global.heading}>
+              Bienvenue <br /> <h1>{firstName}!</h1>
+            </Heading>
             <Text style={global.text}>
-              Spécialiste du pliage d’aluminium sur mesure !
+              Sur le site spécialiste du pliage d’aluminium sur mesure !
             </Text>
             <Text style={{ ...global.text, marginTop: 24 }}>
               En collaboration avec le groupe Gedimat, leader des matériaux de
@@ -54,66 +53,195 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
               projets. Que vous soyez un particulier ou un professionnel,
               profitez de notre expertise, de matériaux de haute qualité et de
               délais rapides pour réaliser vos travaux avec précision et
-              fiabilité. <br />
+              fiabilité.
+              <br />
               <br />
               Commandez facilement en ligne et donnez vie à vos idées avec des
               produits personnalisés et durables.
             </Text>
           </Section>
+          {/* <Hr style={global.hr} /> */}
+          {/* <Section style={global.defaultPadding}>
+            <Text style={adressTitle}>: Alan Turing</Text>
+            <Text style={{ ...global.text, fontSize: 14 }}>
+              2125 Chestnut St, San Francisco, CA 94123
+            </Text>
+          </Section> */}
+
           <Hr style={global.hr} />
-          <Section style={global.defaultPadding}>
-            <Text style={adressTitle}>Commande pour: Alan Turing</Text>
-          </Section>
-          <Hr style={global.hr} />
-          <Section
-            style={{ ...paddingX, paddingTop: '40px', paddingBottom: '40px' }}
-          >
-            <Row>
-              <Column>
-                <Img
-                  src={`${baseUrl}/static/nike-product.png`}
-                  alt="Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey"
-                  style={{ float: 'left' }}
-                  width="260px"
-                />
-              </Column>
-              <Column style={{ verticalAlign: 'top', paddingLeft: '12px' }}>
-                <Text style={{ ...paragraph, fontWeight: '500' }}>
-                  Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey
-                </Text>
-                <Text style={global.text}>Size L (12–14)</Text>
-              </Column>
-            </Row>
-          </Section>
-          <Hr style={global.hr} />
-          <Section style={global.defaultPadding}>
+          {/* <Section style={global.defaultPadding}>
             <Row style={{ display: 'inline-flex', marginBottom: 40 }}>
               <Column style={{ width: '170px' }}>
-                <Text style={global.paragraphWithBold}>Commande N° :</Text>
+                <Text style={global.paragraphWithBold}>Order Number</Text>
                 <Text style={track.number}>C0106373851</Text>
               </Column>
               <Column>
-                <Text style={global.paragraphWithBold}>Date de commande</Text>
+                <Text style={global.paragraphWithBold}>Order Date</Text>
                 <Text style={track.number}>Sep 22, 2022</Text>
               </Column>
             </Row>
             <Row>
               <Column align="center">
-                <Link style={global.button}>Status de la commande :</Link>
+                <Link style={global.button}>Order Status</Link>
               </Column>
             </Row>
-          </Section>
+          </Section> */}
           <Hr style={global.hr} />
-
-          <Hr style={global.hr} />
-
-          <Hr style={global.hr} />
-          <Section style={paddingY}>
+          {/* <Section style={paddingY}>
             <Row>
-              <Text style={global.heading}>Pliage-aluminum.com</Text>
+              <Text style={global.heading}>Top Picks For You</Text>
+            </Row>
+            <Row style={recomendations.container}>
+              <Column
+                style={{ ...recomendations.product, paddingLeft: '4px' }}
+                align="center"
+              >
+                <Img
+                  src={`${baseUrl}/static/nike-recomendation-1.png`}
+                  alt="Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey"
+                  width="100%"
+                />
+                <Text style={recomendations.title}>
+                  USWNT 2022/23 Stadium Home
+                </Text>
+                <Text style={recomendations.text}>
+                  Women's Nike Dri-FIT Soccer Jersey
+                </Text>
+              </Column>
+              <Column style={recomendations.product} align="center">
+                <Img
+                  src={`${baseUrl}/static/nike-recomendation-2.png`}
+                  alt="Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey"
+                  width="100%"
+                />
+                <Text style={recomendations.title}>
+                  Brazil 2022/23 Stadium Goalkeeper
+                </Text>
+                <Text style={recomendations.text}>
+                  Men's Nike Dri-FIT Short-Sleeve Football Shirt
+                </Text>
+              </Column>
+              <Column style={recomendations.product} align="center">
+                <Img
+                  src={`${baseUrl}/static/nike-recomendation-4.png`}
+                  alt="Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey"
+                  width="100%"
+                />
+                <Text style={recomendations.title}>FFF</Text>
+                <Text style={recomendations.text}>Women's Soccer Jacket</Text>
+              </Column>
+              <Column
+                style={{ ...recomendations.product, paddingRight: '4px' }}
+                align="center"
+              >
+                <Img
+                  src={`${baseUrl}/static/nike-recomendation-4.png`}
+                  alt="Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey"
+                  width="100%"
+                />
+                <Text style={recomendations.title}>FFF</Text>
+                <Text style={recomendations.text}>
+                  Women's Nike Pre-Match Football Top
+                </Text>
+              </Column>
+            </Row>
+          </Section> */}
+          <Hr style={global.hr} />
+          {/* <Section style={menu.container}>
+            <Row>
+              <Text style={menu.title}>Get Help</Text>
+            </Row>
+            <Row style={menu.content}>
+              <Column style={{ width: '33%' }} colSpan={1}>
+                <Link href="/" style={menu.text}>
+                  Shipping Status
+                </Link>
+              </Column>
+              <Column style={{ width: '33%' }} colSpan={1}>
+                <Link href="/" style={menu.text}>
+                  Shipping & Delivery
+                </Link>
+              </Column>
+              <Column style={{ width: '33%' }} colSpan={1}>
+                <Link href="/" style={menu.text}>
+                  Returns & Exchanges
+                </Link>
+              </Column>
+            </Row>
+            <Row style={{ ...menu.content, paddingTop: '0' }}>
+              <Column style={{ width: '33%' }} colSpan={1}>
+                <Link href="/" style={menu.text}>
+                  How to Return
+                </Link>
+              </Column>
+              <Column style={{ width: '66%' }} colSpan={2}>
+                <Link href="/" style={menu.text}>
+                  Contact Options
+                </Link>
+              </Column>
+            </Row>
+            <Hr style={global.hr} />
+            <Row style={menu.tel}>
+              <Column>
+                <Row>
+                  <Column style={{ width: '16px' }}>
+                    <Img
+                      src={`${baseUrl}/static/nike-phone.png`}
+                      width="16px"
+                      height="26px"
+                      style={{ paddingRight: '14px' }}
+                    />
+                  </Column>
+                  <Column>
+                    <Text style={{ ...menu.text, marginBottom: '0' }}>
+                      1-800-806-6453
+                    </Text>
+                  </Column>
+                </Row>
+              </Column>
+              <Column>
+                <Text
+                  style={{
+                    ...menu.text,
+                    marginBottom: '0',
+                  }}
+                >
+                  4 am - 11 pm PT
+                </Text>
+              </Column>
+            </Row>
+          </Section> */}
+          <Hr style={global.hr} />
+
+          <Hr style={{ ...global.hr, marginTop: '12px' }} />
+          <Section style={paddingY}>
+            <Row style={footer.policy}>
+              <Column>
+                <Text style={footer.text}>
+                  {' '}
+                  <a href="www.pliage-aluminium.com" target="_blank">
+                    www.pliage-aluminium.com
+                  </a>
+                </Text>
+              </Column>
+              <Column>
+                <Text style={footer.text}>Privacy Policy</Text>
+              </Column>
+            </Row>
+            <Row>
+              <Text
+                style={{ ...footer.text, paddingTop: 30, paddingBottom: 30 }}
+              >
+                Si vous avez la moindre question n'hésitez pas à nous contacter.
+              </Text>
+            </Row>
+            <Row>
+              <Text style={footer.text}>© Pliage de la Vallée 2024</Text>
+            </Row>
+            <Row>
+              <Text style={footer.text}>Un site du groupe GEDIMAT</Text>
             </Row>
           </Section>
-          <Hr style={{ ...global.hr, marginTop: '12px' }} />
         </Container>
       </Body>
     </Html>

@@ -74,27 +74,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
               2125 Chestnut St, San Francisco, CA 94123
             </Text>
           </Section>
-          <Hr style={global.hr} />
-          <Section
-            style={{ ...paddingX, paddingTop: '40px', paddingBottom: '40px' }}
-          >
-            <Row>
-              <Column>
-                <Img
-                  src={`${baseUrl}/static/nike-product.png`}
-                  alt="Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey"
-                  style={{ float: 'left' }}
-                  width="260px"
-                />
-              </Column>
-              <Column style={{ verticalAlign: 'top', paddingLeft: '12px' }}>
-                <Text style={{ ...paragraph, fontWeight: '500' }}>
-                  Brazil 2022/23 Stadium Away Women's Nike Dri-FIT Soccer Jersey
-                </Text>
-                <Text style={global.text}>Size L (12–14)</Text>
-              </Column>
-            </Row>
-          </Section>
+
           <Hr style={global.hr} />
           <Section style={global.defaultPadding}>
             <Row style={{ display: 'inline-flex', marginBottom: 40 }}>
