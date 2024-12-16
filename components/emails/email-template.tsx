@@ -280,7 +280,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
               <Text
                 style={{ ...footer.text, paddingTop: 30, paddingBottom: 30 }}
               >
-                Please contact us if you have any questions. (If you reply to
+                `-Please contact us if you have any questions. (If you reply to
                 this email, we won't be able to see it.)
               </Text>
             </Row>
