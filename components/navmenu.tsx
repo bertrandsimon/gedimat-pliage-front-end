@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { selectedSubCategory } from '@/app/reducers/cart'
 import { cn } from '@/lib/utils'
@@ -15,133 +16,200 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-
 import { menu1items, menu2items } from '@/app/datas/menuItems'
+import { Menu, X } from 'lucide-react'
 
 export function Navmenu() {
+  const [isOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch()
 
-  const handleClickMenu1 = (selectedSubCategoryLink: any) => {
+  const handleClick = (selectedSubCategoryLink: string) => {
     dispatch(selectedSubCategory(selectedSubCategoryLink))
-  }
-  const handleClickMenu2 = (selectedSubCategoryLink: any) => {
-    dispatch(selectedSubCategory(selectedSubCategoryLink))
-  }
-  const handleClickMenu3 = (selectedSubCategoryLink: any) => {
-    dispatch(selectedSubCategory(selectedSubCategoryLink))
-  }
-  const handleClickMenu4 = (selectedSubCategoryLink: any) => {
-    dispatch(selectedSubCategory(selectedSubCategoryLink))
-  }
-  const handleClickMenu5 = (selectedSubCategoryLink: any) => {
-    dispatch(selectedSubCategory(selectedSubCategoryLink))
+    setIsOpen(false) // Close menu after clicking on mobile
   }
 
   return (
     <div>
-      <NavigationMenu>
-        <NavigationMenuList className="flex justify-between items-center gap-6 bg-red w-full">
-          <NavigationMenuItem>
-            <Link href="/products?category=couverture_etancheite">
-              <NavigationMenuTrigger className="uppercase">
+      {/* Mobile Navigation Toggle */}
+      <div className="flex items-center justify-between p-4 md:hidden">
+        <span className="text-md uppercase">Menu</span>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+          className="focus:outline-none"
+        >
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-md rounded-md">
+          <ul className="flex flex-col space-y-2 p-4">
+            <li>
+              <Link
+                href="/products?category=couverture_etancheite"
+                onClick={() => handleClick('Couverture et étanchéité')}
+                className="text-gray-700 hover:font-semibold uppercase text-sm"
+              >
                 Couverture et étanchéité
-              </NavigationMenuTrigger>
-            </Link>
-
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {menu1items.map((menu1item) => (
-                  <ListItem
-                    onClick={() => handleClickMenu1(menu1item.title)}
-                    key={menu1item.title}
-                    title={menu1item.title}
-                    href={menu1item.href}
-                  >
-                    {menu1item.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <Link href="/products?category=facade_bardage">
-              <NavigationMenuTrigger className="uppercase">
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/products?category=facade_bardage"
+                onClick={() => handleClick('Façade et bardage')}
+                className="text-gray-700 hover:font-semibold uppercase text-sm"
+              >
                 Façade et bardage
-              </NavigationMenuTrigger>
-            </Link>
-
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {menu2items.map((menu2item) => (
-                  <ListItem
-                    onClick={() => handleClickMenu1(menu2item.title)}
-                    key={menu2item.title}
-                    title={menu2item.title}
-                    href={menu2item.href}
-                  >
-                    {menu2item.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/products" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} uppercase`}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/products"
+                onClick={() => handleClick('Aménagement intérieur')}
+                className="text-gray-700 hover:font-semibold uppercase text-sm"
               >
                 Aménagement intérieur
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <Link href="/products" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} uppercase`}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/products"
+                onClick={() => handleClick('Aménagement extérieur')}
+                className="text-gray-700 hover:font-semibold uppercase text-sm"
               >
                 Aménagement extérieur
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <Link href="/products" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} uppercase`}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/products"
+                onClick={() => handleClick('Quincaillerie et outillage')}
+                className="text-gray-700 hover:font-semibold uppercase text-sm"
               >
                 Quincaillerie et outillage
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+
+      {/* Desktop NavigationMenu */}
+      <div className="hidden md:block">
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <Link href="/products?category=couverture_etancheite">
+                <NavigationMenuTrigger className="uppercase">
+                  Couverture et étanchéité
+                </NavigationMenuTrigger>
+              </Link>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {menu1items.map((item) => (
+                    <ListItem
+                      onClick={() => handleClick(item.title)}
+                      key={item.title}
+                      title={item.title}
+                      href={item.href}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/products?category=facade_bardage">
+                <NavigationMenuTrigger className="uppercase">
+                  Façade et bardage
+                </NavigationMenuTrigger>
+              </Link>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {menu2items.map((item) => (
+                    <ListItem
+                      onClick={() => handleClick(item.title)}
+                      key={item.title}
+                      title={item.title}
+                      href={item.href}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/products" passHref>
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} uppercase`}
+                >
+                  Aménagement intérieur
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/products" passHref>
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} uppercase`}
+                >
+                  Aménagement extérieur
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/products" passHref>
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} uppercase`}
+                >
+                  Quincaillerie et outillage
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
     </div>
   )
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
+  HTMLDivElement | HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<'div'> & { title: string; href?: string }
+>(({ className, title, children, href, ...props }, ref) => {
+  const content = (
+    <div
+      ref={ref as React.Ref<HTMLDivElement>}
+      className={cn(
+        'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+        className
+      )}
+      {...props}
+    >
+      <div className="text-sm font-medium leading-none">{title}</div>
+      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        {children}
+      </p>
+    </div>
+  )
+
   return (
     <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
+      {href ? (
+        <Link href={href} legacyBehavior passHref>
+          <NavigationMenuLink asChild>
+            <a ref={ref as React.Ref<HTMLAnchorElement>}>{content}</a>
+          </NavigationMenuLink>
+        </Link>
+      ) : (
+        content
+      )}
     </li>
   )
 })

@@ -82,7 +82,7 @@ export default function Toolbar() {
 
   return (
     <div className="mx-auto grid grid-cols-1 sm:grid-cols-3 sm:h-[64px] h-full items-center ">
-      <div className="flex justify-center items-center mt-4 sm:mt-0">
+      <div className="flex sm:justify-start sm:items-start justify-center mt-4 sm:mt-0">
         <Link href="/">
           <Image
             src="/images/logo.png"
@@ -102,7 +102,7 @@ export default function Toolbar() {
             />
           </div>
           <input
-            className="w-[200px] h-[28px] text-sm rounded-md border-0 py-1.5 pl-10 bg-slate-800 text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            className="w-[200px] h-[28px] focus:outline-none text-sm rounded-md border-0 py-1.5 pl-10 bg-slate-800 text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Recherche"
           />
         </div>
