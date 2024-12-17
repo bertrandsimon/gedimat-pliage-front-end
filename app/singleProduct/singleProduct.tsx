@@ -297,7 +297,7 @@ export default function SingleProduct({
   return (
     <div>
       <div className="pb-16 pt-6 sm:pb-24">
-        <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto mt-8 sm:max-w-2xl px-2 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
             <div className="flex justify-between lg:col-span-8">
               <h1 className="text-md font-medium redAlu uppercase">
@@ -306,7 +306,7 @@ export default function SingleProduct({
             </div>
 
             <div className="lg:col-span-4 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
-              <div className="flex flex-col gap-6 mr-8">
+              <div className="flex flex-col gap-6 sm:mr-8">
                 <Image
                   src={`/images/products/${item.main_image}`}
                   width={400}
@@ -450,7 +450,7 @@ export default function SingleProduct({
                     <RadioGroup
                       value={selectedVariation}
                       onChange={setSelectedVariation}
-                      className="grid grid-cols-4 gap-4"
+                      className="grid grid-cols-2 sm:grid-cols-4 gap-4"
                     >
                       {variations.map((variation: any) => (
                         <div
@@ -516,7 +516,7 @@ export default function SingleProduct({
                   <hr className="my-4" />
                 </div>
 
-                <div className="mt-8 grid grid-cols-2 gap-12">
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-12">
                   {/* col1 */}
                   <div>
                     <Dialog>
@@ -767,7 +767,7 @@ export default function SingleProduct({
                   <hr className="my-4" />
                 </div>
 
-                <div className="grid grid-cols-2 ">
+                <div className="grid grid-cols-1 sm:grid-cols-2 ">
                   <div className="flex flex-col">
                     <div className="mt-8 flex items-center gap-2">
                       <p>Longueur:</p>
@@ -818,7 +818,7 @@ export default function SingleProduct({
                     </div>
                   </div>
 
-                  <div className="flex flex-col  justify-center items-end rounded-md border border-[#B8AEA7] my-4  gap-2">
+                  <div className="flex flex-col justify-center items-center sm:items-end rounded-md border border-[#B8AEA7] my-4 py-8 sm:py-0 mt-10 sm:mt-0 gap-2 ">
                     <div className="flex justify-center items-center gap-4 mr-4">
                       <p>TARIF UNITAIRE :</p>
                       <span className="font-semibold text-xl redAlu">
