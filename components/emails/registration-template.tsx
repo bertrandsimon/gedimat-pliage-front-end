@@ -35,7 +35,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
           <Hr style={global.hr} />
           <Section style={message}>
             <Img
-              src={`${baseUrl}/images/emails/logo.jpg`}
+              src="https://pliage-aluminium.vercel.app/images/emails/logo.jpg"
               width="192"
               height="102"
               alt="Logo"
@@ -216,17 +216,12 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
           <Hr style={{ ...global.hr, marginTop: '12px' }} />
           <Section style={paddingY}>
             <Row style={footer.policy}>
-              <Column>
-                <Text style={footer.text}>
-                  {' '}
-                  <a href="www.pliage-aluminium.com" target="_blank">
-                    www.pliage-aluminium.com
-                  </a>
-                </Text>
-              </Column>
-              <Column>
-                <Text style={footer.text}>Privacy Policy</Text>
-              </Column>
+              <Text style={footer.text}>
+                {' '}
+                <a href="www.pliage-aluminium.com" target="_blank">
+                  www.pliage-aluminium.com
+                </a>
+              </Text>
             </Row>
             <Row>
               <Text

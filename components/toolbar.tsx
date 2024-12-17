@@ -81,60 +81,64 @@ export default function Toolbar() {
   }
 
   return (
-    <div className="flex justify-between items-center h-[64px]">
-      <div>
+    <div className="mx-auto grid grid-cols-1 sm:grid-cols-3 sm:h-[64px] h-full items-center ">
+      <div className="flex justify-center items-center mt-4 sm:mt-0">
         <Link href="/">
           <Image
             src="/images/logo.png"
             alt=""
             width={174}
             height={63}
-            className="mt-7"
+            className="mt-3"
           />
         </Link>
       </div>
-
-      <div className="relative rounded-md shadow-sm">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <MagnifyingGlassIcon
-            className="h-5 w-5 text-gray-400"
-            aria-hidden="true"
+      <div className="flex justify-center items-center my-2 sm:my-0">
+        <div className="relative rounded-md shadow-sm sm:-mt-3 ">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <MagnifyingGlassIcon
+              className="h-4 w-4 text-gray-400"
+              aria-hidden="true"
+            />
+          </div>
+          <input
+            className="w-[200px] h-[28px] text-sm rounded-md border-0 py-1.5 pl-10 bg-slate-800 text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            placeholder="Recherche"
           />
         </div>
-        <input
-          className="w-[300px] h-[30px] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-          placeholder="Recherche"
-        />
       </div>
 
-      <div className="flex justify-center items-center gap-6 text-white uppercase">
+      <div className="flex justify-center items-center gap-1 text-white sm:-mt-3 my-4 sm:my-0">
         <Link
           href=""
-          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2"
+          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] rounded-md hover:rounded-md p-2"
         >
-          présentation
+          Présentation
         </Link>
+        <div className="text-zinc-600">|</div>
         <Link
           href="/inspirations"
-          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2"
+          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] rounded-md hover:rounded-md p-2 "
         >
-          inspirations
+          Inspirations
         </Link>
+        <div className="text-zinc-600">|</div>
         <Link
           href="/faq"
-          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] hover:rounded-md p-2"
+          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B]  hover:rounded-md p-2"
         >
-          faq
+          Faq
         </Link>
+
         <Link
           href="/contact"
-          className="hover:text-[#B51B1B] transition duration-300 ease-in-out"
+          className="hover:text-[#B51B1B] transition duration-300 ease-in-out p-2"
         >
           <ChatBubbleBottomCenterTextIcon className="size-6" />
         </Link>
 
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger className="hover:text-[#B51B1B]">
             <UserCircleIcon className="size-6" />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="mt-4">
@@ -194,7 +198,7 @@ export default function Toolbar() {
             </Link>
           </div>
         )}
-        <div>|</div>
+        {userConnected && <div className="text-zinc-600">|</div>}
         {userConnected && (
           <span className="text-xs capitalize cursor-pointer">
             {name} {surname}

@@ -1,18 +1,18 @@
-import { EmailTemplate } from '../../../../components/emails/email-template'
+import { EmailTemplate } from '../../../../components/emails/registration-template'
 import { Resend } from 'resend'
 import * as React from 'react'
 
 const resend = new Resend('re_Z4KUSWdr_8Y74g6HeBKa4dFmVnRPDJ29b')
 // const resend = new Resend(process.env.RESEND_API_KEY)
-// test
+
 // http://localhost:3000/api/emails/example  (POST)
 
 export async function POST() {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
+      from: 'Alice de Pliage Aluminium <alice@pliage-aluminium.com>',
       to: ['logeen@logeen.com'],
-      subject: 'Hello world',
+      subject: 'Votre inscrption sur pliage-aluminium.com',
       react: EmailTemplate({ firstName: 'John' }) as React.ReactElement,
     })
 
