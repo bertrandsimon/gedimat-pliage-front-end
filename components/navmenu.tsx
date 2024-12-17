@@ -96,7 +96,8 @@ export function Navmenu() {
       )}
 
       {/* Desktop NavigationMenu */}
-      <div className="hidden md:block">
+      {/* hidden */}
+      <div className="md:block hidden">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>

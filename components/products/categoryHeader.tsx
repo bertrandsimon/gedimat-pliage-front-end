@@ -44,7 +44,7 @@ export default function CategoryHeader(props: any) {
   }, [props.title])
 
   return (
-    <div className="grid grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
       <div className="col-span-1">
         <div id="line1" className="flex flex-col gap-2 items-start">
           <p className="font-medium text-sm uppercase">

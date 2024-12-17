@@ -89,7 +89,7 @@ export function ProductsListing({ category, subcategory }: any) {
 
   return (
     <>
-      <div className="py-12">
+      <div className="mb-8 sm:py-4">
         <CategoryHeader
           title={category}
           subtitle={subcategory}
@@ -99,7 +99,7 @@ export function ProductsListing({ category, subcategory }: any) {
         />
       </div>
 
-      <div className="grid grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
         {filteredProducts.map((product: any) => (
           <div key={product._id}>
             <div className="min-h-[300px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 border-grey p-4 hover:shadow-lg">

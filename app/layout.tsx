@@ -38,7 +38,7 @@ export default function RootLayout({
           </div>
 
           <Suspense>
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto sm:px-4">
               {children}
               <SpeedInsights />
             </div>

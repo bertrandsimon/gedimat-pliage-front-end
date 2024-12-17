@@ -24,7 +24,7 @@ export default function CategoryMenuBar(props: any) {
   ))
 
   return (
-    <div>
+    <div className="overflow-scroll sm:overflow-hidden ">
       <Menubar>{menus}</Menubar>
     </div>
   )

@@ -11,7 +11,7 @@ export default function Ariane({ ariane }: any) {
   //console.log(props)
 
   return (
-    <Breadcrumb className="px-14">
+    <Breadcrumb className="sm:px-14">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Accueil</BreadcrumbLink>

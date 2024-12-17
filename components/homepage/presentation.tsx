@@ -8,15 +8,15 @@ import MaterialSlider from '../swiper/swipersecond'
 
 export default function Presentation() {
   return (
-    <div className="grid grid-cols-2 gap-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
       <div id="col1">
         <div
           id="line1"
           className="flex flex-col gap-2 pl-12 justify-center h-full"
         >
-          <p className="font-bold">Lorem ipsum dolor</p>
+          <p className="font-medium">Lorem ipsum dolor</p>
           <p className="font-bold text-2xl">Texte présentation</p>
-          <p className="">
+          <p className="text-md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit
             amet viverra. Lorem ipsum dolor sit amet, consectetur adipiscing

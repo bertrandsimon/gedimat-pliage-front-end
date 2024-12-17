@@ -14,8 +14,8 @@ export default function Banner() {
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 bg-[#F2EDEA] rounded-md h-full sm:h-[600px] gap-10">
       <section id="col1" className="pl-12 py-12">
         <div className="flex flex-col h-full justify-around">
-          <div id="line1" className="flex flex-col gap-2 ">
-            <p className="font-bold">Spécialiste du pliage</p>
+          <div id="line1" className="flex flex-col gap-2">
+            <p className="font-medium">Spécialiste du pliage</p>
             <p className="font-bold text-3xl">Aluminium et acier</p>
             <p className="max-w-[420px]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer

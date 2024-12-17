@@ -102,7 +102,7 @@ export default function Toolbar() {
             />
           </div>
           <input
-            className="w-[200px] h-[28px] focus:outline-none text-sm rounded-md border-0 py-1.5 pl-10 bg-slate-800 text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            className="text-sm w-[200px] h-[28px] focus:outline-none rounded-md border-0 py-1.5 pl-10 bg-[#191919] text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Recherche"
           />
         </div>
@@ -183,6 +183,17 @@ export default function Toolbar() {
           </DropdownMenuContent>
         </DropdownMenu>
 
+        {/* {userConnected && <div className="text-zinc-600">|</div>} */}
+        {userConnected && (
+          <span className="text-xs capitalize cursor-pointer pl-4 pr-2">
+            {name} {surname}
+          </span>
+        )}
+        {userConnected && isProUser && (
+          <div className="rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer">
+            pro
+          </div>
+        )}
         {userConnected && (
           <div className="relative py-2">
             <div className="t-2 absolute left-5">
@@ -196,17 +207,6 @@ export default function Toolbar() {
             >
               <ShoppingCartIcon className="size-6" />
             </Link>
-          </div>
-        )}
-        {userConnected && <div className="text-zinc-600">|</div>}
-        {userConnected && (
-          <span className="text-xs capitalize cursor-pointer">
-            {name} {surname}
-          </span>
-        )}
-        {userConnected && isProUser && (
-          <div className="rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer">
-            pro
           </div>
         )}
       </div>

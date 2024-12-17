@@ -17,7 +17,7 @@ export default function Categories() {
       </div>
 
       <div
-        className="columns-5 gap-10
+        className="grid grid-cols-2 sm:grid-cols-5 gap-10
   "
       >
         <div className="flex flex-col justify-center items-center gap-4 ">

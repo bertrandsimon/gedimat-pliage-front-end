@@ -186,20 +186,20 @@ export default function Partners() {
         </SwiperSlide>
       </Swiper> */}
 
-      <div className="w-full flex gap-2 justify-around items-center px-20 pb-20">
-        <div className="grayscale hover:grayscale-0 cursor-pointer">
+      <div className="flex gap-6 mb-20">
+        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center  ">
           <Image src={partner1} alt="" width={85} height={94} />
         </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer">
+        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center">
           <Image src={partner2} alt="" width={190} height={55} />
         </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer">
+        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center">
           <Image src={partner3} alt="" width={173} height={40} />
         </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer -mt-4">
+        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center -mt-4">
           <Image src={partner4} alt="" width={176} height={41} />
         </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer">
+        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center -mt-2">
           <Image src={partner5} alt="" width={205} height={32} />
         </div>
       </div>
