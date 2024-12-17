@@ -11,10 +11,10 @@ export default function Banner() {
     'https://lottie.host/41da3a58-1dbc-4c61-825a-c99cae128776/GiXbQZVXO1.json'
 
   return (
-    <div className="w-full grid grid-cols-2 bg-[#F2EDEA] rounded-md h-[600px] gap-10">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 bg-[#F2EDEA] rounded-md h-full sm:h-[600px] gap-10">
       <section id="col1" className="pl-12 py-12">
         <div className="flex flex-col h-full justify-around">
-          <div id="line1" className="flex flex-col gap-2">
+          <div id="line1" className="flex flex-col gap-2 ">
             <p className="font-bold">Spécialiste du pliage</p>
             <p className="font-bold text-3xl">Aluminium et acier</p>
             <p className="max-w-[420px]">
@@ -28,7 +28,10 @@ export default function Banner() {
             {/* <Button variant="outline">Button</Button> */}
           </div>
 
-          <div id="line2" className="flex gap-8 justify-start items-center">
+          <div
+            id="line2"
+            className="flex gap-8 justify-start items-center pt-6 sm:pt-0 "
+          >
             <div className="rounded-md flex flex-col justify-center items-center text-center gap-4 dashed p-4">
               <Image
                 src="/images/banner/gedimat.png"
@@ -70,9 +73,15 @@ export default function Banner() {
 
       <section
         id="col2"
-        className="pr-12 py-12 h-full bg-[url('/images/banner/slice.png')] bg-no-repeat bg-right"
+        className="sm:-mt-0 p-10 sm:p-0 sm:pr-12 sm:py-12 h-full bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-bottom"
       >
-        <Image src="/images/banner/house.png" height={497} width={592} alt="" />
+        <Image
+          src="/images/banner/house.png"
+          height={497}
+          width={592}
+          alt=""
+          className="-mt-14 sm:-mt-0"
+        />
       </section>
     </div>
   )
