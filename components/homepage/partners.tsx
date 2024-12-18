@@ -1,5 +1,5 @@
 import Image from 'next/image'
-
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
@@ -186,23 +186,29 @@ export default function Partners() {
         </SwiperSlide>
       </Swiper> */}
 
-      <div className="flex gap-6 mb-20">
-        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center  ">
-          <Image src={partner1} alt="" width={85} height={94} />
+      <ScrollArea className="w-full flex justify-center items-center rounded-md border p-4 py-2 mb-20">
+        <div className="flex w-max space-x-10 p-4 justify-center items-center">
+          <div className="grayscale hover:grayscale-0 cursor-pointer flex  ">
+            <Image src={partner1} alt="" width={85} height={94} />
+          </div>
+          <div className="grayscale hover:grayscale-0 cursor-pointer flex">
+            <Image src={partner2} alt="" width={190} height={55} />
+          </div>
+          <div className="grayscale hover:grayscale-0 cursor-pointer flex">
+            <Image src={partner3} alt="" width={173} height={40} />
+          </div>
+          <div className="grayscale hover:grayscale-0 cursor-pointer flex -mt-4">
+            <Image src={partner4} alt="" width={176} height={41} />
+          </div>
+          <div className="grayscale hover:grayscale-0 cursor-pointer flex -mt-2">
+            <Image src={partner5} alt="" width={205} height={32} />
+          </div>
+          <div className="grayscale hover:grayscale-0 cursor-pointer flex">
+            <Image src={partner2} alt="" width={190} height={55} />
+          </div>
         </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center">
-          <Image src={partner2} alt="" width={190} height={55} />
-        </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center">
-          <Image src={partner3} alt="" width={173} height={40} />
-        </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center -mt-4">
-          <Image src={partner4} alt="" width={176} height={41} />
-        </div>
-        <div className="grayscale hover:grayscale-0 cursor-pointer flex justify-center items-center -mt-2">
-          <Image src={partner5} alt="" width={205} height={32} />
-        </div>
-      </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
     </>
   )
 }
