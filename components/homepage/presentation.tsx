@@ -14,14 +14,20 @@ export default function Presentation() {
           id="line1"
           className="flex flex-col gap-2 pl-12 justify-center h-full"
         >
-          <p className="font-medium">Lorem ipsum dolor</p>
-          <p className="font-bold text-2xl">Texte présentation</p>
+          <p className="font-medium">Votre expert en</p>
+          <p className="font-bold text-2xl">Pliage aluminium sur mesure </p>
           <p className="text-md">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit
-            amet viverra. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus
-            nec nulla sit amet viverra.{' '}
+            Optez pour le pliage aluminium sur mesure avec Gedimat, votre expert
+            en solutions adaptées à vos besoins. <br />
+            <br />
+            Que ce soit pour un projet résidentiel ou professionnel, bénéficiez
+            d’un service précis et fiable. Nous transformons vos idées en
+            réalisations concrètes, avec un aluminium de qualité, parfaitement
+            ajusté à vos attentes. <br />
+            <br />
+            Faites confiance à notre expertise et démarquez-vous grâce à des
+            finitions sur mesure, pensées pour durer dans le temps et répondre à
+            vos exigences.
           </p>
           <div className="lgBtn greyBtn max-w-[124px] my-2">
             <Link href="/presentation">en savoir +</Link>

@@ -1,6 +1,8 @@
 'use client'
 
 import * as React from 'react'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+
 import Link from 'next/link'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -29,153 +31,84 @@ export function Navmenu() {
   }
 
   return (
-    <div>
-      {/* Mobile Navigation Toggle */}
-      <div className="flex items-center justify-between p-4 md:hidden">
-        <span className="text-md uppercase">Menu</span>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-          className="focus:outline-none"
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-md rounded-md">
-          <ul className="flex flex-col space-y-2 p-4">
-            <li>
-              <Link
-                href="/products?category=couverture_etancheite"
-                onClick={() => handleClick('Couverture et étanchéité')}
-                className="text-gray-700 hover:font-semibold uppercase text-sm"
-              >
+    <div className="w-full">
+      <NavigationMenu className="w-max">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <Link href="/products?category=couverture_etancheite">
+              <NavigationMenuTrigger className="uppercase">
                 Couverture et étanchéité
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/products?category=facade_bardage"
-                onClick={() => handleClick('Façade et bardage')}
-                className="text-gray-700 hover:font-semibold uppercase text-sm"
-              >
+              </NavigationMenuTrigger>
+            </Link>
+            <NavigationMenuContent>
+              <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {menu1items.map((item) => (
+                  <ListItem
+                    onClick={() => handleClick(item.title)}
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
+                    {item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/products?category=facade_bardage">
+              <NavigationMenuTrigger className="uppercase">
                 Façade et bardage
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/products"
-                onClick={() => handleClick('Aménagement intérieur')}
-                className="text-gray-700 hover:font-semibold uppercase text-sm"
+              </NavigationMenuTrigger>
+            </Link>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {menu2items.map((item) => (
+                  <ListItem
+                    onClick={() => handleClick(item.title)}
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
+                    {item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/products" passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} uppercase`}
               >
                 Aménagement intérieur
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/products"
-                onClick={() => handleClick('Aménagement extérieur')}
-                className="text-gray-700 hover:font-semibold uppercase text-sm"
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/products" passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} uppercase`}
               >
                 Aménagement extérieur
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/products"
-                onClick={() => handleClick('Quincaillerie et outillage')}
-                className="text-gray-700 hover:font-semibold uppercase text-sm"
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/products" passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} uppercase`}
               >
                 Quincaillerie et outillage
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-
-      {/* Desktop NavigationMenu */}
-      {/* hidden */}
-      <div className="md:block hidden">
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/products?category=couverture_etancheite">
-                <NavigationMenuTrigger className="uppercase">
-                  Couverture et étanchéité
-                </NavigationMenuTrigger>
-              </Link>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {menu1items.map((item) => (
-                    <ListItem
-                      onClick={() => handleClick(item.title)}
-                      key={item.title}
-                      title={item.title}
-                      href={item.href}
-                    >
-                      {item.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/products?category=facade_bardage">
-                <NavigationMenuTrigger className="uppercase">
-                  Façade et bardage
-                </NavigationMenuTrigger>
-              </Link>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {menu2items.map((item) => (
-                    <ListItem
-                      onClick={() => handleClick(item.title)}
-                      key={item.title}
-                      title={item.title}
-                      href={item.href}
-                    >
-                      {item.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/products" passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} uppercase`}
-                >
-                  Aménagement intérieur
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/products" passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} uppercase`}
-                >
-                  Aménagement extérieur
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/products" passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} uppercase`}
-                >
-                  Quincaillerie et outillage
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </div>
   )
 }

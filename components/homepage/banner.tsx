@@ -18,9 +18,9 @@ export default function Banner() {
             <p className="font-medium">Spécialiste du pliage</p>
             <p className="font-bold text-3xl">Aluminium et acier</p>
             <p className="max-w-[420px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit
-              amet viverra.{' '}
+              Découvrez notre service de pliage aluminium sur mesure, en
+              partenariat avec Gedimat. Alliez précision et qualité pour tous
+              vos projets de construction ou de rénovation.
             </p>
             <div className="lgBtn redBtn max-w-[124px] my-2">
               <Link href="/presentation">en savoir +</Link>

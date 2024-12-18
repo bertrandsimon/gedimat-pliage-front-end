@@ -33,12 +33,12 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div className="container mx-auto py-6 px-14">
+          <div className="container mx-auto py-6 sm:px-14 ">
             <Navmenu />
           </div>
 
           <Suspense>
-            <div className="container mx-auto sm:px-4">
+            <div className=" container mx-auto sm:px-4 -mt-90">
               {children}
               <SpeedInsights />
             </div>

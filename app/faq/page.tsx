@@ -13,7 +13,7 @@ export default function FaqPage() {
       <div className="w-full">
         <Ariane ariane={ariane} />
 
-        <div className="px-12 py-12">
+        <div className="sm:px-12 py-12">
           <Faq />
         </div>
       </div>

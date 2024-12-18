@@ -47,7 +47,7 @@ export default function Steps() {
         </div>
       </div> */}
 
-      <ScrollArea className="w-full flex justify-center items-center rounded-md py-2 mb-20 bg-[url('/images/steps/steps-bg.jpg')] bg-bottom bg-repeat-x text-center">
+      <ScrollArea className="w-full flex justify-center items-center rounded-md py-2  bg-[url('/images/steps/steps-bg.jpg')] bg-bottom bg-repeat-x text-center">
         <div className="flex w-max sm:w-full space-x-0 p-4 justify-center items-center ">
           <div className="flex flex-col gap-3 text-center items-center -mt-4">
             <Image src="/images/1.png" alt="" height={30} width={30} />
