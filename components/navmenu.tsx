@@ -35,11 +35,12 @@ export function Navmenu() {
       <NavigationMenu className="w-max">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link href="/products?category=couverture_etancheite">
-              <NavigationMenuTrigger className="uppercase">
+            <NavigationMenuTrigger className="uppercase">
+              <Link href="/products?category=couverture_etancheite">
                 Couverture et étanchéité
-              </NavigationMenuTrigger>
-            </Link>
+              </Link>
+            </NavigationMenuTrigger>
+
             <NavigationMenuContent>
               <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {menu1items.map((item) => (
@@ -57,11 +58,12 @@ export function Navmenu() {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link href="/products?category=facade_bardage">
-              <NavigationMenuTrigger className="uppercase">
+            <NavigationMenuTrigger className="uppercase">
+              <Link href="/products?category=facade_bardage">
                 Façade et bardage
-              </NavigationMenuTrigger>
-            </Link>
+              </Link>
+            </NavigationMenuTrigger>
+
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {menu2items.map((item) => (
@@ -79,33 +81,30 @@ export function Navmenu() {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link href="/products" passHref>
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} uppercase`}
-              >
-                Aménagement intérieur
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} uppercase`}
+              asChild
+            >
+              <Link href="/products">Aménagement intérieur</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link href="/products" passHref>
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} uppercase`}
-              >
-                Aménagement extérieur
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} uppercase`}
+              asChild
+            >
+              <Link href="/products">Aménagement extérieur</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link href="/products" passHref>
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} uppercase`}
-              >
-                Quincaillerie et outillage
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} uppercase`}
+              asChild
+            >
+              <Link href="/products">Quincaillerie et outillage</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
