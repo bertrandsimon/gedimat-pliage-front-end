@@ -137,8 +137,9 @@ const ListItem = React.forwardRef<
     <li>
       {href ? (
         <Link href={href} legacyBehavior passHref>
-          <NavigationMenuLink asChild>
-            <a ref={ref as React.Ref<HTMLAnchorElement>}>{content}</a>
+          <NavigationMenuLink asChild className="cursor-pointer">
+            {content}
+            {/* <a ref={ref as React.Ref<HTMLAnchorElement>}>{content}</a> */}
           </NavigationMenuLink>
         </Link>
       ) : (
