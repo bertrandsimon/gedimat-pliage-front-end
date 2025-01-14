@@ -51,6 +51,8 @@ export default function SingleProduct({
   item: any
   materials: any[]
 }) {
+  console.log('single product : ', item)
+  console.log('single product max_length : ', item.max_length)
   const { toast } = useToast()
   const router = useRouter()
   const isPro = useSelector((state: any) => state.user.is_pro)
@@ -82,10 +84,17 @@ export default function SingleProduct({
 
   // MEASURES
 
-  const [width, setWidth] = useState(120)
-  const minWidth = useMemo(() => {
+  const [length, setLength] = useState(120)
+  const minLength = useMemo(() => {
     return 120
   }, [])
+
+  // const maxLength = useMemo(() => {
+  //   return item.length || 3000
+  // }, [item.length])
+
+  const maxLength = item.max_length || 3000
+  console.log('maxLength : ', maxLength)
   const minA = item.price_calculation.min_measures.A || 0
   const [A, setA] = useState(minA || 0)
   const minB = item.price_calculation.min_measures.B || 0
@@ -211,9 +220,9 @@ export default function SingleProduct({
       selectedVariation.price *
       1.111 *
       1.111 *
-      (width / 1000) *
+      (length / 1000) *
       (surface / 1000),
-    [surface, selectedVariation, width]
+    [surface, selectedVariation, length]
   )
   // (fixedTimeCost)+(quantity * manipTimeCost)
   // prettier-ignore
@@ -258,6 +267,52 @@ export default function SingleProduct({
 
   const dispatch = useDispatch()
 
+  // Validation function
+  const isFormValid = useMemo(() => {
+    // Check all conditions
+    return (
+      quantity > 0 &&
+      length >= minLength &&
+      length <= maxLength &&
+      A >= minA &&
+      B >= minB &&
+      C >= minC &&
+      (!item.price_calculation.custom_angles ||
+        (angle1 >= minAngle1 &&
+          angle1 <= maxAngle1 &&
+          angle2 >= minAngle2 &&
+          angle2 <= maxAngle2 &&
+          angle3 >= minAngle3 &&
+          angle3 <= maxAngle3 &&
+          angle4 >= minAngle4 &&
+          angle4 <= maxAngle4))
+    )
+  }, [
+    quantity,
+    length,
+    minLength,
+    maxLength,
+    A,
+    B,
+    C,
+    minA,
+    minB,
+    minC,
+    angle1,
+    minAngle1,
+    maxAngle1,
+    angle2,
+    minAngle2,
+    maxAngle2,
+    angle3,
+    minAngle3,
+    maxAngle3,
+    angle4,
+    minAngle4,
+    maxAngle4,
+    item.price_calculation.custom_angles,
+  ])
+
   const handleAddToList = () => {
     const newProduct = {
       id: item._id,
@@ -265,7 +320,7 @@ export default function SingleProduct({
       name: item.name,
       material: selectedMaterial,
       variation: selectedVariation,
-      width: width,
+      length: length,
       main_image: item.main_image,
       price_ht_single_unit: Number(price_ht_single_unit.toFixed(2)),
       tax: item.tax,
@@ -773,20 +828,25 @@ export default function SingleProduct({
                       <p>Longueur:</p>
                       <input
                         type="number"
-                        value={width} // Show empty string if quantity is 0
+                        value={length} // Show empty string if quantity is 0
                         onChange={(e) =>
-                          setWidth(
+                          setLength(
                             e.target.value === '' ? 0 : Number(e.target.value)
                           )
                         }
-                        min="0"
+                        min=""
                         step="1"
                         className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
                       />
                       <span>mm</span>
-                      {width < minWidth && (
+                      {length < minLength && (
                         <p className="text-red-500 text-sm">
-                          Minimum {minWidth} mm
+                          Minimum {minLength} mm
+                        </p>
+                      )}
+                      {length > maxLength && (
+                        <p className="text-red-500 text-sm">
+                          Maximum {maxLength} mm
                         </p>
                       )}
                     </div>
@@ -839,10 +899,10 @@ export default function SingleProduct({
                 <button
                   type="button"
                   onClick={handleAddToList}
-                  disabled={quantity === 0} // Disable button when quantity is 0
+                  disabled={!isFormValid} // Disable button when quantity is 0
                   className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
                   ${
-                    quantity === 0
+                    !isFormValid
                       ? 'bg-[#cfcfcf] cursor-not-allowed'
                       : 'bg-[#B51B1B] hover:bg-[#AE0027] focus:ring-[#AE0027]'
                   }`} // Conditional classNames

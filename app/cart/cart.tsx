@@ -63,11 +63,10 @@ export default function Cart() {
 
   const handleClickRemove = (cart_item_id: any) => {
     dispatch(removeFromCart({ cart_item_id: cart_item_id }))
-    console.log('removed called')
   }
 
   const handleValidateOrder = (orderDatas: any) => {
-    console.log('orderDatas on handleclick:', orderDatas)
+    // console.log('orderDatas on handleclick:', orderDatas)
     fetch(`${process.env.NEXT_PUBLIC_URL}/api/orders/createOrder`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -126,7 +125,7 @@ export default function Cart() {
           {item.angles.angle4 !== 0 && (
             <li>Angle 4 : {item.angles.angle4} °</li>
           )}
-          {item.width !== 0 && <li>Longueur : {item.width} mm</li>}
+          {item.length !== 0 && <li>Longueur : {item.length} mm</li>}
         </ul>
       </TableCell>
       <TableCell className="text-left redAlu font-bold">

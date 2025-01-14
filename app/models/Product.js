@@ -5,6 +5,7 @@ const productSchema = new mongoose.Schema({
   name: String,
   colors: Array,
   length: Number,
+  max_length: Number,
   weight: Number,
   width: Number,
   description: String,
