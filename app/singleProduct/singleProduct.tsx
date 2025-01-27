@@ -9,6 +9,8 @@ import { nanoid } from 'nanoid'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import SimpleGltfModel from '@/components/gltf/SimpleGltfModel'
 import { Radio, RadioGroup } from '@headlessui/react'
+
+import { Login } from '@/components/login'
 import {
   CurrencyDollarIcon,
   GlobeAmericasIcon,
@@ -26,6 +28,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 
 const policies = [
   {
@@ -55,6 +69,8 @@ export default function SingleProduct({
   console.log('single product max_length : ', item.max_length)
   const { toast } = useToast()
   const router = useRouter()
+  const userConnected = useSelector((state: any) => state.user.userConnected)
+  console.log('userConnected : ', userConnected)
   const isPro = useSelector((state: any) => state.user.is_pro)
 
   const [selectedMaterial, setSelectedMaterial] = useState(
@@ -89,10 +105,6 @@ export default function SingleProduct({
     return 120
   }, [])
 
-  // const maxLength = useMemo(() => {
-  //   return item.length || 3000
-  // }, [item.length])
-
   const maxLength = item.max_length || 3000
   console.log('maxLength : ', maxLength)
   const minA = item.price_calculation.min_measures.A || 0
@@ -107,7 +119,6 @@ export default function SingleProduct({
   const [E, setE] = useState(minE || 0)
   const minF = item.price_calculation.min_measures.F || 0
   const [F, setF] = useState(minF || 0)
-  console.log(item)
 
   if (item.price_calculation.custom_angles) {
   }
@@ -899,16 +910,41 @@ export default function SingleProduct({
                 <button
                   type="button"
                   onClick={handleAddToList}
-                  disabled={!isFormValid} // Disable button when quantity is 0
+                  disabled={!isFormValid || !userConnected} // Disable button when quantity is 0
                   className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
                   ${
-                    !isFormValid
+                    !isFormValid || !userConnected
                       ? 'bg-[#cfcfcf] cursor-not-allowed'
                       : 'bg-[#B51B1B] hover:bg-[#AE0027] focus:ring-[#AE0027]'
                   }`} // Conditional classNames
                 >
                   Ajouter {quantity > 0 && quantity} PRODUIT(S) à votre liste
                 </button>
+
+                {!userConnected && (
+                  <div className="pt-4 flex justify-center items-center gap-4">
+                    <div className="text-sm">
+                      Vous devez être connecté pour ajouter des produits :
+                    </div>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button variant="outline" className="text-xs">
+                          Je me connecte
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent className="max-w-lg">
+                        <AlertDialogHeader>
+                          <AlertDialogDescription>
+                            <Login />
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Annuler</AlertDialogCancel>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                )}
               </form>
 
               {/* Product details */}
