@@ -14,22 +14,53 @@ export async function GET(request: any, { params }: any) {
 
   try {
     if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
+      const errorResponse = NextResponse.json(
         { error: 'Id newsletter non valide' },
         { status: 400 }
       )
+      errorResponse.headers.set('Access-Control-Allow-Origin', '*')
+      errorResponse.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+      errorResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+      return errorResponse
     }
+
     const newsletter = await Newsletter.findById(id)
 
     if (!newsletter) {
-      return NextResponse.json(
+      const errorResponse = NextResponse.json(
         { error: 'Newsletter non trouvée' },
-        { status: 400 }
+        { status: 404 }
       )
+      errorResponse.headers.set('Access-Control-Allow-Origin', '*')
+      errorResponse.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+      errorResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+      return errorResponse
     }
 
-    return NextResponse.json(newsletter)
-  } catch {
-    return NextResponse.json('ERREUR')
+    const response = NextResponse.json(newsletter)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+
+    return response
+  } catch (error) {
+    console.error('Error:', error)
+    const errorResponse = NextResponse.json(
+      { error: 'Erreur serveur' },
+      { status: 500 }
+    )
+    errorResponse.headers.set('Access-Control-Allow-Origin', '*')
+    errorResponse.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+    errorResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+    return errorResponse
   }
+}
+
+// Handle CORS preflight requests (OPTIONS)
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 })
+  response.headers.set('Access-Control-Allow-Origin', '*')
+  response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+  return response
 }
