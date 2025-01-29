@@ -1,19 +1,20 @@
-import { EmailTemplate } from '../../../../components/emails/registration-template'
+import { EmailOrderTemplate } from '../../../../components/emails/order-template'
 import { Resend } from 'resend'
 import * as React from 'react'
 
 const resend = new Resend('re_Z4KUSWdr_8Y74g6HeBKa4dFmVnRPDJ29b')
 // const resend = new Resend(process.env.RESEND_API_KEY)
 
-// http://localhost:3000/api/emails/example  (POST)
+// http://localhost:3000/api/emails/order_confirmation  (POST)
 
-export async function POST() {
+export async function POST(req: Request) {
   try {
+    const { email } = await req.json()
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
+      from: 'Alice de Pliage Aluminium <alice@pliage-aluminium.com>',
       to: ['logeen@logeen.com'],
-      subject: 'Hello world',
-      react: EmailTemplate({ firstName: 'John' }) as React.ReactElement,
+      subject: 'Votre commande sur Pliage-aluminium.com',
+      react: EmailOrderTemplate({ firstName: 'John' }) as React.ReactElement,
     })
 
     if (error) {

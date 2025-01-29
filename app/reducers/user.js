@@ -6,6 +6,7 @@ const initialState = {
   surname: '',
   token: '',
   userId: '',
+  email: '',
   is_pro: false,
 }
 
@@ -30,6 +31,9 @@ export const user = createSlice({
     loggedToken: (state, action) => {
       state.token = action.payload
     },
+    loggedEmail: (state, action) => {
+      state.email = action.payload
+    },
     isPro: (state, action) => {
       state.is_pro = action.payload
     },
@@ -42,6 +46,7 @@ export const {
   loggedName,
   loggedSurname,
   loggedToken,
+  loggedEmail,
   isPro,
 } = user.actions
 export default user.reducer

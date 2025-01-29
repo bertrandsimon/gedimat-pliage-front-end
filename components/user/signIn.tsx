@@ -11,6 +11,7 @@ import {
   loggedName,
   loggedSurname,
   loggedToken,
+  loggedEmail,
   isPro,
 } from '@/app/reducers/user'
 
@@ -74,13 +75,15 @@ export default function SignIn() {
           setPassword('')
         } else {
           setSuccess(true)
+          console.log(data)
           dispatch(loggedStatus(true))
           dispatch(loggedName(data.name))
           dispatch(loggedSurname(data.surname))
           dispatch(isPro(data.isPro))
+          dispatch(loggedEmail(data.email))
           dispatch(userId(data.userId))
           toast({
-            title: `Bonjour ${data.surname}`,
+            title: `Bonjour ${data.surname} ${data.email}`,
             description: 'Vous êtes bien connecté à votre compte',
           })
         }
