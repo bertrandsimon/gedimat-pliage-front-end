@@ -6,32 +6,30 @@ import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 
 export default function Footer() {
+  const [isValid, setIsValid] = useState(false)
   const [success, setSuccess] = useState(false)
+
   const form = useRef<HTMLFormElement>(null)
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSendForm = () => {
+    if (form.current) {
+      const formData = new FormData(form.current)
+      const telephone = formData.get('telephone')?.toString().trim() // Get input and trim whitespace
 
-    if (!form.current) {
-      console.log('Form reference is null')
-      return
+      // Check if telephone is valid (only digits and length between 10 and 20)
+      const telephoneRegex = /^[0-9]{10,20}$/
+
+      if (!telephone) {
+        console.log('Please enter a telephone number.')
+      } else if (!telephoneRegex.test(telephone)) {
+        console.log(
+          'Invalid telephone number. It must be between 10 and 20 digits and contain only numbers.'
+        )
+      } else {
+        console.log('Valid telephone number:', telephone)
+        // Proceed with form submission logic or API call
+      }
     }
-
-    emailjs
-      .sendForm(
-        'service_uvsxn6b',
-        'template_4d95a3p',
-        form.current,
-        'NgT7PTAfnfr_bHXV2'
-      )
-      .then(
-        (result) => {
-          setSuccess(true)
-        },
-        (error) => {
-          console.log('erreur', error)
-        }
-      )
   }
 
   const navigation = {
@@ -108,20 +106,15 @@ export default function Footer() {
               </div>
             </div>
             <div className="mt-10 xl:mt-0">
-              <h3 className="font-normal leading-6 text-white text-center sm:text-left">
+              <h3 className="text-normal leading-6 text-white text-center sm:text-left">
                 On vous rappelle
               </h3>
-              <p className="mt-2 leading-6 text-gray-300  text-center sm:text-left">
-                Prenez contact avec nous pour plus d&apos;informations
+              <p className="text-sm pt-1 text-gray-500 text-center sm:text-left">
+                Un de nos experts prendra contact avec vous
               </p>
 
               {!success ? (
-                <form
-                  ref={form}
-                  action="#"
-                  onSubmit={sendEmail}
-                  className="mt-6 sm:flex sm:max-w-md"
-                >
+                <form ref={form} className="mt-6 sm:flex sm:max-w-md">
                   <input
                     type="text"
                     name="telephone"
@@ -132,7 +125,8 @@ export default function Footer() {
                   />
                   <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
                     <button
-                      type="submit"
+                      onClick={handleSendForm}
+                      type="button"
                       className="flex w-full items-center justify-center rounded-md bg-[#B51B1B] px-3 py-2 text-sm font-light text-white shadow-sm hover:bg-[#B51B1B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B51B1B] uppercase"
                     >
                       Envoyer
@@ -147,7 +141,7 @@ export default function Footer() {
               )}
             </div>
           </div>
-          <div className="mt-16 border-t border-white/10 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
+          <div className="mt-16 pt-4 border-t border-white/10 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
             <div className="flex space-x-6 justify-center sm:justify-start md:order-2">
               {navigation.social.map((item) => (
                 <a
@@ -161,7 +155,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0 sm:text-left text-center">
-              &copy; Pliage de la Vallée 2024 |<span> Droits réservés |</span>
+              &copy; Pliage de la Vallée 2025 |<span> Droits réservés |</span>
               <span className="hover:text-white">
                 <Link href="/legal"> Mentions légales</Link>
               </span>
