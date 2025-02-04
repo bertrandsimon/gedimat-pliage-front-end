@@ -44,8 +44,6 @@ export default function Cart() {
   const customer_id = useSelector((state: any) => state.user.userId)
   const email = useSelector((state: any) => state.user.email)
 
-  console.log('email in reducer :', email)
-
   const totalPriceHT = cartItems.reduce(
     (total: number, item: any) =>
       total + item.price_ht_single_unit * item.quantity,
@@ -77,15 +75,21 @@ export default function Cart() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result === true) {
+          //console.log('order_id : ', data.order._id)
           setOrderSuccess(true)
           dispatch(clearCart())
-
+          const mailOrderDate = orderDatas.created_at
+          const orderId = data.order._id
+          console.log('orderId : ', orderId)
           // Trigger the order confirmation email API
-          fetch(`http://localhost:3000/api/emails/registration`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email }),
-          })
+          fetch(
+            `${process.env.NEXT_PUBLIC_URL}/api/emails/order_confirmation`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, mailOrderDate, orderId }),
+            }
+          )
         } else {
         }
       })

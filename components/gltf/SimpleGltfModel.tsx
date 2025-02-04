@@ -6,7 +6,7 @@ import { OrbitControls, useGLTF } from '@react-three/drei'
 
 const Model: React.FC = () => {
   const { scene } = useGLTF(
-    // '/gltf/maison-quentin.gltf'
+    //'/gltf/quentin/Maison_006_Export_babylon.gltf'
     '/gltf/new/couvertine-a-coller-test25112-v5.gltf'
   ) as any
   scene.position.set(0, 0, 0) // Center the model in the scene

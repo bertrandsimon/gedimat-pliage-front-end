@@ -61,7 +61,7 @@ export default function Steps() {
 
           <div className="flex flex-col gap-3 text-center items-center -mt-4">
             <Image src="/images/2.png" alt="" height={30} width={30} />
-            <p className="font-bold">Votre liste est crée</p>
+            <p className="font-bold">Votre liste est créée</p>
             <p className="text-sm w-[220px]">
               Contactez un de nos experts pour vérifier votre commande.
             </p>

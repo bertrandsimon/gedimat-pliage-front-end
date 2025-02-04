@@ -103,9 +103,9 @@ export default function Lists({ orders }: { orders: Order[] }) {
             <DropdownMenuLabel className="cursor-pointer">
               Actions
             </DropdownMenuLabel>
-            <DropdownMenuItem className="cursor-pointer">
+            {/* <DropdownMenuItem className="cursor-pointer">
               Modifier
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
             <DropdownMenuItem
               onClick={() => handleClickRemove(order._id)}
               className="cursor-pointer"

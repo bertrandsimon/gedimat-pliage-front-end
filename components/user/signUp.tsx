@@ -35,15 +35,6 @@ export default function SignUp() {
     return re.test(String(email).toLowerCase())
   }
 
-  // const handleTestMail = () => {
-  //   console.log('mail sent')
-  //   fetch(`http://localhost:3000/api/emails/registration`, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     //body: JSON.stringify({ email, name }),
-  //   })
-  // }
-
   const handleSubmit = () => {
     setError('')
 
@@ -85,7 +76,7 @@ export default function SignUp() {
           setSuccess(true)
 
           // Trigger the registration email API
-          fetch(`http://localhost:3000/api/emails/registration`, {
+          fetch(`${process.env.NEXT_PUBLIC_URL}/api/emails/registration`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, surname }),

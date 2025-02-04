@@ -65,12 +65,12 @@ export default function SingleProduct({
   item: any
   materials: any[]
 }) {
-  console.log('single product : ', item)
-  console.log('single product max_length : ', item.max_length)
+  // console.log('single product : ', item)
+  // console.log('single product max_length : ', item.max_length)
   const { toast } = useToast()
   const router = useRouter()
   const userConnected = useSelector((state: any) => state.user.userConnected)
-  console.log('userConnected : ', userConnected)
+  // console.log('userConnected : ', userConnected)
   const isPro = useSelector((state: any) => state.user.is_pro)
 
   const [selectedMaterial, setSelectedMaterial] = useState(
@@ -106,7 +106,7 @@ export default function SingleProduct({
   }, [])
 
   const maxLength = item.max_length || 3000
-  console.log('maxLength : ', maxLength)
+
   const minA = item.price_calculation.min_measures.A || 0
   const [A, setA] = useState(minA || 0)
   const minB = item.price_calculation.min_measures.B || 0
@@ -255,21 +255,21 @@ export default function SingleProduct({
     return price_ht_single_unit * quantity
   }, [price_ht_single_unit, quantity])
 
-  useEffect(() => {
-    console.log('Surface:', surface)
-    console.log('PRN:', prn)
-    console.log('MDO:', mdo)
-    console.log('preparationTimeCost:', preparationTimeCost)
-    console.log('price_ht_single_unit:', price_ht_single_unit)
-    console.log('selectedVariation.price :', selectedVariation.price)
-  }, [
-    surface,
-    prn,
-    price_ht_single_unit,
-    preparationTimeCost,
-    selectedVariation.price,
-    mdo,
-  ])
+  // useEffect(() => {
+  //   console.log('Surface:', surface)
+  //   console.log('PRN:', prn)
+  //   console.log('MDO:', mdo)
+  //   console.log('preparationTimeCost:', preparationTimeCost)
+  //   console.log('price_ht_single_unit:', price_ht_single_unit)
+  //   console.log('selectedVariation.price :', selectedVariation.price)
+  // }, [
+  //   surface,
+  //   prn,
+  //   price_ht_single_unit,
+  //   preparationTimeCost,
+  //   selectedVariation.price,
+  //   mdo,
+  // ])
 
   const handleMaterialChoice = (material: any) => {
     setSelectedMaterial(material)

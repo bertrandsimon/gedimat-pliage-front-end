@@ -7,6 +7,8 @@ import Product from '../../models/Product'
 // http://localhost:3000/api/products
 // https://pliage-aluminium.vercel.app/api/products
 
+// https://www.pliage-aluminium.com/api/products
+
 export async function GET() {
   await connectDB()
   try {

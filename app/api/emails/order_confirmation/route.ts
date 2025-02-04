@@ -9,12 +9,16 @@ const resend = new Resend('re_Z4KUSWdr_8Y74g6HeBKa4dFmVnRPDJ29b')
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json()
+    const { email, mailOrderDate, orderId } = await req.json()
     const { data, error } = await resend.emails.send({
       from: 'Alice de Pliage Aluminium <alice@pliage-aluminium.com>',
-      to: ['logeen@logeen.com'],
+      to: [`${email}`],
       subject: 'Votre commande sur Pliage-aluminium.com',
-      react: EmailOrderTemplate({ firstName: 'John' }) as React.ReactElement,
+      react: EmailOrderTemplate({
+        firstName: 'John',
+        mailOrderDate,
+        orderId,
+      }) as React.ReactElement,
     })
 
     if (error) {

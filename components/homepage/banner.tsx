@@ -47,24 +47,16 @@ export default function Banner() {
 
             <div className="rounded-md flex flex-col justify-center items-center text-center gap-4 dashed p-4">
               <Image
-                src="/images/banner/delivery.png"
+                src="/images/banner/livraison.png"
                 height={58}
                 width={71}
                 alt=""
               />
 
-              {/* <div w-24 h-24 overflow-hidden>
-            <DotLottieReact
-              src={animationURL}
-              loop
-              autoplay
-              autoResizeCanvas={false}
-             className="w-96 h-48 object-contain"
-              />
-            </div> */}
               <span className="text-sm">
-                Toute l’expérience du groupe <br />
-                Gedimat à votre service
+                Livraison ou enlèvement
+                <br />
+                dans nos magasins
               </span>
             </div>
           </div>

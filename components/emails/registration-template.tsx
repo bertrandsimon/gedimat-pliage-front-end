@@ -35,7 +35,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
           <Hr style={global.hr} />
           <Section style={message}>
             <Img
-              src="https://pliage-aluminium.vercel.app/images/emails/logo.jpg"
+              src="https://pliage-aluminium.com/images/emails/logo.jpg"
               width="192"
               height="102"
               alt="Logo"
