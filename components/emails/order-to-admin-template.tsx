@@ -20,22 +20,18 @@ const baseUrl = process.env.VERCEL_URL
   : ''
 
 interface EmailTemplateProps {
-  firstName: string
+  email: string
   mailOrderDate: string
   orderId: string
 }
 
-export const EmailOrderTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
-  firstName,
-  mailOrderDate,
-  orderId,
-}) => (
+export const EmailOrderToAdminTemplate: React.FC<
+  Readonly<EmailTemplateProps>
+> = ({ email, mailOrderDate, orderId }) => (
   <div>
     <Html>
       <Head />
-      <Preview>
-        Voici le résumé de votre commande sur pliage-aluminium.com
-      </Preview>
+      <Preview>Nouvelle commande sur le site Pliage-aluminium.com</Preview>
       <Body style={main}>
         <Container style={container}>
           <Hr style={global.hr} />
@@ -47,23 +43,12 @@ export const EmailOrderTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
               alt="Logo"
               style={{ margin: 'auto' }}
             />
-            <Text className="text-2xl">Commande validée.</Text>
+            <Text className="text-2xl">Nouvelle commande</Text>
             <Text style={global.text}>
-              Veuillez contacter un de nos experts pour vérifier que votre
-              commande est conforme.
+              Une nouvelle commande vient d'être passée sur le site.
             </Text>
-            <Text style={{ ...global.text, marginTop: 24 }}>
-              Vous pourrez ensuite régler directement au téléphone ou en
-              magasin.
-            </Text>
+            <Text style={global.text}>Client email: {email}</Text>
           </Section>
-          {/* <Hr style={global.hr} />
-          <Section style={global.defaultPadding}>
-            <Text style={adressTitle}>Shipping to: Alan Turing</Text>
-            <Text style={{ ...global.text, fontSize: 14 }}>
-              2125 Chestnut St, San Francisco, CA 94123
-            </Text>
-          </Section> */}
 
           <Hr style={global.hr} />
           <Section style={global.defaultPadding}>
@@ -85,40 +70,13 @@ export const EmailOrderTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
             </Row>
           </Section>
           <Hr style={global.hr} />
-
-          <Hr style={global.hr} />
-
-          <Hr style={{ ...global.hr, marginTop: '12px' }} />
-          <Section style={paddingY}>
-            <Row style={footer.policy}>
-              <Text style={footer.text}>
-                {' '}
-                <a href="www.pliage-aluminium.com" target="_blank">
-                  www.pliage-aluminium.com
-                </a>
-              </Text>
-            </Row>
-            <Row>
-              <Text
-                style={{ ...footer.text, paddingTop: 30, paddingBottom: 30 }}
-              >
-                Si vous avez la moindre question n'hésitez pas à nous contacter.
-              </Text>
-            </Row>
-            <Row>
-              <Text style={footer.text}>© Pliage de la Vallée 2024</Text>
-            </Row>
-            <Row>
-              <Text style={footer.text}>Un site du groupe GEDIMAT</Text>
-            </Row>
-          </Section>
         </Container>
       </Body>
     </Html>
   </div>
 )
 
-export default EmailOrderTemplate
+export default EmailOrderToAdminTemplate
 const paddingX = {
   paddingLeft: '40px',
   paddingRight: '40px',

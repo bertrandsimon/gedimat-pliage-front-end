@@ -90,6 +90,15 @@ export default function Cart() {
               body: JSON.stringify({ email, mailOrderDate, orderId }),
             }
           )
+          // Trigger new order to admin email API
+          fetch(
+            `${process.env.NEXT_PUBLIC_URL}/api/emails/order_confirmation_to_admin`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, mailOrderDate, orderId }),
+            }
+          )
         } else {
         }
       })
