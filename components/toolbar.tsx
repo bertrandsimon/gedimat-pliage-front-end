@@ -110,7 +110,7 @@ export default function Toolbar() {
 
       <div className="flex justify-center items-center gap-1 text-white sm:-mt-3 my-4 sm:my-0">
         <Link
-          href=""
+          href="/presentation"
           className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] rounded-md hover:rounded-md p-2"
         >
           Présentation
