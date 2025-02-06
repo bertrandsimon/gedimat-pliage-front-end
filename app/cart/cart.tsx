@@ -80,7 +80,7 @@ export default function Cart() {
           dispatch(clearCart())
           const mailOrderDate = orderDatas.created_at
           const orderId = data.order._id
-          console.log('orderId : ', orderId)
+
           // Trigger the order confirmation email API
           fetch(
             `${process.env.NEXT_PUBLIC_URL}/api/emails/order_confirmation`,

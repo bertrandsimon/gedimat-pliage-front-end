@@ -6,29 +6,47 @@ import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 
 export default function Footer() {
+  const [telephone, setTelephone] = useState('')
   const [isValid, setIsValid] = useState(false)
   const [success, setSuccess] = useState(false)
-
+  const [errorMsg, setErrorMsg] = useState('')
   const form = useRef<HTMLFormElement>(null)
 
+  const handleValidation = (value: string) => {
+    const telephoneRegex = /^[0-9]{10,20}$/
+    setIsValid(telephoneRegex.test(value))
+  }
+  const handleTelephoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim()
+    // Check if telephone is valid (only digits and length between 10 and 20)
+    const telephoneRegex = /^[0-9]{10,20}$/
+
+    if (!telephone) {
+      console.log('Please enter a telephone number.')
+    } else if (!telephoneRegex.test(telephone)) {
+      setErrorMsg('Format de téléphone non valide')
+    } else {
+      console.log('Valid telephone number:', telephone)
+      setIsValid(true)
+      setErrorMsg('')
+      // Proceed with form submission logic or API call
+    }
+    setTelephone(value)
+    handleValidation(value)
+  }
   const handleSendForm = () => {
     if (form.current) {
       const formData = new FormData(form.current)
-      const telephone = formData.get('telephone')?.toString().trim() // Get input and trim whitespace
-
-      // Check if telephone is valid (only digits and length between 10 and 20)
-      const telephoneRegex = /^[0-9]{10,20}$/
-
-      if (!telephone) {
-        console.log('Please enter a telephone number.')
-      } else if (!telephoneRegex.test(telephone)) {
-        console.log(
-          'Invalid telephone number. It must be between 10 and 20 digits and contain only numbers.'
-        )
-      } else {
-        console.log('Valid telephone number:', telephone)
-        // Proceed with form submission logic or API call
-      }
+      const telephone = formData.get('telephone')?.toString().trim()
+      fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/emails/we_call_you_back_to_admin`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ telephone }),
+        }
+      )
+      setSuccess(true)
     }
   }
 
@@ -59,7 +77,7 @@ export default function Footer() {
       <footer>
         <div className="px-6 pb-6 pt-2 sm:pt-24 lg:px-8 lg:pt-8">
           <div className="xl:grid xl:grid-cols-2 xl:gap-8">
-            <div className="hidden lg:flex h-full w-full items-center justify-center sm:justify-between">
+            <div className="hidden lg:flex h-full w-full items-start justify-center sm:justify-between">
               <div className="grid grid-cols-2 gap-8 xl:col-span-2">
                 <div className="flex flex-row gap-8">
                   <div>
@@ -112,7 +130,6 @@ export default function Footer() {
               <p className="text-sm pt-1 text-gray-500 text-center sm:text-left">
                 Un de nos experts prendra contact avec vous
               </p>
-
               {!success ? (
                 <form ref={form} className="mt-6 sm:flex sm:max-w-md">
                   <input
@@ -120,6 +137,7 @@ export default function Footer() {
                     name="telephone"
                     id="telephone"
                     required
+                    onChange={handleTelephoneChange}
                     className="w-full focus:outline-none min-w-0 text-center appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#B51B1B] sm:w-64 sm:text-sm sm:leading-6 xl:w-full"
                     placeholder="Téléphone"
                   />
@@ -127,7 +145,12 @@ export default function Footer() {
                     <button
                       onClick={handleSendForm}
                       type="button"
-                      className="flex w-full items-center justify-center rounded-md bg-[#B51B1B] px-3 py-2 text-sm font-light text-white shadow-sm hover:bg-[#B51B1B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B51B1B] uppercase"
+                      disabled={!isValid}
+                      className={`flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-light text-white shadow-sm uppercase ${
+                        isValid
+                          ? 'bg-[#B51B1B] hover:bg-[#B51B1B]'
+                          : 'bg-gray-400 cursor-not-allowed'
+                      }`}
                     >
                       Envoyer
                     </button>
@@ -136,8 +159,13 @@ export default function Footer() {
               ) : (
                 // success msg
                 <div className="mt-6 flex justify-left items-center mx-auto text-white">
-                  Merci, nous vous recontactons rapidement.
+                  Merci, un de nos experts vous recontactera.
                 </div>
+              )}
+              {!isValid && telephone !== '' ? (
+                <div className="text-sm text-gray-500 pt-4">{errorMsg}</div>
+              ) : (
+                <div></div>
               )}
             </div>
           </div>
