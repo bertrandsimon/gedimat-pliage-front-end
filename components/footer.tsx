@@ -77,97 +77,140 @@ export default function Footer() {
       <footer>
         <div className="px-6 pb-6 pt-2 sm:pt-24 lg:px-8 lg:pt-8">
           <div className="xl:grid xl:grid-cols-2 xl:gap-8">
-            <div className="hidden lg:flex h-full w-full items-start justify-center sm:justify-between">
-              <div className="grid grid-cols-2 gap-8 xl:col-span-2">
-                <div className="flex flex-row gap-8">
-                  <div>
-                    <h3 className="font-light text-white uppercase">
-                      <Link
-                        href="/presentation"
-                        className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
-                      >
-                        présentation
-                      </Link>
-                    </h3>
-                  </div>
-                  <div className="mt-10 md:mt-0">
-                    <h3 className="font-light text-white uppercase">
-                      <Link
-                        href="/inspirations"
-                        className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
-                      >
-                        Inspirations
-                      </Link>
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-light text-white uppercase">
-                      <Link
-                        href="/faq"
-                        className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
-                      >
-                        faq
-                      </Link>
-                    </h3>
-                  </div>
-                  <div className="mt-10 md:mt-0">
-                    <h3 className="font-light text-white uppercase">
-                      <Link
-                        href="/contact"
-                        className="rounded-md transition duration-300 ease-in-out hover:bg-[#B51B1B] h-[30px] px-2 inline-flex items-center  uppercase  hover:rounded-md mt-3"
-                      >
-                        contact
-                      </Link>
-                    </h3>
+            <section id="nav">
+              <div className="hidden lg:flex h-full w-full items-start justify-center sm:justify-between">
+                <div className="grid grid-cols-2 gap-8 xl:col-span-2">
+                  <div className="flex flex-col gap-4 items-start justify-start">
+                    <div className="flex flex-row gap-8">
+                      <div>
+                        <h3 className="font-light text-white uppercase">
+                          <Link
+                            href="/presentation"
+                            className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
+                          >
+                            présentation
+                          </Link>
+                        </h3>
+                      </div>
+                      <div className="mt-10 md:mt-0">
+                        <h3 className="font-light text-white uppercase">
+                          <Link
+                            href="/inspirations"
+                            className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
+                          >
+                            Inspirations
+                          </Link>
+                        </h3>
+                      </div>
+                      <div>
+                        <h3 className="font-light text-white uppercase">
+                          <Link
+                            href="/faq"
+                            className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
+                          >
+                            faq
+                          </Link>
+                        </h3>
+                      </div>
+                      <div className="mt-10 md:mt-0">
+                        <h3 className="font-light text-white uppercase">
+                          <Link
+                            href="/contact"
+                            className="rounded-md transition duration-300 ease-in-out hover:bg-[#B51B1B] h-[30px] px-2 inline-flex items-center  uppercase  hover:rounded-md mt-3"
+                          >
+                            contact
+                          </Link>
+                        </h3>
+                      </div>
+                    </div>
+                    {/* <Image
+            src="/images/logo-pliage-aluminium.png"
+            alt=""
+            width={178}
+            height={63}
+            className="mt-3"
+          /> */}
+                    <div className="text-white flex items-center justify-center gap-8 ml-8 pt-4">
+                      <Image
+                        src="/images/footer/gedimat.jpg"
+                        width={136}
+                        height={70}
+                        alt="Gedimat"
+                        className="cursor-pointer"
+                      ></Image>
+
+                      <Image
+                        src="/images/footer/pliage.jpg"
+                        width={148}
+                        height={70}
+                        alt="Gedimat"
+                        className="cursor-pointer"
+                      ></Image>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="mt-10 xl:mt-0">
-              <h3 className="text-normal leading-6 text-white text-center sm:text-left">
-                On vous rappelle
-              </h3>
-              <p className="text-sm pt-1 text-gray-500 text-center sm:text-left">
-                Un de nos experts prendra contact avec vous
-              </p>
-              {!success ? (
-                <form ref={form} className="mt-6 sm:flex sm:max-w-md">
-                  <input
-                    type="text"
-                    name="telephone"
-                    id="telephone"
-                    required
-                    onChange={handleTelephoneChange}
-                    className="w-full focus:outline-none min-w-0 text-center appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#B51B1B] sm:w-64 sm:text-sm sm:leading-6 xl:w-full"
-                    placeholder="Téléphone"
-                  />
-                  <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-                    <button
-                      onClick={handleSendForm}
-                      type="button"
-                      disabled={!isValid}
-                      className={`flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-light text-white shadow-sm uppercase ${
-                        isValid
-                          ? 'bg-[#B51B1B] hover:bg-[#B51B1B]'
-                          : 'bg-gray-400 cursor-not-allowed'
-                      }`}
-                    >
-                      Envoyer
-                    </button>
+            </section>
+            <section id="telephone">
+              <div className="mt-10 xl:mt-0">
+                <div className="flex gap-2 justify-between items-center">
+                  <div>
+                    <h3 className="text-normal leading-6 text-white text-center sm:text-left">
+                      On vous rappelle
+                    </h3>
+                    <p className="text-sm pt-1 text-gray-500 text-center sm:text-left">
+                      Un de nos experts prendra contact avec vous
+                    </p>
                   </div>
-                </form>
-              ) : (
-                // success msg
-                <div className="mt-6 flex justify-left items-center mx-auto text-white">
-                  Merci, un de nos experts vous recontactera.
+                  <div className="-mt-28 ">
+                    <Image
+                      src="/images/footer/aide.png"
+                      alt="helper"
+                      width={220}
+                      height={147}
+                    ></Image>
+                  </div>
                 </div>
-              )}
-              {!isValid && telephone !== '' ? (
-                <div className="text-sm text-gray-500 pt-4">{errorMsg}</div>
-              ) : (
-                <div></div>
-              )}
-            </div>
+
+                {!success ? (
+                  <form ref={form} className="mt-6 sm:flex sm:max-w-md">
+                    <input
+                      type="text"
+                      name="telephone"
+                      id="telephone"
+                      required
+                      onChange={handleTelephoneChange}
+                      className="w-full focus:outline-none min-w-0 text-center appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#B51B1B] sm:w-64 sm:text-sm sm:leading-6 xl:w-full"
+                      placeholder="Téléphone"
+                    />
+                    <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
+                      <button
+                        onClick={handleSendForm}
+                        type="button"
+                        disabled={!isValid}
+                        className={`flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-light text-white shadow-sm uppercase ${
+                          isValid
+                            ? 'bg-[#B51B1B] hover:bg-[#B51B1B]'
+                            : 'bg-gray-400 cursor-not-allowed'
+                        }`}
+                      >
+                        Envoyer
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  // success msg
+                  <div className="mt-6 flex justify-left items-center mx-auto text-white">
+                    Merci, un de nos experts vous recontactera.
+                  </div>
+                )}
+                {!isValid && telephone !== '' ? (
+                  <div className="text-sm text-gray-500 pt-4">{errorMsg}</div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </section>
           </div>
           <div className="mt-16 pt-4 border-t border-white/10 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
             <div className="flex space-x-6 justify-center sm:justify-start md:order-2">

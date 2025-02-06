@@ -68,10 +68,10 @@ export default function Banner() {
         className="sm:-mt-0 p-10 sm:p-0 sm:pr-12 sm:py-12 h-full bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-bottom"
       >
         <Image
-          src="/images/banner/house.png"
-          height={497}
+          src="/images/banner/maison.png"
           width={592}
-          alt=""
+          height={512}
+          alt="maison"
           className="-mt-14 sm:-mt-0"
         />
       </section>

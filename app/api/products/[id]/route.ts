@@ -20,6 +20,7 @@ export async function GET(request: any, { params }: any) {
       )
     }
     const product = await Product.findById(id).populate('price_calculation')
+
     //const product = await Product.findById(id)
 
     if (!product) {

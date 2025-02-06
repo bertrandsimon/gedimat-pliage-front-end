@@ -68,6 +68,7 @@ export default function SingleProduct({
   // console.log('single product : ', item)
   // console.log('single product max_length : ', item.max_length)
   const { toast } = useToast()
+  console.log('item : ', item)
   const router = useRouter()
   const userConnected = useSelector((state: any) => state.user.userConnected)
   // console.log('userConnected : ', userConnected)
@@ -107,21 +108,21 @@ export default function SingleProduct({
 
   const maxLength = item.max_length || 3000
 
-  const minA = item.price_calculation.min_measures.A || 0
+  const minA = item?.price_calculation?.min_measures?.A || 0
   const [A, setA] = useState(minA || 0)
-  const minB = item.price_calculation.min_measures.B || 0
+  const minB = item?.price_calculation?.min_measures?.B || 0
   const [B, setB] = useState(minB || 0)
-  const minC = item.price_calculation.min_measures.C || 0
+  const minC = item?.price_calculation?.min_measures?.C || 0
   const [C, setC] = useState(minC || 0)
-  const minD = item.price_calculation.min_measures.D || 0
+  const minD = item?.price_calculation?.min_measures?.D || 0
   const [D, setD] = useState(minD || 0)
-  const minE = item.price_calculation.min_measures.E || 0
+  const minE = item?.price_calculation?.min_measures?.E || 0
   const [E, setE] = useState(minE || 0)
-  const minF = item.price_calculation.min_measures.F || 0
+  const minF = item?.price_calculation?.min_measures?.F || 0
   const [F, setF] = useState(minF || 0)
 
-  if (item.price_calculation.custom_angles) {
-  }
+  // if (item.price_calculation.custom_angles) {
+  // }
   const [angle1, setAngle1] = useState<number | 0>(0)
   const [angle2, setAngle2] = useState<number | 0>(0)
   const [angle3, setAngle3] = useState<number | 0>(0)
@@ -588,7 +589,7 @@ export default function SingleProduct({
                     <Dialog>
                       <DialogTrigger asChild>
                         <Image
-                          src="/images/products/schemas/couvertine-a-coller.jpg"
+                          src={`/images/products/schemas/${item.schema_img}`}
                           width={400}
                           height={400}
                           alt=""
@@ -596,8 +597,9 @@ export default function SingleProduct({
                         ></Image>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[600px]">
+                        <DialogTitle className="DialogTitle"></DialogTitle>
                         <Image
-                          src="/images/products/schemas/couvertine-a-coller.jpg"
+                          src={`/images/products/schemas/${item.schema_img}`}
                           width={600}
                           height={600}
                           alt=""

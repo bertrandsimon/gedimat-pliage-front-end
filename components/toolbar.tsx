@@ -85,9 +85,9 @@ export default function Toolbar() {
       <div className="flex sm:justify-start sm:items-start justify-center mt-4 sm:mt-0">
         <Link href="/">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-pliage-aluminium.png"
             alt=""
-            width={174}
+            width={178}
             height={63}
             className="mt-3"
           />

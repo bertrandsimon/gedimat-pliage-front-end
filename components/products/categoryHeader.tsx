@@ -15,7 +15,7 @@ export default function CategoryHeader(props: any) {
   )
   const surname = useSelector((state: any) => state.user.surname)
 
-  console.log('categorySubTitle', categorySubTitle)
+  //console.log('categorySubTitle', categorySubTitle)
   // Define the type for the category description
   interface CategoryDescription {
     category: string
@@ -31,8 +31,8 @@ export default function CategoryHeader(props: any) {
       category_image: '',
       category_description: '',
     })
-  console.log(categoryDescriptions)
-  console.log('props in page:', props)
+  //console.log(categoryDescriptions)
+  //console.log('props in page:', props)
 
   useEffect(() => {
     const description = categoryDescriptions.find(
