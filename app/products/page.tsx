@@ -27,8 +27,6 @@ export default function ProductsPage() {
 
   return (
     <div>
-      <Ariane ariane={ariane} />
-
       <div className="px-2 sm:px-12 py-12">
         <ProductsListing category={category} subcategory={subcategory} />
       </div>

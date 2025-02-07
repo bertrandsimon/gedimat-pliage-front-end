@@ -1,11 +1,13 @@
 'use client'
 import Ariane from '@/components/ariane'
-
+import Stats from '@/components/presentation/stats'
 import Presentation from '@/components/homepage/presentation'
+import Top from '@/components/presentation/top'
+
 export default function PresentationPage() {
   const ariane = {
-    sub1: 'Couverture et étanchéité',
-    sub2: 'Couvertines',
+    sub1: 'Présentation',
+    sub2: '',
     sub3: '',
   }
 
@@ -15,7 +17,14 @@ export default function PresentationPage() {
       <div className="px-2 py-4">
         <Presentation />
       </div>
-      <div className="px-2 sm:px-12 py-12">
+      <div className="px-4 py-12">
+        <Top
+          title="Spécialiste du pliage"
+          subtitle="Aluminium et acier"
+          sliderOn={true}
+          imageTop="man.png"
+        ></Top>
+        <Stats />
         <div className="flex flex-col gap-4">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
