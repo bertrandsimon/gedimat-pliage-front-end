@@ -2,13 +2,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 // import gedimat from "@/public/images/banner/gedimat.png"
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
-import { Button } from '@/components/ui/button'
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+// import { CheckCircleIcon } from '@heroicons/react/20/solid'
+// import { Button } from '@/components/ui/button'
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 export default function Banner() {
-  const animationURL =
-    'https://lottie.host/41da3a58-1dbc-4c61-825a-c99cae128776/GiXbQZVXO1.json'
+  // const animationURL =
+  //   'https://lottie.host/41da3a58-1dbc-4c61-825a-c99cae128776/GiXbQZVXO1.json'
 
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 bg-[#F2EDEA] rounded-md h-full sm:h-[600px] gap-10">
@@ -65,63 +65,61 @@ export default function Banner() {
 
       <section
         id="col2"
-        className="sm:-mt-0 p-10 sm:p-0 sm:pr-12 sm:py-12 h-full bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-bottom"
+        className="sm:-mt-0 p-10 sm:p-0 sm:pr-12  h-max-[full] bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-top"
       >
-        {/* <Image
-          src="/images/banner/maison.png"
-          width={592}
-          height={512}
-          alt="maison"
-          className="-mt-14 sm:-mt-0"
-        /> */}
-        <img
-          src="/images/banner/maison.png"
-          useMap="#house-map"
-          alt="House Diagram"
-          style={{ width: '100%', height: 'auto' }}
-        />
-        <map name="house-map">
-          <area
-            target="_self"
-            alt="Couvertines"
-            title="Couvertines"
-            href="/products?category=couverture_etancheite&subcategory=couvertines"
-            coords="38,42,140,100"
-            shape="rect"
+        <div className="relative">
+          <Image
+            src="/images/banner/maison.png"
+            width={592}
+            height={512}
+            alt="House Diagram"
+            useMap="#house-map"
+            style={{ width: '100%', height: 'auto' }}
+            className="-mt-14 sm:mt-10"
           />
-          <area
-            target="_self"
-            alt="Faîtières"
-            title="Faîtières"
-            href="/products?category=couverture_etancheite&subcategory=faitieres"
-            coords="235,0,324,28"
-            shape="rect"
-          />
-          <area
-            target="_self"
-            alt="Solins"
-            title="Solins"
-            href="/products?category=couverture_etancheite&subcategory=solins"
-            coords="417,30,517,90"
-            shape="rect"
-          />
-          <area
-            target="_self"
-            alt="Tablettes"
-            title="Tablettes"
-            href="/products?category=couverture_etancheite&subcategory=tablettes"
-            coords="504,123,594,173"
-            shape="rect"
-          />
-          <area
-            target="_self"
-            alt="Sous-face"
-            title="Sous-face"
-            href="/products?category=couverture_etancheite&subcategory=couvertines"
-            coords="503,349,603,409"
-            shape="rect"
-          />
-        </map>
+          <map name="house-map">
+            <area
+              target="_self"
+              alt="Couvertines"
+              title="Couvertines"
+              href="/products?category=couverture_etancheite&subcategory=couvertines"
+              coords="38,42,140,140"
+              shape="rect"
+            />
+            <area
+              target="_self"
+              alt="Faîtières"
+              title="Faîtières"
+              href="/products?category=couverture_etancheite&subcategory=faitieres"
+              coords="235,0,324,68"
+              shape="rect"
+            />
+            <area
+              target="_self"
+              alt="Solins"
+              title="Solins"
+              href="/products?category=couverture_etancheite&subcategory=solins"
+              coords="417,30,517,130"
+              shape="rect"
+            />
+            <area
+              target="_self"
+              alt="Tablettes"
+              title="Tablettes"
+              href="/products?category=couverture_etancheite&subcategory=tablettes"
+              coords="504,123,594,213"
+              shape="rect"
+            />
+            <area
+              target="_self"
+              alt="Sous-face"
+              title="Sous-face"
+              href="/products?category=couverture_etancheite&subcategory=couvertines"
+              coords="503,349,603,450"
+              shape="rect"
+            />
+          </map>
+        </div>
       </section>
     </div>
   )
