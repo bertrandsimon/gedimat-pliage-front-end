@@ -391,16 +391,13 @@ export default function SingleProduct({
                 </div>
 
                 <div>
-                  <h2 className="text-sm font-medium">Matériaux recommandés</h2>
-                  <hr className="mt-6" />
+                  <h2 className="text-sm font-medium">Vue 3D du produit</h2>
+                  <hr className="my-6" />
 
-                  <ul className="mt-4 list-disc pl-4 text-sm">
-                    {item.price_calculation.prefered_materials.map(
-                      (prefered_material: any) => (
-                        <li key={prefered_material}>{prefered_material}</li>
-                      )
-                    )}
-                  </ul>
+                  <p className="text-sm">
+                    Utilisez votre souris pour faire tourner le produit et votre
+                    molette pour zoomer.
+                  </p>
                 </div>
                 <div className="border border-1 p-1 rounded-md h-80 w-84 cursor-pointer">
                   <SimpleGltfModel />
@@ -470,7 +467,21 @@ export default function SingleProduct({
                       Choisir une matière
                     </h2>
                   </div>
+                  <div className="flex items-center justify-start gap-4">
+                    <div className="min-w-[30px]"></div>
+                    <p className="text-xs">
+                      pour ce produit nous vous recommandons :
+                    </p>
+                    {item.price_calculation.prefered_materials.map(
+                      (prefered_material: any) => (
+                        <p className="text-xs" key={prefered_material}>
+                          {prefered_material} <span className="ml-4"> | </span>
+                        </p>
+                      )
+                    )}
+                  </div>
                   <hr className="my-4" />
+
                   <fieldset className="mt-2">
                     <RadioGroup
                       value={selectedMaterial}
