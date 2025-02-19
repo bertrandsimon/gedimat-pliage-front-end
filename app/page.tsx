@@ -5,6 +5,18 @@ import Presentation from '@/components/homepage/presentation'
 import Categories from '@/components/homepage/categories'
 import Partners from '@/components/homepage/partners'
 import { Test } from '@/components/test'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Accueil - Pliage Aluminium Sur Mesure',
+  description:
+    'Expert en pliage aluminium sur mesure pour vos projets résidentiels et professionnels. Solutions adaptées et finitions durables.',
+  openGraph: {
+    title: 'Accueil - Pliage Aluminium Sur Mesure',
+    description:
+      'Expert en pliage aluminium sur mesure pour vos projets résidentiels et professionnels. Solutions adaptées et finitions durables.',
+  },
+}
 
 export default function Home() {
   return (

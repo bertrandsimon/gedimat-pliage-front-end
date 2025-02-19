@@ -1,4 +1,5 @@
 'use client'
+
 import Ariane from '@/components/ariane'
 import Stats from '@/components/presentation/stats'
 import Presentation from '@/components/homepage/presentation'

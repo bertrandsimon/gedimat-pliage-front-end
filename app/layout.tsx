@@ -11,13 +11,36 @@ import './globals.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { Toaster } from '@/components/ui/toaster'
+import { siteConfig } from '@/lib/metadata'
+import { metadata as presentationMetadata } from '@/app/presentation/metadata'
 
 const quicksand = Quicksand({
   subsets: ['latin'],
 })
+
 export const metadata: Metadata = {
-  title: 'Pliage Aluminium et Acier',
-  description: 'à remplir',
+  ...presentationMetadata,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.siteUrl),
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: siteConfig.siteUrl,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.title,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
