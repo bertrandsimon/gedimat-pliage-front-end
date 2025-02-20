@@ -66,6 +66,7 @@ export default function SingleProduct({
   materials: any[]
 }) {
   console.log('single product : ', item)
+  console.log('item.product_materials :', item.product_materials)
 
   const { toast } = useToast()
 

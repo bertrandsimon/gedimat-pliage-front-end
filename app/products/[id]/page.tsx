@@ -11,7 +11,14 @@ export default async function Page({ params }: any) {
   const item = await response.json()
 
   const response2 = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/materials`)
+  const response3 = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`
+  )
   const materials = await response2.json()
+
+  const productData = await response3.json()
+  const materialsFromProduct = productData.product_materials
+  console.log('materialsFromProduct : ', materialsFromProduct)
 
   const ariane = {
     sub1: 'Couverture et étanchéité',
