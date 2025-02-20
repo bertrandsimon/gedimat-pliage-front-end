@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server'
 import connectDB from '@/app/db'
 import Product from '@/app/models/Product'
+import Material from '@/app/models/Material'
 import { ObjectId } from 'mongodb'
 
-// GET PRODUCT BY ID  http://localhost:3000/api/products/666adf15c9493b71dbea1e46
+// GET PRODUCT BY ID  http://localhost:3000/api/products/666adf1ac9493b71dbea1e49
 
 // https://pliage-aluminium.vercel.app/api/products/666adf15c9493b71dbea1e46
+// Populate bug correction : add mongoose.set('strictPopulate', false) in db.ts
 
 export async function GET(request: any, { params }: any) {
   await connectDB()
@@ -19,13 +21,17 @@ export async function GET(request: any, { params }: any) {
         { status: 400 }
       )
     }
-    const product = await Product.findById(id).populate('price_calculation')
-
-    //const product = await Product.findById(id)
+    const product = await Product.findById(id)
+      .populate('price_calculation')
+      .populate('product_materials')
 
     if (!product) {
       return NextResponse.json({ error: 'Produit non trouvé' }, { status: 400 })
     }
+
+    //
+
+    //
 
     return NextResponse.json(product)
   } catch {

@@ -65,10 +65,10 @@ export default function SingleProduct({
   item: any
   materials: any[]
 }) {
-  // console.log('single product : ', item)
-  // console.log('single product max_length : ', item.max_length)
+  console.log('single product : ', item)
+
   const { toast } = useToast()
-  console.log('item : ', item)
+
   const router = useRouter()
   const userConnected = useSelector((state: any) => state.user.userConnected)
   // console.log('userConnected : ', userConnected)

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import PriceCalculation from './PriceCalculation' // import the PriceCalculation model to populate the field
+import Material from './Material'
 
 const productSchema = new mongoose.Schema({
   name: String,
@@ -22,6 +23,8 @@ const productSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: PriceCalculation,
   },
+
+  product_materials: [{ type: mongoose.Schema.Types.ObjectId, ref: Material }],
 })
 
 // export default mongoose.model("Product", productSchema);
