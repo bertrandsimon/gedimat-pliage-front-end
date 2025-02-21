@@ -10,15 +10,24 @@ export default async function Page({ params }: any) {
   )
   const item = await response.json()
 
+  // all materials
   const response2 = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/materials`)
+  const allMaterials = await response2.json()
+
+  // materials specific to the product
   const response3 = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`
   )
-  const materials = await response2.json()
+  const productMaterials = await response3.json()
+  const materialsFromProduct = productMaterials.product_materials
 
-  const productData = await response3.json()
-  const materialsFromProduct = productData.product_materials
-  console.log('materialsFromProduct : ', materialsFromProduct)
+  const materials =
+    productMaterials.product_materials?.length > 0
+      ? productMaterials.product_materials
+      : allMaterials
+
+  console.log('materials : ', materialsFromProduct)
+  console.log('materials length: ', materialsFromProduct.length)
 
   const ariane = {
     sub1: 'Couverture et étanchéité',
