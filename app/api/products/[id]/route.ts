@@ -33,7 +33,12 @@ export async function GET(request: any, { params }: any) {
 
     //
 
-    return NextResponse.json(product)
+    const response = NextResponse.json(product)
+    
+    // Set cache headers
+    response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400')
+    
+    return response
   } catch {
     return NextResponse.json('ERREUR')
   }
