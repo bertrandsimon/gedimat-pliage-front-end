@@ -6,7 +6,13 @@ export const dynamic = 'force-dynamic'
 export default async function Page({ params }: any) {
   // ex : http://localhost:3000/api/products/666adf1ac9493b71dbea1e4b
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`
+    `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`,
+    {
+      cache: 'no-store',
+      next: {
+        revalidate: 3600,
+      },
+    }
   )
   const item = await response.json()
 
@@ -26,8 +32,8 @@ export default async function Page({ params }: any) {
       ? productMaterials.product_materials
       : allMaterials
 
-  console.log('materials : ', materialsFromProduct)
-  console.log('materials length: ', materialsFromProduct.length)
+  //console.log('materials : ', materialsFromProduct)
+  //console.log('materials length: ', materialsFromProduct.length)
 
   const ariane = {
     sub1: 'Couverture et étanchéité',

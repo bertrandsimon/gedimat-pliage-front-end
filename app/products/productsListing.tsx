@@ -27,7 +27,7 @@ export function ProductsListing({ category, subcategory }: any) {
         // )
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL}/api/products`,
-          { cache: 'no-store' }
+          { cache: 'force-cache' }
         )
         const data = await response.json()
         setProducts(data)

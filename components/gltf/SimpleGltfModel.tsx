@@ -8,6 +8,7 @@ const Model: React.FC = () => {
   const { scene } = useGLTF(
     //'/gltf/quentin/Maison_006_Export_babylon.gltf'
     '/gltf/new/couvertine-a-coller-test25112-v5.gltf'
+    //'/gltf/Maison_3UDIM.gltf'
   ) as any
   scene.position.set(0, 0, 0) // Center the model in the scene
   scene.rotation.set(6, 0, 20) // You can adjust rotation as needed

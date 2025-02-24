@@ -1,0 +1,788 @@
+[
+  {
+    "_id": {
+      "$oid": "666adf15c9493b71dbea1e47"
+    },
+    "name": "Bande d'égout",
+    "length": 3000,
+    "weight": 3.9,
+    "description": "La bande d'égout est un profilé métallique utilisé pour assurer une transition étanche entre la couverture et la gouttière. Elle protège le bord inférieur de la toiture contre les infiltrations d'eau et assure une évacuation efficace des eaux de pluie vers les gouttières. ",
+    "main_image": "accessoire3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "accessoires",
+    "active": true,
+    "new_product": false,
+    "price_ht": 29.98,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d85",
+    "schema_img": "bande-d-egout.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf15c9493b71dbea1e48"
+    },
+    "name": "Larmier",
+    "length": 3000,
+    "weight": 1.7,
+    "description": "Le larmier est un profilé métallique conçu pour protéger les façades et les structures contre les infiltrations d'eau. Il est placé sous les tuiles ou en bord de toiture pour diriger l'eau de pluie loin des murs, évitant ainsi l'humidité et les dommages.",
+    "main_image": "accessoire4.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "accessoires",
+    "active": true,
+    "new_product": false,
+    "price_ht": 25.1,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d65",
+    "schema_img": "larmier.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1fc9493b71dbea1e56"
+    },
+    "name": "Faîtière crantée double",
+    "length": 2100,
+    "weight": 4.8,
+    "description": "La faîtière sert à protéger l'arrête extérieur de la toiture en créant une étanchéité",
+    "main_image": "faitiere3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "faitieres",
+    "active": true,
+    "new_product": false,
+    "price_ht": 38.92,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d6e",
+    "schema_img": "faitiere-crantee-double.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf3ec9493b71dbea1e67"
+    },
+    "name": "Cornière extérieure",
+    "length": 3000,
+    "weight": 1.5,
+    "description": "La cornière est un profilé métallique en forme de L, utilisé pour renforcer les angles, protéger les bords et assurer une finition esthétique dans divers projets de construction et de rénovation. Polyvalente et robuste, elle est disponible en différentes dimensions, matériaux et finitions, offrant ainsi une solution durable et esthétique pour renforcer et protéger les structures. Facile à installer, la cornière est idéale pour une large gamme d'applications, des façades aux encadrements de portes et fenêtres.",
+    "main_image": "corniere2.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "cornieres",
+    "active": true,
+    "new_product": false,
+    "price_ht": 24.14,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d4e",
+    "schema_img": "corniere-exterieure.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf15c9493b71dbea1e45"
+    },
+    "name": "Bande de doublis",
+    "length": 2000,
+    "weight": 1.4,
+    "description": "Une bande de doublis est un élément essentiel dans l'étanchéité des toitures en pente. Elle est principalement utilisée pour renforcer l'étanchéité le long des arêtiers et des noues, et peut également servir à d'autres jonctions critiques sur le toit.",
+    "main_image": "accessoire1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "accessoires",
+    "active": true,
+    "new_product": false,
+    "price_ht": 22.51,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d70",
+    "schema_img": "bande-de-doublis.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e8b"
+    },
+    "name": "Couvre-joint de couvertine à clipser",
+    "length": 3000,
+    "weight": 0.2,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": false,
+    "price_ht": 21.02,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d47",
+    "schema_img": "couvre-joint-de-couvertine-a-clipser.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e4f"
+    },
+    "name": "Talon de couvertine à coller",
+    "length": 3000,
+    "weight": 0.1,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine7.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": true,
+    "price_ht": 23.96,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d4b",
+    "schema_img": "talon-de-couvertine-a-coller.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e4e"
+    },
+    "name": "Eclisse de couvertine à clipser",
+    "length": 3000,
+    "weight": 0.1,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine6.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": true,
+    "price_ht": 20.57,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d51",
+    "schema_img": "eclisse-de-couvertine-a-clipser.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf42c9493b71dbea1e6c"
+    },
+    "name": "Profil oméga intérieur",
+    "length": 3000,
+    "weight": 2.7,
+    "description": "Le profilé aluminium pour toiture est une pièce spécialement conçue en aluminium ou acier, destinée à renforcer et à sécuriser les éléments de la toiture. Ce type de profilé offre une combinaison idéale de légèreté et de résistance aux intempéries, en plus de sa durabilité face à la corrosion. Utilisé principalement dans les applications de toiture résidentielle et commerciale, il contribue à assurer une structure solide et à maintenir l'intégrité de la toiture face aux conditions climatiques variées.",
+    "main_image": "profile4.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "profiles",
+    "active": false,
+    "new_product": false,
+    "price_ht": 28.73,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d71",
+    "schema_img": "profil-omega-interieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e4c"
+    },
+    "name": "Chapeau de pilier",
+    "length": 3000,
+    "weight": 2.1,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine4.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": false,
+    "price_ht": 31.29,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d52",
+    "schema_img": "chapeau-de-pilier.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf2bc9493b71dbea1e58"
+    },
+    "name": "Bande de rive standard",
+    "length": 3000,
+    "weight": 3.1,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "rive1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "rives",
+    "active": true,
+    "new_product": false,
+    "price_ht": 12,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d50",
+    "schema_img": "bande-de-rive-standard.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf39c9493b71dbea1e62"
+    },
+    "name": "Angle extérieur",
+    "length": 3000,
+    "weight": 3.8,
+    "description": "L'angle extérieur est un profilé métallique utilisé pour protéger et habiller les coins externes des façades et des toitures. Il assure une finition esthétique tout en offrant une protection contre les intempéries et les chocs.",
+    "main_image": "angle1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "angles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 32.75,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d86",
+    "schema_img": "angle-exterieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf3ec9493b71dbea1e66"
+    },
+    "name": "Cornière intérieure",
+    "length": 5000,
+    "weight": 1.5,
+    "description": "La cornière est un profilé métallique en forme de L, utilisé pour renforcer les angles, protéger les bords et assurer une finition esthétique dans divers projets de construction et de rénovation. Polyvalente et robuste, elle est disponible en différentes dimensions, matériaux et finitions, offrant ainsi une solution durable et esthétique pour renforcer et protéger les structures. Facile à installer, la cornière est idéale pour une large gamme d'applications, des façades aux encadrements de portes et fenêtres.",
+    "main_image": "corniere1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "cornieres",
+    "active": true,
+    "new_product": false,
+    "price_ht": 24.14,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d5b",
+    "schema_img": "corniere-interieure.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e52"
+    },
+    "name": "Cornière murale de couvertine",
+    "length": 3000,
+    "weight": 0.1,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine10.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": true,
+    "price_ht": 20.25,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d53",
+    "schema_img": "corniere-murale-de-couvertine.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1fc9493b71dbea1e57"
+    },
+    "name": "Faîtière crantée solin",
+    "length": 2100,
+    "weight": 3.7,
+    "description": "La faîtière sert à protéger l'arrête extérieur de la toiture en créant une étanchéité",
+    "main_image": "faitiere3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "faitieres",
+    "active": true,
+    "new_product": false,
+    "price_ht": 35.19,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d68",
+    "schema_img": "faitiere-crantee-solin.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf2bc9493b71dbea1e5d"
+    },
+    "name": "Rive plate",
+    "length": 2000,
+    "weight": 2.4,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "rive6.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "rives",
+    "active": true,
+    "new_product": true,
+    "price_ht": 28.69,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d5f",
+    "schema_img": "rive-plate.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf2bc9493b71dbea1e5b"
+    },
+    "name": "Bande de rive moulurée",
+    "length": 3000,
+    "weight": 3.7,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "rive4.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "rives",
+    "active": true,
+    "new_product": false,
+    "price_ht": 32.69,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d8c",
+    "schema_img": "bande-de-rive-mouluree.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf31c9493b71dbea1e5e"
+    },
+    "name": "Solin couloir",
+    "length": 3000,
+    "weight": 3.2,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "solin1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "solins",
+    "active": true,
+    "new_product": false,
+    "price_ht": 30.06,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d73",
+    "schema_img": "solin-couloir.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf39c9493b71dbea1e64"
+    },
+    "name": "Angle intérieur simple",
+    "length": 1000,
+    "weight": 1,
+    "description": "L'angle intérieur simple est un profilé métallique conçu pour protéger et habiller les coins internes des façades et des toitures. Il assure une finition soignée tout en offrant une protection contre l'humidité et les infiltrations. ",
+    "main_image": "angle3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "angles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 22.75,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d54",
+    "schema_img": "angle-interieur-simple.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf42c9493b71dbea1e6a"
+    },
+    "name": "Profil en V intérieur",
+    "length": 3000,
+    "weight": 0.3,
+    "description": "Le profilé aluminium pour toiture est une pièce spécialement conçue en aluminium ou acier, destinée à renforcer et à sécuriser les éléments de la toiture. Ce type de profilé offre une combinaison idéale de légèreté et de résistance aux intempéries, en plus de sa durabilité face à la corrosion. Utilisé principalement dans les applications de toiture résidentielle et commerciale, il contribue à assurer une structure solide et à maintenir l'intégrité de la toiture face aux conditions climatiques variées.",
+    "main_image": "profile2.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "profiles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 20.32,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d57",
+    "schema_img": "profil-en-v-interieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf39c9493b71dbea1e65"
+    },
+    "name": "Angle sortant",
+    "length": 3000,
+    "weight": 3,
+    "description": "L'angle intérieur simple est un profilé métallique conçu pour protéger et habiller les coins internes des façades et des toitures. Il assure une finition soignée tout en offrant une protection contre l'humidité et les infiltrations. ",
+    "main_image": "angle4.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "angles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 29.13,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d4d",
+    "schema_img": "angle-sortant.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e50"
+    },
+    "name": "Talon de couvertine à clipser",
+    "length": 3000,
+    "weight": 0.1,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine8.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": true,
+    "price_ht": 20.21,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d5e",
+    "schema_img": "talon-de-couvertine-a-clipser.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf31c9493b71dbea1e5f"
+    },
+    "name": "Bande de solin à maçonner",
+    "length": 3000,
+    "weight": 1.5,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "solin2.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "solins",
+    "active": true,
+    "new_product": false,
+    "price_ht": 24.72,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d88",
+    "schema_img": "bande-de-solin-a-maconner.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf39c9493b71dbea1e63"
+    },
+    "name": "Angle intérieur",
+    "length": 3000,
+    "weight": 2.2,
+    "description": "L'angle intérieur est un profilé métallique conçu pour protéger et habiller les coins internes des façades et des toitures. Il assure une finition soignée tout en offrant une protection contre l'humidité et les infiltrations.",
+    "main_image": "angle2.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "angles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 26.91,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d72",
+    "schema_img": "angle-interieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf42c9493b71dbea1e70"
+    },
+    "name": "Profil en U intérieur",
+    "length": 3000,
+    "weight": 2.1,
+    "description": "Le profilé aluminium pour toiture est une pièce spécialement conçue en aluminium ou acier, destinée à renforcer et à sécuriser les éléments de la toiture. Ce type de profilé offre une combinaison idéale de légèreté et de résistance aux intempéries, en plus de sa durabilité face à la corrosion. Utilisé principalement dans les applications de toiture résidentielle et commerciale, il contribue à assurer une structure solide et à maintenir l'intégrité de la toiture face aux conditions climatiques variées.",
+    "main_image": "profile8.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "profiles",
+    "active": true,
+    "new_product": true,
+    "price_ht": 26.99,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d84",
+    "schema_img": "profil-en-u-interieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e53"
+    },
+    "name": "Couvertine à double pente",
+    "length": 3000,
+    "weight": 4.5,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine11.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": true,
+    "price_ht": 34.85,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d82",
+    "schema_img": "couvertine-a-double-pente.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1fc9493b71dbea1e54"
+    },
+    "name": "Faîtière simple",
+    "length": 3000,
+    "weight": 8.8,
+    "description": "La faîtière sert à protéger l'arrête extérieur de la toiture en créant une étanchéité",
+    "main_image": "faitiere1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "faitieres",
+    "active": true,
+    "new_product": false,
+    "price_ht": 48.33,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d6b",
+    "schema_img": "faitiere-simple.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf2bc9493b71dbea1e5a"
+    },
+    "name": "Bande de rive astragale",
+    "length": 2000,
+    "weight": 1.4,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "rive3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "rives",
+    "active": true,
+    "new_product": false,
+    "price_ht": 52,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d6a",
+    "schema_img": "bande-de-rive-astragale.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf31c9493b71dbea1e61"
+    },
+    "name": "Bande de solin pour bac",
+    "length": 3000,
+    "weight": 1.9,
+    "description": "La bande de rive est l'habillage métallique recouvrant la planche de rive. Elle est destinée à protéger cette planche des intempéries. Différents modèles existent, dont l'installation est assez simple.",
+    "main_image": "solin4.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "solins",
+    "active": true,
+    "new_product": false,
+    "price_ht": 26.44,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d6f",
+    "schema_img": "bande-de-solin-pour-bac.jpg",
+    "product_materials": [
+      "6720e33e924f2bee0722bd9f",
+      "6720e33e924f2bee0722bda0",
+      "67332476b523e8e0bcc11d34",
+      "67332476b523e8e0bcc11d35",
+      "67332476b523e8e0bcc11d36"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "666adf3ec9493b71dbea1e68"
+    },
+    "name": "Cornière ossature",
+    "length": 3000,
+    "weight": 3.5,
+    "description": "La cornière est un profilé métallique en forme de L, utilisé pour renforcer les angles, protéger les bords et assurer une finition esthétique dans divers projets de construction et de rénovation. Polyvalente et robuste, elle est disponible en différentes dimensions, matériaux et finitions, offrant ainsi une solution durable et esthétique pour renforcer et protéger les structures. Facile à installer, la cornière est idéale pour une large gamme d'applications, des façades aux encadrements de portes et fenêtres.",
+    "main_image": "corniere3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "cornieres",
+    "active": true,
+    "new_product": false,
+    "price_ht": 33.01,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d75",
+    "schema_img": "corniere-ossature.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf42c9493b71dbea1e6d"
+    },
+    "name": "Profil oméga extérieur",
+    "length": 3000,
+    "weight": 2.7,
+    "description": "Le profilé aluminium pour toiture est une pièce spécialement conçue en aluminium ou acier, destinée à renforcer et à sécuriser les éléments de la toiture. Ce type de profilé offre une combinaison idéale de légèreté et de résistance aux intempéries, en plus de sa durabilité face à la corrosion. Utilisé principalement dans les applications de toiture résidentielle et commerciale, il contribue à assurer une structure solide et à maintenir l'intégrité de la toiture face aux conditions climatiques variées.",
+    "main_image": "profile5.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "profiles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 28.73,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d6d",
+    "schema_img": "profil-omega-exterieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf42c9493b71dbea1e71"
+    },
+    "name": "Profil en U extérieur",
+    "length": 3000,
+    "weight": 2.1,
+    "description": "Le profilé aluminium pour toiture est une pièce spécialement conçue en aluminium ou acier, destinée à renforcer et à sécuriser les éléments de la toiture. Ce type de profilé offre une combinaison idéale de légèreté et de résistance aux intempéries, en plus de sa durabilité face à la corrosion. Utilisé principalement dans les applications de toiture résidentielle et commerciale, il contribue à assurer une structure solide et à maintenir l'intégrité de la toiture face aux conditions climatiques variées.",
+    "main_image": "profile9.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "profiles",
+    "active": true,
+    "new_product": true,
+    "price_ht": 26.99,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d58",
+    "schema_img": "profil-en-u-exterieur.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e4a"
+    },
+    "name": "Couvre-joint de couvertine à coller",
+    "length": 3000,
+    "weight": 0.2,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine3.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": false,
+    "price_ht": 21.02,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d46",
+    "schema_img": "couvre-joint-de-couvertine-a-coller.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e51"
+    },
+    "name": "Patte de fixation de couvertine",
+    "length": 3000,
+    "weight": 0.3,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine9.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": false,
+    "price_ht": 20.83,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d43",
+    "schema_img": "patte-de-fixation-de-couvertine.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf15c9493b71dbea1e46"
+    },
+    "name": "Bande de doublis à pinces",
+    "length": 2000,
+    "weight": 1.4,
+    "description": "Une bande de doublis est un élément essentiel dans l'étanchéité des toitures en pente. Elle est principalement utilisée pour renforcer l'étanchéité le long des arêtiers et des noues, et peut également servir à d'autres jonctions critiques sur le toit.",
+    "main_image": "accessoire2.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "accessoires",
+    "active": true,
+    "new_product": false,
+    "price_ht": 27.82,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d76",
+    "schema_img": "bande-de-doublis-a-pinces.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e4d"
+    },
+    "name": "Eclisse de couvertine à coller",
+    "length": 3000,
+    "weight": 0.1,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine5.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": false,
+    "price_ht": 19.21,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d4c",
+    "schema_img": "eclisse-de-couvertine-a-coller.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf1ac9493b71dbea1e49"
+    },
+    "name": "Couvertine à coller",
+    "length": 3000,
+    "min_length": 120,
+    "max_length": 4000,
+    "weight": 3.2,
+    "description": "La couvertine est une bande métallique souvent en aluminium ou en acier, utilisée pour protéger le sommet des murs contre les infiltrations d'eau. Elle est installée le long du rebord supérieur des murs afin de prévenir les dégradations dues à l'humidité et aux intempéries.",
+    "main_image": "couvertine1.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "couverture_etancheite",
+    "sub_category": "couvertines",
+    "active": true,
+    "new_product": false,
+    "price_ht": 30.06,
+    "tax": 0.2,
+    "price_calculation": "670e70dd8302d670e217e6f9",
+    "schema_img": "couvertine-a-coller.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "666adf42c9493b71dbea1e6e"
+    },
+    "name": "Bavette coupe-feu",
+    "colors": [
+      {
+        "color_name": "Naturel",
+        "color_code": "#999999"
+      }
+    ],
+    "length": 3000,
+    "weight": 10.2,
+    "description": "Le profilé aluminium pour toiture est une pièce spécialement conçue en aluminium ou acier, destinée à renforcer et à sécuriser les éléments de la toiture. Ce type de profilé offre une combinaison idéale de légèreté et de résistance aux intempéries, en plus de sa durabilité face à la corrosion. Utilisé principalement dans les applications de toiture résidentielle et commerciale, il contribue à assurer une structure solide et à maintenir l'intégrité de la toiture face aux conditions climatiques variées.",
+    "main_image": "profile6.jpg",
+    "images": ["dummy1.jpg", "dummy2.jpg", "dummy3.jpg"],
+    "category": "facade_bardage",
+    "sub_category": "profiles",
+    "active": true,
+    "new_product": false,
+    "price_ht": 59.6,
+    "tax": 0.2,
+    "price_calculation": "673b3dd5b523e8e0bcc11d64",
+    "schema_img": "bavette-coupe-feu.jpg"
+  }
+]
