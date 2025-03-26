@@ -245,7 +245,7 @@ export default function SingleProduct({
   // prettier-ignore
   const mdo = useMemo(() => 10 + ((quantity * 5) * 2), [quantity])
 
-  const price_ht_single_unit = useMemo(() => {
+  const price_ht_single_unit = useMemo(() => {-90
     if (isPro) {
       return ((prn + mdo) * 1.45) / quantity
     } else {

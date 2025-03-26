@@ -50,4 +50,24 @@ export const menu2items = [
     href: '/products?category=facade_bardage&subcategory=profiles',
     description: `Profilés d'ossature pour une installation solide et durable`,
   },
+
+  
 ]
+
+export const menu3items = [
+  {
+    title: 'Appui de fenêtre',
+    href: '/products?category=menuiserie_fermeture&subcategory=appuis_de_fenetre',
+    description:
+      'Appuis pliés sur mesure pour une finition nette et durable',
+  },
+  {
+    title: 'Jambages',
+    href: '/products?category=menuiserie_fermeture&subcategory=jambages',
+    description: 'Jambages en alu plié pour protéger et sublimer vos ouvertures',
+  },
+  {
+    title: "Sous-face",
+    href: '/products?category=menuiserie_fermeture&subcategory=sous-faces',
+    description: `Sous-faces aluminium pour une finition propre et durable`,
+  }]

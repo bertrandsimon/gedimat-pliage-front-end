@@ -2,14 +2,14 @@ export const categoryDescriptions = [
   {
     category: 'couverture_etancheite',
     category_title: 'Couverture et étanchéité',
-    category_image: '/images/inspirations/inspirations/7.jpg',
+    category_image: '/images/categories/couverture.jpg',
     category_description:
       'Couverture et étanchéité pour une protection optimale des toits contre les intempéries.',
   },
   {
     category: 'facade_bardage',
     category_title: 'Façade et bardage',
-    category_image: '/images/inspirations/inspirations/8.jpg',
+    category_image: '/images/categories/facade.jpg',
     category_description:
       'Façade et bardage pour esthétisme et durabilité des murs extérieurs.',
   },
@@ -32,5 +32,11 @@ export const categoryDescriptions = [
     category_title: 'Quincaillerie et outillage',
     category_image: '/images/inspirations/inspirations/7.jpg',
     category_description: 'Produits robustes pour tout type de travaux.',
+  },
+  {
+    category: 'menuiserie_fermeture',
+    category_title: 'Menuiserie & Fermeture',
+    category_image: '/images/categories/menuiserie.jpg',
+    category_description: 'Solutions aluminium sur mesure pour vos fermetures durables.',
   },
 ]

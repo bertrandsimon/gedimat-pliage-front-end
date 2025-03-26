@@ -94,7 +94,7 @@ export default function Toolbar() {
         </Link>
       </div>
       <div className="flex justify-center items-center my-2 sm:my-0">
-        <div className="relative rounded-md shadow-sm sm:-mt-3 ">
+        {/* <div className="relative rounded-md shadow-sm sm:-mt-3 ">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <MagnifyingGlassIcon
               className="h-4 w-4 text-gray-400"
@@ -105,7 +105,7 @@ export default function Toolbar() {
             className="text-sm w-[200px] h-[28px] focus:outline-none rounded-md border-0 py-1.5 pl-10 bg-[#191919] text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Recherche"
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="flex justify-center items-center gap-1 text-white sm:-mt-3 my-4 sm:my-0">

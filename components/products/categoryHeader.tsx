@@ -82,7 +82,7 @@ export default function CategoryHeader(props: any) {
             className="h-[160px] w-full object-cover object-center-top rounded-lg"
           />
         )}
-        <CategoryMenuBar selectSubCategory={props.selectSubCategory} />
+        <CategoryMenuBar selectSubCategory={props.selectSubCategory} selectedCategory={categoryDescription.category}/>
       </div>
     </div>
   )

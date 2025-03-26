@@ -18,7 +18,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { menu1items, menu2items } from '@/app/datas/menuItems'
+import { menu1items, menu2items, menu3items } from '@/app/datas/menuItems'
 import { Menu, X } from 'lucide-react'
 
 export function Navmenu() {
@@ -31,8 +31,10 @@ export function Navmenu() {
   }
 
   return (
-    <div className="w-full">
-      <NavigationMenu className="w-max">
+    <div className="flex w-full">
+
+      {/* MENU 1 */}
+      <NavigationMenu className="">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="uppercase">
@@ -56,16 +58,22 @@ export function Navmenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+       {/* #MENU 1 */}
 
+      {/* MENU 2 */}
+      <NavigationMenu className="">
+        <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="uppercase">
               <Link href="/products?category=facade_bardage">
-                Façade et bardage
+                Façade & bardage
               </Link>
             </NavigationMenuTrigger>
 
             <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {menu2items.map((item) => (
                   <ListItem
                     onClick={() => handleClick(item.title)}
@@ -79,35 +87,53 @@ export function Navmenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      {/* #MENU 2 */}
 
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} uppercase`}
-              asChild
-            >
-              <Link href="/products">Aménagement intérieur</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
 
+         {/* MENU 3 */}
+         <NavigationMenu className="">
+        <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} uppercase`}
-              asChild
-            >
-              <Link href="/products">Aménagement extérieur</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+            <NavigationMenuTrigger className="uppercase">
+              <Link href="/products?category=menuiserie_fermeture">
+                menuiserie & fermeture
+              </Link>
+            </NavigationMenuTrigger>
 
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} uppercase`}
-              asChild
-            >
-              <Link href="/products">Quincaillerie et outillage</Link>
-            </NavigationMenuLink>
+            <NavigationMenuContent>
+              <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {menu3items.map((item) => (
+                  <ListItem
+                    onClick={() => handleClick(item.title)}
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
+                    {item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      {/* #MENU 3 */}
+
+         {/* MENU 4 */}
+         <NavigationMenu className="">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+          <NavigationMenuTrigger className="uppercase">
+              <Link href="#">
+                quincaillerie & outillage
+              </Link>
+            </NavigationMenuTrigger> 
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      {/* #MENU 4 */}
     </div>
   )
 }
