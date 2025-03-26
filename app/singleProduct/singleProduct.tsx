@@ -686,7 +686,7 @@ export default function SingleProduct({
                     {/* input A */}
 
                     {/* input B */}
-                    {item.price_calculation.measures.hasOwnProperty('A') && (
+                    {item.price_calculation.measures.hasOwnProperty('B') && (
                       <div className="flex justify-start items-center gap-2">
                         <label htmlFor="B" className="text-sm">
                           Mesure B :
