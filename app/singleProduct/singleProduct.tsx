@@ -789,7 +789,7 @@ export default function SingleProduct({
                     {item.price_calculation.measures.hasOwnProperty('F') && (
                       <div className="flex justify-start items-center gap-2">
                         <label htmlFor="F" className="text-sm">
-                          Mesure E :
+                          Mesure F :
                         </label>
                         <input
                           onChange={handleMeasure}
