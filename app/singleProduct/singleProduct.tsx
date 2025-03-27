@@ -760,6 +760,56 @@ export default function SingleProduct({
                     )}
                     {/* input D */}
 
+                     {/* input E */}
+                     {item.price_calculation.measures.hasOwnProperty('E') && (
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="E" className="text-sm">
+                          Mesure E :
+                        </label>
+                        <input
+                          onChange={handleMeasure}
+                          value={E}
+                          type="number"
+                          name="E"
+                          id="E"
+                          min={minE}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className="text-sm">mm</span>
+                        {E < minE && (
+                          <p className="text-red-500 text-sm">
+                            Minimum {minE} mm
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    {/* input E */}
+
+                    {/* input F */}
+                    {item.price_calculation.measures.hasOwnProperty('F') && (
+                      <div className="flex justify-start items-center gap-2">
+                        <label htmlFor="F" className="text-sm">
+                          Mesure E :
+                        </label>
+                        <input
+                          onChange={handleMeasure}
+                          value={F}
+                          type="number"
+                          name="F"
+                          id="F"
+                          min={minF}
+                          className="text-center block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                        />
+                        <span className="text-sm">mm</span>
+                        {F < minF && (
+                          <p className="text-red-500 text-sm">
+                            Minimum {minF} mm
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    {/* input F */}
+
                     {/* Angle 1 */}
                     {item.price_calculation.custom_angles &&
                       item.price_calculation.min_angles.hasOwnProperty('1') && (
