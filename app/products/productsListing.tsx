@@ -28,7 +28,7 @@ export function ProductsListing({ category, subcategory }: any) {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL}/api/products`,
           {
-            cache: 'force-cache',
+            cache: 'no-store',
             next: {
               //revalidate: 3600,
             },

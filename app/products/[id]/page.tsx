@@ -8,7 +8,7 @@ export default async function Page({ params }: any) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`,
     {
-      cache: 'force-cache',
+      cache: 'no-store',
       next: {
         //revalidate: 3600,
       },
