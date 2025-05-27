@@ -392,17 +392,14 @@ export default function SingleProduct({
                 </div>
 
                 <div>
-                  <h2 className="text-sm font-medium">Vue 3D du produit</h2>
+                  <h2 className="text-sm font-medium">Utilisation</h2>
                   <hr className="my-6" />
 
                   <p className="text-sm">
-                    Utilisez votre souris pour faire tourner le produit et votre
-                    molette pour zoomer.
+                    Voici comment utiliser ce produit.
                   </p>
                 </div>
-                <div className="border border-1 p-1 rounded-md h-80 w-84 cursor-pointer">
-                  <SimpleGltfModel />
-                </div>
+              
 
                 <Image
                   className="cursor-pointer"

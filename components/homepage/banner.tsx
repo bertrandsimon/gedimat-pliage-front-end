@@ -69,7 +69,7 @@ export default function Banner() {
       >
         <div className="relative">
           <Image
-            src="/images/banner/maison.png"
+            src="/images/banner/maison2.png"
             width={592}
             height={512}
             alt="House Diagram"

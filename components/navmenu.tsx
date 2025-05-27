@@ -37,7 +37,7 @@ export function Navmenu() {
       <NavigationMenu className="">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="uppercase">
+            <NavigationMenuTrigger className="uppercase font-semibold">
               <Link href="/products?category=couverture_etancheite">
                 Couverture et étanchéité
               </Link>
@@ -60,13 +60,13 @@ export function Navmenu() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-       {/* #MENU 1 */}
+      {/* #MENU 1 */}
 
       {/* MENU 2 */}
       <NavigationMenu className="">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="uppercase">
+            <NavigationMenuTrigger className="uppercase font-semibold">
               <Link href="/products?category=facade_bardage">
                 Façade & bardage
               </Link>
@@ -92,11 +92,11 @@ export function Navmenu() {
       {/* #MENU 2 */}
 
 
-         {/* MENU 3 */}
-         <NavigationMenu className="">
+      {/* MENU 3 */}
+      <NavigationMenu className="">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="uppercase">
+            <NavigationMenuTrigger className="uppercase font-semibold">
               <Link href="/products?category=menuiserie_fermeture">
                 menuiserie & fermeture
               </Link>
@@ -121,19 +121,22 @@ export function Navmenu() {
       </NavigationMenu>
       {/* #MENU 3 */}
 
-         {/* MENU 4 */}
-         <NavigationMenu className="">
+      {/* MENU 4 */}
+      <NavigationMenu className="">
         <NavigationMenuList>
           <NavigationMenuItem>
-          <NavigationMenuTrigger className="uppercase">
+            <NavigationMenuTrigger className="uppercase font-semibold">
               <Link href="#">
                 quincaillerie & outillage
               </Link>
-            </NavigationMenuTrigger> 
+            </NavigationMenuTrigger>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
       {/* #MENU 4 */}
+
+
+
     </div>
   )
 }
