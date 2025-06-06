@@ -65,60 +65,65 @@ export default function Banner() {
 
       <section
         id="col2"
-        className="sm:-mt-0 p-10 sm:p-0 sm:pr-12  h-max-[full] bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-top"
+        className="flex flex-col items-center justify-center sm:-mt-0 p-10 sm:p-0 sm:pr-12  h-max-[full] bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-top"
       >
-        <div className="relative">
+        <div className="relative w-full max-w-[602px] mx-auto">
           <Image
-            src="/images/banner/maison2.png"
-            width={592}
-            height={512}
-            alt="House Diagram"
-            useMap="#house-map"
-            style={{ width: '100%', height: 'auto' }}
-            className="-mt-14 sm:mt-10"
+            src="/images/banner/maison3@2x.png"
+            alt="Maison interactive"
+            width={602}
+            height={443}
+            className="w-full h-auto -mt-14 sm:mt-10"
           />
-          <map name="house-map">
-            <area
-              target="_self"
-              alt="Couvertines"
-              title="Couvertines"
-              href="/products?category=couverture_etancheite&subcategory=couvertines"
-              coords="38,42,140,140"
-              shape="rect"
-            />
-            <area
-              target="_self"
-              alt="Faîtières"
-              title="Faîtières"
-              href="/products?category=couverture_etancheite&subcategory=faitieres"
-              coords="235,0,324,68"
-              shape="rect"
-            />
-            <area
-              target="_self"
-              alt="Solins"
-              title="Solins"
-              href="/products?category=couverture_etancheite&subcategory=solins"
-              coords="417,30,517,130"
-              shape="rect"
-            />
-            <area
-              target="_self"
-              alt="Tablettes"
-              title="Tablettes"
-              href="/products?category=couverture_etancheite&subcategory=tablettes"
-              coords="504,123,594,213"
-              shape="rect"
-            />
-            <area
-              target="_self"
-              alt="Sous-face"
-              title="Sous-face"
-              href="/products?category=couverture_etancheite&subcategory=couvertines"
-              coords="503,349,603,450"
-              shape="rect"
-            />
-          </map>
+
+          {/* Profilés de finition */}
+          <Link
+            href="/products?subcategory=profils_de_finition"
+            title="Profilés de finition"
+            className="absolute top-[133px] left-[6px] w-[156px] h-[31px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+          />
+
+          {/* Sous-faces */}
+          <Link
+            href="/products?subcategory=sous_faces"
+            title="Sous-faces"
+            className="absolute top-[82px] left-[174px] w-[102px] h-[34px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+          />
+
+          {/* Faîtières */}
+          <Link
+            href="/products?subcategory=faitieres"
+            title="Faîtières"
+            className="absolute top-[51px] left-[327px] w-[80px] h-[36px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+          />
+
+          {/* Solins */}
+          <Link
+            href="/products?subcategory=solins"
+            title="Solins"
+            className="absolute top-[66px] left-[416px] w-[66px] h-[35px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+          />
+
+          {/* Couvertines */}
+          <Link
+            href="/products?subcategory=couvertines"
+            title="Couvertines"
+            className="absolute top-[62px] left-[485px] w-[110px] h-[30px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+          />
+
+          {/* Angles et cornières */}
+          <Link
+            href="/products?subcategory=angles_et_cornieres"
+            title="Angles et cornières"
+            className="absolute top-[388px] left-[34px] w-[164px] h-[34px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+          />
+
+          {/* Tablettes de fenêtre */}
+          <Link
+            href="/products?subcategory=tablettes"
+            title="Tablettes de fenêtre"
+            className="absolute top-[372px] left-[492px] w-[109px] h-[58px] z-10  hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150"
+          />
         </div>
       </section>
     </div>

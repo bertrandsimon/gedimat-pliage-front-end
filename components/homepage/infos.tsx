@@ -11,7 +11,7 @@ const informations = [
     {
         name: 'Retrait / Livraison',
         icon: TruckIcon,
-        description: `Retrait à l'atelier de XXXX sur nos horaires. SMS dès que c’est prêt.\n\nLivraison gratuite sur votre Gedimat XXXX (navette 1 fois/semaine).\n\nLivraison possible sur chantier, atelier ou domicile : nous vous contactons pour valider les détails et le tarif.`,
+        description: `Retrait à l'atelier de XXXX sur nos horaires. SMS dès que c’est prêt.\n\nLivraison gratuite sur votre Gedimat XXXX (navette 1 fois/semaine).\n\nLivraison possible sur chantier, atelier ou domicile.`,
     },
     {
         name: 'Paiement',

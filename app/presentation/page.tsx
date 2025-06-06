@@ -31,7 +31,7 @@ export default function PresentationPage() {
         </div>
 
         <Stats />
-        <div className="grid grid-cols-3 py-16 px-12 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 py-16 px-12 gap-12">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
             tenetur, incidunt accusantium explicabo unde molestiae ea id iusto
