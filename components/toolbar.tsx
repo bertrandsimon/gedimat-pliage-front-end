@@ -115,14 +115,14 @@ export default function Toolbar() {
         >
           Présentation
         </Link>
-        <div className="text-zinc-600">|</div>
+        <div className="text-white">|</div>
         <Link
           href="/inspirations"
           className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] rounded-md hover:rounded-md p-2 "
         >
           Inspirations
         </Link>
-        <div className="text-zinc-600">|</div>
+        <div className="text-white">|</div>
         <Link
           href="/faq"
           className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B]  hover:rounded-md p-2"
@@ -183,7 +183,7 @@ export default function Toolbar() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* {userConnected && <div className="text-zinc-600">|</div>} */}
+        {/* {userConnected && <div className="text-white">|</div>} */}
         {userConnected && (
           <span className="text-xs capitalize cursor-pointer pl-4 pr-2">
             {name} {surname}

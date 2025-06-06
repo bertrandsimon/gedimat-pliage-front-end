@@ -135,6 +135,20 @@ export function Navmenu() {
       </NavigationMenu>
       {/* #MENU 4 */}
 
+      {/* MENU 5 */}
+      <NavigationMenu className="">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="uppercase font-semibold">
+              <Link href="#">
+                produits en stock
+              </Link>
+            </NavigationMenuTrigger>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      {/* #MENU 5 */}
+
 
 
     </div>

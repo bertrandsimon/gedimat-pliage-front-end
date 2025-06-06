@@ -29,9 +29,9 @@ export default function Presentation() {
             finitions sur mesure, pensées pour durer dans le temps et répondre à
             vos exigences.
           </p>
-          <div className="lgBtn greyBtn max-w-[124px] my-2">
+          {/* <div className="lgBtn greyBtn max-w-[124px] my-2">
             <Link href="/presentation">en savoir +</Link>
-          </div>
+          </div> */}
         </div>
       </div>
 

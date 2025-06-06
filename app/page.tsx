@@ -4,7 +4,7 @@ import Steps from '@/components/homepage/steps'
 import Presentation from '@/components/homepage/presentation'
 import Categories from '@/components/homepage/categories'
 import Partners from '@/components/homepage/partners'
-import { Test } from '@/components/test'
+import Infos from '@/components/homepage/infos'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -21,13 +21,14 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-14 relative">
-      {/* <Test /> */}
+
 
       <Banner />
 
       <Steps />
 
       <Presentation />
+      <Infos />
       <Categories />
       <Partners />
     </main>

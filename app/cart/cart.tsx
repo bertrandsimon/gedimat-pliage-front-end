@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromCart, clearCart, cartItemCount } from '@/app/reducers/cart'
-import Steps from '@/components/homepage/steps'
+
 import OrderConfirmation from './orderConfirmation'
 
 import { MoreHorizontal } from 'lucide-react'
@@ -227,7 +227,7 @@ export default function Cart() {
         )}
       </Card>
 
-      <Steps />
+
 
       {!orderSuccess && (
         <Card className="my-8">

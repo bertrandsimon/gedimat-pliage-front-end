@@ -6,8 +6,8 @@ import { evaluate } from 'mathjs'
 import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '@/app/reducers/cart'
 import { nanoid } from 'nanoid'
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
-import SimpleGltfModel from '@/components/gltf/SimpleGltfModel'
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+// import SimpleGltfModel from '@/components/gltf/SimpleGltfModel'
 import { Radio, RadioGroup } from '@headlessui/react'
 
 import { Login } from '@/components/login'
@@ -245,7 +245,8 @@ export default function SingleProduct({
   // prettier-ignore
   const mdo = useMemo(() => 10 + ((quantity * 5) * 2), [quantity])
 
-  const price_ht_single_unit = useMemo(() => {-90
+  const price_ht_single_unit = useMemo(() => {
+    -90
     if (isPro) {
       return ((prn + mdo) * 1.45) / quantity
     } else {
@@ -399,7 +400,7 @@ export default function SingleProduct({
                     Voici comment utiliser ce produit.
                   </p>
                 </div>
-              
+
 
                 <Image
                   className="cursor-pointer"
@@ -409,30 +410,30 @@ export default function SingleProduct({
                   src="/images/expertise.jpg"
                 ></Image>
 
-                <section className="">
-                  <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                    {policies.map((policy) => (
-                      <div
-                        key={policy.name}
-                        className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
-                      >
-                        <dt>
-                          <policy.icon
-                            className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
-                            aria-hidden="true"
-                          />
 
-                          <span className="mt-4 text-sm font-medium text-gray-900">
-                            {policy.name}
-                          </span>
-                        </dt>
-                        <dd className="mt-1 text-sm text-gray-500">
-                          {policy.description}
-                        </dd>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {policies.map((policy) => (
+                    <div
+                      key={policy.name}
+                      className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
+                    >
+                      <div>
+                        <policy.icon
+                          className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
+                          aria-hidden="true"
+                        />
+
+                        <span className="mt-4 text-sm font-medium text-gray-900">
+                          {policy.name}
+                        </span>
                       </div>
-                    ))}
-                  </dl>
-                </section>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {policy.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
 
                 {/* {product.images.map((image) => (
                   <img
@@ -532,10 +533,9 @@ export default function SingleProduct({
                         <div
                           key={variation.name}
                           className={`cursor-pointer flex flex-col items-center gap-2 rounded-md border p-4 border-gray-200 
-                            ${
-                              selectedVariation === variation
-                                ? 'bg-[#B8AEA7] text-white'
-                                : 'hover:bg-[#F2EDEA] hover:border-[#F2EDEA]'
+                            ${selectedVariation === variation
+                              ? 'bg-[#B8AEA7] text-white'
+                              : 'hover:bg-[#F2EDEA] hover:border-[#F2EDEA]'
                             }`}
                           onClick={() => setSelectedVariation(variation)}
                         >
@@ -657,6 +657,34 @@ export default function SingleProduct({
 
                   {/* col2 */}
                   <div className="flex flex-col justify-start gap-4">
+
+                    {/* Longueur */}
+                    <div className="mt-8 flex items-center gap-2">
+                      <p className="text-sm">Longueur:</p>
+                      <input
+                        type="number"
+                        value={length} // Show empty string if quantity is 0
+                        onChange={(e) =>
+                          setLength(
+                            e.target.value === '' ? 0 : Number(e.target.value)
+                          )
+                        }
+                        min=""
+                        step="1"
+                        className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
+                      />
+                      <span>mm</span>
+                      {length < minLength && (
+                        <p className="text-red-500 text-sm">
+                          Minimum {minLength} mm
+                        </p>
+                      )}
+                      {length > maxLength && (
+                        <p className="text-red-500 text-sm">
+                          Maximum {maxLength} mm
+                        </p>
+                      )}
+                    </div>
                     {/* input A */}
                     {item.price_calculation.measures.hasOwnProperty('A') && (
                       <div className="flex justify-start items-center gap-2">
@@ -732,8 +760,8 @@ export default function SingleProduct({
                     )}
                     {/* input C */}
 
-                     {/* input D */}
-                     {item.price_calculation.measures.hasOwnProperty('D') && (
+                    {/* input D */}
+                    {item.price_calculation.measures.hasOwnProperty('D') && (
                       <div className="flex justify-start items-center gap-2">
                         <label htmlFor="D" className="text-sm">
                           Mesure D :
@@ -757,8 +785,8 @@ export default function SingleProduct({
                     )}
                     {/* input D */}
 
-                     {/* input E */}
-                     {item.price_calculation.measures.hasOwnProperty('E') && (
+                    {/* input E */}
+                    {item.price_calculation.measures.hasOwnProperty('E') && (
                       <div className="flex justify-start items-center gap-2">
                         <label htmlFor="E" className="text-sm">
                           Mesure E :
@@ -936,7 +964,6 @@ export default function SingleProduct({
 
                   {/* col2 */}
                 </div>
-
                 {/* QUANTITY */}
                 <div className="mt-8">
                   <div className="flex items-center justify-start gap-4">
@@ -956,32 +983,7 @@ export default function SingleProduct({
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 ">
                   <div className="flex flex-col">
-                    <div className="mt-8 flex items-center gap-2">
-                      <p>Longueur:</p>
-                      <input
-                        type="number"
-                        value={length} // Show empty string if quantity is 0
-                        onChange={(e) =>
-                          setLength(
-                            e.target.value === '' ? 0 : Number(e.target.value)
-                          )
-                        }
-                        min=""
-                        step="1"
-                        className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
-                      />
-                      <span>mm</span>
-                      {length < minLength && (
-                        <p className="text-red-500 text-sm">
-                          Minimum {minLength} mm
-                        </p>
-                      )}
-                      {length > maxLength && (
-                        <p className="text-red-500 text-sm">
-                          Maximum {maxLength} mm
-                        </p>
-                      )}
-                    </div>
+
 
                     <div className="mt-8 flex items-center gap-2">
                       <p>Nombre de produits :</p>
@@ -1010,7 +1012,7 @@ export default function SingleProduct({
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-center items-center sm:items-end rounded-md border border-[#B8AEA7] my-4 py-8 sm:py-0 mt-10 sm:mt-0 gap-2 ">
+                  <div className="flex flex-col justify-center items-center sm:items-end rounded-md border border-[#B8AEA7] h-20 p-10 py-8 sm:py-0 mt-10 sm:mt-0 gap-2 ">
                     <div className="flex justify-center items-center gap-4 mr-4">
                       <p>TARIF UNITAIRE :</p>
                       <span className="font-semibold text-xl redAlu">
@@ -1033,11 +1035,10 @@ export default function SingleProduct({
                   onClick={handleAddToList}
                   disabled={!isFormValid || !userConnected} // Disable button when quantity is 0
                   className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
-                  ${
-                    !isFormValid || !userConnected
+                  ${!isFormValid || !userConnected
                       ? 'bg-[#cfcfcf] cursor-not-allowed'
                       : 'bg-[#B51B1B] hover:bg-[#AE0027] focus:ring-[#AE0027]'
-                  }`} // Conditional classNames
+                    }`} // Conditional classNames
                 >
                   Ajouter {quantity > 0 && quantity} PRODUIT(S) à votre liste
                 </button>
