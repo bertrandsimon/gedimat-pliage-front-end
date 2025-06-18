@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// test
+
 const adminSchema = new mongoose.Schema({
   name: String,
   surname: String,
