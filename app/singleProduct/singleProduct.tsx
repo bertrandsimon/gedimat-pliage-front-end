@@ -65,14 +65,14 @@ export default function SingleProduct({
   item: any
   materials: any[]
 }) {
-  //console.log('single product : ', item)
+  console.log('single product : ', item)
   //console.log('item.product_materials :', item.product_materials)
 
   const { toast } = useToast()
 
   const router = useRouter()
   const userConnected = useSelector((state: any) => state.user.userConnected)
-  // console.log('userConnected : ', userConnected)
+
   const isPro = useSelector((state: any) => state.user.is_pro)
 
   const [selectedMaterial, setSelectedMaterial] = useState(
@@ -107,7 +107,7 @@ export default function SingleProduct({
     return 120
   }, [])
 
-  const maxLength = item.max_length || 3000
+  const maxLength = item.max_length || 4000
 
   const minA = item?.price_calculation?.min_measures?.A || 0
   const [A, setA] = useState(minA || 0)
