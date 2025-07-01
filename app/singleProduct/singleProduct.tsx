@@ -12,8 +12,8 @@ import { Radio, RadioGroup } from '@headlessui/react'
 
 import { Login } from '@/components/login'
 import {
-  CurrencyDollarIcon,
-  GlobeAmericasIcon,
+  TruckIcon,
+  CreditCardIcon,
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
@@ -44,19 +44,27 @@ import {
 const policies = [
   {
     name: 'Livraison',
-    icon: GlobeAmericasIcon,
-    description: 'Lorem ipsum dolor sit amet,',
+    icon: TruckIcon,
+    description: `Retrait à l'atelier de XXXX sur nos horaires.`,
   },
   {
-    name: 'Retrait sur site',
-    icon: CurrencyDollarIcon,
-    description: 'Lorem ipsum dolor sit amet,',
+    name: 'Paiement',
+    icon: CreditCardIcon,
+    description: `En compte "terme" : facturation classique.`,
   },
 ]
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
+
+// Ajoute une fonction utilitaire pour formater les nombres
+function formatNumber(n: number) {
+  return Number.isInteger(n) ? n.toString() : n.toFixed(2);
+}
+
+// Helper to display numbers without .00 if integer
+const displayNumber = (n: number) => Number.isInteger(n) ? n : n.toFixed(2);
 
 export default function SingleProduct({
   item,
@@ -65,7 +73,7 @@ export default function SingleProduct({
   item: any
   materials: any[]
 }) {
-  console.log('single product : ', item)
+  //console.log('single product : ', item)
   //console.log('item.product_materials :', item.product_materials)
 
   const { toast } = useToast()
@@ -78,12 +86,23 @@ export default function SingleProduct({
   const [selectedMaterial, setSelectedMaterial] = useState(
     materials?.[0] || null
   )
+
+
+
   const [variations, setVariations] = useState(
     selectedMaterial?.variations || []
   )
+
+
   const [selectedVariation, setSelectedVariation] = useState(
     materials?.[0]?.variations?.[0] || null
   )
+
+
+  console.log('selectedVariation :', selectedVariation)
+  console.log('max unfolded surface :', selectedVariation.max_unfolded_surface)
+
+
   const [quantity, setQuantity] = useState(1)
 
   const handleIncrement = () => {
@@ -108,6 +127,8 @@ export default function SingleProduct({
   }, [])
 
   const maxLength = item.max_length || 4000
+
+  //const max_unfolded_surface = material
 
   const minA = item?.price_calculation?.min_measures?.A || 0
   const [A, setA] = useState(minA || 0)
@@ -281,7 +302,16 @@ export default function SingleProduct({
 
   const dispatch = useDispatch()
 
+  const maxUnfoldedSurface = selectedVariation?.max_unfolded_surface || 1500;
+
   // Validation function
+  const isSurfaceValid = useMemo(() => {
+    if (typeof maxUnfoldedSurface === 'number' && maxUnfoldedSurface > 0 && surface != null) {
+      return surface <= maxUnfoldedSurface;
+    }
+    return true; // If no limit, always valid
+  }, [surface, maxUnfoldedSurface]);
+
   const isFormValid = useMemo(() => {
     // Check all conditions
     return (
@@ -299,8 +329,9 @@ export default function SingleProduct({
           angle3 >= minAngle3 &&
           angle3 <= maxAngle3 &&
           angle4 >= minAngle4 &&
-          angle4 <= maxAngle4))
-    )
+          angle4 <= maxAngle4)) &&
+      isSurfaceValid
+    );
   }, [
     quantity,
     length,
@@ -325,7 +356,8 @@ export default function SingleProduct({
     minAngle4,
     maxAngle4,
     item.price_calculation.custom_angles,
-  ])
+    isSurfaceValid,
+  ]);
 
   const handleAddToList = () => {
     const newProduct = {
@@ -362,6 +394,8 @@ export default function SingleProduct({
       description: 'ajouté(s) à votre panier',
     })
   }
+
+  console.log('maxUnfoldedSurface', maxUnfoldedSurface, 'surface', surface);
 
   return (
     <div>
@@ -415,7 +449,7 @@ export default function SingleProduct({
                   {policies.map((policy) => (
                     <div
                       key={policy.name}
-                      className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
+                      className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-xs"
                     >
                       <div>
                         <policy.icon
@@ -963,7 +997,12 @@ export default function SingleProduct({
                   </div>
 
                   {/* col2 */}
-                </div>
+                </div>       {/* Surface error message (simplified) */}
+                {surface > maxUnfoldedSurface && (
+                  <div className="mt-2  bg-[#B51B1B] text-white text-sm text-center flex flex-col justify-center items-center sm:items-end rounded-md border border-[#B51B1B] h-20 p-10 py-8 sm:py-0 mt-10 sm:mt-0 gap-2">
+                    La surface développée ({displayNumber(surface)} mm) dépasse la surface maximale autorisée pour cette variation ({displayNumber(maxUnfoldedSurface)} mm).
+                  </div>
+                )}
                 {/* QUANTITY */}
                 <div className="mt-8">
                   <div className="flex items-center justify-start gap-4">
@@ -1027,13 +1066,14 @@ export default function SingleProduct({
                         {Number(price_ht_total.toFixed(2))} €
                       </span>
                     </div>
+
                   </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleAddToList}
-                  disabled={!isFormValid || !userConnected} // Disable button when quantity is 0
+                  disabled={!isFormValid || !userConnected} // Disable button when quantity is 0 or surface is invalid
                   className={`uppercase mt-8 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 
                   ${!isFormValid || !userConnected
                       ? 'bg-[#cfcfcf] cursor-not-allowed'
