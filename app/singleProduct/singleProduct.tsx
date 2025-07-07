@@ -121,7 +121,8 @@ export default function SingleProduct({
 
   // MEASURES
 
-  const [length, setLength] = useState(120)
+  const [length, setLength] = useState('120')
+  const lengthNumber = Number(length) || 0
   const minLength = useMemo(() => {
     return 120
   }, [])
@@ -254,9 +255,9 @@ export default function SingleProduct({
       selectedVariation.price *
       1.111 *
       1.111 *
-      (length / 1000) *
+      (lengthNumber / 1000) *
       (surface / 1000),
-    [surface, selectedVariation, length]
+    [surface, selectedVariation, lengthNumber]
   )
   // (fixedTimeCost)+(quantity * manipTimeCost)
   // prettier-ignore
@@ -316,8 +317,8 @@ export default function SingleProduct({
     // Check all conditions
     return (
       quantity > 0 &&
-      length >= minLength &&
-      length <= maxLength &&
+      lengthNumber >= minLength &&
+      lengthNumber <= maxLength &&
       A >= minA &&
       B >= minB &&
       C >= minC &&
@@ -334,7 +335,7 @@ export default function SingleProduct({
     );
   }, [
     quantity,
-    length,
+    lengthNumber,
     minLength,
     maxLength,
     A,
@@ -366,7 +367,7 @@ export default function SingleProduct({
       name: item.name,
       material: selectedMaterial,
       variation: selectedVariation,
-      length: length,
+      length: lengthNumber,
       main_image: item.main_image,
       price_ht_single_unit: Number(price_ht_single_unit.toFixed(2)),
       tax: item.tax,
@@ -697,23 +698,19 @@ export default function SingleProduct({
                       <p className="text-sm">Longueur:</p>
                       <input
                         type="number"
-                        value={length} // Show empty string if quantity is 0
-                        onChange={(e) =>
-                          setLength(
-                            e.target.value === '' ? 0 : Number(e.target.value)
-                          )
-                        }
+                        value={length}
+                        onChange={(e) => setLength(e.target.value)}
                         min=""
                         step="1"
                         className="block w-16 rounded-md border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-center"
                       />
                       <span>mm</span>
-                      {length < minLength && (
+                      {lengthNumber < minLength && (
                         <p className="text-red-500 text-sm">
                           Minimum {minLength} mm
                         </p>
                       )}
-                      {length > maxLength && (
+                      {lengthNumber > maxLength && (
                         <p className="text-red-500 text-sm">
                           Maximum {maxLength} mm
                         </p>
