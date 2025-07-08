@@ -78,49 +78,49 @@ export default function Banner() {
 
           {/* Profilés de finition */}
           <Link
-            href="/products?subcategory=profils_de_finition"
+            href="/products?category=facade_bardage&subcategory=profiles"
             title="Profilés de finition"
             className="absolute top-[133px] left-[6px] w-[156px] h-[31px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
           />
 
           {/* Sous-faces */}
           <Link
-            href="/products?subcategory=sous_faces"
+            href="/products?category=menuiserie_fermeture&subcategory=sous-faces"
             title="Sous-faces"
             className="absolute top-[82px] left-[174px] w-[102px] h-[34px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
           />
 
           {/* Faîtières */}
           <Link
-            href="/products?subcategory=faitieres"
+            href="/products?category=couverture_etancheite&subcategory=faitieres"
             title="Faîtières"
-            className="absolute top-[51px] left-[327px] w-[80px] h-[36px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+            className="absolute top-[49px] left-[330px] w-[80px] h-[36px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
           />
 
           {/* Solins */}
           <Link
-            href="/products?subcategory=solins"
+            href="/products?category=couverture_etancheite&subcategory=solins"
             title="Solins"
-            className="absolute top-[66px] left-[416px] w-[66px] h-[35px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+            className="absolute top-[64px] left-[416px] w-[66px] h-[35px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
           />
 
           {/* Couvertines */}
           <Link
-            href="/products?subcategory=couvertines"
+            href="/products?category=couverture_etancheite&subcategory=couvertines"
             title="Couvertines"
-            className="absolute top-[62px] left-[485px] w-[110px] h-[30px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
+            className="absolute top-[63px] left-[485px] w-[110px] h-[30px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
           />
 
           {/* Angles et cornières */}
           <Link
-            href="/products?subcategory=angles_et_cornieres"
+            href="/products?category=facade_bardage"
             title="Angles et cornières"
             className="absolute top-[388px] left-[34px] w-[164px] h-[34px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
           />
 
           {/* Tablettes de fenêtre */}
           <Link
-            href="/products?subcategory=tablettes"
+            href="/products?category=menuiserie_fermeture&subcategory=appuis_de_fenetre"
             title="Tablettes de fenêtre"
             className="absolute top-[372px] left-[492px] w-[109px] h-[58px] z-10  hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150"
           />

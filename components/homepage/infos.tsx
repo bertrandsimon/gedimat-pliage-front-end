@@ -9,24 +9,24 @@ import {
 
 const informations = [
     {
-        name: 'Retrait / Livraison',
-        icon: TruckIcon,
-        description: `Retrait à l'atelier de XXXX sur nos horaires. SMS dès que c’est prêt.\n\nLivraison gratuite sur votre Gedimat XXXX (navette 1 fois/semaine).\n\nLivraison possible sur chantier, atelier ou domicile.`,
-    },
-    {
-        name: 'Paiement',
-        icon: CreditCardIcon,
-        description: `En compte "terme" : facturation classique.\n\nSans compte : paiement à la validation du panier.\n\nEn cas de doute sur votre statut, contactez-nous avant de finaliser votre commande.`,
-    },
-    {
         name: 'Délais de fabrication',
         icon: ClockIcon,
-        description: `En stock : dispo sous 5 jours ouvrés si < 50 pièces.\n\nSi + de 50 pièces, nous vous contactons sous 24 h.\n\nHors stock : prévoir 10 jours de plus. `,
+        description: `0 jour pour les produits en stock.\n\nSous 5 jours ouvrés si fabrication < 50 pièces. + de 50 pièces : on vous contacte sous 24 h.`,
     },
     {
         name: 'Commande urgente',
         icon: ExclamationTriangleIcon,
-        description: `Donnez nous votre numéro de téléphone, nous vous contactons sous 24 h.\n\nNous ferons notre maximum pour trouver une solution.`,
+        description: `Besoins express : appelez-nous au ..., nous ferons le maximum pour trouver une solution rapide.`,
+    },
+    {
+        name: 'Retrait / Livraison',
+        icon: TruckIcon,
+        description: `Retrait et livraison possible depuis toutes les agences indiquées sur la carte. Un SMS vous sera envoyé dés que c'est prêt : cliquez ici pour connaître les horaires d’ouverture.`,
+    },
+    {
+        name: 'Paiement',
+        icon: CreditCardIcon,
+        description: `Vous avez un compte terme Gedimat / Gedibois : facturation fin de mois.\n\nSans compte : paiement sécurisé avant fabrication.`,
     }
 ];
 
