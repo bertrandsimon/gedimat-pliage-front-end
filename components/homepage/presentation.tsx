@@ -4,7 +4,6 @@ import Swiperfirstbis from '../swiper/swiperfirstbis'
 import Swiperfirst from '../swiper/swiperfirst'
 import MaterialSlider from '../swiper/swipersecond'
 
-// import "@/public/styles/index.css"
 
 export default function Presentation() {
   return (
@@ -35,7 +34,7 @@ export default function Presentation() {
         </div>
       </div>
 
-      <div id="col2 flex flex-col pr-12 gap-2">
+      <div id="col2">
         <div className="flex items-center justify-end gap-2 pb-4">
           <Image
             src="/images/arrow-small.jpg"
