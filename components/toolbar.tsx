@@ -166,7 +166,7 @@ export default function Toolbar() {
               <div>
                 <Link href={`/dashboard/${customer_id}`}>
                   <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
-                    Mes listes
+                    Mes commandes
                   </DropdownMenuItem>
                 </Link>
                 <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">

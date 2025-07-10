@@ -122,7 +122,7 @@ export default function Lists({ orders }: { orders: Order[] }) {
     <TabsContent value="all">
       <Card>
         <CardHeader>
-          <CardTitle>Vos listes</CardTitle>
+          <CardTitle>Vos commandes</CardTitle>
           <CardDescription>
             Voir vos listes de produits et passer commande
           </CardDescription>

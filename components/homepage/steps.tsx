@@ -20,7 +20,7 @@ export default function Steps() {
                   <Image src="/images/1.png" alt="" height={30} width={30} />
                   <p className="font-bold">Vous configurez</p>
                   <p className="text-sm w-[220px]">
-                    Personnalisez vos pièces...
+                    À partir de nos formes modélisées, vous personnalisez vos pièces.
                   </p>
                 </div>
               </TooltipTrigger>
@@ -38,12 +38,15 @@ export default function Steps() {
                   <Image src="/images/2.png" alt="" height={30} width={30} />
                   <p className="font-bold">Vous commandez</p>
                   <p className="text-sm w-[220px]">
-                    Passez votre commande...
+                    Plus vous commandez de pièces identiques, plus le <strong>prix unitaire diminue</strong> ...
                   </p>
                 </div>
               </TooltipTrigger>
-              <TooltipContent side="top" align="center" className="w-64 p-4 mb-2 text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <TooltipContent side="top" align="center" className="w-64 p-8 mb-2 text-justify">
+                <ul className='list-disc space-y-2'>
+                  <li>Plus vous commandez de pièces identiques, plus le prix unitaire diminue.</li>
+                  <li>Vous avez plusieurs modèles différents, mais un volume important ? Bonne nouvelle : une <strong>remise automatique</strong> peut s’appliquer à la fin de votre commande ! </li>
+                </ul>
               </TooltipContent>
             </Tooltip>
 
@@ -55,19 +58,16 @@ export default function Steps() {
                 <div className="flex flex-col gap-3 text-justify items-center -mt-4 group relative cursor-pointer">
                   <Image src="/images/3.png" alt="" height={30} width={30} />
                   <p className="font-bold">Nous vérifions</p>
-                  <ul className="text-sm w-[220px]">
-                    <li>
-                      Prix dégressif...
-                    </li>
-                    <li>
-                      Remise automatique...
-                    </li>
-                  </ul>
+                  <p className="text-sm w-[220px]">
+                    Notre équipe vérifie avec soin la faisabilité technique...
+
+                  </p>
                 </div>
               </TooltipTrigger>
               <TooltipContent side="top" align="center" className="w-[220px] p-4 mb-2 text-justify">
-                <div className="mb-2">Plus vous commandez de pièces identiques, plus le prix unitaire diminue.</div>
-                <div>Vous avez plusieurs modèles différents, mais un volume important ? Bonne nouvelle : une remise automatique peut s'appliquer à la fin de votre commande !</div>
+                <div className="mb-2">Notre équipe vérifie avec soin la faisabilité technique de votre demande. <br /><br />
+                  Si vous ne disposez pas d’un compte terme, un lien sécurisé vous sera envoyé pour procéder au règlement avant la mise en production.</div>
+
               </TooltipContent>
             </Tooltip>
 
@@ -80,12 +80,12 @@ export default function Steps() {
                   <Image src="/images/4.png" alt="" height={30} width={30} />
                   <p className="font-bold">Nous vous confirmons</p>
                   <p className="text-sm w-[220px]">
-                    Confirmation rapide...
+                    Nous vous communiquons délai de fabrication et modalités de retrait.
                   </p>
                 </div>
               </TooltipTrigger>
               <TooltipContent side="top" align="center" className="w-64 p-4 mb-2 text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <div className="mb-2">Nous vous communiquons rapidement le délai de fabrication et les modalités de retrait ou de livraison de votre commande.</div>
               </TooltipContent>
             </Tooltip>
           </div>
