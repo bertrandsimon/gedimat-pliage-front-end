@@ -12,27 +12,35 @@ import User from '../../models/User';
 
 // GET ALL USERS
 
+// http://localhost:3000/api/users
+// https://pliage-aluminium.com/api/users
+
+
 export async function GET() {
    await connectDB();
    try {
-    const users = await User.find()
+      const users = await User.find()
       return NextResponse.json(users)
    }
    catch {
-    return NextResponse.json('ERREUR');
+      return NextResponse.json('ERREUR');
    }
 
 }
 
+
+
 // POST SIGNIN
 
-export async function POST(request: Request){
+export async function POST(request: Request) {
    const credentials = await request.json();
-   
+
    const userCredentials = {
-      email : credentials.email,
-      password : credentials.password
+      email: credentials.email,
+      password: credentials.password
    }
    return NextResponse.json(userCredentials)
 
 }
+
+

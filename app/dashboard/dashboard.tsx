@@ -245,31 +245,27 @@ export function Dashboard(orders: any) {
             </header>
 
             <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-              <Tabs defaultValue="all">
-                <div className="flex items-center">
-                  <TabsList>
-                    <TabsTrigger value="all">Toutes</TabsTrigger>
-                    <TabsTrigger value="En commande">En commande</TabsTrigger>
-                    <TabsTrigger value="En cours">En cours</TabsTrigger>
-                    <TabsTrigger value="Anciennes commandes" className="hidden sm:flex">
-                      Anciennes commandes
-                    </TabsTrigger>
-                  </TabsList>
-                  <div className="ml-auto flex items-center gap-2">
-
-
+              {page === "lists" ? (
+                <Tabs defaultValue="all">
+                  <div className="flex items-center">
+                    <TabsList>
+                      <TabsTrigger value="all">Toutes</TabsTrigger>
+                      <TabsTrigger value="En commande">En commande</TabsTrigger>
+                      <TabsTrigger value="En cours">En cours</TabsTrigger>
+                      <TabsTrigger value="Anciennes commandes" className="hidden sm:flex">
+                        Anciennes commandes
+                      </TabsTrigger>
+                    </TabsList>
+                    <div className="ml-auto flex items-center gap-2"></div>
                   </div>
-                </div>
 
-                {/* Component loader */}
-                {isListsLoaded && page === "lists" && <Lists orders={orders.orders} />}
-                {/* {page === "singleList" && <SingleList />} */}
-                {page === "userAccount" && <UserAccount />}
-                {page === "analytics" && <Analytics />}
-
-                {/* Component loader */}
-
-              </Tabs>
+                  {isListsLoaded && <Lists orders={orders.orders} />}
+                </Tabs>
+              ) : page === "userAccount" ? (
+                <UserAccount />
+              ) : page === "analytics" ? (
+                <Analytics />
+              ) : null}
             </main>
           </div>
         </div>

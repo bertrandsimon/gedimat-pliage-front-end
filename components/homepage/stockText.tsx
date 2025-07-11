@@ -20,39 +20,54 @@ export default function StockText() {
             </div>
 
             <div id="col2">
-                <div className="flex items-center justify-end gap-2 pb-4">
-                    <ScrollArea className="h-72 w-96 rounded-md border">
+                <div className="flex items-center h-full">
+                    <div className="flex items-center justify-center w-full h-full mt-8">
+
+                        <div className="flex flex-wrap gap-2">
+                            <span className="text-sm px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+                                Accessoires de bardage
+                            </span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-blue-100 hover:bg-blue-200 cursor-pointer">
+                                Plis pour bac acier
+                            </span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-green-100 hover:bg-green-200 cursor-pointer">
+                                Grilles anti-rongeurs
+                            </span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-yellow-100 hover:bg-yellow-200 cursor-pointer">
+                                Cornières
+                            </span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-purple-100 hover:bg-purple-200 cursor-pointer">
+                                Couvertines
+                            </span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-pink-100 hover:bg-pink-200 cursor-pointer">
+                                Produits de finition pour couverture
+                            </span>
+                            <span className="text-sm px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">
+                                Et bien d’autres éléments pré-pliés pour vos chantiers
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* <ScrollArea className="h-[180px] w-96 rounded-md border">
                         <div className="p-4">
-                            <h4 className="mb-4 text-sm leading-none font-medium">Produits en stock</h4>
 
-
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Accessoires de bardage</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Plis pour bac acier</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Grilles anti-rongeurs</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Cornières</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Couvertines</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Produits de finition pour couverture</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
+                            <div className="text-sm cursor-pointer">Et bien d’autres éléments pré-pliés pour vos chantiers</div>
                             <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm">nom du produit</div>
-                            <Separator className="my-2" />
-
-
 
                         </div>
-                    </ScrollArea>
+                    </ScrollArea> */}
                 </div>
 
 
