@@ -75,13 +75,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function Dashboard(orders: any) {
+export function Dashboard({ orders, connectedUser }: any) {
   const customer_id = useSelector((state: any) => state.user.userId);
   const [page, setPage] = useState("lists")
   const [isListsLoaded, setIsListsLoaded] = useState(false);
 
   //console.log( "orders in client component as props :", orders.orders)
-
+  console.log("connectedUser", connectedUser)
   useEffect(() => {
     if (page === "lists") {
       setIsListsLoaded(true);
@@ -259,10 +259,10 @@ export function Dashboard(orders: any) {
                     <div className="ml-auto flex items-center gap-2"></div>
                   </div>
 
-                  {isListsLoaded && <Lists orders={orders.orders} />}
+                  {isListsLoaded && <Lists orders={orders} />}
                 </Tabs>
               ) : page === "userAccount" ? (
-                <UserAccount />
+                <UserAccount user={connectedUser} />
               ) : page === "analytics" ? (
                 <Analytics />
               ) : null}

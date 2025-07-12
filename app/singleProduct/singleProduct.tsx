@@ -99,8 +99,8 @@ export default function SingleProduct({
   )
 
 
-  console.log('selectedVariation :', selectedVariation)
-  console.log('max unfolded surface :', selectedVariation.max_unfolded_surface)
+  // console.log('selectedVariation :', selectedVariation)
+  // console.log('max unfolded surface :', selectedVariation.max_unfolded_surface)
 
 
   const [quantity, setQuantity] = useState(1)

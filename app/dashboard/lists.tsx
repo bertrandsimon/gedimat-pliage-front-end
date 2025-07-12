@@ -67,7 +67,7 @@ export default function Lists({ orders }: { orders: Order[] }) {
     }
   }
 
-  const orderList = orders.map((order, index) => (
+  const orderList = orders?.map((order, index) => (
     <TableRow key={index}>
       <TableCell className="hidden sm:table-cell">
         <ShoppingCartIcon className="size-6" />
