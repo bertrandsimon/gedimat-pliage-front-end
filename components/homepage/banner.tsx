@@ -80,50 +80,64 @@ export default function Banner() {
           <Link
             href="/products?category=facade_bardage&subcategory=profiles"
             title="Profilés de finition"
-            className="absolute top-[133px] left-[6px] w-[156px] h-[31px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
-          />
+            className="absolute top-[27.2%] left-[1%] w-[26%] h-[7%] z-10 bg-red-500 bg-opacity-30 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Profilés de finition</span>
+          </Link>
 
           {/* Sous-faces */}
           <Link
             href="/products?category=menuiserie_fermeture&subcategory=sous-faces"
             title="Sous-faces"
-            className="absolute top-[82px] left-[174px] w-[102px] h-[34px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
-          />
+            className="absolute top-[16.5%] left-[29%] w-[17%] h-[7.7%] z-10 bg-blue-500 bg-opacity-30 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Sous-faces</span>
+          </Link>
 
           {/* Faîtières */}
           <Link
             href="/products?category=couverture_etancheite&subcategory=faitieres"
             title="Faîtières"
-            className="absolute top-[49px] left-[330px] w-[80px] h-[36px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
-          />
+            className="absolute top-[10%] left-[55%] w-[13.3%] h-[8.1%] z-10 bg-green-500 bg-opacity-30 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Faîtières</span>
+          </Link>
 
           {/* Solins */}
           <Link
             href="/products?category=couverture_etancheite&subcategory=solins"
             title="Solins"
-            className="absolute top-[64px] left-[416px] w-[66px] h-[35px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
-          />
+            className="absolute top-[13%] left-[69%] w-[11%] h-[7.9%] z-10 bg-yellow-500 bg-opacity-30 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Solins</span>
+          </Link>
 
           {/* Couvertines */}
           <Link
             href="/products?category=couverture_etancheite&subcategory=couvertines"
             title="Couvertines"
-            className="absolute top-[63px] left-[485px] w-[110px] h-[30px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
-          />
+            className="absolute top-[12.5%] left-[80.5%] w-[18.3%] h-[6.8%] z-10 bg-purple-500 bg-opacity-30 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Couvertines</span>
+          </Link>
 
           {/* Angles et cornières */}
           <Link
             href="/products?category=facade_bardage"
             title="Angles et cornières"
-            className="absolute top-[388px] left-[34px] w-[164px] h-[34px] z-10  hover:ring-1 hover:ring-[black] rounded-md transition duration-150"
-          />
+            className="absolute top-[80%] left-[5.6%] w-[27.2%] h-[7.7%] z-10 bg-pink-500 bg-opacity-30 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Angles et cornières</span>
+          </Link>
 
           {/* Tablettes de fenêtre */}
           <Link
             href="/products?category=menuiserie_fermeture&subcategory=appuis_de_fenetre"
             title="Tablettes de fenêtre"
-            className="absolute top-[372px] left-[492px] w-[109px] h-[58px] z-10  hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150"
-          />
+            className="absolute top-[76.2%] left-[81.7%] w-[18.1%] h-[13.1%] z-10 bg-orange-500 bg-opacity-30 hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150 flex items-center justify-center"
+          >
+            <span className="text-xs font-medium text-black uppercase">Tablettes de fenêtre</span>
+          </Link>
         </div>
       </section>
     </div>
