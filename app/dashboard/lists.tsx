@@ -91,7 +91,7 @@ export default function Lists({ orders }: { orders: Order[] }) {
           year: 'numeric',
         })}
       </TableCell>
-      <TableCell>
+      {/* <TableCell>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button aria-haspopup="true" size="icon" variant="ghost">
@@ -103,9 +103,9 @@ export default function Lists({ orders }: { orders: Order[] }) {
             <DropdownMenuLabel className="cursor-pointer">
               Actions
             </DropdownMenuLabel>
-            {/* <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem className="cursor-pointer">
               Modifier
-            </DropdownMenuItem> */}
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => handleClickRemove(order._id)}
               className="cursor-pointer"
@@ -114,7 +114,7 @@ export default function Lists({ orders }: { orders: Order[] }) {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </TableCell>
+      </TableCell> */}
     </TableRow>
   ))
 
