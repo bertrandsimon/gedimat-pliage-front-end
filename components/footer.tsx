@@ -188,11 +188,10 @@ export default function Footer() {
                         onClick={handleSendForm}
                         type="button"
                         disabled={!isValid}
-                        className={`flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-light text-white shadow-sm uppercase ${
-                          isValid
+                        className={`flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-light text-white shadow-sm uppercase ${isValid
                             ? 'bg-[#B51B1B] hover:bg-[#B51B1B]'
                             : 'bg-gray-400 cursor-not-allowed'
-                        }`}
+                          }`}
                       >
                         Envoyer
                       </button>
@@ -228,7 +227,7 @@ export default function Footer() {
             <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0 sm:text-left text-center">
               &copy; Pliage de la Vallée 2025 |<span> Droits réservés |</span>
               <span className="hover:text-white">
-                <Link href="/legal"> Mentions légales</Link>
+                <Link href="/cgv"> Mentions légales</Link>
               </span>
             </p>
           </div>
