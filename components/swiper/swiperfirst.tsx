@@ -8,29 +8,23 @@ import '@/public/styles/effect-material.css';
 import '@/public/styles/index.css';
 
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 export default function MaterialSlider() {
   useEffect(() => {
     import('swiper').then((Swiper) => {
       import('@/public/scripts/effect-material.esm').then((EffectMaterial) => {
         const swiper = new Swiper.default('.swiper', {
-          modules: [EffectMaterial.default],
+          modules: [EffectMaterial.default, Autoplay],
           effect: 'material',
-          // materialEffect: {
-          //   slideSplitRatio: 0.65,
-          // },
           grabCursor: true,
           slidesPerView: 2,
           spaceBetween: 16,
           speed: 600,
-          // autoplay: {
-          //   delay: 1000, // Set the autoplay delay in milliseconds (3 seconds in this example)
-          // },
-          // navigation: {
-          //   prevEl: '.swiper-button-prev', // CSS selector for the previous button
-          //   nextEl: '.swiper-button-next', // CSS selector for the next button
-          // },
+          autoplay: {
+            delay: 3000, // 3 seconds between slides
+            disableOnInteraction: false,
+          },
         });
       });
     });
@@ -53,7 +47,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi1.jpg"
                   />
-                  
+
                 </div>
               </div>
             </div>
@@ -68,7 +62,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi2.jpg"
                   />
-                  
+
                 </div>
               </div>
             </div>
@@ -83,7 +77,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi3.jpg"
                   />
-                 
+
                 </div>
               </div>
             </div>
@@ -98,7 +92,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi4.jpg"
                   />
-              
+
                 </div>
               </div>
             </div>
@@ -113,7 +107,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi5.jpg"
                   />
-                
+
                 </div>
               </div>
             </div>
@@ -128,7 +122,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi6.jpg"
                   />
-                 
+
                 </div>
               </div>
             </div>
@@ -143,7 +137,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi7.jpg"
                   />
-               
+
                 </div>
               </div>
             </div>
@@ -158,7 +152,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi8.jpg"
                   />
-                
+
                 </div>
               </div>
             </div>
@@ -173,7 +167,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi9.jpg"
                   />
-                 
+
                 </div>
               </div>
             </div>
@@ -188,7 +182,7 @@ export default function MaterialSlider() {
                     data-swiper-material-scale="1.25"
                     src="/images/swiper/inspi10.jpg"
                   />
-                
+
                 </div>
               </div>
             </div>

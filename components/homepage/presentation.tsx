@@ -1,11 +1,18 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import Swiperfirstbis from '../swiper/swiperfirstbis'
 import Swiperfirst from '../swiper/swiperfirst'
 import MaterialSlider from '../swiper/swipersecond'
+import { useEffect, useState } from 'react';
 
 
 export default function Presentation() {
+  const [showMaterialSlider, setShowMaterialSlider] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowMaterialSlider(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
       <div id="col1">
@@ -52,7 +59,7 @@ export default function Presentation() {
           <Swiperfirst />
         </Link>
         <Link href="/inspirations">
-          <MaterialSlider />
+          {showMaterialSlider && <MaterialSlider />}
         </Link>
       </div>
     </div>

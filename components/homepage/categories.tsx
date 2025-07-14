@@ -71,9 +71,9 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products">
+          <Link href="/products?category=menuiserie_fermeture">
             <p className="uppercase cursor-pointer text-sm font-medium">
-              aménagement intérieur
+              menuiserie et fermeture
             </p>
           </Link>
         </div>
@@ -92,7 +92,7 @@ export default function Categories() {
           </div>
           <Link href="/products">
             <p className="uppercase cursor-pointer text-sm font-medium">
-              aménagement extérieur
+              quincaillerie et outillage
             </p>
           </Link>
         </div>
@@ -111,7 +111,7 @@ export default function Categories() {
           </div>
           <Link href="/products">
             <p className="uppercase cursor-pointer text-sm font-medium">
-              aménagement extérieur
+              produits en stock
             </p>
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog'
 
 
 export default function MapText() {
@@ -10,13 +10,26 @@ export default function MapText() {
 
             <div id="col1">
                 <div className="flex items-center justify-end gap-2 pb-4">
-                    <Image
-                        src="/images/map.jpg"
-                        width={520}
-                        height={447}
-                        alt="carte agences pliage-aluminium"
-                        className="mt-4"
-                    />
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Image
+                                src="/images/map.jpg"
+                                width={520}
+                                height={447}
+                                alt="carte agences pliage-aluminium"
+                                className="mt-4 cursor-pointer hover:opacity-80 transition"
+                            />
+                        </DialogTrigger>
+                        <DialogContent className="flex items-center justify-center">
+                            <Image
+                                src="/images/map.jpg"
+                                width={900}
+                                height={775}
+                                alt="Carte des agences pliage-aluminium (agrandie)"
+                                className="rounded-lg"
+                            />
+                        </DialogContent>
+                    </Dialog>
 
                 </div>
 

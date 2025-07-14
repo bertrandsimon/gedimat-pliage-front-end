@@ -37,16 +37,16 @@ export default function Infos() {
             {informations.map((info) => (
                 <div
                     key={info.name}
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
+                    className="rounded-lg border border-[#D6CFC7] bg-[#F2EDE9] p-6 text-center"
                 >
                     <div>
-                        <info.icon className="mx-auto h-8 w-8 flex-shrink-0 text-gray-400" />
+                        <info.icon className="mx-auto h-8 w-8 flex-shrink-0 text-black" />
 
-                        <p className="mt-4 text-sm font-medium text-gray-900">
+                        <p className="mt-4 text-sm font-medium text-black">
                             {info.name}
                         </p>
                     </div>
-                    <p className="mt-4 text-sm text-gray-500 text-justify whitespace-pre-line">
+                    <p className="mt-4 text-sm text-black text-justify whitespace-pre-line">
                         {info.description}
                     </p>
                 </div>

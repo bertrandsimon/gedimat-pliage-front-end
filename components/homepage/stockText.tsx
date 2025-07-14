@@ -2,8 +2,27 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
+import { PuzzlePieceIcon, Squares2X2Icon, ShieldCheckIcon, CubeIcon, RectangleStackIcon, WrenchScrewdriverIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 
 export default function StockText() {
+    const tags = [
+        "Accessoires de bardage",
+        "Plis pour bac acier",
+        "Grilles anti-rongeurs",
+        "Cornières",
+        "Couvertines",
+        "Produits de finition pour couverture",
+        "Et bien d’autres éléments pré-pliés pour vos chantiers"
+    ];
+    const tagIcons = [
+        <PuzzlePieceIcon className="w-4 h-4 mr-1 inline" key="icon1" />,
+        <Squares2X2Icon className="w-4 h-4 mr-1 inline" key="icon2" />,
+        <ShieldCheckIcon className="w-4 h-4 mr-1 inline" key="icon3" />,
+        <CubeIcon className="w-4 h-4 mr-1 inline" key="icon4" />,
+        <RectangleStackIcon className="w-4 h-4 mr-1 inline" key="icon5" />,
+        <WrenchScrewdriverIcon className="w-4 h-4 mr-1 inline" key="icon6" />,
+        <EllipsisHorizontalIcon className="w-4 h-4 mr-1 inline" key="icon7" />,
+    ];
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
             <div id="col1">
@@ -22,52 +41,21 @@ export default function StockText() {
             <div id="col2">
                 <div className="flex items-center h-full">
                     <div className="flex items-center justify-center w-full h-full mt-8">
-
                         <div className="flex flex-wrap gap-2">
-                            <span className="text-sm px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
-                                Accessoires de bardage
-                            </span>
-                            <span className="text-sm px-3 py-1 rounded-full bg-blue-100 hover:bg-blue-200 cursor-pointer">
-                                Plis pour bac acier
-                            </span>
-                            <span className="text-sm px-3 py-1 rounded-full bg-green-100 hover:bg-green-200 cursor-pointer">
-                                Grilles anti-rongeurs
-                            </span>
-                            <span className="text-sm px-3 py-1 rounded-full bg-yellow-100 hover:bg-yellow-200 cursor-pointer">
-                                Cornières
-                            </span>
-                            <span className="text-sm px-3 py-1 rounded-full bg-purple-100 hover:bg-purple-200 cursor-pointer">
-                                Couvertines
-                            </span>
-                            <span className="text-sm px-3 py-1 rounded-full bg-pink-100 hover:bg-pink-200 cursor-pointer">
-                                Produits de finition pour couverture
-                            </span>
-                            <span className="text-sm px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">
-                                Et bien d’autres éléments pré-pliés pour vos chantiers
-                            </span>
+                            {tags.map((tag, idx) => (
+                                <span
+                                    key={tag}
+                                    className="text-sm px-3 py-1 rounded-full cursor-pointer flex items-center"
+                                    style={{ backgroundColor: "#B51B1B", color: "#fff" }}
+                                >
+                                    {tagIcons[idx]}
+                                    {tag}
+                                </span>
+                            ))}
                         </div>
                     </div>
 
-                    {/* <ScrollArea className="h-[180px] w-96 rounded-md border">
-                        <div className="p-4">
 
-                            <div className="text-sm cursor-pointer">Accessoires de bardage</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm cursor-pointer">Plis pour bac acier</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm cursor-pointer">Grilles anti-rongeurs</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm cursor-pointer">Cornières</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm cursor-pointer">Couvertines</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm cursor-pointer">Produits de finition pour couverture</div>
-                            <Separator className="my-2" />
-                            <div className="text-sm cursor-pointer">Et bien d’autres éléments pré-pliés pour vos chantiers</div>
-                            <Separator className="my-2" />
-
-                        </div>
-                    </ScrollArea> */}
                 </div>
 
 
