@@ -1,7 +1,8 @@
 'use client'
 export const dynamic = 'force-dynamic'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -18,71 +19,46 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import SignUpSuccess from './signUpSuccess'
 
 export default function SignUp() {
-  const dispatch = useDispatch()
 
-  const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
-  const [isPro, setIsPro] = useState(false)
-  const [proNumber, setProNumber] = useState('')
-  const [avatar, setAvatar] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
 
-  const validateEmail = (email: any) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return re.test(String(email).toLowerCase())
-  }
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    mode: "onChange"
+  });
 
-  const handleSubmit = () => {
+  const onSubmit = (data: any) => {
     setError('')
 
-    if (!validateEmail(email)) {
-      setError("Le format de l'email est invalide.")
-      setName('')
-      setSurname('')
-      setProNumber('')
-      setEmail('')
-      setPassword('')
-      return
-    }
-
-    if (password.length < 5) {
-      setError('Le mot de passe doit comporter au moins 5 caractères.')
-      setName('')
-      setSurname('')
-      setProNumber('')
-      setEmail('')
-      setPassword('')
-      return
-    }
-
+    // Email and password validation is handled by react-hook-form
     fetch(`${process.env.NEXT_PUBLIC_URL}/api/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        proNumber,
-        name,
-        surname,
-        email,
-        avatar,
-        password,
+        proNumber: data.proNumber,
+        name: data.name,
+        surname: data.surname,
+        email: data.email,
+        password: data.password,
+        address: data.address,
+        cp: data.cp,
+        city: data.city,
+        phone: data.phone,
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data.result === true) {
+      .then((dataRes) => {
+        if (dataRes.result === true) {
           setSuccess(true)
-
           // Trigger the registration email API
           fetch(`${process.env.NEXT_PUBLIC_URL}/api/emails/registration`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, surname }),
+            body: JSON.stringify({ email: data.email, surname: data.surname }),
           })
+          reset();
         } else {
-          setError(data.error)
+          setError(dataRes.error)
         }
       })
       .catch((error) => {
@@ -98,10 +74,6 @@ export default function SignUp() {
           <CardDescription>
             Entrez votre email et un mot de passe pour créer votre compte
           </CardDescription>
-
-          {/* <div onClick={handleTestMail} className="cursor-pointer">
-            SEND TEST MAIL
-          </div> */}
         </CardHeader>
       )}
 
@@ -113,53 +85,122 @@ export default function SignUp() {
         )}
         {error && <p className="text-red-500">{error}</p>}
         {!success && (
-          <form className="flex flex-col gap-2">
-            <Label htmlFor="name">Nom</Label>
+          <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)} noValidate>
+            {/* Name and Surname in two columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>
+                <Label htmlFor="name">Nom</Label>
+                <Input
+                  {...register("name", { required: "Nom requis" })}
+                  id="name"
+                  type="text"
+                  className={errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+              <div>
+                <Label htmlFor="surname">Prénom</Label>
+                <Input
+                  {...register("surname", { required: "Prénom requis" })}
+                  id="surname"
+                  type="text"
+                  className={errors.surname ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+            </div>
+
+            {/* Email and Password in two columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  {...register("email", {
+                    required: "Email requis",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Le format de l'email est invalide."
+                    }
+                  })}
+                  id="email"
+                  type="email"
+                  className={errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+              <div>
+                <Label htmlFor="password">Mot de passe</Label>
+                <Input
+                  {...register("password", {
+                    required: "Mot de passe requis",
+                    minLength: {
+                      value: 5,
+                      message: "Le mot de passe doit comporter au moins 5 caractères."
+                    }
+                  })}
+                  id="password"
+                  type="password"
+                  className={errors.password ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+            </div>
+
+            {/* Address above CP/City */}
+            <Label htmlFor="address">Adresse</Label>
             <Input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              id="name"
-              type="txt"
+              {...register("address", { required: "Adresse requise" })}
+              id="address"
+              type="text"
+              className={errors.address ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
             />
 
-            <Label htmlFor="surname">Prénom</Label>
-            <Input
-              onChange={(e) => setSurname(e.target.value)}
-              value={surname}
-              id="surname"
-              type="txt"
-            />
+            {/* CP and City in two columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>
+                <Label htmlFor="cp">Code postal</Label>
+                <Input
+                  {...register("cp", { required: "Code postal requis" })}
+                  id="cp"
+                  type="text"
+                  className={errors.cp ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+              <div>
+                <Label htmlFor="city">Ville</Label>
+                <Input
+                  {...register("city", { required: "Ville requise" })}
+                  id="city"
+                  type="text"
+                  className={errors.city ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+            </div>
 
-            <Label htmlFor="email">Email</Label>
-            <Input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              id="email"
-              type="txt"
-            />
-
-            <Label htmlFor="password">Mot de passe</Label>
-            <Input
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              id="password"
-              type="password"
-            />
-
-            <Label htmlFor="proNumber">Votre numéro Pro</Label>
-            <Input
-              onChange={(e) => setProNumber(e.target.value)}
-              value={proNumber}
-              id="proNumber"
-              type="txt"
-            />
+            {/* Numero Pro and Phone in two columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>
+                <Label htmlFor="proNumber">Votre numéro Pro</Label>
+                <Input
+                  {...register("proNumber")}
+                  id="proNumber"
+                  type="text"
+                  className={errors.proNumber ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+              <div>
+                <Label htmlFor="phone">Téléphone</Label>
+                <Input
+                  {...register("phone", { required: "Téléphone requis" })}
+                  id="phone"
+                  type="text"
+                  className={errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
+                />
+              </div>
+            </div>
           </form>
         )}
       </CardContent>
 
       <CardFooter>
         {!success && (
-          <Button onClick={handleSubmit} className="redBtn">
+          <Button type="submit" form="" className="redBtn" onClick={handleSubmit(onSubmit)}>
             Valider inscription
           </Button>
         )}

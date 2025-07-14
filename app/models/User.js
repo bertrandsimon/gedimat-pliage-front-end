@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
   proNumber: String,
   kbis_file: String,
   token: String,
+  address: String,
+  cp: String,
+  city: String,
+  phone: String
 });
 
 // export default mongoose.model("User", userSchema);
