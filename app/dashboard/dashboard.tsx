@@ -8,6 +8,7 @@ import Analytics from "./analytics"
 
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { useRouter } from "next/navigation"
 
 import {
   File,
@@ -23,9 +24,10 @@ import {
   Settings,
   ShoppingCart,
   Users2,
+  User
 } from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -79,6 +81,7 @@ export function Dashboard({ orders, connectedUser }: any) {
   const customer_id = useSelector((state: any) => state.user.userId);
   const [page, setPage] = useState("lists")
   const [isListsLoaded, setIsListsLoaded] = useState(false);
+  const router = useRouter();
 
   //console.log( "orders in client component as props :", orders.orders)
   console.log("connectedUser", connectedUser)
@@ -93,6 +96,12 @@ export function Dashboard({ orders, connectedUser }: any) {
     setPage(page);
   }
 
+  const handleOrdersClick = (event: any) => {
+    event.preventDefault();
+    setPage("lists");
+    router.push(`/dashboard/${customer_id}`);
+  }
+
   return (
     <>
       <TooltipProvider>
@@ -101,13 +110,7 @@ export function Dashboard({ orders, connectedUser }: any) {
 
           <aside className="fixed inset-y-16 left-0 z-10 hidden w-14 flex-col sm:flex">
             <nav className="flex flex-col items-center gap-4 px-2 py-4">
-              <Link
-                href="#"
-                className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-              >
-                <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
 
-              </Link>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
@@ -118,14 +121,14 @@ export function Dashboard({ orders, connectedUser }: any) {
                     <span className="sr-only">Dashboard</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Dashboard</TooltipContent>
+                <TooltipContent side="right">Votre espace client</TooltipContent>
               </Tooltip>
 
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
-                    href={`dashboard/lists/${customer_id}`}
-
+                    href={`/dashboard/${customer_id}`}
+                    onClick={handleOrdersClick}
                     className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
                   >
                     <ShoppingCart className="h-5 w-5" />
@@ -140,25 +143,10 @@ export function Dashboard({ orders, connectedUser }: any) {
                 <TooltipTrigger asChild>
                   <Link
                     href="#"
-                    onClick={handleClick("singleList")}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                  >
-                    <Package className="h-5 w-5" />
-
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent side="right">Single List</TooltipContent>
-              </Tooltip>
-
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href="#"
                     onClick={handleClick("userAccount")}
                     className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                   >
-                    <Users2 className="h-5 w-5" />
+                    <User className="h-5 w-5" />
 
                   </Link>
                 </TooltipTrigger>
@@ -177,7 +165,7 @@ export function Dashboard({ orders, connectedUser }: any) {
                     <span className="sr-only">Statistiques</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Analytics</TooltipContent>
+                <TooltipContent side="right">Statistiques</TooltipContent>
               </Tooltip>
 
             </nav>
@@ -208,7 +196,7 @@ export function Dashboard({ orders, connectedUser }: any) {
                       className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                     >
                       <Home className="h-5 w-5" />
-                      Dashboard
+                      Votre espace client
                     </Link>
                     <Link
                       href="#"
