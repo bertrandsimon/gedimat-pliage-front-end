@@ -396,7 +396,7 @@ export default function SingleProduct({
     })
   }
 
-  console.log('maxUnfoldedSurface', maxUnfoldedSurface, 'surface', surface);
+  //console.log('maxUnfoldedSurface', maxUnfoldedSurface, 'surface', surface);
 
   return (
     <div>
