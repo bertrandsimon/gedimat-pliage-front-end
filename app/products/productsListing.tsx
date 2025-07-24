@@ -99,8 +99,15 @@ export function ProductsListing({ category, subcategory }: any) {
   return (
     <>
       {products.length === 0 ? (
-        <div className="flex justify-center items-center min-h-[200px]">
-          <Lottie animationData={lottieJson} loop={true} style={{ width: 120, height: 120 }} />
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="min-h-[300px] border p-4 rounded-sm animate-pulse">
+              <div className="w-full h-[125px] bg-gray-300 mb-4 rounded" />
+              <div className="h-4 bg-gray-300 rounded mb-2" />
+              <div className="h-4 bg-gray-300 rounded w-1/2" />
+            </div>
+          ))}
+
         </div>
       ) : (
         <>
