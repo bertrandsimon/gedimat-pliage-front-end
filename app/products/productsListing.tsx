@@ -99,15 +99,26 @@ export function ProductsListing({ category, subcategory }: any) {
   return (
     <>
       {products.length === 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="min-h-[300px] border p-4 rounded-sm animate-pulse">
-              <div className="w-full h-[125px] bg-gray-300 mb-4 rounded" />
-              <div className="h-4 bg-gray-300 rounded mb-2" />
-              <div className="h-4 bg-gray-300 rounded w-1/2" />
-            </div>
-          ))}
+        <div>
+          <div className="mb-8 sm:py-4">
+            <CategoryHeader
+              title={category}
+              subtitle={subcategory}
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dui et ipsum tempus sollicitudin. Etiam dapibus nec nulla sit amet viverra."
+              image="/images/inspirations/inspirations/7.jpg"
+              selectSubCategory={selectSubCategory}
+            />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="min-h-[300px] border p-4 rounded-sm animate-pulse">
+                <div className="w-full h-[125px] bg-gray-300 mb-4 rounded" />
+                <div className="h-4 bg-gray-300 rounded mb-2" />
+                <div className="h-4 bg-gray-300 rounded w-1/2" />
+              </div>
+            ))}
 
+          </div>
         </div>
       ) : (
         <>
