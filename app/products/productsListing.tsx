@@ -27,12 +27,12 @@ export function ProductsListing({ category, subcategory }: any) {
       try {
         // const response = await fetch(
         //   `${process.env.NEXT_PUBLIC_URL}/api/products`,
-        //   { cache: 'force-cache' }
+        //   { cache: 'force-cache' } // { cache: 'no-store' }
         // )
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL}/api/products`,
           {
-            cache: 'no-store',
+            cache: 'force-cache',
             next: {
               //revalidate: 3600,
             },
@@ -133,7 +133,7 @@ export function ProductsListing({ category, subcategory }: any) {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
-            {filteredProducts.map((product: any) => (
+            {filteredProducts.map((product: any, i) => (
               <div key={product._id}>
                 <div className="min-h-[300px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 border-grey p-4 hover:shadow-lg">
                   <div className="overflow-hidden">
@@ -144,6 +144,7 @@ export function ProductsListing({ category, subcategory }: any) {
                         width={180}
                         height={125}
                         className="object-cover rounded hover:scale-125 transition-transform duration-300 ease-in-out"
+                        priority={i < 6}
                       />
                     </Link>
                   </div>
