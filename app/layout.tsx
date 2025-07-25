@@ -1,6 +1,9 @@
+import * as Sentry from '@sentry/nextjs';
+import type { Metadata } from 'next'
+
 import ClientProvider from './clientProvider'
 import { Suspense } from 'react'
-import type { Metadata } from 'next'
+
 import { Analytics } from '@vercel/analytics/react'
 import { Quicksand } from 'next/font/google'
 import Toolbar from '../components/toolbar'
@@ -40,6 +43,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
+  },
+  other: {
+    ...Sentry.getTraceData(),
   },
 }
 
