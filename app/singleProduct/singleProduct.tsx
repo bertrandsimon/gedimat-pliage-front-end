@@ -416,6 +416,7 @@ export default function SingleProduct({
                   width={400}
                   height={400}
                   alt=""
+                  priority
                   className="lg:col-span-2 lg:row-span-2 border border-1 rounded-md"
                 ></Image>
                 <div>
