@@ -164,14 +164,16 @@ export default function Toolbar() {
             <DropdownMenuSeparator />
             {userConnected && (
               <div>
-                <Link href={`/dashboard/${customer_id}`}>
+                <Link href={`/dashboard/${customer_id}?section=lists`}>
                   <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
                     Mes commandes
                   </DropdownMenuItem>
                 </Link>
-                <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
-                  Mes infos
-                </DropdownMenuItem>
+                <Link href={`/dashboard/${customer_id}?section=userAccount`}>
+                  <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
+                    Mes infos
+                  </DropdownMenuItem>
+                </Link>
                 <DropdownMenuItem
                   onClick={handleDisconnect}
                   className="flex justify-center text-xs uppercase cursor-pointer"

@@ -8,7 +8,7 @@ import Analytics from "./analytics"
 
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 import {
   File,
@@ -79,12 +79,22 @@ import {
 
 export function Dashboard({ orders, connectedUser }: any) {
   const customer_id = useSelector((state: any) => state.user.userId);
-  const [page, setPage] = useState("lists")
+  const [page, setPage] = useState("userAccount")
   const [isListsLoaded, setIsListsLoaded] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   //console.log( "orders in client component as props :", orders.orders)
   console.log("connectedUser", connectedUser)
+
+  // Read URL parameter and set page state
+  useEffect(() => {
+    const section = searchParams.get('section');
+    if (section) {
+      setPage(section);
+    }
+  }, [searchParams]);
+
   useEffect(() => {
     if (page === "lists") {
       setIsListsLoaded(true);
