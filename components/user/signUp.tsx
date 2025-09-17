@@ -72,7 +72,7 @@ export default function SignUp() {
         <CardHeader>
           <CardTitle>Création de compte</CardTitle>
           <CardDescription>
-            Entrez votre email et un mot de passe pour créer votre compte
+            Entrez votre email et un mot de passe
           </CardDescription>
         </CardHeader>
       )}

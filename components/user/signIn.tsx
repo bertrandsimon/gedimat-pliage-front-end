@@ -43,7 +43,7 @@ export default function SignIn() {
     return re.test(String(email).toLowerCase())
   }
 
-  useEffect(() => {}, [userConnected])
+  useEffect(() => { }, [userConnected])
 
   const handleSubmit = () => {
     setError('')
@@ -133,7 +133,7 @@ export default function SignIn() {
       {!success && (
         <CardFooter>
           <Button onClick={handleSubmit} className="redBtn">
-            Connection
+            Connexion
           </Button>
         </CardFooter>
       )}

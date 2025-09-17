@@ -146,7 +146,7 @@ export default function Toolbar() {
               <DropdownMenuLabel className="text-center uppercase text-xs">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button variant="outline">Mon compte</Button>
+                    <Button variant="outline">Mon espace client</Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent className="max-w-lg">
                     <AlertDialogHeader>
@@ -176,7 +176,7 @@ export default function Toolbar() {
                   onClick={handleDisconnect}
                   className="flex justify-center text-xs uppercase cursor-pointer"
                 >
-                  Déconnection
+                  Déconnexion
                 </DropdownMenuItem>
               </div>
             )}

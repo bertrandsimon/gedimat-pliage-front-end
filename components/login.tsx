@@ -23,21 +23,21 @@ export function Login() {
   return (
     <Tabs defaultValue="signin" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="signin">Connection</TabsTrigger>
-        <TabsTrigger value="signup">Créer un compte</TabsTrigger>
+        <TabsTrigger value="signin">Connexion</TabsTrigger>
+        <TabsTrigger value="signup">Créer mon compte</TabsTrigger>
       </TabsList>
       <TabsContent value="signin">
-      
-      {/* USER CONNEXION */}
-          <SignIn/>
+
+        {/* USER CONNEXION */}
+        <SignIn />
 
       </TabsContent>
 
 
       <TabsContent value="signup">
-        
+
         {/* USER ACCOUN CREATION */}
-        <SignUp/>
+        <SignUp />
 
       </TabsContent>
     </Tabs>
