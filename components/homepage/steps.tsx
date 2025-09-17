@@ -16,8 +16,10 @@ export default function Steps() {
             {/* Step 1 */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex flex-col gap-3 text-justify items-center -mt-4 group relative cursor-pointer">
-                  <Image src="/images/1.png" alt="" height={30} width={30} />
+                <div className="flex flex-col gap-3 text-justify items-center group relative cursor-pointer px-4 mt-10">
+                  <div className="h-[30px] flex items-center">
+                    <Image src="/images/1.png" alt="" height={30} width={30} />
+                  </div>
                   <p className="font-bold">Vous configurez</p>
                   <p className="text-sm w-[220px]">
                     À partir de nos formes modélisées, vous personnalisez vos pièces.
@@ -34,8 +36,10 @@ export default function Steps() {
             {/* Step 2 */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex flex-col gap-3 text-justify items-center -mt-4 group relative cursor-pointer">
-                  <Image src="/images/2.png" alt="" height={30} width={30} />
+                <div className="flex flex-col gap-3 text-justify items-center group relative cursor-pointer px-4 mt-10">
+                  <div className="h-[30px] flex items-center">
+                    <Image src="/images/2.png" alt="" height={30} width={30} />
+                  </div>
                   <p className="font-bold">Vous commandez</p>
                   <p className="text-sm w-[220px]">
                     Plus vous commandez de pièces identiques, plus le <strong>prix unitaire diminue</strong> ...
@@ -55,11 +59,13 @@ export default function Steps() {
             {/* Step 3 */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex flex-col gap-3 text-justify items-center -mt-4 group relative cursor-pointer">
-                  <Image src="/images/3.png" alt="" height={30} width={30} />
+                <div className="flex flex-col gap-3 text-justify items-center group relative cursor-pointer px-4 mt-10">
+                  <div className="h-[30px] flex items-center">
+                    <Image src="/images/3.png" alt="" height={30} width={30} />
+                  </div>
                   <p className="font-bold">Nous vérifions</p>
                   <p className="text-sm w-[220px]">
-                    Notre équipe vérifie avec soin la faisabilité technique...
+                    Notre équipe vérifie avec soin la faisabilité technique... puis vous cofnirme la faisabilité.
 
                   </p>
                 </div>
@@ -76,8 +82,10 @@ export default function Steps() {
             {/* Step 4 */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex flex-col gap-3 text-justify items-center -mt-4 group relative cursor-pointer">
-                  <Image src="/images/4.png" alt="" height={30} width={30} />
+                <div className="flex flex-col gap-3 text-justify items-center group relative cursor-pointer px-4 mt-10">
+                  <div className="h-[30px] flex items-center">
+                    <Image src="/images/4.png" alt="" height={30} width={30} />
+                  </div>
                   <p className="font-bold">Nous vous confirmons</p>
                   <p className="text-sm w-[220px]">
                     Nous vous communiquons délai de fabrication et modalités de retrait.

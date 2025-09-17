@@ -16,9 +16,7 @@ export default function PresentationPage() {
   return (
     <div>
       <Ariane ariane={ariane} />
-      {/* <div className="px-2 py-4">
-        <Presentation />
-      </div> */}
+
       <div className="px-12 py-12">
         <Top
           title="Spécialiste du pliage"
@@ -33,23 +31,20 @@ export default function PresentationPage() {
         <Stats />
         <div className="grid grid-cols-1 sm:grid-cols-3 py-16 px-12 gap-12">
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
-            tenetur, incidunt accusantium explicabo unde molestiae ea id iusto
-            cum corrupti ut qui, at maxime voluptatum illo dicta magnam laborum
-            impedit.
+            Le pliage d'aluminium offre une précision exceptionnelle pour vos projets architecturaux.
+            Nos techniques avancées garantissent des angles parfaits et une finition de qualité supérieure,
+            adaptés aux exigences les plus strictes de l'industrie.
           </p>
 
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
-            tenetur, incidunt accusantium explicabo unde molestiae ea id iusto
-            cum corrupti ut qui, at maxime voluptatum illo dicta magnam laborum
-            impedit.
+            Bénéficiez de la légèreté et de la résistance de l'aluminium plié. Matériau durable et
+            résistant à la corrosion, il s'adapte parfaitement aux contraintes climatiques tout en
+            conservant ses propriétés mécaniques exceptionnelles dans le temps.
           </p>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
-            tenetur, incidunt accusantium explicabo unde molestiae ea id iusto
-            cum corrupti ut qui, at maxime voluptatum illo dicta magnam laborum
-            impedit.
+            Notre expertise en pliage d'aluminium vous permet de réaliser des formes complexes et
+            personnalisées. De la conception à la livraison, nous maîtrisons tous les aspects techniques
+            pour transformer vos idées en réalisations concrètes et fonctionnelles.
           </p>
         </div>
       </div>

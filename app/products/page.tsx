@@ -30,9 +30,10 @@ export default function ProductsPage() {
       <div className="px-2 sm:px-12 py-12">
         <ProductsListing category={category} subcategory={subcategory} />
       </div>
-      <div className="px-2 sm:px-12 py-12">
+      <div className="px-2 py-18 mb-20">
         <Steps />
       </div>
+
     </div>
   )
 }

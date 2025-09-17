@@ -75,7 +75,7 @@ export default function Footer() {
   return (
     <>
       <footer>
-        <div className="px-6 pb-6 pt-2 sm:pt-24 lg:px-8 lg:pt-8">
+        <div className="px-6 pb-6 pt-2 sm:pt-24 lg:px-8 lg:pt-8 relative z-20 mt-14">
           <div className="xl:grid xl:grid-cols-2 xl:gap-8">
             <section id="nav">
               <div className="hidden lg:flex h-full w-full items-start justify-center sm:justify-between">
@@ -123,21 +123,17 @@ export default function Footer() {
                         </h3>
                       </div>
                     </div>
-                    {/* <Image
-            src="/images/logo-pliage-aluminium.png"
-            alt=""
-            width={178}
-            height={63}
-            className="mt-3"
-          /> */}
-                    <div className="text-white flex items-center justify-center gap-8 ml-8 pt-4">
-                      <Image
-                        src="/images/footer/gedimat.jpg"
-                        width={136}
-                        height={70}
-                        alt="Gedimat"
-                        className="cursor-pointer"
-                      ></Image>
+
+                    <div className="text-white grid grid-cols-2 gap-8 ml-8 pt-4 place-items-center">
+                      <Link href="https://gedimat.fr" target="_blank" rel="noopener noreferrer">
+                        <Image
+                          src="/images/footer/gedimat.jpg"
+                          width={272}
+                          height={70}
+                          alt="Gedimat"
+                          className="cursor-pointer"
+                        ></Image>
+                      </Link>
 
                       <Image
                         src="/images/footer/pliage.jpg"
@@ -189,8 +185,8 @@ export default function Footer() {
                         type="button"
                         disabled={!isValid}
                         className={`flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-light text-white shadow-sm uppercase ${isValid
-                            ? 'bg-[#B51B1B] hover:bg-[#B51B1B]'
-                            : 'bg-gray-400 cursor-not-allowed'
+                          ? 'bg-[#B51B1B] hover:bg-[#B51B1B]'
+                          : 'bg-gray-400 cursor-not-allowed'
                           }`}
                       >
                         Envoyer
