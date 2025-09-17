@@ -12,13 +12,13 @@ import { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
-  title: 'Accueil - Pliage Aluminium Sur Mesure',
+  title: 'Pliage Aluminium sur mesure - groupe Gedimat',
   description:
-    'Expert en pliage aluminium sur mesure pour vos projets résidentiels et professionnels. Solutions adaptées et finitions durables.',
+    'Expert en pliage aluminium sur mesure pour vos projets professionnels et résidentiels. Solutions adaptées et finitions durables.',
   openGraph: {
-    title: 'Accueil - Pliage Aluminium Sur Mesure',
+    title: 'Pliage Aluminium sur mesure - groupe Gedimat',
     description:
-      'Expert en pliage aluminium sur mesure pour vos projets résidentiels et professionnels. Solutions adaptées et finitions durables.',
+      'Expert en pliage aluminium sur mesure pour vos projets professionnels et résidentiels. Solutions adaptées et finitions durables.',
   },
 }
 

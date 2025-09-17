@@ -81,7 +81,7 @@ export default function Toolbar() {
   }
 
   return (
-    <div className="mx-auto grid grid-cols-1 sm:grid-cols-3 sm:h-[64px] h-full items-center ">
+    <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 sm:h-[64px] h-full items-center ">
       <div className="flex sm:justify-start sm:items-start justify-center mt-4 sm:mt-0">
         <Link href="/">
           <Image
@@ -93,53 +93,48 @@ export default function Toolbar() {
           />
         </Link>
       </div>
-      <div className="flex justify-center items-center my-2 sm:my-0">
-        {/* <div className="relative rounded-md shadow-sm sm:-mt-3 ">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <MagnifyingGlassIcon
-              className="h-4 w-4 text-gray-400"
-              aria-hidden="true"
-            />
-          </div>
-          <input
-            className="text-sm w-[200px] h-[28px] focus:outline-none rounded-md border-0 py-1.5 pl-10 bg-[#191919] text-gray-400 ring-1 ring-inset ring-gray-800 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-            placeholder="Recherche"
-          />
-        </div> */}
-      </div>
+
 
       <div className="flex justify-center items-center gap-1 text-white sm:-mt-3 my-4 sm:my-0">
         <Link
           href="/presentation"
-          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] rounded-md hover:rounded-md p-2"
+          className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
         >
-          Présentation
+          <span className="relative z-10">Présentation</span>
+          <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
         </Link>
         <div className="text-white">|</div>
         <Link
           href="/inspirations"
-          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B] rounded-md hover:rounded-md p-2 "
+          className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
         >
-          Inspirations
+          <span className="relative z-10">Inspirations</span>
+          <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
         </Link>
         <div className="text-white">|</div>
         <Link
           href="/faq"
-          className="text-sm transition duration-300 ease-in-out hover:bg-[#B51B1B]  hover:rounded-md p-2"
+          className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
         >
-          Faq
+          <span className="relative z-10">Faq</span>
+          <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
         </Link>
 
         <Link
           href="/contact"
-          className="hover:text-[#B51B1B] transition duration-300 ease-in-out p-2"
+          className="relative group hover:text-[#B51B1B] transition-all duration-300 ease-out p-2 rounded-md"
         >
-          <ChatBubbleBottomCenterTextIcon className="size-6" />
+          <ChatBubbleBottomCenterTextIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
+          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300 ease-out"></div>
         </Link>
 
         <DropdownMenu>
-          <DropdownMenuTrigger className="hover:text-[#B51B1B]">
-            <UserCircleIcon className="size-6" />
+          <DropdownMenuTrigger className="relative group hover:text-[#B51B1B] transition-all duration-300 ease-out p-2 rounded-md">
+            <UserCircleIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300 ease-out"></div>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="mt-4">
             {!userConnected && (
@@ -198,16 +193,16 @@ export default function Toolbar() {
         )}
         {userConnected && (
           <div className="relative py-2">
-            <div className="t-2 absolute left-5">
-              <p className="flex h-1 w-1 items-center justify-center rounded-full bg-[#B51B1B] p-2 text-xs text-white">
+            <div className="absolute top-6 left-5">
+              <p className="flex h-5 w-5 items-center justify-center rounded-full bg-[#B51B1B] text-xs text-white select-none">
                 {cartCount}
               </p>
             </div>
             <Link
               href="/cart"
-              className="hover:text-[#B51B1B] transition duration-300 ease-in-out"
+              className="relative group transition-all duration-300 ease-out p-2 rounded-md"
             >
-              <ShoppingCartIcon className="size-6" />
+              <ShoppingCartIcon className="size-6 hover:text-[#B51B1B] relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
             </Link>
           </div>
         )}
