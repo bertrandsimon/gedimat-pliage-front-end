@@ -4,12 +4,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import Contact from '@/app/contact/contact'
 
 export default function Footer() {
   const [telephone, setTelephone] = useState('')
   const [isValid, setIsValid] = useState(false)
   const [success, setSuccess] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const form = useRef<HTMLFormElement>(null)
 
   const handleValidation = (value: string) => {
@@ -48,6 +56,10 @@ export default function Footer() {
       )
       setSuccess(true)
     }
+  }
+
+  const handleAideClick = () => {
+    setIsContactModalOpen(true)
   }
 
   const navigation = {
@@ -164,6 +176,8 @@ export default function Footer() {
                       alt="helper"
                       width={220}
                       height={147}
+                      className="cursor-pointer hover:scale-105 transition-transform duration-200"
+                      onClick={handleAideClick}
                     ></Image>
                   </div>
                 </div>
@@ -229,6 +243,20 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
+      {/* Contact Modal */}
+      <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center">
+              Contactez-nous
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            <Contact />
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

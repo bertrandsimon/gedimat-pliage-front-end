@@ -188,6 +188,8 @@ export default function Cart() {
 
   return (
     <>
+
+
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           {!orderSuccess && <CardTitle>Votre panier</CardTitle>}
@@ -199,6 +201,9 @@ export default function Cart() {
 
           {orderSuccess && <OrderConfirmation />}
         </CardHeader>
+
+
+
 
         {!orderSuccess && (
           <CardContent>
@@ -227,6 +232,12 @@ export default function Cart() {
         )}
       </Card>
 
+
+      {cartItems.length === 0 && (
+        <div>
+          <p className="p-12">il n'y a pas de produits dans votre panier</p>
+        </div>
+      )}
 
 
       {!orderSuccess && (
@@ -259,8 +270,7 @@ export default function Cart() {
           </CardContent>
         </Card>
       )}
-
-      {!orderSuccess && (
+      {!orderSuccess && cartItems.length > 0 && (
         <div>
           <button
             onClick={() => handleValidateOrder(orderDatas)}
@@ -270,6 +280,8 @@ export default function Cart() {
           </button>
         </div>
       )}
+
+
     </>
   )
 }
