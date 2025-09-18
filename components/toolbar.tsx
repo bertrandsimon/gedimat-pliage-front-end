@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 import { useToast } from '@/hooks/use-toast'
+import { startTransition } from 'react'
 
 import {
   loggedStatus,
@@ -52,9 +53,22 @@ export default function Toolbar() {
   const router = useRouter()
   const { toast } = useToast()
 
+  const cartCount = useSelector(cartItemCount)
+  const userConnected = useSelector((state: any) => state.user.userConnected)
+  const surname = useSelector((state: any) => state.user.surname)
+  const name = useSelector((state: any) => state.user.name)
+  const customer_id = useSelector((state: any) => state.user.userId)
+  const isProUser = useSelector((state: any) => state.user.is_pro)
+
   useEffect(() => {
     setIsMounted(true)
-  }, [])
+
+    // Prefetch dashboard pages for faster navigation
+    if (customer_id) {
+      router.prefetch(`/dashboard/${customer_id}?section=lists`)
+      router.prefetch(`/dashboard/${customer_id}?section=userAccount`)
+    }
+  }, [customer_id, router])
 
   const handleDisconnect = () => {
     dispatch(loggedStatus(false))
@@ -69,12 +83,18 @@ export default function Toolbar() {
     })
   }
 
-  const cartCount = useSelector(cartItemCount)
-  const userConnected = useSelector((state: any) => state.user.userConnected)
-  const surname = useSelector((state: any) => state.user.surname)
-  const name = useSelector((state: any) => state.user.name)
-  const customer_id = useSelector((state: any) => state.user.userId)
-  const isProUser = useSelector((state: any) => state.user.is_pro)
+  const handleOrdersClick = () => {
+    // Use startTransition for better UX - shows loading state
+    startTransition(() => {
+      router.push(`/dashboard/${customer_id}?section=lists`)
+    })
+  }
+
+  const handleAccountClick = () => {
+    startTransition(() => {
+      router.push(`/dashboard/${customer_id}?section=userAccount`)
+    })
+  }
 
   if (!isMounted) {
     return null
@@ -159,16 +179,18 @@ export default function Toolbar() {
             <DropdownMenuSeparator />
             {userConnected && (
               <div>
-                <Link href={`/dashboard/${customer_id}?section=lists`}>
-                  <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
-                    Mes commandes
-                  </DropdownMenuItem>
-                </Link>
-                <Link href={`/dashboard/${customer_id}?section=userAccount`}>
-                  <DropdownMenuItem className="flex justify-center text-xs uppercase cursor-pointer">
-                    Mes infos
-                  </DropdownMenuItem>
-                </Link>
+                <DropdownMenuItem
+                  onClick={handleOrdersClick}
+                  className="flex justify-center text-xs uppercase cursor-pointer"
+                >
+                  Mes commandes
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={handleAccountClick}
+                  className="flex justify-center text-xs uppercase cursor-pointer"
+                >
+                  Mes infos
+                </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={handleDisconnect}
                   className="flex justify-center text-xs uppercase cursor-pointer"

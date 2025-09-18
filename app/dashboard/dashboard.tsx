@@ -105,13 +105,14 @@ export function Dashboard({ orders, connectedUser }: any) {
 
   const handleClick = (page: string) => (event: any) => {
     event.preventDefault();
-    setPage(page);
+    // Force a full page navigation to get fresh data
+    window.location.href = `/dashboard/${customer_id}?section=${page}`;
   }
 
   const handleOrdersClick = (event: any) => {
     event.preventDefault();
-    setPage("lists");
-    router.push(`/dashboard/${customer_id}`);
+    // Force a full page navigation to get fresh data
+    window.location.href = `/dashboard/${customer_id}?section=lists`;
   }
 
   return (

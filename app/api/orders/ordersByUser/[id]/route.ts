@@ -24,7 +24,12 @@ export async function GET(request: any, { params }: any) {
          return NextResponse.json({ error: 'Commandes non trouvées' }, { status: 400 })
       }
 
-      return NextResponse.json(orders)
+      // Force no cache to ensure fresh data
+      return NextResponse.json(orders, {
+         headers: {
+            'Cache-Control': 'no-store'
+         }
+      })
    }
    catch {
       return NextResponse.json('ERREUR');

@@ -28,15 +28,12 @@ export async function GET(request: any, { params }: any) {
         }
 
 
-        const response = NextResponse.json(user)
-
-        // Set cache headers : ACTIVATE FOR CACHE
-        // response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400')
-
-        // Set cache headers : DESACTIVATE FOR CACHE
-        //response.headers.set('Cache-Control', 'no-store')
-
-        return response
+        // Force no cache to ensure fresh data
+        return NextResponse.json(user, {
+            headers: {
+                'Cache-Control': 'no-store'
+            }
+        })
     } catch {
         return NextResponse.json('ERREUR')
     }
