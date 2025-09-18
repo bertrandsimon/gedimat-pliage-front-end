@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import connectDB from '../../db'
-import Product from '../../models/Product'
+import { getProducts } from '@/lib/products'
 
 // GET ALL PRODUCTS
 
@@ -10,20 +9,8 @@ import Product from '../../models/Product'
 // https://www.pliage-aluminium.com/api/products
 
 export async function GET() {
-  await connectDB()
   try {
-    // Only select necessary fields for listing page to reduce payload
-    const products = await Product.find(
-      { active: true },
-      {
-        _id: 1,
-        name: 1,
-        main_image: 1,
-        category: 1,
-        sub_category: 1,
-        // Exclude heavy fields like images array, description, etc.
-      }
-    ).sort({ name: 1 })
+    const products = await getProducts()
 
     const response = NextResponse.json(products)
 
@@ -37,32 +24,5 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching products:', error)
     return NextResponse.json('ERREUR', { status: 500 })
-  }
-}
-
-// Export the function for server-side usage
-export async function getProducts() {
-  await connectDB()
-  try {
-    // Only select necessary fields for listing page to reduce payload
-    const products = await Product.find(
-      { active: true },
-      {
-        _id: 1,
-        name: 1,
-        main_image: 1,
-        category: 1,
-        sub_category: 1,
-        // Exclude heavy fields like images array, description, etc.
-      }
-    ).sort({ name: 1 })
-
-    return products.map(product => ({
-      ...product.toObject(),
-      _id: product._id.toString()
-    }))
-  } catch (error) {
-    console.error('Error fetching products:', error)
-    throw new Error('Failed to fetch products')
   }
 }

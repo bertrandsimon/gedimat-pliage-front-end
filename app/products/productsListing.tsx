@@ -1,4 +1,4 @@
-import { getProducts } from '@/app/api/products/route'
+import { getProducts } from '@/lib/products'
 import { ProductsClientWrapper } from './ProductsClientWrapper'
 import Product from '@/app/models/Product'
 
