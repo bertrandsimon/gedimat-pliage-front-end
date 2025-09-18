@@ -77,6 +77,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
+
+// orders comes from dashboard/[id]/page.tsx
 export function Dashboard({ orders, connectedUser }: any) {
   const customer_id = useSelector((state: any) => state.user.userId);
   const [page, setPage] = useState("userAccount")
@@ -85,7 +87,7 @@ export function Dashboard({ orders, connectedUser }: any) {
   const searchParams = useSearchParams();
 
   //console.log( "orders in client component as props :", orders.orders)
-  console.log("connectedUser", connectedUser)
+  //console.log("connectedUser", connectedUser)
 
   // Read URL parameter and set page state
   useEffect(() => {
