@@ -6,9 +6,14 @@ import { selectedSubCategory as setSelectedSubCategoryAction } from '@/app/reduc
 import Image from 'next/image'
 import Link from 'next/link'
 import CategoryHeader from '@/components/products/categoryHeader'
-import Product from '@/app/models/Product'
-
-type ProductType = typeof Product extends { new(...args: any[]): infer T } ? T : never
+// Define the product type based on what getProducts returns
+type ProductType = {
+    _id: string
+    name: string
+    main_image: string
+    category: string
+    sub_category: string
+}
 
 interface ProductsClientWrapperProps {
     products: ProductType[]

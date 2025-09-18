@@ -1,8 +1,14 @@
 import { getProducts } from '@/lib/products'
 import { ProductsClientWrapper } from './ProductsClientWrapper'
-import Product from '@/app/models/Product'
 
-type ProductType = typeof Product extends { new(...args: any[]): infer T } ? T : never
+// Define the product type based on what getProducts returns
+type ProductType = {
+  _id: string
+  name: string
+  main_image: string
+  category: string
+  sub_category: string
+}
 
 interface ProductsListingProps {
   category?: string
