@@ -3,8 +3,8 @@ import Ariane from '@/components/ariane'
 import Steps from '@/components/homepage/steps'
 import { Suspense } from 'react'
 
-// Enable static generation with revalidation
-export const revalidate = 3600 // Revalidate every hour
+// Force dynamic rendering to avoid build-time database issues
+export const dynamic = 'force-dynamic'
 
 interface ProductsPageProps {
   searchParams: {
