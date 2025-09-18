@@ -24,7 +24,6 @@ const nextConfig = {
   compress: true,
   // Optimize bundle
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['@/components', '@/app'],
   },
 }
