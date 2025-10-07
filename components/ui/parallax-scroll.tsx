@@ -82,7 +82,7 @@ export const ParallaxScroll = ({
                             tellus, et euismod lacus risus quis ex.
                           </p>
                           <div className="flex items-center justify-center">
-                            <img src={el} alt="" />
+                            <Image src={el} alt="Gallery image" width={400} height={400} className="object-cover" />
                           </div>
                         </AlertDialogDescription>
                       </div>
@@ -129,7 +129,7 @@ export const ParallaxScroll = ({
                             tellus, et euismod lacus risus quis ex.
                           </p>
                           <div className="flex items-center justify-center">
-                            <img src={el} alt="" />
+                            <Image src={el} alt="Gallery image" width={400} height={400} className="object-cover" />
                           </div>
                         </AlertDialogDescription>
                       </div>
@@ -176,7 +176,7 @@ export const ParallaxScroll = ({
                             tellus, et euismod lacus risus quis ex.
                           </p>
                           <div className="flex items-center justify-center">
-                            <img src={el} alt="" />
+                            <Image src={el} alt="Gallery image" width={400} height={400} className="object-cover" />
                           </div>
                         </AlertDialogDescription>
                       </div>
