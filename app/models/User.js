@@ -14,7 +14,10 @@ const userSchema = new mongoose.Schema({
   address: String,
   cp: String,
   city: String,
-  phone: String
+  phone: String,
+  // Magic link fields
+  magicLinkToken: String,
+  magicLinkExpiry: Date
 });
 
 // export default mongoose.model("User", userSchema);

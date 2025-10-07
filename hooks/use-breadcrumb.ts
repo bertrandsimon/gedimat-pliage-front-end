@@ -39,7 +39,8 @@ export const pageTitleMap: Record<string, string> = {
     '/faq': 'FAQ',
     '/cgv': 'Mentions légales',
     '/cart': 'Panier',
-    '/dashboard': 'Mon espace'
+    '/dashboard': 'Mon espace',
+    '/magic-link': 'Connexion par email'
 }
 
 export interface BreadcrumbItem {

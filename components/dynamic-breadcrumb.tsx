@@ -23,8 +23,8 @@ export default function DynamicBreadcrumb({ customProductName, productCategory, 
         <Breadcrumb className="sm:px-14">
             <BreadcrumbList>
                 {breadcrumbs.map((item, index) => (
-                    <div key={item.href} className="flex items-center">
-                        <BreadcrumbItem>
+                    <>
+                        <BreadcrumbItem key={item.href}>
                             {item.isLast ? (
                                 <BreadcrumbPage className="font-medium text-foreground pb-2">
                                     {item.label}
@@ -40,8 +40,8 @@ export default function DynamicBreadcrumb({ customProductName, productCategory, 
                                 </BreadcrumbLink>
                             )}
                         </BreadcrumbItem>
-                        {!item.isLast && <BreadcrumbSeparator />}
-                    </div>
+                        {!item.isLast && <BreadcrumbSeparator className="pb-2" />}
+                    </>
                 ))}
             </BreadcrumbList>
         </Breadcrumb>

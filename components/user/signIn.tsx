@@ -27,6 +27,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import SignInSuccess from './signInSuccess'
+import { Mail, ArrowLeft } from 'lucide-react'
 
 export default function SignIn() {
   const dispatch = useDispatch()
@@ -37,6 +38,9 @@ export default function SignIn() {
   const [password, setPassword] = useState('')
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
+  const [showMagicLink, setShowMagicLink] = useState(false)
+  const [isMagicLinkLoading, setIsMagicLinkLoading] = useState(false)
+  const [magicLinkSent, setMagicLinkSent] = useState(false)
 
   const validateEmail = (email: any) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -44,6 +48,62 @@ export default function SignIn() {
   }
 
   useEffect(() => { }, [userConnected])
+
+  const handleMagicLinkRequest = async () => {
+    if (!email) {
+      toast({
+        title: 'Erreur',
+        description: 'Veuillez saisir votre adresse email',
+        variant: 'destructive'
+      })
+      return
+    }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: 'Erreur',
+        description: 'Le format de l\'email est invalide',
+        variant: 'destructive'
+      })
+      return
+    }
+
+    setIsMagicLinkLoading(true)
+
+    try {
+      const response = await fetch('/api/auth/request-magic-link', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setMagicLinkSent(true)
+        toast({
+          title: 'Email envoyé',
+          description: 'Si cet email existe dans notre système, vous recevrez un lien de connexion.',
+        })
+      } else {
+        toast({
+          title: 'Erreur',
+          description: data.error || 'Une erreur est survenue',
+          variant: 'destructive'
+        })
+      }
+    } catch (error) {
+      toast({
+        title: 'Erreur',
+        description: 'Une erreur est survenue lors de l\'envoi de l\'email',
+        variant: 'destructive'
+      })
+    } finally {
+      setIsMagicLinkLoading(false)
+    }
+  }
 
   const handleSubmit = () => {
     setError('')
@@ -93,6 +153,109 @@ export default function SignIn() {
       })
   }
 
+  // Magic Link Success State
+  if (magicLinkSent) {
+    return (
+      <Card>
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+            <Mail className="w-6 h-6 text-green-600" />
+          </div>
+          <CardTitle className="text-xl">Email envoyé !</CardTitle>
+          <CardDescription>
+            Si cet email existe dans notre système, vous recevrez un lien de connexion dans quelques minutes.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="text-sm text-gray-600 text-center">
+            <p>Vérifiez votre boîte de réception et vos spams.</p>
+            <p>Le lien expire dans 15 minutes.</p>
+          </div>
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => {
+              setMagicLinkSent(false)
+              setShowMagicLink(false)
+              setEmail('')
+            }}
+          >
+            Demander un nouveau lien
+          </Button>
+          <Button
+            variant="ghost"
+            className="w-full"
+            onClick={() => {
+              setMagicLinkSent(false)
+              setShowMagicLink(false)
+            }}
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Retour à la connexion
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  // Magic Link Request State
+  if (showMagicLink) {
+    return (
+      <Card>
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <Mail className="w-6 h-6 text-blue-600" />
+          </div>
+          <CardTitle className="text-xl">Connexion par email</CardTitle>
+          <CardDescription>
+            Entrez votre adresse email pour recevoir un lien de connexion
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={(e) => { e.preventDefault(); handleMagicLinkRequest(); }} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="magic-email">Adresse email</Label>
+              <Input
+                id="magic-email"
+                type="email"
+                placeholder="votre@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={isMagicLinkLoading}
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isMagicLinkLoading}
+            >
+              {isMagicLinkLoading ? 'Envoi en cours...' : 'Envoyer le lien de connexion'}
+            </Button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <Button
+              variant="ghost"
+              className="w-full"
+              onClick={() => setShowMagicLink(false)}
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Retour à la connexion
+            </Button>
+          </div>
+
+          <div className="mt-4 text-xs text-gray-500 text-center">
+            <p>Le lien de connexion sera valide pendant 15 minutes.</p>
+            <p>Il ne peut être utilisé qu'une seule fois.</p>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  // Regular Sign In State
   return (
     <Card>
       {!success && (
@@ -131,10 +294,19 @@ export default function SignIn() {
         </CardContent>
       )}
       {!success && (
-        <CardFooter>
-          <Button onClick={handleSubmit} className="redBtn">
+        <CardFooter className="flex flex-col gap-3">
+          <Button onClick={handleSubmit} className="redBtn w-full">
             Connexion
           </Button>
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => setShowMagicLink(true)}
+              className="text-sm text-blue-600 hover:text-blue-800 underline"
+            >
+              Mot de passe oublié ? Connexion par email
+            </button>
+          </div>
         </CardFooter>
       )}
 
