@@ -43,8 +43,8 @@ export async function GET(request: NextRequest) {
             { expiresIn: '60d' }
         )
 
-        // Create response with redirect
-        const response = NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/dashboard/${user._id}`)
+        // Create response with redirect to success page
+        const response = NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/magic-link-success`)
 
         // Set HTTP-only cookie
         response.cookies.set('auth-token', jwtToken, {
