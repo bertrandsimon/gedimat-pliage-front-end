@@ -1,15 +1,9 @@
-import Ariane from '@/components/ariane'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 
 export default function cgvPage() {
-    const ariane = {
-        sub1: 'Mentions légales',
-        sub2: '',
-        sub3: '',
-    }
-
     return (
         <div>
-            <Ariane ariane={ariane} />
+            <DynamicBreadcrumb />
             <div className="p-6 sm:p-12 max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-6">Conditions Générales de Vente (CGV)</h1>
 

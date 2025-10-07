@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 
 export const dynamic = 'force-dynamic'
 
@@ -79,6 +80,7 @@ export default async function Page({ params }: any) {
 
   return (
     <>
+      <DynamicBreadcrumb />
       <div className="px-12 py-12">
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>

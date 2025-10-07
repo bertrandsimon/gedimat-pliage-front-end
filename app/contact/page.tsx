@@ -1,19 +1,13 @@
 import Contact from "./contact"
-import Ariane from "@/components/ariane"
+import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 
-export default function ContactPage (){
-
-    const ariane = {
-        sub1 : "Contact",
-        sub2 : "",
-        sub3 : "",
-    }
+export default function ContactPage() {
 
     return (
         <div>
-            <Ariane ariane={ariane}/>
+            <DynamicBreadcrumb />
             <div className="px-12 py-12"><Contact /></div>
-            
+
         </div>
     )
 }

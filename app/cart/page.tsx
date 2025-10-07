@@ -1,20 +1,14 @@
 
-import Ariane from "@/components/ariane"
+import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import Cart from "./cart"
 
-export default function CartPage (){
-
-    const ariane = {
-        sub1 : "Panier",
-        sub2 : "",
-        sub3 : "",
-    }
+export default function CartPage() {
 
     return (
         <div>
-            <Ariane ariane={ariane}/>
+            <DynamicBreadcrumb />
             <div className="px-12 py-12"><Cart /></div>
-            
+
         </div>
     )
 }

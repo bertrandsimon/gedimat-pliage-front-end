@@ -1,5 +1,5 @@
 import { ProductsListing } from './productsListing'
-import Ariane from '@/components/ariane'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 import Steps from '@/components/homepage/steps'
 import { Suspense } from 'react'
 
@@ -16,15 +16,9 @@ interface ProductsPageProps {
 export default function ProductsPage({ searchParams }: ProductsPageProps) {
   const { category, subcategory } = searchParams
 
-  const ariane = {
-    sub1: 'Couverture et étanchéité',
-    sub2: 'Couvertines',
-    sub3: '',
-  }
-
   return (
     <div>
-      <Ariane ariane={ariane} />
+      <DynamicBreadcrumb />
       <div className="px-2 sm:px-12 py-12">
         <Suspense fallback={<ProductsLoadingSkeleton />}>
           <ProductsListing category={category} subcategory={subcategory} />

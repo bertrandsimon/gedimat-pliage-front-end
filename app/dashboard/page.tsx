@@ -1,20 +1,14 @@
 
 'use client'
-import Ariane from "@/components/ariane"
+import DynamicBreadcrumb from "@/components/dynamic-breadcrumb"
 import { Dashboard } from "./dashboard"
 
 
 export default function DashboardPage() {
 
-    const ariane = {
-        sub1: "Dashboard",
-        sub2: "",
-        sub3: "",
-    }
-
     return (
         <div>
-            <Ariane ariane={ariane} />
+            <DynamicBreadcrumb />
             <div className="px-12 py-12"><Dashboard /></div>
 
         </div>

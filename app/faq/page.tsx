@@ -1,17 +1,11 @@
 import Faq from './faq'
-import Ariane from '@/components/ariane'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 
 export default function FaqPage() {
-  const ariane = {
-    sub1: 'FAQ',
-    sub2: '',
-    sub3: '',
-  }
-
   return (
     <div>
       <div className="w-full">
-        <Ariane ariane={ariane} />
+        <DynamicBreadcrumb />
 
         <div className="sm:px-12 py-12">
           <Faq />

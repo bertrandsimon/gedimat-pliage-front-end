@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 
 export const dynamic = 'force-dynamic'
 
@@ -59,7 +60,10 @@ export default async function Page({ params }: any) {
 
   return (
     <>
-      <div>{listOfOrders}</div>
+      <DynamicBreadcrumb />
+      <div className="px-12 py-12">
+        <div>{listOfOrders}</div>
+      </div>
     </>
   )
 }

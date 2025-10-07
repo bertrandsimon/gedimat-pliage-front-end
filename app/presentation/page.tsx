@@ -1,21 +1,15 @@
 'use client'
 
-import Ariane from '@/components/ariane'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 import Stats from '@/components/presentation/stats'
 import Presentation from '@/components/homepage/presentation'
 import Top from '@/components/presentation/top'
 import ImagesArea from '@/components/presentation/imagesArea'
 
 export default function PresentationPage() {
-  const ariane = {
-    sub1: 'Présentation',
-    sub2: '',
-    sub3: '',
-  }
-
   return (
     <div>
-      <Ariane ariane={ariane} />
+      <DynamicBreadcrumb />
 
       <div className="px-12 py-12">
         <Top

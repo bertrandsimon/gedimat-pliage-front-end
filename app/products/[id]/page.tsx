@@ -1,6 +1,6 @@
 import SingleProduct from '@/app/singleProduct/singleProduct'
 
-import Ariane from '@/components/ariane'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 //export const dynamic = 'force-dynamic'
 export const revalidate = 86400
 
@@ -36,19 +36,15 @@ export default async function Page({ params }: any) {
   //console.log('materials : ', materialsFromProduct)
   //console.log('materials length: ', materialsFromProduct.length)
 
-  const ariane = {
-    sub1: 'Couverture et étanchéité',
-    sub2: 'Couvertines',
-    sub3: '',
-    link1: '/products?category=couverture_etancheite',
-    link2: '/products?category=couverture_etancheite&subcategory=couvertines',
-  }
-
   //console.log("single product :", item)
 
   return (
     <div className="w-full">
-      <Ariane ariane={ariane} />
+      <DynamicBreadcrumb
+        customProductName={item?.name || 'Produit'}
+        productCategory={item?.category}
+        productSubCategory={item?.sub_category}
+      />
 
       <SingleProduct item={item} materials={materials} />
     </div>

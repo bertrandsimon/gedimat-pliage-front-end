@@ -6,6 +6,7 @@ export const fetchCache = 'force-no-store'
 export const runtime = 'nodejs'
 
 import { Dashboard } from '../dashboard'
+import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 
 
 //   http://localhost:3000/dashboard/66a1fd40412ecec228ca63dd
@@ -45,6 +46,7 @@ export default async function Page({ params }: any) {
 
   return (
     <>
+      <DynamicBreadcrumb />
       <Dashboard orders={orders} connectedUser={connectedUser} />
     </>
   )
