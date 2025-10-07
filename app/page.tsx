@@ -24,20 +24,22 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 relative">
+    <main className="flex min-h-screen flex-col items-center gap-6 relative">
 
 
       <Banner />
 
       <Steps />
+      <div className="py-6" ><Presentation /></div>
 
-      <Presentation />
       <MapText />
       <Categories />
-      <StockText />
+      <div className="py-6" ><StockText /></div>
+
       <Infos />
       {/* <Infos3blocks /> */}
 
+      <br />
 
       <Partners />
     </main>

@@ -98,9 +98,11 @@ export default function Footer() {
                         <h3 className="font-light text-white uppercase">
                           <Link
                             href="/presentation"
-                            className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
+                            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap inline-flex items-center uppercase h-[30px] mt-3"
                           >
-                            présentation
+                            <span className="relative z-10">présentation</span>
+                            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+                            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
                           </Link>
                         </h3>
                       </div>
@@ -108,9 +110,11 @@ export default function Footer() {
                         <h3 className="font-light text-white uppercase">
                           <Link
                             href="/inspirations"
-                            className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
+                            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap inline-flex items-center uppercase h-[30px] mt-3"
                           >
-                            Inspirations
+                            <span className="relative z-10">Inspirations</span>
+                            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+                            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
                           </Link>
                         </h3>
                       </div>
@@ -118,9 +122,11 @@ export default function Footer() {
                         <h3 className="font-light text-white uppercase">
                           <Link
                             href="/faq"
-                            className="rounded-md transition duration-300 ease-in-out inline-flex items-center px-2 uppercase h-[30px] hover:rounded-md hover:bg-[#B51B1B] mt-3"
+                            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap inline-flex items-center uppercase h-[30px] mt-3"
                           >
-                            faq
+                            <span className="relative z-10">faq</span>
+                            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+                            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
                           </Link>
                         </h3>
                       </div>
@@ -128,9 +134,11 @@ export default function Footer() {
                         <h3 className="font-light text-white uppercase">
                           <Link
                             href="/contact"
-                            className="rounded-md transition duration-300 ease-in-out hover:bg-[#B51B1B] h-[30px] px-2 inline-flex items-center  uppercase  hover:rounded-md mt-3"
+                            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap inline-flex items-center uppercase h-[30px] mt-3"
                           >
-                            contact
+                            <span className="relative z-10">contact</span>
+                            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+                            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
                           </Link>
                         </h3>
                       </div>

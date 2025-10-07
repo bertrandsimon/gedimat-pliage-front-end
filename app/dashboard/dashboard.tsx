@@ -165,7 +165,7 @@ export function Dashboard({ orders, connectedUser }: any) {
                 </TooltipTrigger>
                 <TooltipContent side="right">Vos infos</TooltipContent>
               </Tooltip>
-              <Tooltip>
+              {/* <Tooltip>
 
 
                 <TooltipTrigger asChild>
@@ -179,7 +179,7 @@ export function Dashboard({ orders, connectedUser }: any) {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent side="right">Statistiques</TooltipContent>
-              </Tooltip>
+              </Tooltip> */}
 
             </nav>
 

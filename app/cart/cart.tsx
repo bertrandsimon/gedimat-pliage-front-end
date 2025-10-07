@@ -233,7 +233,7 @@ export default function Cart() {
       </Card>
 
 
-      {cartItems.length === 0 && (
+      {!orderSuccess && cartItems.length === 0 && (
         <div>
           <p className="p-12">il n'y a pas de produits dans votre panier</p>
         </div>

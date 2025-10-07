@@ -80,7 +80,7 @@ export default function Banner() {
           <Link
             href="/products?category=facade_bardage&subcategory=profiles"
             title="Profilés de finition"
-            className="absolute top-[27.2%] left-[1%] w-[26%] h-[7%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[27.8%] left-[1%] w-[26%] h-[7%] z-10 hover:bg-white hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase">Profilés de finition</span>
           </Link>
@@ -89,7 +89,7 @@ export default function Banner() {
           <Link
             href="/products?category=menuiserie_fermeture&subcategory=sous-faces"
             title="Sous-faces"
-            className="absolute top-[16.5%] left-[29%] w-[17%] h-[7.7%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[16.5%] left-[29%] w-[17%] h-[7.7%] z-10 hover:bg-white hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase">Sous-faces</span>
           </Link>
@@ -98,7 +98,7 @@ export default function Banner() {
           <Link
             href="/products?category=couverture_etancheite&subcategory=faitieres"
             title="Faîtières"
-            className="absolute top-[10%] left-[55%] w-[13.3%] h-[8.1%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[9.2%] left-[55%] w-[13.3%] h-[8.1%] z-10 hover:bg-white hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase">Faîtières</span>
           </Link>
@@ -107,7 +107,7 @@ export default function Banner() {
           <Link
             href="/products?category=couverture_etancheite&subcategory=solins"
             title="Solins"
-            className="absolute top-[13%] left-[69%] w-[11%] h-[7.9%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[12.3%] left-[69%] w-[11%] h-[7.9%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase">Solins</span>
           </Link>
@@ -116,7 +116,7 @@ export default function Banner() {
           <Link
             href="/products?category=couverture_etancheite&subcategory=couvertines"
             title="Couvertines"
-            className="absolute top-[12.5%] left-[80.5%] w-[18.3%] h-[6.8%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[12.5%] left-[80.5%] w-[18.3%] h-[6.8%] hover:bg-white z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase">Couvertines</span>
           </Link>
@@ -125,7 +125,7 @@ export default function Banner() {
           <Link
             href="/products?category=facade_bardage"
             title="Angles et cornières"
-            className="absolute top-[80%] left-[5.6%] w-[27.2%] h-[7.7%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[80%] left-[5.6%] w-[27.2%] h-[7.7%] hover:bg-white z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase">Angles et cornières</span>
           </Link>
@@ -134,7 +134,7 @@ export default function Banner() {
           <Link
             href="/products?category=menuiserie_fermeture&subcategory=appuis_de_fenetre"
             title="Tablettes de fenêtre"
-            className="absolute top-[76.2%] left-[81.7%] w-[18.1%] h-[13.1%] z-10 hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150 flex items-center justify-center"
+            className="absolute top-[76.2%] left-[81.7%] w-[18.1%] h-[13.1%] hover:bg-white z-10 hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150 flex items-center justify-center"
           >
             <span className="text-xs font-medium text-black uppercase text-center">Tablettes de fenêtre</span>
           </Link>
