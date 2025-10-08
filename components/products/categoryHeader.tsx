@@ -10,6 +10,20 @@ export default function CategoryHeader(props: any) {
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
+
+  function formatSubCategoryName(subCategory: string) {
+    if (!subCategory) return ''
+
+    // Convert underscores to spaces and capitalize only first word
+    return subCategory
+      .split('_')
+      .map((word, index) =>
+        index === 0
+          ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          : word.toLowerCase()
+      )
+      .join(' ')
+  }
   const categorySubTitle = useSelector(
     (state: any) => state.cart.selectedSubCategory || ''
   )
@@ -53,7 +67,7 @@ export default function CategoryHeader(props: any) {
           <Separator />
           {props.subtitle && (
             <p className="font-medium text-2xl redAlu">
-              {capitalizeFirstLetter(categorySubTitle)}
+              {formatSubCategoryName(categorySubTitle)}
             </p>
           )}
           <p className="max-w-[420px] text-sm">
@@ -82,7 +96,7 @@ export default function CategoryHeader(props: any) {
             className="h-[160px] w-full object-cover object-center-top rounded-lg"
           />
         )}
-        <CategoryMenuBar selectSubCategory={props.selectSubCategory} selectedCategory={categoryDescription.category}/>
+        <CategoryMenuBar selectSubCategory={props.selectSubCategory} selectedCategory={categoryDescription.category} />
       </div>
     </div>
   )

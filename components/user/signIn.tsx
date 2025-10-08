@@ -298,7 +298,7 @@ export default function SignIn() {
           <Button onClick={handleSubmit} className="redBtn w-full">
             Connexion
           </Button>
-          <div className="text-center">
+          <div className="text-center py-4">
             <button
               type="button"
               onClick={() => setShowMagicLink(true)}

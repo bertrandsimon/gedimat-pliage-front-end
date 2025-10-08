@@ -24,7 +24,17 @@ interface ProductsClientWrapperProps {
 export function ProductsClientWrapper({ products, category, subcategory }: ProductsClientWrapperProps) {
     const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([])
     const [selectedSubCategory, setSelectedSubCategory] = useState('')
+    const [previousCategory, setPreviousCategory] = useState(category)
     const dispatch = useDispatch()
+
+    // Clear selectedSubCategory when category changes
+    useEffect(() => {
+        if (category !== previousCategory) {
+            setSelectedSubCategory('')
+            dispatch(setSelectedSubCategoryAction(''))
+            setPreviousCategory(category)
+        }
+    }, [category, previousCategory, dispatch])
 
     // Initial filtering based on category and subcategory
     useEffect(() => {
