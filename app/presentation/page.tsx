@@ -11,9 +11,9 @@ export default function PresentationPage() {
     <div>
       <DynamicBreadcrumb />
 
-      <div className="px-12 py-12">
+      <div className="px-4 sm:px-12 py-6 sm:py-12">
         <Top
-          title="Spécialiste du pliage"
+          title="SPECIALISTE DU PLIAGE"
           subtitle="Aluminium et acier"
           sliderOn={true}
           imageTop="man.png"
@@ -23,7 +23,7 @@ export default function PresentationPage() {
         </div>
 
         <Stats />
-        <div className="grid grid-cols-1 sm:grid-cols-3 py-16 px-12 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 py-8 sm:py-16 px-4 sm:px-12 gap-6 sm:gap-12">
           <p>
             Le pliage d'aluminium offre une précision exceptionnelle pour vos projets architecturaux.
             Nos techniques avancées garantissent des angles parfaits et une finition de qualité supérieure,

@@ -13,8 +13,8 @@ export default function Partners() {
     <>
 
 
-      <ScrollArea className="w-full flex justify-center items-center rounded-md border p-4 py-2 mb-20">
-        <div className="flex w-full space-x-10 p-4 justify-around items-center">
+      <ScrollArea className="flex-col sm:flex-row w-full flex justify-center items-center rounded-md border p-2 sm:p-4 py-2 mb-10 sm:mb-20">
+        <div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-10 p-2 sm:p-4 justify-center sm:justify-around items-center">
           <a
             href="https://www.prefa.fr"
             target="_blank"

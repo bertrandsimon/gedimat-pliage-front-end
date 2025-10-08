@@ -100,10 +100,10 @@ export default function Faq() {
     <div className="greyBg rounded-xl pb-20">
       <div className="mx-auto max-w-4xl px-6 py-12 sm:py-32 lg:px-8 lg:py-14 ">
         <div className="mx-auto  divide-y divide-white/10">
-          <p className="uppercase oswald text-2xl text-center">
+          {/* <p className="uppercase oswald text-2xl text-center">
             <span className="pr-2 font-semibold">questions</span>
             <span className="font-light">fréquentes</span>
-          </p>
+          </p> */}
 
           <dl className="mt-10 space-y-6 divide-y divide-black/20">
             {faqs.map((faq) => (

@@ -2,6 +2,7 @@ import { ProductsListing } from './productsListing'
 import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
 import Steps from '@/components/homepage/steps'
 import { Suspense } from 'react'
+import { generateCategoryMetadata } from '@/lib/seo'
 
 // Force dynamic rendering to avoid build-time database issues
 export const dynamic = 'force-dynamic'
@@ -13,18 +14,32 @@ interface ProductsPageProps {
   }
 }
 
+export async function generateMetadata({ searchParams }: ProductsPageProps) {
+  const { category, subcategory } = searchParams
+
+  if (category) {
+    return generateCategoryMetadata(category, subcategory)
+  }
+
+  return {
+    title: 'Produits - Pliage Aluminium',
+    description: 'Découvrez notre gamme complète de produits en aluminium : couverture, façade, menuiserie. Solutions sur mesure pour vos projets.',
+    keywords: 'produits aluminium, couverture, façade, menuiserie, pliage aluminium, sur mesure',
+  }
+}
+
 export default function ProductsPage({ searchParams }: ProductsPageProps) {
   const { category, subcategory } = searchParams
 
   return (
     <div>
       <DynamicBreadcrumb />
-      <div className="px-2 sm:px-12 py-12">
+      <div className="px-4 sm:px-12 py-6 sm:py-12">
         <Suspense fallback={<ProductsLoadingSkeleton />}>
           <ProductsListing category={category} subcategory={subcategory} />
         </Suspense>
       </div>
-      <div className="px-2 py-18 mb-20">
+      <div className="px-4 sm:px-2 py-9 sm:py-18 mb-10 sm:mb-20">
         <Steps />
       </div>
     </div>

@@ -16,6 +16,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/lib/metadata'
 import { metadata as presentationMetadata } from '@/app/presentation/metadata'
+import { generateOrganizationStructuredData, generateWebSiteStructuredData } from '@/lib/structured-data'
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -52,9 +53,26 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const organizationData = generateOrganizationStructuredData()
+  const websiteData = generateWebSiteStructuredData()
+
   return (
     <ClientProvider>
       <html lang="fr">
+        <head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(organizationData),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(websiteData),
+            }}
+          />
+        </head>
         <body className={`${quicksand.className} max-w-screen mx-auto`}>
           <div className="w-full bg-black">
             <div className="container">
@@ -62,19 +80,19 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div className="container mx-auto py-6 sm:px-14 ">
+          <div className="container mx-auto py-3 sm:py-6 px-4 sm:px-14">
             <Navmenu />
           </div>
 
           <Suspense>
-            <div className=" container mx-auto sm:px-4 -mt-90">
+            <div className="container mx-auto px-4 sm:px-4 -mt-90">
               {children}
               <SpeedInsights />
             </div>
           </Suspense>
 
           <div className="bg-black">
-            <div className="container mx-auto px-14">
+            <div className="container mx-auto px-4 sm:px-14">
               <Footer />
             </div>
           </div>

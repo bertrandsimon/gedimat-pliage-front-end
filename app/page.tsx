@@ -30,11 +30,11 @@ export default function Home() {
       <Banner />
 
       <Steps />
-      <div className="py-6" ><Presentation /></div>
+      <div className="py-3 sm:py-6" ><Presentation /></div>
 
       <MapText />
       <Categories />
-      <div className="py-6" ><StockText /></div>
+      <div className="py-3 sm:py-6" ><StockText /></div>
 
       <Infos />
       {/* <Infos3blocks /> */}

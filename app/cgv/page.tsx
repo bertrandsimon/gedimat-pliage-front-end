@@ -1,10 +1,22 @@
 import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
+import Top from '@/components/presentation/top'
+import { generatePageMetadata } from '@/lib/seo'
+
+export const metadata = generatePageMetadata('cgv')
 
 export default function cgvPage() {
     return (
         <div>
             <DynamicBreadcrumb />
-            <div className="p-6 sm:p-12 max-w-4xl mx-auto">
+            <div className="px-4 sm:px-12 py-6 sm:py-12">
+                <Top
+                    title="CGV"
+                    subtitle="Conditions générales de vente"
+                    sliderOn={true}
+                    imageTop="man.png"
+                ></Top>
+            </div>
+            <div className="p-4 sm:p-12 max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-6">Conditions Générales de Vente (CGV)</h1>
 
                 <section className="mb-8">

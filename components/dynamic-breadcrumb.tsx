@@ -20,7 +20,7 @@ export default function DynamicBreadcrumb({ customProductName, productCategory, 
     const breadcrumbs = useBreadcrumb(customProductName, productCategory, productSubCategory)
 
     return (
-        <Breadcrumb className="sm:px-14">
+        <Breadcrumb className="px-4 sm:px-14">
             <BreadcrumbList>
                 {breadcrumbs.map((item, index) => (
                     <>

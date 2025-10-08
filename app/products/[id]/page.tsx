@@ -1,8 +1,41 @@
 import SingleProduct from '@/app/singleProduct/singleProduct'
-
 import DynamicBreadcrumb from '@/components/dynamic-breadcrumb'
+import { generateProductMetadata } from '@/lib/seo'
+
 //export const dynamic = 'force-dynamic'
 export const revalidate = 86400
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`,
+      {
+        next: { revalidate: 86400 },
+      }
+    )
+
+    if (!response.ok) {
+      return {
+        title: 'Produit - Pliage Aluminium',
+        description: 'Découvrez nos produits en aluminium sur mesure.',
+      }
+    }
+
+    const product = await response.json()
+
+    return generateProductMetadata({
+      name: product.name || 'Produit',
+      category: product.category || '',
+      sub_category: product.sub_category || '',
+      description: product.description || `Découvrez ${product.name}, produit de qualité en aluminium.`
+    })
+  } catch (error) {
+    return {
+      title: 'Produit - Pliage Aluminium',
+      description: 'Découvrez nos produits en aluminium sur mesure.',
+    }
+  }
+}
 
 export default async function Page({ params }: any) {
   // ex : http://localhost:3000/api/products/666adf1ac9493b71dbea1e4b
