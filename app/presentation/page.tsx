@@ -18,7 +18,7 @@ export default function PresentationPage() {
           sliderOn={true}
           imageTop="man.png"
         ></Top>
-        <div className="-mt-60">
+        <div className="-mt-52">
           <ImagesArea></ImagesArea>
         </div>
 

@@ -115,119 +115,125 @@ export default function Toolbar() {
       </div>
 
 
-      <div className="flex justify-center items-center gap-1 text-white sm:-mt-3 my-4 sm:my-0">
-        <Link
-          href="/presentation"
-          className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
-        >
-          <span className="relative z-10">Présentation</span>
-          <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
-        </Link>
-        <div className="text-white">|</div>
-        <Link
-          href="/inspirations"
-          className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
-        >
-          <span className="relative z-10">Inspirations</span>
-          <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
-        </Link>
-        <div className="text-white">|</div>
-        <Link
-          href="/faq"
-          className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
-        >
-          <span className="relative z-10">Faq</span>
-          <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
-        </Link>
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-1 text-white sm:-mt-3 my-4 sm:my-0">
+        {/* First row: Presentation / Inspirations / FAQ */}
+        <div className="flex justify-center items-center gap-1">
+          <Link
+            href="/presentation"
+            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
+          >
+            <span className="relative z-10">Présentation</span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+          </Link>
+          <div className="text-white">|</div>
+          <Link
+            href="/inspirations"
+            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
+          >
+            <span className="relative z-10">Inspirations</span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+          </Link>
+          <div className="text-white">|</div>
+          <Link
+            href="/faq"
+            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
+          >
+            <span className="relative z-10">Faq</span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+          </Link>
+        </div>
 
-        <Link
-          href="/contact"
-          className="relative group hover:text-[#B51B1B] transition-all duration-300 ease-out p-2 rounded-md"
-        >
-          <ChatBubbleBottomCenterTextIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
-          <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300 ease-out"></div>
-        </Link>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger className="relative group hover:text-[#B51B1B] transition-all duration-300 ease-out p-2 rounded-md">
-            <UserCircleIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
+        {/* Second row: Contact and User menu */}
+        <div className="flex justify-center items-center gap-1 mt-2 sm:mt-0">
+          <Link
+            href="/contact"
+            className="relative group hover:text-[#B51B1B] transition-all duration-300 ease-out p-2 rounded-md"
+          >
+            <ChatBubbleBottomCenterTextIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
             <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300 ease-out"></div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="mt-4">
-            {!userConnected && (
-              <DropdownMenuLabel className="text-center uppercase text-xs">
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="outline">Mon espace client</Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent className="max-w-lg">
-                    <AlertDialogHeader>
-                      <AlertDialogDescription>
-                        <Login />
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Annuler</AlertDialogCancel>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
-              </DropdownMenuLabel>
-            )}
-            <DropdownMenuSeparator />
-            {userConnected && (
-              <div>
-                <DropdownMenuItem
-                  onClick={handleOrdersClick}
-                  className="flex justify-center text-xs uppercase cursor-pointer"
-                >
-                  Mes commandes
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={handleAccountClick}
-                  className="flex justify-center text-xs uppercase cursor-pointer"
-                >
-                  Mes infos
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={handleDisconnect}
-                  className="flex justify-center text-xs uppercase cursor-pointer"
-                >
-                  Déconnexion
-                </DropdownMenuItem>
-              </div>
-            )}
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </Link>
 
-        {/* {userConnected && <div className="text-white">|</div>} */}
-        {userConnected && (
-          <span className="text-xs capitalize cursor-pointer pl-4 pr-2">
-            {name} {surname}
-          </span>
-        )}
-        {userConnected && isProUser && (
-          <div className="rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer">
-            pro
-          </div>
-        )}
-        {userConnected && (
-          <div className="relative py-2">
-            <div className="absolute top-6 left-5">
-              <p className="flex h-5 w-5 items-center justify-center rounded-full bg-[#B51B1B] text-xs text-white select-none">
-                {cartCount}
-              </p>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="relative group hover:text-[#B51B1B] transition-all duration-300 ease-out p-2 rounded-md">
+              <UserCircleIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
+              <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300 ease-out"></div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="mt-4">
+              {!userConnected && (
+                <DropdownMenuLabel className="text-center uppercase text-xs">
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="outline">Mon espace client</Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent className="max-w-lg">
+                      <AlertDialogHeader>
+                        <AlertDialogDescription>
+                          <Login />
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Annuler</AlertDialogCancel>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </DropdownMenuLabel>
+              )}
+              <DropdownMenuSeparator />
+              {userConnected && (
+                <div>
+                  <DropdownMenuItem
+                    onClick={handleOrdersClick}
+                    className="flex justify-center text-xs uppercase cursor-pointer"
+                  >
+                    Mes commandes
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={handleAccountClick}
+                    className="flex justify-center text-xs uppercase cursor-pointer"
+                  >
+                    Mes infos
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={handleDisconnect}
+                    className="flex justify-center text-xs uppercase cursor-pointer"
+                  >
+                    Déconnexion
+                  </DropdownMenuItem>
+                </div>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* {userConnected && <div className="text-white">|</div>} */}
+          {userConnected && (
+            <span className="text-xs capitalize cursor-pointer pl-4 pr-2">
+              {name} {surname}
+            </span>
+          )}
+          {userConnected && isProUser && (
+            <div className="rounded-md bg-red-700 py-1 px-2 text-xs cursor-pointer">
+              pro
             </div>
-            <Link
-              href="/cart"
-              className="relative group transition-all duration-300 ease-out p-2 rounded-md"
-            >
-              <ShoppingCartIcon className="size-6 hover:text-[#B51B1B] relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
-            </Link>
-          </div>
-        )}
+          )}
+          {userConnected && (
+            <div className="relative py-2">
+              <div className="absolute top-6 left-5">
+                <p className="flex h-5 w-5 items-center justify-center rounded-full bg-[#B51B1B] text-xs text-white select-none">
+                  {cartCount}
+                </p>
+              </div>
+              <Link
+                href="/cart"
+                className="relative group transition-all duration-300 ease-out p-2 rounded-md"
+              >
+                <ShoppingCartIcon className="size-6 hover:text-[#B51B1B] relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

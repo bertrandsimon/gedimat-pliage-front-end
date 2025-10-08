@@ -2,14 +2,14 @@ import Image from 'next/image'
 
 export default function Top(props: any) {
   const sliderOn = props.sliderOn
-  console.log(props)
+  //console.log(props)
   return (
     <div
-      className="flex justify-center items-center rounded-t-lg bg-cover bg-no-repeat h-[274px] "
+      className="flex justify-center items-center rounded-t-lg bg-cover bg-no-repeat sm:h-[200px] h-[140px] "
       style={{ backgroundImage: "url('/images/top/slide1.jpg')" }}
     >
       <div className="grid grid-cols-1 sm:grid-cols-3 pr-1 sm:pt-0 select-none ">
-        <div className="mt-24 sm:col-span-1 flex flex-col justify-end sm:justify-end items-end order-2 sm:order-1">
+        <div className="hidden sm:block mt-24 sm:col-span-1 flex flex-col justify-end sm:justify-end items-end order-2 sm:order-1">
           {sliderOn && (
             <Image
               src={`/images/top/${props.imageTop}`}
@@ -31,11 +31,14 @@ export default function Top(props: any) {
             </div>
           </div>
         </div>
+
         {/* mobile */}
-        <div className="sm:hidden 2 flex justify-end text-center items-center flex-col h-40 order-1 pt-10">
-          <div>
-            <div className="font-medium">{props.title}</div>
-            <div className="font-medium text-3xl text-white">
+        <div className="sm:hidden col-span-1 flex justify-center items-center flex-col h-full order-1">
+          <div className="text-center">
+            <div className="font-medium text-lg bg-white px-4 py-2 rounded mb-2">
+              {props.title}
+            </div>
+            <div className="font-medium text-2xl text-white">
               {props.subtitle}
             </div>
           </div>

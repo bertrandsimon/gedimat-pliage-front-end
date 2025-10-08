@@ -169,24 +169,26 @@ export default function Footer() {
             </section>
             <section id="telephone">
               <div className="mt-10 xl:mt-0">
-                <div className="flex gap-2 justify-between items-center">
-                  <div>
+                <div className="flex flex-col sm:flex-row gap-2 justify-between items-center">
+                  {/* Image - appears first on mobile, second on desktop */}
+                  <div className="order-1 sm:order-2 -mt-28 sm:-mt-64 pl-14">
+                    <Image
+                      src="/images/footer/aide.png"
+                      alt="helper"
+                      width={220}
+                      height={147}
+                      className="cursor-pointer hover:scale-105 transition-transform duration-200 w-[220px] h-[147px] sm:w-[220px] sm:h-[147px]"
+                      onClick={handleAideClick}
+                    ></Image>
+                  </div>
+                  {/* Text - appears second on mobile, first on desktop */}
+                  <div className="order-2 sm:order-1">
                     <h3 className="text-normal leading-6 text-white text-center sm:text-left">
                       On vous rappelle
                     </h3>
                     <p className="text-sm pt-1 text-gray-500 text-center sm:text-left">
                       Un de nos experts prendra contact avec vous
                     </p>
-                  </div>
-                  <div className="-mt-28 ">
-                    <Image
-                      src="/images/footer/aide.png"
-                      alt="helper"
-                      width={220}
-                      height={147}
-                      className="cursor-pointer hover:scale-105 transition-transform duration-200"
-                      onClick={handleAideClick}
-                    ></Image>
                   </div>
                 </div>
 

@@ -6,29 +6,29 @@ export const menu1items = [
   },
   {
     title: 'Rives',
-    href: '/products?category=couverture_etancheite&subcategory=rives',
+    href: '/products?category=couverture_etancheite',
     description:
       'Rive alu, protège les toits en bordure avec élégance et solidité',
   },
   {
     title: 'Solins',
-    href: '/products?category=couverture_etancheite&subcategory=solins',
+    href: '/products?category=couverture_etancheite',
     description: `Solin alu, assure l'étanchéité entre mur et toiture efficacement`,
   },
   {
     title: 'Noues',
-    href: '/products?category=couverture_etancheite&subcategory=noues',
+    href: '/products?category=couverture_etancheite',
     description:
       'Noues métalliques, drainage et étanchéité pour angles de toiture',
   },
   {
     title: 'Faitières',
-    href: '/products?category=couverture_etancheite&subcategory=faitieres',
+    href: '/products?category=couverture_etancheite',
     description: `Faîtières robustes pour la jonction et l'étanchéité du toit`,
   },
   {
     title: 'Accessoires',
-    href: '/products?category=couverture_etancheite&subcategory=accessoires',
+    href: '/products?category=couverture_etancheite',
     description: 'Accessoires pratiques pour finitions et étanchéité optimales',
   },
 ]
@@ -51,7 +51,7 @@ export const menu2items = [
     description: `Profilés d'ossature pour une installation solide et durable`,
   },
 
-  
+
 ]
 
 export const menu3items = [

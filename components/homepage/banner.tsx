@@ -12,7 +12,7 @@ export default function Banner() {
 
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 bg-[#F2EDEA] rounded-md h-full sm:h-[600px] gap-10">
-      <section id="col1" className="pl-12 py-12">
+      <section id="col1" className="sm:pl-12 py-12 px-4 ">
         <div className="flex flex-col h-full justify-around">
           <div id="line1" className="flex flex-col gap-2">
             <p className="font-medium">Spécialiste du pliage</p>
@@ -65,9 +65,9 @@ export default function Banner() {
 
       <section
         id="col2"
-        className="flex flex-col items-center justify-center sm:-mt-0 p-10 sm:p-0 sm:pr-12  h-max-[full] bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-top"
+        className="flex flex-col hidden sm:block items-center justify-center sm:-mt-0 p-10 sm:p-0 sm:pr-12  h-max-[full] bg-[url('/images/banner/mobile-slice.jpg')] sm:bg-[url('/images/banner/slice.png')] bg-no-repeat sm:bg-right bg-top"
       >
-        <div className="relative w-full max-w-[602px] mx-auto">
+        <div className="relative  w-full max-w-[602px] mx-auto">
           <Image
             src="/images/banner/maison4.png"
             alt="Maison interactive"

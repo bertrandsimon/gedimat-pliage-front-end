@@ -6,13 +6,13 @@ import { PuzzlePieceIcon, Squares2X2Icon, ShieldCheckIcon, CubeIcon, RectangleSt
 
 export default function StockText() {
     const tags = [
-        "Accessoires de bardage",
-        "Plis pour bac acier",
-        "Grilles anti-rongeurs",
-        "Cornières",
-        "Couvertines",
-        "Produits de finition pour couverture",
-        "Et bien d’autres éléments pré-pliés pour vos chantiers"
+        { name: "Accessoires de bardage", href: "/products?category=couverture_etancheite" },
+        { name: "Plis pour bac acier", href: "/products?category=couverture_etancheite" },
+        { name: "Grilles anti-rongeurs", href: "/products?category=couverture_etancheite" },
+        { name: "Cornières", href: "/products?category=facade_bardage&subcategory=cornieres" },
+        { name: "Couvertines", href: "/products?category=couverture_etancheite&subcategory=couvertines" },
+        { name: "Produits de finition pour couverture", href: "/products?category=couverture_etancheite" },
+        { name: "Et bien d'autres éléments pré-pliés pour vos chantiers", href: "/products?category=couverture_etancheite" }
     ];
     const tagIcons = [
         <PuzzlePieceIcon className="w-4 h-4 mr-1 inline" key="icon1" />,
@@ -43,14 +43,15 @@ export default function StockText() {
                     <div className="flex items-center justify-center w-full h-full mt-8">
                         <div className="flex flex-wrap gap-2">
                             {tags.map((tag, idx) => (
-                                <span
-                                    key={tag}
-                                    className="text-sm px-3 py-1 rounded-full cursor-pointer flex items-center"
+                                <Link
+                                    key={tag.name}
+                                    href={tag.href}
+                                    className="text-sm px-3 py-1 rounded-full cursor-pointer flex items-center hover:opacity-80 transition-opacity duration-200"
                                     style={{ backgroundColor: "#B51B1B", color: "#fff" }}
                                 >
                                     {tagIcons[idx]}
-                                    {tag}
-                                </span>
+                                    {tag.name}
+                                </Link>
                             ))}
                         </div>
                     </div>
