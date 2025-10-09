@@ -120,7 +120,7 @@ export default function Toolbar() {
         <div className="flex justify-center items-center gap-1">
           <Link
             href="/presentation"
-            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
+            className="relative group text-sm transition-all duration-300 ease-out hover:text-white uppercase text-xs rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
           >
             <span className="relative z-10">Présentation</span>
             <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
@@ -129,7 +129,7 @@ export default function Toolbar() {
           <div className="text-white">|</div>
           <Link
             href="/inspirations"
-            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
+            className="relative group text-sm transition-all duration-300 ease-out hover:text-white uppercase text-xs rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
           >
             <span className="relative z-10">Inspirations</span>
             <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
@@ -138,7 +138,7 @@ export default function Toolbar() {
           <div className="text-white">|</div>
           <Link
             href="/faq"
-            className="relative group text-sm transition-all duration-300 ease-out hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
+            className="relative group text-sm transition-all duration-300 ease-out hover:text-white uppercase text-xs rounded-md px-3 py-2 overflow-hidden whitespace-nowrap"
           >
             <span className="relative z-10">Faq</span>
             <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
@@ -161,7 +161,7 @@ export default function Toolbar() {
               <UserCircleIcon className="size-6 relative z-10 group-hover:scale-110 transition-transform duration-300 ease-out" />
               <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300 ease-out"></div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="mt-4">
+            <DropdownMenuContent className="mt-4 z-50">
               {!userConnected && (
                 <DropdownMenuLabel className="text-center uppercase text-xs">
                   <AlertDialog>

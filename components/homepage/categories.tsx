@@ -4,7 +4,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 export default function Categories() {
   return (
-    <div className="w-full px-4 bg-[url('/images/steps/steps-bg.jpg')] bg-bottom bg-repeat-x">
+    <div className="w-full px-4 bg-[#F2EDEA] bg-bottom bg-repeat-x rounded-md pb-10">
       <div className="flex justify-end items-center gap-2 hover:text-red-700">
         <div className="py-4">
           <Link href="/products" className="text-sm cursor-pointer">
@@ -20,7 +20,7 @@ export default function Categories() {
         className="grid grid-cols-2 sm:grid-cols-5 gap-10
   "
       >
-        <div className="flex flex-col justify-center items-center gap-4 ">
+        <div className="flex flex-col justify-center items-center gap-4 group">
           <div className="overflow-hidden rounded">
             <Link href="/products?category=couverture_etancheite">
               <Image
@@ -33,14 +33,16 @@ export default function Categories() {
             </Link>
           </div>
 
-          <Link href="/products?category=couverture_etancheite">
-            <p className="uppercase cursor-pointer text-sm font-medium">
+          <Link href="/products?category=couverture_etancheite" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
+            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
               couverture et étanchéité
-            </p>
+            </span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
           </Link>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-4 group">
           <div className="overflow-hidden rounded">
             <Link href="/products?category=facade_bardage">
               <Image
@@ -52,14 +54,16 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products?category=facade_bardage">
-            <p className="uppercase cursor-pointer text-sm font-medium">
+          <Link href="/products?category=facade_bardage" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
+            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
               façade et bardage
-            </p>
+            </span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
           </Link>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-4 group">
           <div className="overflow-hidden rounded">
             <Link href="/products">
               <Image
@@ -71,14 +75,16 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products?category=menuiserie_fermeture">
-            <p className="uppercase cursor-pointer text-sm font-medium">
+          <Link href="/products?category=menuiserie_fermeture" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
+            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
               menuiserie et fermeture
-            </p>
+            </span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
           </Link>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-4 group">
           <div className="overflow-hidden rounded">
             <Link href="/products">
               <Image
@@ -90,14 +96,16 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products">
-            <p className="uppercase cursor-pointer text-sm font-medium">
+          <Link href="/products" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
+            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
               quincaillerie et outillage
-            </p>
+            </span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
           </Link>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-4 group">
           <div className="overflow-hidden rounded">
             <Link href="/products">
               <Image
@@ -109,10 +117,12 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products">
-            <p className="uppercase cursor-pointer text-sm font-medium">
+          <Link href="/products" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
+            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
               produits en stock
-            </p>
+            </span>
+            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
+            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
           </Link>
         </div>
       </div>

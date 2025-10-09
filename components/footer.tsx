@@ -91,9 +91,9 @@ export default function Footer() {
           <div className="xl:grid xl:grid-cols-2 xl:gap-8">
             <section id="nav">
               <div className="hidden lg:flex h-full w-full items-start justify-center sm:justify-between">
-                <div className="grid grid-cols-2 gap-8 xl:col-span-2">
+                <div className="grid grid-cols-2 gap-8 xl:col-span-1">
                   <div className="flex flex-col gap-4 items-start justify-start">
-                    <div className="flex flex-row gap-8">
+                    <div className="flex flex-row gap-4 max-w-[300px]">
                       <div>
                         <h3 className="font-light text-white uppercase">
                           <Link
@@ -106,6 +106,7 @@ export default function Footer() {
                           </Link>
                         </h3>
                       </div>
+                      <div className="text-white flex items-center h-[30px] mt-3">|</div>
                       <div className="mt-10 md:mt-0">
                         <h3 className="font-light text-white uppercase">
                           <Link
@@ -118,6 +119,7 @@ export default function Footer() {
                           </Link>
                         </h3>
                       </div>
+                      <div className="text-white flex items-center h-[30px] mt-3">|</div>
                       <div>
                         <h3 className="font-light text-white uppercase">
                           <Link
@@ -130,6 +132,7 @@ export default function Footer() {
                           </Link>
                         </h3>
                       </div>
+                      <div className="text-white flex items-center h-[30px] mt-3">|</div>
                       <div className="mt-10 md:mt-0">
                         <h3 className="font-light text-white uppercase">
                           <Link
