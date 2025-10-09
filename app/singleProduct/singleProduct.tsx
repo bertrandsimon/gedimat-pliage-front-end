@@ -28,6 +28,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import Contact from '@/app/contact/contact'
 
 import {
   AlertDialog,
@@ -97,6 +98,12 @@ export default function SingleProduct({
   const [selectedVariation, setSelectedVariation] = useState(
     materials?.[0]?.variations?.[0] || null
   )
+
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+
+  const handleExpertiseClick = () => {
+    setIsContactModalOpen(true)
+  }
 
 
   // console.log('selectedVariation :', selectedVariation)
@@ -439,11 +446,12 @@ export default function SingleProduct({
 
 
                 <Image
-                  className="cursor-pointer"
+                  className="cursor-pointer hover:scale-105 transition-transform duration-200"
                   alt="expertise pliage"
                   width={343}
                   height={153}
                   src="/images/expertise.jpg"
+                  onClick={handleExpertiseClick}
                 ></Image>
 
 
@@ -1112,6 +1120,20 @@ export default function SingleProduct({
           </div>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center">
+              Contactez-nous
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            <Contact />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

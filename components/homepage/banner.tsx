@@ -22,8 +22,19 @@ export default function Banner() {
               partenariat avec Gedimat. Alliez précision et qualité pour tous
               vos projets de construction ou de rénovation.
             </p>
-            <div className="lgBtn redBtn max-w-[124px] my-2 mx-auto sm:mx-0">
-              <Link href="/presentation">en savoir +</Link>
+            <div className="max-w-[124px] my-2 mx-auto sm:mx-0">
+              <Link
+                href="/presentation"
+                className="group relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-6 py-2 text-sm font-medium text-[#B51B1B] bg-white hover:bg-gray-50 hover:text-white"
+              >
+                <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+                <span className="ease absolute right-0 flex h-6 w-6 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </span>
+                <span className="relative transform duration-700 group-hover:-translate-x-2">en savoir +</span>
+              </Link>
             </div>
             {/* <Button variant="outline">Button</Button> */}
           </div>
@@ -80,63 +91,105 @@ export default function Banner() {
           <Link
             href="/products?category=facade_bardage&subcategory=profiles"
             title="Profilés de finition"
-            className="absolute top-[27.8%] left-[1%] w-[26%] h-[7%] z-10 hover:bg-white hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[27.8%] left-[1%] w-[26%] h-[7%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase">Profilés de finition</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Profilés de finition</span>
           </Link>
 
           {/* Sous-faces */}
           <Link
             href="/products?category=menuiserie_fermeture&subcategory=sous-faces"
             title="Sous-faces"
-            className="absolute top-[16.5%] left-[29%] w-[17%] h-[7.7%] z-10 hover:bg-white hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[16.5%] left-[29%] w-[17%] h-[7.7%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase">Sous-faces</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Sous-faces</span>
           </Link>
 
           {/* Faîtières */}
           <Link
             href="/products?category=couverture_etancheite&subcategory=faitieres"
             title="Faîtières"
-            className="absolute top-[9.2%] left-[55%] w-[13.3%] h-[8.1%] z-10 hover:bg-white hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[9.2%] left-[55%] w-[13.3%] h-[8.1%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase">Faîtières</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Faîtières</span>
           </Link>
 
           {/* Solins */}
           <Link
             href="/products?category=couverture_etancheite&subcategory=solins"
             title="Solins"
-            className="absolute top-[12.3%] left-[69%] w-[11%] h-[7.9%] z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[12.3%] left-[69%] w-[11%] h-[7.9%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase">Solins</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Solins</span>
           </Link>
 
           {/* Couvertines */}
           <Link
             href="/products?category=couverture_etancheite&subcategory=couvertines"
             title="Couvertines"
-            className="absolute top-[12.5%] left-[80.5%] w-[18.3%] h-[6.8%] hover:bg-white z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[12.5%] left-[80.5%] w-[18.3%] h-[6.8%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase">Couvertines</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Couvertines</span>
           </Link>
 
           {/* Angles et cornières */}
           <Link
             href="/products?category=facade_bardage"
             title="Angles et cornières"
-            className="absolute top-[80%] left-[5.6%] w-[27.2%] h-[7.7%] hover:bg-white z-10 hover:ring-1 hover:ring-[black] rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[80%] left-[5.6%] w-[27.2%] h-[7.7%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase">Angles et cornières</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Angles et cornières</span>
           </Link>
 
           {/* Tablettes de fenêtre */}
           <Link
             href="/products?category=menuiserie_fermeture&subcategory=appuis_de_fenetre"
             title="Tablettes de fenêtre"
-            className="absolute top-[76.2%] left-[81.7%] w-[18.1%] h-[13.1%] hover:bg-white z-10 hover:ring-1 hover:ring-[black] hover:shadow-md rounded-md transition duration-150 flex items-center justify-center"
+            className="group absolute top-[76.2%] left-[81.7%] w-[18.1%] h-[13.1%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
-            <span className="text-xs font-medium text-black uppercase text-center">Tablettes de fenêtre</span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase text-center">Tablettes de fenêtre</span>
           </Link>
         </div>
       </section>

@@ -15,7 +15,7 @@ export default function Stats() {
             Quelques chiffres
           </h2>
           <p className=" text-md leading-8 text-gray-500 font-light">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Découvrez les performances et l'expertise de notre service de pliage aluminium en quelques chiffres clés.
           </p>
         </div>
         <dl className="my-4 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-6">

@@ -45,11 +45,13 @@ export default function StockText() {
                             {tags.map((tag, idx) => (
                                 <span
                                     key={tag}
-                                    className="text-sm px-3 py-1 rounded-md cursor-pointer bg-[#B51B1B] hover:bg-white text-white hover:text-[#B51B1B] flex items-center transition-all duration-300 ease-in-out"
-
+                                    className="group relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-3 py-1 text-sm font-medium text-[#B51B1B] bg-white hover:bg-gray-50 hover:text-white cursor-pointer"
                                 >
-                                    {tagIcons[idx]}
-                                    {tag}
+                                    <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+                                    <span className="relative flex items-center">
+                                        {tagIcons[idx]}
+                                        <span className="ml-1">{tag}</span>
+                                    </span>
                                 </span>
                             ))}
                         </div>

@@ -59,7 +59,7 @@ export const ParallaxScroll = ({
                 >
                   <Image
                     src={el}
-                    className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                    className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer hover:drop-shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
                     height="400"
                     width="400"
                     alt="thumbnail"
@@ -106,7 +106,7 @@ export const ParallaxScroll = ({
                 >
                   <Image
                     src={el}
-                    className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                    className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer hover:drop-shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
                     height="400"
                     width="400"
                     alt="thumbnail"
@@ -153,7 +153,7 @@ export const ParallaxScroll = ({
                 >
                   <Image
                     src={el}
-                    className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                    className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer hover:drop-shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
                     height="400"
                     width="400"
                     alt="thumbnail"

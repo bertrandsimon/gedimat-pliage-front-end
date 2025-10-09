@@ -14,14 +14,16 @@ export default function InspirationPage() {
           title="INSPIRATIONS"
           subtitle="Pour votre projet"
           sliderOn={true}
-          imageTop="man.png"
+          imageTop="house.png"
         ></Top>
       </div>
+      <div className="grid grid-cols-2 px-12">
+        <div className="col-span-1"></div>
+        <div className="text-md col-span-1">      <p >
+          Inspirez vos projets avec des solutions en pliage aluminium sur mesure signées Gedimat — l’expertise au service de votre habitation.
+        </p></div>
+      </div>
 
-      <p className="uppercase oswald text-xl sm:text-2xl text-center pt-10 sm:pt-20 pb-0 px-4">
-        <span className="pr-2 font-semibold">Inspirations</span>
-        <span className="font-light">pour vos projets</span>
-      </p>
       <Gallery />
     </div>
   )

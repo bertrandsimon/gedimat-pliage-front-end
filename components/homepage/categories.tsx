@@ -33,12 +33,14 @@ export default function Categories() {
             </Link>
           </div>
 
-          <Link href="/products?category=couverture_etancheite" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
-            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
-              couverture et étanchéité
+          <Link href="/products?category=couverture_etancheite" className="relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-6 py-2 text-sm font-medium text-[#B51B1B] bg-white group-hover:bg-gray-50 group-hover:text-white">
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-6 w-6 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
             </span>
-            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase text-xs tracking-tight">couverture & étanchéité</span>
           </Link>
         </div>
 
@@ -54,12 +56,14 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products?category=facade_bardage" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
-            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
-              façade et bardage
+          <Link href="/products?category=facade_bardage" className="relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-6 py-2 text-sm font-medium text-[#B51B1B] bg-white group-hover:bg-gray-50 group-hover:text-white">
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-6 w-6 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
             </span>
-            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase text-xs tracking-tight">façade & bardage</span>
           </Link>
         </div>
 
@@ -75,12 +79,14 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products?category=menuiserie_fermeture" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
-            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
-              menuiserie et fermeture
+          <Link href="/products?category=menuiserie_fermeture" className="relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-6 py-2 text-sm font-medium text-[#B51B1B] bg-white group-hover:bg-gray-50 group-hover:text-white">
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-6 w-6 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
             </span>
-            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase text-xs tracking-tight">menuiserie & fermeture</span>
           </Link>
         </div>
 
@@ -96,12 +102,14 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
-            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
-              quincaillerie et outillage
+          <Link href="/products" className="relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-6 py-2 text-sm font-medium text-[#B51B1B] bg-white group-hover:bg-gray-50 group-hover:text-white">
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-6 w-6 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
             </span>
-            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase text-xs tracking-tight">quincaillerie & outillage</span>
           </Link>
         </div>
 
@@ -117,12 +125,14 @@ export default function Categories() {
               />
             </Link>
           </div>
-          <Link href="/products" className="relative text-sm transition-all duration-300 ease-out group-hover:text-white rounded-md px-3 py-2 overflow-hidden whitespace-nowrap">
-            <span className="relative z-10 uppercase cursor-pointer text-sm font-medium">
-              produits en stock
+          <Link href="/products" className="relative inline-flex items-center overflow-hidden rounded-md border-2 border-[#B51B1B] px-6 py-2 text-sm font-medium text-[#B51B1B] bg-white group-hover:bg-gray-50 group-hover:text-white">
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-[#B51B1B] opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="ease absolute right-0 flex h-6 w-6 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
             </span>
-            <div className="absolute inset-0 bg-[#B51B1B] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out origin-top"></div>
-            <div className="absolute inset-0 bg-[#B51B1B] opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out blur-sm"></div>
+            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase text-xs tracking-tight">produits en stock</span>
           </Link>
         </div>
       </div>

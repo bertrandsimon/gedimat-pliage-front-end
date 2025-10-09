@@ -13,8 +13,8 @@ export default function Top(props: any) {
           {sliderOn && (
             <Image
               src={`/images/top/${props.imageTop}`}
-              width={379}
-              height={278}
+              width={377}
+              height={275}
               alt=""
             />
           )}
