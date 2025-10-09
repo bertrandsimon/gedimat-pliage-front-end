@@ -18,7 +18,7 @@ export function NavmenuMobile() {
     // Single source of truth for navigation structure
     const nav = [
         {
-            label: "Couverture et étanchéité",
+            label: "Couverture & étanchéité",
             href: "/products?category=couverture_etancheite",
             items: menu1items
         },

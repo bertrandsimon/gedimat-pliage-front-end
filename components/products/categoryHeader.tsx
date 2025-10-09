@@ -65,7 +65,7 @@ export default function CategoryHeader(props: any) {
             {categoryDescription.category_title}
           </p>
           <Separator />
-          {props.subtitle && (
+          {categorySubTitle && (
             <p className="font-medium text-2xl redAlu">
               {formatSubCategoryName(categorySubTitle)}
             </p>

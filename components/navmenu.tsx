@@ -39,7 +39,7 @@ export function Navmenu() {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="uppercase font-semibold">
               <Link href="/products?category=couverture_etancheite">
-                Couverture et étanchéité
+                Couverture & étanchéité
               </Link>
             </NavigationMenuTrigger>
 

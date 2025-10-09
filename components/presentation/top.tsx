@@ -16,6 +16,10 @@ export default function Top(props: any) {
               width={377}
               height={275}
               alt=""
+              quality={95}
+              className="object-contain max-w-full h-auto"
+              priority={false}
+              sizes="(max-width: 640px) 0px, 377px"
             />
           )}
         </div>

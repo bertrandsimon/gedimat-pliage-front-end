@@ -45,6 +45,9 @@ export function ProductsClientWrapper({ products, category, subcategory }: Produ
                     product.category === category &&
                     product.sub_category === subcategory
             )
+            // Set the subcategory in Redux store when coming from URL
+            setSelectedSubCategory(subcategory)
+            dispatch(setSelectedSubCategoryAction(subcategory))
         } else if (category) {
             filtered = products.filter(
                 (product) => product.category === category
@@ -53,9 +56,12 @@ export function ProductsClientWrapper({ products, category, subcategory }: Produ
             filtered = products.filter(
                 (product) => product.sub_category === subcategory
             )
+            // Set the subcategory in Redux store when coming from URL
+            setSelectedSubCategory(subcategory)
+            dispatch(setSelectedSubCategoryAction(subcategory))
         }
         setFilteredProducts(filtered)
-    }, [products, category, subcategory])
+    }, [products, category, subcategory, dispatch])
 
     // Filter products by selectedSubCategory
     useEffect(() => {
@@ -108,7 +114,7 @@ export function ProductsClientWrapper({ products, category, subcategory }: Produ
             <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
                 {filteredProducts.map((product: ProductType, i: number) => (
                     <div key={product._id}>
-                        <div className="min-h-[300px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 border-grey p-4 hover:shadow-lg">
+                        <div className="group min-h-[288px] flex flex-col justify-start items-center rounded-sm gap-2 cursor-pointer transition duration-300 ease-in-out border border-1 border-grey p-4 hover:shadow-xl">
                             <div className="overflow-hidden">
                                 <Link href={`/products/${product._id}`}>
                                     <Image
@@ -127,8 +133,13 @@ export function ProductsClientWrapper({ products, category, subcategory }: Produ
                                 {product.name}
                             </p>
                             <Link href={`/products/${product._id}`}>
-                                <div className="thinBtn greyBtn">
-                                    <span className="text-xs">voir</span>
+                                <div className="relative inline-flex items-center overflow-hidden rounded-md bg-[#B8AEA7] group-hover:bg-[#9D948E] px-2.5 py-1.5 text-xs text-white cursor-pointer transition-colors duration-300 w-[86px]">
+                                    <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
+                                        <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                        </svg>
+                                    </span>
+                                    <span className="relative transform duration-700 group-hover:-translate-x-2">configurez</span>
                                 </div>
                             </Link>
                         </div>

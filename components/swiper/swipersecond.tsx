@@ -47,7 +47,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi6.jpg"
+                    src="/images/swiper/inspi-1.jpg"
                   />
 
                 </div>
@@ -62,7 +62,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi4.jpg"
+                    src="/images/swiper/inspi-2.jpg"
                   />
 
                 </div>
@@ -77,7 +77,7 @@ export default function MaterialSlider() {
                     height={100}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi2.jpg"
+                    src="/images/swiper/inspi-3.jpg"
                   />
 
                 </div>
@@ -92,7 +92,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi4.jpg"
+                    src="/images/swiper/inspi-4.jpg"
                   />
 
                 </div>
@@ -107,7 +107,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi5.jpg"
+                    src="/images/swiper/inspi-5.jpg"
                   />
 
                 </div>
@@ -122,7 +122,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi6.jpg"
+                    src="/images/swiper/inspi-6.jpg"
                   />
 
                 </div>
@@ -137,7 +137,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi7.jpg"
+                    src="/images/swiper/inspi-7.jpg"
                   />
 
                 </div>
@@ -152,7 +152,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi8.jpg"
+                    src="/images/swiper/inspi-1.jpg"
                   />
 
                 </div>
@@ -167,7 +167,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi9.jpg"
+                    src="/images/swiper/inspi-2.jpg"
                   />
 
                 </div>
@@ -182,7 +182,7 @@ export default function MaterialSlider() {
                     height={200}
                     className="demo-material-image"
                     data-swiper-material-scale="1.25"
-                    src="/images/swiper/inspi10.jpg"
+                    src="/images/swiper/inspi-3.jpg"
                   />
 
                 </div>
