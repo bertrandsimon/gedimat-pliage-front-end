@@ -31,10 +31,10 @@ export function Navmenu() {
   }
 
   return (
-    <div className="hidden md:flex w-full">
+    <div className="hidden md:flex w-full relative z-50">
 
       {/* MENU 1 */}
-      <NavigationMenu className="">
+      <NavigationMenu className="relative z-50">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="uppercase font-semibold">
@@ -44,7 +44,7 @@ export function Navmenu() {
             </NavigationMenuTrigger>
 
             <NavigationMenuContent>
-              <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              <ul className="z-[100] grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {menu1items.map((item) => (
                   <ListItem
                     onClick={() => handleClick(item.title)}
@@ -73,7 +73,7 @@ export function Navmenu() {
             </NavigationMenuTrigger>
 
             <NavigationMenuContent>
-              <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              <ul className="z-[100] grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {menu2items.map((item) => (
                   <ListItem
                     onClick={() => handleClick(item.title)}
@@ -103,7 +103,7 @@ export function Navmenu() {
             </NavigationMenuTrigger>
 
             <NavigationMenuContent>
-              <ul className="z-90 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              <ul className="z-[100] grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {menu3items.map((item) => (
                   <ListItem
                     onClick={() => handleClick(item.title)}
