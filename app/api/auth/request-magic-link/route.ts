@@ -4,6 +4,8 @@ import User from '@/app/models/User'
 import { sendEmail } from '@/lib/email'
 import crypto from 'crypto'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
     try {
         console.log('🔍 Magic link request started')

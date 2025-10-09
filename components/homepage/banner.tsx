@@ -124,12 +124,7 @@ export default function Banner() {
             className="group absolute top-[9.2%] left-[55%] w-[13.3%] h-[8.1%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
             <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
-            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
-              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </span>
-            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Faîtières</span>
+            <span className="relative uppercase">Faîtières</span>
           </Link>
 
           {/* Solins */}
@@ -139,12 +134,7 @@ export default function Banner() {
             className="group absolute top-[12.3%] left-[69%] w-[11%] h-[7.9%] z-10 inline-flex items-center overflow-hidden rounded-md border border-transparent px-3 py-1 text-xs font-medium text-black hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-300 ease-in-out"
           >
             <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-white opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
-            <span className="ease absolute right-0 flex h-4 w-4 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-1">
-              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </span>
-            <span className="relative transform duration-700 group-hover:-translate-x-2 uppercase">Solins</span>
+            <span className="relative uppercase">Solins</span>
           </Link>
 
           {/* Couvertines */}
