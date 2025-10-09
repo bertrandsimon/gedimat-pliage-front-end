@@ -87,7 +87,7 @@ export default async function Page({ params }: any) {
             <CardTitle>Votre commande N° {singleOrder._id}</CardTitle>
 
             <CardDescription>
-              Statut de la commande : <span>à venir récupérer en magasin</span>
+              Statut de la commande : <span>à payer en magasin</span>
             </CardDescription>
           </CardHeader>
 
