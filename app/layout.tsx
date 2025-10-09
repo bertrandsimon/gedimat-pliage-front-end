@@ -10,6 +10,7 @@ import Toolbar from '../components/toolbar'
 
 import Footer from '@/components/footer'
 import { Navmenu } from '@/components/navmenu'
+import { NavmenuMobile } from '@/components/navmenuMobile'
 import './globals.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
@@ -82,6 +83,7 @@ export default function RootLayout({
 
           <div className="container mx-auto py-3 sm:py-6 px-4 sm:px-14">
             <Navmenu />
+            <NavmenuMobile />
           </div>
 
           <Suspense>

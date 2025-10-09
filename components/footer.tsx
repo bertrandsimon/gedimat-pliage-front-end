@@ -171,13 +171,13 @@ export default function Footer() {
               <div className="mt-10 xl:mt-0">
                 <div className="flex flex-col sm:flex-row gap-2 justify-between items-center">
                   {/* Image - appears first on mobile, second on desktop */}
-                  <div className="order-1 sm:order-2 -mt-28 sm:-mt-64 pl-14">
+                  <div className="order-1 sm:order-2 -mt-28 sm:-mt-28 pl-14 sm:pl-0">
                     <Image
                       src="/images/footer/aide.png"
                       alt="helper"
                       width={220}
                       height={147}
-                      className="cursor-pointer hover:scale-105 transition-transform duration-200 w-[220px] h-[147px] sm:w-[220px] sm:h-[147px]"
+                      className="cursor-pointer hover:scale-105 transition-transform duration-200"
                       onClick={handleAideClick}
                     ></Image>
                   </div>

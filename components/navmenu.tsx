@@ -31,7 +31,7 @@ export function Navmenu() {
   }
 
   return (
-    <div className="flex w-full">
+    <div className="hidden md:flex w-full">
 
       {/* MENU 1 */}
       <NavigationMenu className="">

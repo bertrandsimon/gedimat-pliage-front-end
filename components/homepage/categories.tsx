@@ -4,7 +4,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 export default function Categories() {
   return (
-    <div className="w-full px-4">
+    <div className="w-full px-4 bg-[url('/images/steps/steps-bg.jpg')] bg-bottom bg-repeat-x">
       <div className="flex justify-end items-center gap-2 hover:text-red-700">
         <div className="py-4">
           <Link href="/products" className="text-sm cursor-pointer">
