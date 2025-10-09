@@ -79,10 +79,12 @@ export default function Lists({ orders }: { orders: Order[] }) {
         <Badge variant="outline">En cours</Badge>
       </TableCell>
       <TableCell className="text-center">
-        {order.total_amount_TTC} € TTC
+
+        <Link href={`/dashboard/singleList/${order._id}`}>  {order.total_amount_TTC} € TTC</Link>
       </TableCell>
       <TableCell className="hidden md:table-cell text-center">
-        {order.products.length}
+        <Link href={`/dashboard/singleList/${order._id}`}> {order.products.length}</Link>
+
       </TableCell>
       <TableCell className="hidden md:table-cell text-center">
         {new Date(order.created_at).toLocaleString('fr-FR', {
@@ -124,12 +126,12 @@ export default function Lists({ orders }: { orders: Order[] }) {
         <CardHeader>
           <CardTitle>Vos commandes</CardTitle>
           <CardDescription>
-            Voir vos listes de produits et passer commande
+            Voir vos listes de produits validées et passer commande
           </CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
-            <p>Loading...</p>
+            <p>chargement...</p>
           ) : (
             <Table>
               <TableHeader>
