@@ -46,7 +46,7 @@ export default function MapText() {
                         <br /><br />
                         Chaque commande est vérifiée par nos spécialistes pliage avant validation, lancement en fabrication et confirmation du délai.
                         <br /><br />
-                        Enlèvement et livraison sont possibles depuis toutes les agences indiquées sur la carte.
+                        <strong>Enlèvement et livraison sont possibles depuis toutes les agences indiquées sur la carte.</strong>
                     </p>
 
                 </div>

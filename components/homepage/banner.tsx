@@ -18,9 +18,10 @@ export default function Banner() {
             <p className="font-medium">Spécialiste du pliage</p>
             <p className="font-bold text-3xl">Aluminium et acier</p>
             <p className="max-w-[420px] mx-auto sm:mx-0">
-              Découvrez notre service de pliage aluminium sur mesure, en
+              {/* Découvrez notre service de pliage aluminium sur mesure, en
               partenariat avec Gedimat. Alliez précision et qualité pour tous
-              vos projets de construction ou de rénovation.
+              vos projets de construction ou de rénovation. */}
+              Nous mettons notre expertise au service des professionnels comme des particuliers, pour le pliage de métaux fins (aluminium, acier, zinc jusqu’à 2 mm).
             </p>
             <div className="max-w-[124px] my-2 mx-auto sm:mx-0">
               <Link
@@ -51,8 +52,8 @@ export default function Banner() {
                 alt=""
               />
               <span className="text-sm">
-                Toute l'expérience du groupe <br />
-                Gedimat à votre service
+                Toute notre expérience<br />
+                à votre service
               </span>
             </div>
 

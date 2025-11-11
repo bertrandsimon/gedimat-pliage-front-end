@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { Menu } from 'lucide-react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { selectedSubCategory } from '@/app/reducers/cart'
 import { menu1items, menu2items, menu3items } from '@/app/datas/menuItems'
@@ -10,9 +11,11 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/
 
 export function NavmenuMobile() {
     const dispatch = useDispatch()
+    const [open, setOpen] = useState(false)
 
     const handleClick = (selectedSubCategoryLink: string) => {
         dispatch(selectedSubCategory(selectedSubCategoryLink))
+        setOpen(false) // Close the sheet when a link is clicked
     }
 
     // Single source of truth for navigation structure
@@ -44,7 +47,7 @@ export function NavmenuMobile() {
 
     return (
         <div className="md:hidden flex justify-center">
-            <Sheet>
+            <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger aria-label="Open menu" className="p-2">
                     <Menu className="h-6 w-6" />
                 </SheetTrigger>
@@ -63,7 +66,7 @@ export function NavmenuMobile() {
                                                     <li key={item.title}>
                                                         <Link
                                                             href={item.href}
-                                                            className="block py-2 px-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                                                            className="block py-2 px-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors cursor-pointer"
                                                             onClick={() => handleClick(item.title)}
                                                         >
                                                             <div className="font-medium text-sm">{item.title}</div>
@@ -80,7 +83,8 @@ export function NavmenuMobile() {
                                     <div key={group.label} className="py-2">
                                         <Link
                                             href={group.href!}
-                                            className="block py-2 px-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors uppercase font-semibold"
+                                            className="block py-2 px-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors uppercase font-semibold cursor-pointer"
+                                            onClick={() => setOpen(false)}
                                         >
                                             {group.label}
                                         </Link>

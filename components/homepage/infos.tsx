@@ -11,12 +11,13 @@ const informations = [
     {
         name: 'Délais de fabrication',
         icon: ClockIcon,
-        description: `0 jour pour les produits en stock.\n\nSous 5 jours ouvrés si fabrication < 50 pièces. + de 50 pièces : on vous contacte sous 24 h.`,
+        description: `0 jour pour les produits en stock.\n\nSous 5 jours ouvrés si fabrication < 50 pièces. \n\nPlus de 50 pièces : nous appeler  pour valider ensemble le délai de mise à disposition. 
+`,
     },
     {
         name: 'Commande urgente',
         icon: ExclamationTriangleIcon,
-        description: `Besoins express : appelez-nous au ..., nous ferons le maximum pour trouver une solution rapide.`,
+        description: `Nous appeler pour convenir du délai.  Nous ferons notre maximum pour  trouver ensemble une solution.`,
     },
     {
         name: 'Retrait / Livraison',
@@ -26,7 +27,7 @@ const informations = [
     {
         name: 'Paiement',
         icon: CreditCardIcon,
-        description: `Vous avez un compte terme Gedimat / Gedibois : facturation fin de mois.\n\nSans compte : paiement sécurisé avant fabrication.`,
+        description: `Vous êtes client en compte "terme": vous serez facturé et paierez avec votre facture fin de mois.\n\nVous n'avez pas de compte "terme" : vous payez au moment de la validation de votre panier.`,
     }
 ];
 

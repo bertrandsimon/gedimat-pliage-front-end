@@ -141,7 +141,7 @@ export function Navmenu() {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="uppercase font-semibold">
               <Link href="#">
-                produits en stock
+                produits <span className="underline decoration-2 underline-offset-4" style={{ textDecorationColor: '#B51B1B' }}>en stock</span>
               </Link>
             </NavigationMenuTrigger>
           </NavigationMenuItem>

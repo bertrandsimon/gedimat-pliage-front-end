@@ -26,6 +26,9 @@ export default function Presentation() {
           <p className="font-medium">Votre expert en</p>
           <p className="font-bold text-2xl">Pliage aluminium sur mesure </p>
           <p className="text-md">
+            Depuis 2016, nous réalisons des pliages sur mesure pour Gedimat Millancourt et Nicolas, Gedimat Matériaux Normands, Matériaux Picards, Gedibois Verstraete et Gedibois Morrisson.
+
+            <br /><br />
             Optez pour le pliage aluminium sur mesure avec Gedimat, votre expert
             en solutions adaptées à vos besoins. <br />
             <br />
@@ -33,10 +36,7 @@ export default function Presentation() {
             d’un service précis et fiable. Nous transformons vos idées en
             réalisations concrètes, avec un aluminium de qualité, parfaitement
             ajusté à vos attentes. <br />
-            <br />
-            Faites confiance à notre expertise et démarquez-vous grâce à des
-            finitions sur mesure, pensées pour durer dans le temps et répondre à
-            vos exigences.
+
           </p>
           {/* <div className="lgBtn greyBtn max-w-[124px] my-2">
             <Link href="/presentation">en savoir +</Link>
