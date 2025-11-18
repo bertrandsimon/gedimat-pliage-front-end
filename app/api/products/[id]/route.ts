@@ -23,7 +23,7 @@ export async function GET(request: any, { params }: any) {
     }
     const product = await Product.findById(id)
       .populate('price_calculation')
-      .populate('product_materials')
+      .populate({ path: 'product_materials', options: { sort: { name: 1 } } })
 
     if (!product) {
       return NextResponse.json({ error: 'Produit non trouvé' }, { status: 400 })
@@ -34,12 +34,12 @@ export async function GET(request: any, { params }: any) {
     //
 
     const response = NextResponse.json(product)
-    
+
     // Set cache headers : ACTIVATE FOR CACHE
-   // response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400')
-    
-  // Set cache headers : DESACTIVATE FOR CACHE
-  //response.headers.set('Cache-Control', 'no-store')
+    // response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400')
+
+    // Set cache headers : DESACTIVATE FOR CACHE
+    //response.headers.set('Cache-Control', 'no-store')
 
     return response
   } catch {

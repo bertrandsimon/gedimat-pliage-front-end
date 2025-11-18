@@ -67,6 +67,18 @@ function formatNumber(n: number) {
 // Helper to display numbers without .00 if integer
 const displayNumber = (n: number) => Number.isInteger(n) ? n : n.toFixed(2);
 
+// Helper to filter only active variations and sort alphabetically
+const getActiveVariations = (variations: any[]) => {
+  if (!variations || !Array.isArray(variations)) return []
+  return variations
+    .filter((variation: any) => variation.active === true)
+    .sort((a: any, b: any) => {
+      const nameA = (a.name || '').toLowerCase()
+      const nameB = (b.name || '').toLowerCase()
+      return nameA.localeCompare(nameB)
+    })
+}
+
 export default function SingleProduct({
   item,
   materials,
@@ -88,15 +100,12 @@ export default function SingleProduct({
     materials?.[0] || null
   )
 
-
-
-  const [variations, setVariations] = useState(
-    selectedMaterial?.variations || []
-  )
-
+  const activeVariationsFromMaterial = getActiveVariations(selectedMaterial?.variations || [])
+  const [variations, setVariations] = useState(activeVariationsFromMaterial)
+  // console.log('variations :', variations)
 
   const [selectedVariation, setSelectedVariation] = useState(
-    materials?.[0]?.variations?.[0] || null
+    activeVariationsFromMaterial?.[0] || null
   )
 
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -305,7 +314,10 @@ export default function SingleProduct({
 
   const handleMaterialChoice = (material: any) => {
     setSelectedMaterial(material)
-    setVariations(material.variations)
+    const activeVariations = getActiveVariations(material.variations || [])
+    setVariations(activeVariations)
+    // Update selected variation to first active variation
+    setSelectedVariation(activeVariations?.[0] || null)
   }
 
   const dispatch = useDispatch()
@@ -602,7 +614,7 @@ export default function SingleProduct({
                           <div className="text-sm flex flex-col gap-1 text-center ">
                             <p className="text-md pt-1">
                               {variation.name.length > 20
-                                ? variation.name.slice(0, 20)
+                                ? variation.name.slice(0, 50)
                                 : variation.name}
                             </p>
                             <hr className="my-2" />

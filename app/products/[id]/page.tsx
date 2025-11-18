@@ -11,6 +11,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       `${process.env.NEXT_PUBLIC_URL}/api/products/${params.id}`,
       {
         next: { revalidate: 86400 },
+        cache: 'no-store'
       }
     )
 
@@ -48,9 +49,9 @@ export default async function Page({ params }: any) {
   )
   const item = await response.json()
 
-  // all materials
+  // all materials - revalidate every 1 minute for admin updates
   const response2 = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/materials`, {
-    next: { revalidate: 86400 },
+    next: { revalidate: 60 }, // 1 minute (60 seconds)
   })
   const allMaterials = await response2.json()
 
