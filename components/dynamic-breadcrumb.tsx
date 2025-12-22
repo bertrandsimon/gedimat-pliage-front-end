@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -23,8 +24,8 @@ export default function DynamicBreadcrumb({ customProductName, productCategory, 
         <Breadcrumb className="px-4 sm:px-14">
             <BreadcrumbList>
                 {breadcrumbs.map((item, index) => (
-                    <>
-                        <BreadcrumbItem key={item.href}>
+                    <React.Fragment key={item.href || index}>
+                        <BreadcrumbItem>
                             {item.isLast ? (
                                 <BreadcrumbPage className="font-medium text-foreground pb-2">
                                     {item.label}
@@ -41,7 +42,7 @@ export default function DynamicBreadcrumb({ customProductName, productCategory, 
                             )}
                         </BreadcrumbItem>
                         {!item.isLast && <BreadcrumbSeparator className="pb-2" />}
-                    </>
+                    </React.Fragment>
                 ))}
             </BreadcrumbList>
         </Breadcrumb>

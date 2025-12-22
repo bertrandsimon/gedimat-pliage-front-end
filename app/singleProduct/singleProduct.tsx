@@ -388,6 +388,7 @@ export default function SingleProduct({
       variation: selectedVariation,
       length: lengthNumber,
       main_image: item.main_image,
+      schema_img: item.schema_img,
       price_ht_single_unit: Number(price_ht_single_unit.toFixed(2)),
       tax: item.tax,
       quantity: quantity,

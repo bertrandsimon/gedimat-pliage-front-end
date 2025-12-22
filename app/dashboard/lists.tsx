@@ -67,7 +67,14 @@ export default function Lists({ orders }: { orders: Order[] }) {
     }
   }
 
-  const orderList = orders?.map((order, index) => (
+  // Sort orders by date (most recent first)
+  const sortedOrders = orders?.slice().sort((a, b) => {
+    const dateA = new Date(a.created_at).getTime()
+    const dateB = new Date(b.created_at).getTime()
+    return dateB - dateA // Descending order (newest first)
+  })
+
+  const orderList = sortedOrders?.map((order, index) => (
     <TableRow key={index}>
       <TableCell className="hidden sm:table-cell">
         <ShoppingCartIcon className="size-6" />
@@ -83,8 +90,9 @@ export default function Lists({ orders }: { orders: Order[] }) {
         <Link href={`/dashboard/singleList/${order._id}`}>  {order.total_amount_TTC} € TTC</Link>
       </TableCell>
       <TableCell className="hidden md:table-cell text-center">
-        <Link href={`/dashboard/singleList/${order._id}`}> {order.products.length}</Link>
-
+        <Link href={`/dashboard/singleList/${order._id}`}>
+          {order.products.reduce((total: number, product: any) => total + (product.quantity || 0), 0)}
+        </Link>
       </TableCell>
       <TableCell className="hidden md:table-cell text-center">
         {new Date(order.created_at).toLocaleString('fr-FR', {
