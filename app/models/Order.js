@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema({
   created_at: Date,
   customer_id: String,
+  customer_name: String,
+  customer_surname: String,
   products: Array,
   status: String,
   total_amount_HT: Number,
